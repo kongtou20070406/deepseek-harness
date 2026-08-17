@@ -198,6 +198,10 @@ export class SqliteSessionPersistence extends SessionPersistence implements Pers
     return this.coordinator.readFrom(id, fromSeq, signal)
   }
 
+  delete(id: SessionId, signal?: AbortSignal): Promise<void> {
+    return this.coordinator.delete(id, signal)
+  }
+
   // One method serves both public `list` and the backend hook; delegating it to
   // the coordinator would call this hook recursively.
 
@@ -335,6 +339,18 @@ export class SqliteSessionPersistence extends SessionPersistence implements Pers
       throw error
       /* v8 ignore stop */
     }
+  }
+
+  /**
+   * Durably remove one session in a single transaction: delete the `sessions`
+   * row; the `events` rows follow via `ON DELETE CASCADE` (never deleted
+   * individually here). Absent ids no-op.
+   */
+  async deleteStored(id: SessionId, signal?: AbortSignal): Promise<void> {
+    signal?.throwIfAborted()
+    await this.ready
+    signal?.throwIfAborted()
+    this.db.prepare('DELETE FROM sessions WHERE id = ?').run(id)
   }
 
   /** List all materialized sessions' metadata (every row is a materialized session). */

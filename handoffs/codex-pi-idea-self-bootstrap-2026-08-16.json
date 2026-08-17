@@ -1,0 +1,68 @@
+{
+  "version": 2,
+  "source": {
+    "harness": "codex",
+    "session_id": "codex:019ff9e4-fe0d-7e70-a37a-e7074d33fd78",
+    "project_path": "D:\\Myfile\\work space\\pi-idea"
+  },
+  "target": "Continue optimizing DeepSeek Harness and its plugin system through Pi-Idea with attention-aware, model-external research context, while preserving each Workspace's confirmed scientific objective and evidence boundary.",
+  "boundary": "Final live continuation handoff on 2026-08-16 after the production restart. Mechanism, replay, latency and reversible Cordis lifecycle are verified; multi-week scientific-task superiority is not claimed.",
+  "last_confirmed_user_request": "Use the official DSH engineering Skills, supervise repeated DeepSeek V4 Pro self-bootstrap work, preserve uninterrupted Cordis evolution, and correct Idea assembly so prompt presence is not mistaken for effective model attention.",
+  "decisions_and_authority": [
+    "Pi-Idea context assembly remains a Cordis plugin composition; DSH is the runtime and is not replaced by a bespoke monolith.",
+    "Each DSH Workspace owns exactly one durable Idea authority record; Sessions in the same Workspace share it, while different Workspaces are isolated.",
+    "Creation Mode keeps Cordis inspection and temporary plugin experimentation while using the same Code Mode SDK tool presentation as PTC Mode.",
+    "An imported handoff is candidate evidence only; it cannot edit Idea Kernel or Research Frame.",
+    "Archive means hidden, not deleted. Restoration removes the session ID from the durable archive set and reuses its retained workspace position.",
+    "Context and cost UI should stay compact: context and Codex subscription usage are separate circular meters beside the composer.",
+    "Idea Kernel is a short decision boundary, not a project brief: scientific object, success evidence and prohibited substitutions only. The Pi-Idea bundle fails above 256 Kernel tokens rather than truncating authority.",
+    "A task-idea-bridge immediately after Kernel binds current work to one scientific criterion; routes, tools and process rules remain in Research Frame or Working State.",
+    "Creation Mode includes the PTC Code Mode SDK plus tool-cordis. Ordinary PTC intentionally does not expose self-modification.",
+    "Automatic Goal rounds are hard-capped at 32 model steps by a prompt-free Cordis guard; ordinary user turns are not capped."
+    ,"EqOp authority is revision 9: Kernel v3 defines completing EqOp; Frame v2 keeps compiler search open. DH9, MSF9, BML and local experiments are means rather than the scientific objective."
+  ],
+  "completed": [
+    "Fixed Codex OAuth persistence ordering by dynamically binding the credential service and optionally importing Pi's existing OpenAI Codex OAuth into the DSH credential store without logging token values.",
+    "Added a compact circular Codex usage meter beside the input; it expands to exact five-hour and seven-day windows on click.",
+    "Added archived-session list and restore UI plus the durable restore path through registry, Host RPC and client runtime.",
+    "Changed Creation Mode to use research-context compaction and Code Mode tool presentation while retaining Cordis self-modification tools.",
+    "Added the @deepseek-ai/dsh-research-authority-workspace Cordis provider. It persists one Research State per Workspace, synchronizes stale sibling Sessions, isolates different projects, and keeps imported handoffs as non-authoritative evidence.",
+    "Registered pi-idea and equilibrium_operator_2027 as DSH Workspaces, created their project Sessions, and imported the workspace-local handoff packages.",
+    "Regenerated the persistence event catalog so research events survive cold reload instead of raising SessionFormatUnsupportedError.",
+    "Verified the scheduled DSH service is running at http://127.0.0.1:3080/, the OAuth credential key is durably present without exposing its value, and the usage ring, archive restore, Creation Mode and project Idea surfaces work in the browser.",
+    "Relevant host and web builds passed; targeted research authority, research context, compaction, OAuth, usage, archive and persistence tests passed. Two unrelated Windows symlink tests require Developer Mode/admin privilege."
+    ,"Fixed stale research-state mutations by exposing the current state-revision in every model-visible research-context while preserving optimistic concurrency checks."
+    ,"Fixed negative messageTokens after repeated compaction by enforcing the replacement message as the O(1) projection lower bound and bumping projection versions for cold replay. The real EqOp log replays to 16143 message tokens with no negative state."
+    ,"Recovered the real EqOp Session after a cold restart and formally confirmed the user-approved Kernel v3 at workspace revision 9 without changing Frame v2 or Working State."
+    ,"Installed all 11 official DSH engineering Skills and 15 portable Codex Skills into the DSH on-demand Skill catalog; corrected the sync manifest so only true inherited roots are reported."
+    ,"Added async 32-event locator prewarming. The reproducible 76-event multi-megabyte fixture measured 275.322 ms cold, 24.149 ms immediate warm and 1.729 ms after yielded prewarming."
+    ,"Added the goal-round-step-budget Cordis guard and verified six focused tests including real Goal driver integration."
+    ,"Added design-research-kernel and updated research-state-discipline. Kernel now has an independent attention budget and the assembled view places task-idea-bridge immediately after the verbatim Kernel."
+    ,"Verified Creation Mode self-modification in a real DeepSeek V4 Pro conversation: define, run, inspect, stop, undefine and final inspect completed in six model steps with about 0.2 seconds of tool time and no process restart."
+    ,"Completed the single final production restart: old Node PID 59036 was replaced by PID 60660 at 15:21, HTTP 200 and empty stderr. Existing sessions, model selection and usage statistics recovered."
+    ,"Observed a post-restart real research-context manifest with about 8.9k input tokens, one selected loop, zero omitted loops and 1.48 ms assembly latency."
+    ,"Production build and 27 focused context/compaction/Goal tests passed. Documentation pairing, links, wrapping and 547 Agent Note format checks passed; one Windows symlink lane remains environmental EPERM."
+    ,"Registered the Pi-Idea DSH current-user logon task with Interactive/Limited principal, hidden window, unlimited execution time and IgnoreNew multiple-instance policy; registration state was Ready."
+  ],
+  "pending_or_blocked": [
+    "Pi-Idea and EqOp Workspace authority records are independent and now project-specific. Future Kernel or Frame changes still require proposal, exact diff and separate user confirmation; handoff text remains evidence only.",
+    "Long-horizon real research validation remains future evidence and is not implied by mechanism and regression tests.",
+    "Kernel placement and task-idea-bridge do not prove attention or scientific-task improvement; they expose a compact, falsifiable alignment interface that still needs paired real-task evidence.",
+    "Built-in lexical/fuzzy/alias retrieval is not universal semantic retrieval. Any embedding provider remains a separately validated plugin experiment.",
+    "Preserve the dirty DSH source worktree and do not rewrite unrelated edits."
+  ],
+  "live_state_to_verify": [
+    "DSH web URL is http://127.0.0.1:3080/ and the scheduled task name is Pi-Idea DSH. Listener PID was 60660 at handoff time and must be revalidated on takeover.",
+    "Default preset is PTC Mode (code); Creation Mode is preset cordis.",
+    "Workspace-scoped Idea authority is stored by @deepseek-ai/dsh-research-authority-workspace; Session events are projections and evidence, not the cross-project source of truth.",
+    "Pi-Idea authority is revision 5 (Kernel v2, Frame v2). EqOp authority is revision 9 (Kernel v3, Frame v2, Working State revision 1).",
+    "The production service has the rebuilt Pi-Idea bundles, async context prewarm, attention-aware bridge and Goal hard budget loaded.",
+    "No new GPU work or long-running scientific experiment is authorized by this handoff."
+  ],
+  "anchors": [
+    "session:codex:019ff9e4-fe0d-7e70-a37a-e7074d33fd78",
+    "summary:codex:019ff9e4-fe0d-7e70-a37a-e7074d33fd78:018507:compaction",
+    "handoff:D:\\Myfile\\work space\\pi-idea\\.dsh\\handoffs\\codex-pi-idea-2026-08-15.json"
+    ,"dsh-session:session-d87a6ace-a7d7-4562-8db7-f7d3ac5ed296"
+  ]
+}

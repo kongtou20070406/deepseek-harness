@@ -9,6 +9,7 @@ import { apply, inject, refreshIfLoaded } from '@deepseek-ai/dsh-client-ui-setti
 import { ModelsSection } from '../src/client/ModelsSection.tsx'
 import { DeepSeekOnboardingDialog } from '../src/client/DeepSeekOnboardingDialog.tsx'
 import { WelcomeNotice } from '../src/client/WelcomeNotice.tsx'
+import { CodexUsageMeter } from '../src/client/CodexUsageMeter.tsx'
 
 // The service reads its initial locale from the browser; these specs assert
 // the shipped Chinese copy, so they state the browser they assume.
@@ -21,7 +22,27 @@ async function bench(isLoopback = true) {
   ctx.provide('locale', locale)
   // The plugins inject `remote`; forwarded events reach them through the
   // same `$dispatch` handoff the connection sink makes.
-  new TestRemote(ctx)
+  const remote = new TestRemote(ctx) as TestRemote & {
+    openaiCodex: {
+      status: () => Promise<never>
+      beginLogin: () => Promise<never>
+      pollLogin: () => Promise<never>
+      usage: () => Promise<never>
+      logout: () => Promise<never>
+    }
+  }
+  // This suite does not exercise Codex OAuth itself, but the Models plugin
+  // now declares that generated namespace. Provide the same nested service
+  // seat production mounts so Cordis can activate the plugin.
+  const unreachable = (): Promise<never> => Promise.reject(new Error('unexpected OpenAI Codex RPC in apply spec'))
+  remote.openaiCodex = {
+    status: unreachable,
+    beginLogin: unreachable,
+    pollLogin: unreachable,
+    usage: unreachable,
+    logout: unreachable,
+  }
+  ctx.provide('remote.openaiCodex', remote.openaiCodex)
   // The apply path only captures the wire face; no call leaves this fake
   // until a section actually loads.
   ctx.provide('connection', { api: {}, isLoopback } as never)
@@ -35,6 +56,7 @@ function declare(slots: SlotRegistry): () => void {
       children: {
         'settings.section': { kind: 'list', scope: 'root' },
         'settings.onboarding': { kind: 'list', scope: 'root' },
+        'conversation.input.right': { kind: 'list', scope: 'session' },
       },
     } as never,
     () => null,
@@ -43,7 +65,7 @@ function declare(slots: SlotRegistry): () => void {
 
 describe('ui-settings-models apply', () => {
   it('declares the services it uses', () => {
-    expect(inject).toEqual(['slots', 'locale', 'connection', 'remote'])
+    expect(inject).toEqual(['slots', 'locale', 'connection', 'remote', 'remote.openaiCodex'])
   })
 
   it('registers the models nav entry for declarations before or after apply', async () => {
@@ -61,6 +83,9 @@ describe('ui-settings-models apply', () => {
     expect(typeof injected.controller.load).toBe('function')
     expect(typeof injected.useSnapshot).toBe('function')
     expect(injected.api).toBeDefined()
+    const usage = before.slots.entries('conversation.input.right')[0]!
+    expect(usage.component).toBe(CodexUsageMeter)
+    expect(usage.options).toMatchObject({ id: 'codex-usage', order: 100 })
     const onboarding = before.slots.entries('settings.onboarding')
     expect(onboarding).toHaveLength(2)
     expect(onboarding.find(entry => entry.options.id === 'welcome-notice')).toMatchObject({
@@ -80,10 +105,12 @@ describe('ui-settings-models apply', () => {
     await after.ctx.plugin({ inject: [...inject], apply }).await()
     expect(after.slots.entries('settings.section')).toHaveLength(0)
     expect(after.slots.entries('settings.onboarding')).toHaveLength(0)
+    expect(after.slots.entries('conversation.input.right')).toHaveLength(0)
     declare(after.slots)
     await Promise.resolve()
     expect(after.slots.entries('settings.section')[0]!.component).toBe(ModelsSection)
     expect(after.slots.entries('settings.onboarding')).toHaveLength(2)
+    expect(after.slots.entries('conversation.input.right')).toHaveLength(1)
     // The self-inflicted ledger notifications hit the duplicate guard.
     expect(after.slots.entries('settings.section')).toHaveLength(1)
   })
@@ -119,6 +146,7 @@ describe('ui-settings-models apply', () => {
     redeclare()
     expect(b.slots.entries('settings.section')).toHaveLength(0)
     expect(b.slots.entries('settings.onboarding')).toHaveLength(0)
+    expect(b.slots.entries('conversation.input.right')).toHaveLength(0)
     declare(b.slots)
     await Promise.resolve()
     expect(b.slots.entries('settings.section')[0]!.component).toBe(ModelsSection)

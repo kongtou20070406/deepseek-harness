@@ -196,7 +196,7 @@ describe('StatsLine', () => {
     const view = render(<StatsLine {...props(source)} />)
     // No timing on the fixture: the duration group drops out whole. Tokens come
     // from the projection, so paging the window cannot change them.
-    expect(view.container.textContent).toBe('1 turns · 1 steps| Cache hit 90%| Input 100 tok · Output 5 tok')
+    expect(view.container.textContent).toBe('1 turns · 1 stepsThis chat 105 tokCache 90%')
     const empty = makeSource()
     const emptyView = render(<StatsLine {...props(empty.source, {
       tokenUsage: { uncachedInputTokens: 0, outputTokens: 0, cacheReadTokens: 0, cacheWriteTokens: 0 },
@@ -205,26 +205,23 @@ describe('StatsLine', () => {
     expect(emptyView.container.textContent).toBe('')
   })
 
-  it('reveals the full line in a delayed hover tooltip only while the row is clipped', () => {
+  it('reveals the input/output breakdown from the compact total-token group', () => {
     vi.useFakeTimers()
-    // jsdom lays nothing out; fake a row narrower than its content.
-    vi.spyOn(Element.prototype, 'scrollWidth', 'get').mockReturnValue(800)
-    vi.spyOn(Element.prototype, 'clientWidth', 'get').mockReturnValue(400)
     const { source } = makeSource({ nodes: [assistant(1, 1)] })
     const view = render(<StatsLine {...props(source)} />)
-    fireEvent.mouseEnter(view.container.firstElementChild!)
-    act(() => { vi.advanceTimersByTime(499) })
+    fireEvent.mouseEnter(view.getByText('This chat 105 tok'))
+    act(() => { vi.advanceTimersByTime(299) })
     expect(view.container.querySelector('[role="tooltip"]')).toBeNull()
     act(() => { vi.advanceTimersByTime(1) })
     expect(view.container.querySelector('[role="tooltip"]')?.textContent)
-      .toBe('1 turns · 1 steps | Cache hit 90% | Input 100 tok · Output 5 tok')
+      .toBe('Input 100 tok · Output 5 tok')
   })
 
-  it('suppresses the tooltip while the row fits without truncation', () => {
+  it('does not duplicate the full stats row in a hover tooltip', () => {
     vi.useFakeTimers()
     const { source } = makeSource({ nodes: [assistant(1, 1)] })
     const view = render(<StatsLine {...props(source)} />)
-    fireEvent.mouseEnter(view.container.firstElementChild!)
+    fireEvent.mouseEnter(view.getByText('1 turns · 1 steps'))
     act(() => { vi.advanceTimersByTime(500) })
     expect(view.container.querySelector('[role="tooltip"]')).toBeNull()
   })
@@ -236,7 +233,7 @@ describe('StatsLine', () => {
     }
     const { source } = makeSource({ nodes: [timed] })
     const view = render(<StatsLine {...props(source)} />)
-    expect(view.container.textContent).toContain('LLM 3.8s| TTFT avg 0.8s · 20 tok/s')
+    expect(view.container.textContent).toContain('LLM 3.8sTTFT 0.8s · 20 tok/s')
   })
 
   it('takes every stats label from the active locale', () => {
@@ -247,7 +244,7 @@ describe('StatsLine', () => {
     const { source } = makeSource({ nodes: [timed] })
     const view = render(<StatsLine {...props(source)} t={t} />)
     expect(view.container.textContent)
-      .toBe('1 轮 · 1 步| LLM 3.8s| 首 token 平均 0.8s · 20 tok/s| 缓存命中 90%| 输入 100 tok · 输出 5 tok')
+      .toBe('1 轮 · 1 步本对话 105 tokLLM 3.8s首字 0.8s · 20 tok/s缓存 90%')
   })
 
   it('renders without ResizeObserver support', () => {
@@ -264,7 +261,7 @@ describe('StatsLine', () => {
     })} />)
     // Context occupancy lives on the composer's ContextMeter ring, not here.
     expect(view.container.textContent)
-      .toBe('Cache hit 90%| Input 100 tok · Output 5 tok')
+      .toBe('This chat 105 tokCache 90%')
   })
 
   it('computes context occupancy only when both a numerator and capacity are known', () => {
@@ -300,7 +297,7 @@ describe('StatsLine', () => {
       sessionStats: sessionStats({ turns: 10, steps: 89 }),
     })} />)
     expect(view.container.textContent)
-      .toBe('10 turns · 89 steps| Cache hit 90%| Input 100 tok · Output 5 tok')
+      .toBe('10 turns · 89 stepsThis chat 105 tokCache 90%')
   })
 
   it('treats a defined zero-count projection as empty, not as fallback', () => {
@@ -334,7 +331,7 @@ describe('StatsLine', () => {
       sessionStats: sessionStats({ turns: 7, steps: 44 }),
     })} />)
     expect(view.container.textContent)
-      .toBe('7 turns · 44 steps| Cache hit 90%| Input 100 tok · Output 5 tok')
+      .toBe('7 turns · 44 stepsThis chat 105 tokCache 90%')
   })
 
   it('renders whole-log wall times and speeds from the projection, not the loaded window', () => {
@@ -350,7 +347,7 @@ describe('StatsLine', () => {
       }),
     })} />)
     expect(view.container.textContent).toBe(
-      '200 turns · 200 steps| LLM 1m40s · Tool call 1m2s| TTFT avg 0.8s · 20 tok/s| Cache hit 90%| Input 100 tok · Output 5 tok',
+      '200 turns · 200 stepsThis chat 105 tokLLM 1m40s · Tools 1m2sTTFT 0.8s · 20 tok/sCache 90%',
     )
   })
 
@@ -359,7 +356,7 @@ describe('StatsLine', () => {
     const view = render(<StatsLine {...props(source, {
       tokenUsage: { uncachedInputTokens: 0, outputTokens: 7, cacheReadTokens: 0, cacheWriteTokens: 0 },
     })} />)
-    expect(view.container.textContent).toBe('1 turns · 1 steps| Input 0 tok · Output 7 tok')
+    expect(view.container.textContent).toBe('1 turns · 1 stepsThis chat 7 tok')
   })
 
   it('includes cache writes in billed input and the cache-hit denominator', () => {
@@ -373,7 +370,7 @@ describe('StatsLine', () => {
       },
     })} />)
     expect(view.container.textContent)
-      .toBe('1 turns · 1 steps| Cache hit 45%| Input 200 tok · Output 7 tok')
+      .toBe('1 turns · 1 stepsThis chat 207 tokCache 45%')
   })
 
   it('renders ZERO times during streaming chunk frames (RFC hard acceptance)', () => {

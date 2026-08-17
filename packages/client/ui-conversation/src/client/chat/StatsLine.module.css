@@ -2,24 +2,41 @@
    shared message column axis (--dsh-chat-content-width). */
 
 .root {
-  /* Block, not flex: text-overflow only elides a block's inline content, so
-     an overlong line ends in … instead of a mid-glyph clip. */
-  display: block;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   max-width: var(--dsh-chat-content-width);
   width: 100%;
   margin: 0 auto;
   box-sizing: border-box;
-  padding: 4px calc(var(--dsh-composer-side-clearance) + 16px) 0px;
+  padding: 5px calc(var(--dsh-composer-side-clearance) + 16px) 1px;
   font-size: 12px;
-  line-height: 20px;
+  line-height: 18px;
   color: var(--dsw-alias-label-tertiary);
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
+}
+
+.segment {
+  display: inline-flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.group {
+  font-variant-numeric: tabular-nums;
 }
 
 .sep {
-  color: var(--dsw-alias-separator-primary);
-  margin: 0 10px; /* carries the former flex gap */
+  width: 1px;
+  height: 10px;
+  margin: 0 9px;
+  background: var(--dsw-alias-separator-primary);
+  opacity: 0.65;
+}
+
+@media (max-width: 900px) {
+  .segmentSecondary {
+    display: none;
+  }
 }

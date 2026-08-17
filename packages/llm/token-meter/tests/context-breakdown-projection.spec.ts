@@ -227,6 +227,29 @@ describe('contextBreakdown session projection', () => {
       ))
   })
 
+  it('never lets historical projection drift make a metered replacement negative', () => {
+    const definition = contextBreakdownProjectionDefinition
+    const summary = createUserMessage({
+      content: [{ type: 'text', text: 'replacement summary' }],
+      source: { kind: 'plugin', plugin: 'test' },
+    })
+    let state = definition.apply(definition.init(), {
+      type: 'user/message', seq: 1, time: 0, data: createUserMessage({
+        content: [{ type: 'text', text: 'underpriced history' }], source: { kind: 'user' },
+      }), surfaceOp: 'append',
+    } as unknown as SessionEvent)
+    state = definition.apply(state, {
+      type: 'compaction/summary', seq: 2, time: 0,
+      data: { shadowedRange: { start: 1, end: 1 }, shadowedSeqs: [1], shadowedTokenCount: 10_000 },
+    } as unknown as SessionEvent)
+    state = definition.apply(state, {
+      type: 'user/message', seq: 3, time: 0, data: summary,
+      surfaceOp: { op: 'replace', start: 1, end: 1 }, sourceEventSeqs: [1],
+    } as unknown as SessionEvent)
+
+    expect(definition.view(state).messageTokens).toBe(estimateMessage(summary))
+  })
+
   it('keeps the persisted checkpoint O(1) as the surface grows and compacts', async () => {
     const { ctx, session } = await harness()
     const first = appendUser(session, 'the first of many messages')

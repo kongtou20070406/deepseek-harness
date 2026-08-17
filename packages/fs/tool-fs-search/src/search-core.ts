@@ -103,6 +103,8 @@ export interface RipgrepRun {
   noMatches: boolean
   /** The resolved working directory the command ran in (the display-relativization base). */
   workdir: string
+  /** Bounded warnings when readable results survived inaccessible traversal entries. */
+  diagnostics?: string[]
 }
 
 /**
@@ -113,6 +115,35 @@ function stderrExcerpt(stderrText: string, truncated: boolean): string {
   const text = stderrText.trim()
   if (text.length === 0) return ''
   return truncated ? `${text} [stderr truncated]` : text
+}
+
+/** Ripgrep traversal diagnostics that mean one entry was unreadable, not that the search itself was invalid. */
+const ACCESS_DENIED = /(?:permission denied|access is denied|拒绝访问|os error (?:1|5|13))/iu
+
+/**
+ * Convert an access-denied-only stderr stream into bounded partial-result
+ * diagnostics. Any other stderr line keeps the existing fail-closed behavior:
+ * missing targets, invalid patterns, and unknown I/O failures must not masquerade
+ * as a complete search.
+ */
+function recoverableAccessDiagnostics(stderrText: string, truncated: boolean): string[] | undefined {
+  const lines = stderrText.split(/\r?\n/u).map(line => line.trim()).filter(line => line.length > 0)
+  if (lines.length === 0 || !lines.every(line => line.startsWith('rg:') && ACCESS_DENIED.test(line))) return undefined
+  const count = truncated ? `at least ${String(lines.length)}` : String(lines.length)
+  const noun = lines.length === 1 ? 'path was' : 'paths were'
+  const summary = `${count} inaccessible ${noun} skipped; readable files were still searched${truncated ? ' (diagnostic tail truncated)' : ''}.`
+  const examples = lines.slice(0, 2).map(line => line.length > 500 ? `${line.slice(0, 497)}...` : line)
+  return [summary, ...examples]
+}
+
+/**
+ * Build the model-facing suffix for a successful-but-partial search.
+ * @param diagnostics - bounded inaccessible-path diagnostics from the search runner.
+ * @returns an empty string for a complete search, otherwise the explicit partial-search suffix.
+ */
+export function formatSearchDiagnostics(diagnostics?: readonly string[]): string {
+  if (diagnostics === undefined || diagnostics.length === 0) return ''
+  return `\n\n(Partial search; some paths were inaccessible:\n${diagnostics.map(line => `- ${line}`).join('\n')}\n)`
 }
 
 /**
@@ -267,11 +298,20 @@ export async function runRipgrep(
   if (outcome.signal !== null || outcome.exitCode === null) {
     throw new SearchError(`${toolName} search command was killed by signal ${outcome.signal ?? '(unknown)'}`, 'SEARCH_FAILED')
   }
+  let diagnostics: string[] | undefined
   if (outcome.exitCode !== 0 && outcome.exitCode !== 1) {
-    throw classifyRunFailure(toolName, outcome.exitCode, stderr.text, stderr.lossy)
+    const failure = classifyRunFailure(toolName, outcome.exitCode, stderr.text, stderr.lossy)
+    if (failure.code === 'SEARCH_INVALID_PATTERN') throw failure
+    diagnostics = recoverableAccessDiagnostics(stderr.text, stderr.lossy)
+    if (diagnostics === undefined) throw failure
   }
   const text = completeStdout(toolName, stdout, rawOutputMaxBytes)
-  return { stdout: text, noMatches: outcome.exitCode === 1, workdir }
+  return {
+    stdout: text,
+    noMatches: outcome.exitCode === 1,
+    workdir,
+    ...diagnostics !== undefined ? { diagnostics } : {},
+  }
 }
 
 /**

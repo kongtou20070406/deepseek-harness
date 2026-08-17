@@ -1,0 +1,36 @@
+{
+  "name": "pi-idea-harness",
+  "version": "0.0.1",
+  "private": true,
+  "description": "A lightweight Pi-native harness that keeps a scientific Idea stable across long-running research conversations.",
+  "type": "module",
+  "keywords": [
+    "pi-package",
+    "research",
+    "context-management"
+  ],
+  "engines": {
+    "node": ">=22.19.0"
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-coding-agent": "*",
+    "@earendil-works/pi-tui": "*"
+  },
+  "devDependencies": {
+    "@earendil-works/pi-tui": "0.84.1"
+  },
+  "bin": {
+    "pi-idea": "./bin/pi-idea.js"
+  },
+  "pi": {
+    "extensions": [
+      "./extensions/idea-harness.js"
+    ]
+  },
+  "scripts": {
+    "test": "node --test",
+    "check": "node --test",
+    "smoke:pi": "node scripts/pi-rpc-smoke.js"
+  },
+  "license": "MIT"
+}

@@ -129,6 +129,8 @@ describe('goal tool registration and presentation', () => {
     const section = (await ctx.systemPrompt.assemble()).sections.find(item => item.name === 'tool:goal')
     expect(section?.text).toContain('infer goal intent')
     expect(section?.text).toContain('at least 5 consecutive goal rounds')
+    expect(section?.text).not.toContain('resource utilization')
+    expect(section?.text).not.toContain('human correction')
 
     await fiber.dispose()
     expect(ctx.tools.get('get_goal')).toBeUndefined()
@@ -399,20 +401,15 @@ describe('goal tool state transitions', () => {
     expect(complete.additionalContexts).toBeUndefined()
   })
 
-  it('rearms a restored active goal only after a new direct human prompt', async () => {
+  it('observes the goal service rearming a restored active goal on session resume', async () => {
     const { ctx, root } = await harness()
-    let turn = openTurn(root, { kind: 'user' })
+    const turn = openTurn(root, { kind: 'user' })
     const created = ctx.goals.create(root.agent, { objective: 'continue later' })
     closeTurn(root, turn)
     agentEvents(ctx, root.agent).emit('agent/session-start', { source: 'resume' })
-    expect(ctx.goals.get(root.agent)?.activation).toBe('disarmed')
-    turn = openTurn(root, { kind: 'user' }, '继续')
-    const resumed = await execute(ctx, 'update_goal', {
-      goal_id: created.id, revision: created.revision, action: 'resume',
-    }, root.agent)
-    expect(resultGoal(resumed)).toMatchObject({ phase: 'active', revision: 2 })
-    expect(resultJson(resumed)['activation']).toBe('armed')
-    closeTurn(root, turn)
+    expect(ctx.goals.get(root.agent)).toMatchObject({
+      id: created.id, revision: created.revision, phase: 'active', activation: 'armed',
+    })
   })
 
   it('returns structured domain and conditional-argument failures', async () => {

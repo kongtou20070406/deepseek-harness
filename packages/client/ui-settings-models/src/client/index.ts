@@ -11,6 +11,8 @@ import type { ConnectionHandle } from '@deepseek-ai/dsh-api-remotes/client'
 import { bindSnapshotSelector } from '@deepseek-ai/dsh-client-web-react'
 // Type-only: pulls the shell's SlotMap merge (the 'settings.section' entry).
 import type {} from '@deepseek-ai/dsh-client-ui-settings/client'
+// Type-only: composer input-right slot for the compact Codex usage meter.
+import type {} from '@deepseek-ai/dsh-client-ui-conversation/client'
 // Type-only: pulls the locale plugin's Context merge (ctx.locale).
 import type {} from '@deepseek-ai/dsh-client-locale/client'
 // Type-only: pulls the ctx.remote merge and the forwarded-event key face
@@ -18,6 +20,7 @@ import type {} from '@deepseek-ai/dsh-client-locale/client'
 import type {} from '@deepseek-ai/dsh-api-remotes/client'
 import { ModelsSection } from './ModelsSection.tsx'
 import type { ModelsSectionInjected } from './ModelsSection.tsx'
+import { CodexUsageMeter } from './CodexUsageMeter.tsx'
 import { DeepSeekOnboardingDialog } from './DeepSeekOnboardingDialog.tsx'
 import type { DeepSeekOnboardingInjected } from './DeepSeekOnboardingDialog.tsx'
 import { WelcomeNotice } from './WelcomeNotice.tsx'
@@ -56,7 +59,7 @@ export function refreshIfLoaded(controller: ModelsSettingsStore): void {
  * ui-settings' apply, whose activation order relative to this one is NOT
  * constrained; registration depends on each slot through `slots.inject()`.
  */
-export const inject = ['slots', 'locale', 'connection', 'remote']
+export const inject = ['slots', 'locale', 'connection', 'remote', 'remote.openaiCodex']
 
 /**
  * Register the Models section once the `settings.section` declaration is on
@@ -73,11 +76,39 @@ export function apply(ctx: ClientContext): void {
   // Registration-time text (the nav label thunk) and the inject faces share
   // one bound translate; copy freshness rides the locale revision.
   const t = ctx.locale.bind(NS) as ModelsSectionInjected['t']
+  const codex: ModelsSectionInjected['codex'] = {
+    status: async () => {
+      const result = await ctx.remote.openaiCodex.status()
+      if (!result.ok) throw new Error(result.error.message)
+      return result.value
+    },
+    beginLogin: async () => {
+      const result = await ctx.remote.openaiCodex.beginLogin()
+      if (!result.ok) throw new Error(result.error.message)
+      return result.value
+    },
+    pollLogin: async () => {
+      const result = await ctx.remote.openaiCodex.pollLogin()
+      if (!result.ok) throw new Error(result.error.message)
+      return result.value
+    },
+    usage: async () => {
+      const result = await ctx.remote.openaiCodex.usage()
+      if (!result.ok) throw new Error(result.error.message)
+      return result.value
+    },
+    logout: async () => {
+      const result = await ctx.remote.openaiCodex.logout()
+      if (!result.ok) throw new Error(result.error.message)
+      return result.value
+    },
+  }
   const injected = (): ModelsSectionInjected => ({
     controller,
     useSnapshot,
     api: connection.api,
     t,
+    codex,
   })
   const deepSeekOnboardingInjected = (): DeepSeekOnboardingInjected => ({
     controller,
@@ -122,6 +153,13 @@ export function apply(ctx: ClientContext): void {
     label: () => t('nav'),
     inject: injected,
   }, ModelsSection))
+  ctx.slots.inject('conversation.input.right', () => ctx.slots.register({
+    name: 'conversation.input.right',
+    id: 'codex-usage',
+    order: 100,
+    locale: NS,
+    inject: () => ({ actions: { status: codex.status, usage: codex.usage } }),
+  }, CodexUsageMeter))
   ctx.slots.inject('settings.onboarding', () => ctx.slots.register({
     name: 'settings.onboarding',
     id: 'welcome-notice',

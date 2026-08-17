@@ -1,0 +1,1246 @@
+{
+  "schema": 1,
+  "runId": "long-horizon-luna-gate-2026-08-13T19-32-59-784Z-8f30f13c",
+  "generatedAt": "2026-08-13T19:41:42.372Z",
+  "label": "frozen unseen multi-project long-horizon Luna-low gate; rolling baseline is transparent extractive simulation, not proprietary Codex compaction",
+  "manifestPath": "D:\\Myfile\\work space\\pi-idea\\research\\benchmarks\\bidirectional-context\\results\\long-horizon-luna-gate-v2-manifest.json",
+  "manifestDigest": "8f30f13c6cc03eceff718d2780e9989cd7f6cded66cb71806740c212eb062569",
+  "protocol": {
+    "sampleSize": 16,
+    "distractorCount": 8,
+    "rawBudget": 32768,
+    "compactBudget": 8192,
+    "compilerVersion": "proof-carrying-dialogue-islands-v6.4",
+    "model": "gpt-5.6-luna:low",
+    "cpuOnly": true,
+    "serial": true
+  },
+  "execution": [
+    {
+      "caseKey": "msy:9d539c42885c7a5a5ecc",
+      "task": "objective_fact_judgment",
+      "answerOrder": [
+        "rolling-extractive",
+        "evidence-ladder",
+        "raw-long"
+      ],
+      "targetEvidenceCoverage": {
+        "raw-long": 1,
+        "rolling-extractive": 0.5,
+        "evidence-ladder": 0.6
+      }
+    },
+    {
+      "caseKey": "msy:51aecc26c6f1a002b0d8",
+      "task": "objective_fact_judgment",
+      "answerOrder": [
+        "rolling-extractive",
+        "evidence-ladder",
+        "raw-long"
+      ],
+      "targetEvidenceCoverage": {
+        "raw-long": 1,
+        "rolling-extractive": 0.5,
+        "evidence-ladder": 0.6
+      }
+    },
+    {
+      "caseKey": "msy:f914c8e0e6af32d639d0",
+      "task": "objective_fact_judgment",
+      "answerOrder": [
+        "raw-long",
+        "rolling-extractive",
+        "evidence-ladder"
+      ],
+      "targetEvidenceCoverage": {
+        "raw-long": 1,
+        "rolling-extractive": 0.5,
+        "evidence-ladder": 0.2
+      }
+    },
+    {
+      "caseKey": "msy:db5c60fff0c93270482d",
+      "task": "objective_fact_judgment",
+      "answerOrder": [
+        "raw-long",
+        "rolling-extractive",
+        "evidence-ladder"
+      ],
+      "targetEvidenceCoverage": {
+        "raw-long": 1,
+        "rolling-extractive": 0,
+        "evidence-ladder": 0
+      }
+    },
+    {
+      "caseKey": "msy:1c0074c074dae07a8508",
+      "task": "personalized_memory_use",
+      "answerOrder": [
+        "evidence-ladder",
+        "raw-long",
+        "rolling-extractive"
+      ],
+      "targetEvidenceCoverage": {
+        "raw-long": 1,
+        "rolling-extractive": 0,
+        "evidence-ladder": 0.8571428571428571
+      }
+    },
+    {
+      "caseKey": "msy:9fbd71bae71cbc8b3938",
+      "task": "personalized_memory_use",
+      "answerOrder": [
+        "raw-long",
+        "rolling-extractive",
+        "evidence-ladder"
+      ],
+      "targetEvidenceCoverage": {
+        "raw-long": 1,
+        "rolling-extractive": 0,
+        "evidence-ladder": 0.8571428571428571
+      }
+    },
+    {
+      "caseKey": "msy:77cc98760801eab317ca",
+      "task": "personalized_memory_use",
+      "answerOrder": [
+        "rolling-extractive",
+        "raw-long",
+        "evidence-ladder"
+      ],
+      "targetEvidenceCoverage": {
+        "raw-long": 1,
+        "rolling-extractive": 0.42857142857142855,
+        "evidence-ladder": 0.8571428571428571
+      }
+    },
+    {
+      "caseKey": "msy:8a9e5c4c160d6bd65e05",
+      "task": "personalized_memory_use",
+      "answerOrder": [
+        "evidence-ladder",
+        "raw-long",
+        "rolling-extractive"
+      ],
+      "targetEvidenceCoverage": {
+        "raw-long": 1,
+        "rolling-extractive": 0.14285714285714285,
+        "evidence-ladder": 0.8571428571428571
+      }
+    },
+    {
+      "caseKey": "msy:2ca245754b647ac3f17d",
+      "task": "memory_evidence_conflict",
+      "answerOrder": [
+        "rolling-extractive",
+        "raw-long",
+        "evidence-ladder"
+      ],
+      "targetEvidenceCoverage": {
+        "raw-long": 1,
+        "rolling-extractive": 0,
+        "evidence-ladder": 0.75
+      }
+    },
+    {
+      "caseKey": "msy:a291fe83814f7dcf3e9b",
+      "task": "memory_evidence_conflict",
+      "answerOrder": [
+        "raw-long",
+        "evidence-ladder",
+        "rolling-extractive"
+      ],
+      "targetEvidenceCoverage": {
+        "raw-long": 1,
+        "rolling-extractive": 0.5,
+        "evidence-ladder": 0.625
+      }
+    },
+    {
+      "caseKey": "msy:49fd2691934f5892c738",
+      "task": "memory_evidence_conflict",
+      "answerOrder": [
+        "evidence-ladder",
+        "raw-long",
+        "rolling-extractive"
+      ],
+      "targetEvidenceCoverage": {
+        "raw-long": 1,
+        "rolling-extractive": 0.5,
+        "evidence-ladder": 0.75
+      }
+    },
+    {
+      "caseKey": "msy:892c8d6a82ff375ca997",
+      "task": "contextual_scope_control",
+      "answerOrder": [
+        "rolling-extractive",
+        "evidence-ladder",
+        "raw-long"
+      ],
+      "targetEvidenceCoverage": {
+        "raw-long": 1,
+        "rolling-extractive": 0.2,
+        "evidence-ladder": 0.7
+      }
+    },
+    {
+      "caseKey": "msy:20a9dfce73f7f22f2dd5",
+      "task": "contextual_scope_control",
+      "answerOrder": [
+        "raw-long",
+        "evidence-ladder",
+        "rolling-extractive"
+      ],
+      "targetEvidenceCoverage": {
+        "raw-long": 1,
+        "rolling-extractive": 0.1,
+        "evidence-ladder": 0.7
+      }
+    },
+    {
+      "caseKey": "msy:b7cd8f6f4ba13dbb7913",
+      "task": "valid_memory_selection",
+      "answerOrder": [
+        "rolling-extractive",
+        "evidence-ladder",
+        "raw-long"
+      ],
+      "targetEvidenceCoverage": {
+        "raw-long": 1,
+        "rolling-extractive": 0.7692307692307693,
+        "evidence-ladder": 0.6153846153846154
+      }
+    },
+    {
+      "caseKey": "msy:c372bab76c56a7656b53",
+      "task": "valid_memory_selection",
+      "answerOrder": [
+        "evidence-ladder",
+        "raw-long",
+        "rolling-extractive"
+      ],
+      "targetEvidenceCoverage": {
+        "raw-long": 1,
+        "rolling-extractive": 0.5,
+        "evidence-ladder": 0.5833333333333334
+      }
+    },
+    {
+      "caseKey": "msy:5f3f3925ef7238651e6e",
+      "task": "valid_memory_selection",
+      "answerOrder": [
+        "rolling-extractive",
+        "raw-long",
+        "evidence-ladder"
+      ],
+      "targetEvidenceCoverage": {
+        "raw-long": 1,
+        "rolling-extractive": 0.6666666666666666,
+        "evidence-ladder": 0.5833333333333334
+      }
+    }
+  ],
+  "scoredRows": [
+    {
+      "caseKey": "msy:9d539c42885c7a5a5ecc",
+      "task": "objective_fact_judgment",
+      "condition": "raw-long",
+      "onlineDigest": "sha256:c5ffb5d1f1b74a5091d24a456820c260f6ec153b384769cb330d535a91425381",
+      "contextTokens": 19790,
+      "assemblyMs": 14.339700000000022,
+      "answerCorrect": true,
+      "authorityCorrect": false,
+      "taskSuccess": false,
+      "authorityFailure": true,
+      "retrievalRequirement": "not-required",
+      "retrievalSufficient": false,
+      "retrievalSignalClass": "misleading",
+      "retrievalJudgeParseOk": true,
+      "answerJudgeParseOk": true,
+      "diagnostic": "authority-wrong-despite-correct-answer"
+    },
+    {
+      "caseKey": "msy:9d539c42885c7a5a5ecc",
+      "task": "objective_fact_judgment",
+      "condition": "rolling-extractive",
+      "onlineDigest": "sha256:db750b5231b6c39d8ed19378cb2598d640a319bcf5b7adac079c45c81d1cd3b5",
+      "contextTokens": 7287,
+      "assemblyMs": 0.4398999999999944,
+      "answerCorrect": true,
+      "authorityCorrect": true,
+      "taskSuccess": true,
+      "authorityFailure": true,
+      "retrievalRequirement": "not-required",
+      "retrievalSufficient": false,
+      "retrievalSignalClass": "misleading",
+      "retrievalJudgeParseOk": true,
+      "answerJudgeParseOk": true,
+      "diagnostic": "correct-authority-use"
+    },
+    {
+      "caseKey": "msy:9d539c42885c7a5a5ecc",
+      "task": "objective_fact_judgment",
+      "condition": "evidence-ladder",
+      "onlineDigest": "sha256:ab3f8276d55e13146b4e647ada64982ecd0ad8f6532f5a482378976770022e32",
+      "contextTokens": 1327,
+      "assemblyMs": 5.255799999999994,
+      "answerCorrect": true,
+      "authorityCorrect": true,
+      "taskSuccess": true,
+      "authorityFailure": false,
+      "retrievalRequirement": "not-required",
+      "retrievalSufficient": false,
+      "retrievalSignalClass": "misleading",
+      "retrievalJudgeParseOk": true,
+      "answerJudgeParseOk": true,
+      "diagnostic": "correct-authority-use"
+    },
+    {
+      "caseKey": "msy:51aecc26c6f1a002b0d8",
+      "task": "objective_fact_judgment",
+      "condition": "raw-long",
+      "onlineDigest": "sha256:7c00983a5c9519a658b7928ae88c40b950915e10f8cc2c84afe63e1c7b39e814",
+      "contextTokens": 16905,
+      "assemblyMs": 9.7397,
+      "answerCorrect": true,
+      "authorityCorrect": true,
+      "taskSuccess": true,
+      "authorityFailure": false,
+      "retrievalRequirement": "not-required",
+      "retrievalSufficient": false,
+      "retrievalSignalClass": "insufficient",
+      "retrievalJudgeParseOk": true,
+      "answerJudgeParseOk": true,
+      "diagnostic": "correct-authority-use"
+    },
+    {
+      "caseKey": "msy:51aecc26c6f1a002b0d8",
+      "task": "objective_fact_judgment",
+      "condition": "rolling-extractive",
+      "onlineDigest": "sha256:62390fff31957cfc1c4ff189176831df2af4d2ac6413b689b2114a07c939a82d",
+      "contextTokens": 7389,
+      "assemblyMs": 0.20480000000000587,
+      "answerCorrect": true,
+      "authorityCorrect": true,
+      "taskSuccess": true,
+      "authorityFailure": false,
+      "retrievalRequirement": "not-required",
+      "retrievalSufficient": false,
+      "retrievalSignalClass": "misleading",
+      "retrievalJudgeParseOk": true,
+      "answerJudgeParseOk": true,
+      "diagnostic": "correct-authority-use"
+    },
+    {
+      "caseKey": "msy:51aecc26c6f1a002b0d8",
+      "task": "objective_fact_judgment",
+      "condition": "evidence-ladder",
+      "onlineDigest": "sha256:3cd0697890443dceb6220b76d01bce04a32e94c1f7a7e0ee56c31abf93710443",
+      "contextTokens": 1327,
+      "assemblyMs": 4.380700000000019,
+      "answerCorrect": true,
+      "authorityCorrect": true,
+      "taskSuccess": true,
+      "authorityFailure": false,
+      "retrievalRequirement": "not-required",
+      "retrievalSufficient": false,
+      "retrievalSignalClass": "insufficient",
+      "retrievalJudgeParseOk": true,
+      "answerJudgeParseOk": true,
+      "diagnostic": "correct-authority-use"
+    },
+    {
+      "caseKey": "msy:f914c8e0e6af32d639d0",
+      "task": "objective_fact_judgment",
+      "condition": "raw-long",
+      "onlineDigest": "sha256:b4717942ceb904d43b5de4363fbe49eab20287078f3f484d487fef97c86f5041",
+      "contextTokens": 20624,
+      "assemblyMs": 10.755899999999997,
+      "answerCorrect": true,
+      "authorityCorrect": true,
+      "taskSuccess": true,
+      "authorityFailure": false,
+      "retrievalRequirement": "not-required",
+      "retrievalSufficient": false,
+      "retrievalSignalClass": "misleading",
+      "retrievalJudgeParseOk": true,
+      "answerJudgeParseOk": true,
+      "diagnostic": "correct-authority-use"
+    },
+    {
+      "caseKey": "msy:f914c8e0e6af32d639d0",
+      "task": "objective_fact_judgment",
+      "condition": "rolling-extractive",
+      "onlineDigest": "sha256:ea67dc2c0a4cf3a2513b4f4efd5d0535e3526dba2270f6d50dff7de60e9d1657",
+      "contextTokens": 7181,
+      "assemblyMs": 0.3359000000000094,
+      "answerCorrect": true,
+      "authorityCorrect": true,
+      "taskSuccess": true,
+      "authorityFailure": false,
+      "retrievalRequirement": "not-required",
+      "retrievalSufficient": false,
+      "retrievalSignalClass": "insufficient",
+      "retrievalJudgeParseOk": true,
+      "answerJudgeParseOk": true,
+      "diagnostic": "correct-authority-use"
+    },
+    {
+      "caseKey": "msy:f914c8e0e6af32d639d0",
+      "task": "objective_fact_judgment",
+      "condition": "evidence-ladder",
+      "onlineDigest": "sha256:2f069d48495f0be132b9768490f17aa9af92cebcbbb280e526f9efacf9df836e",
+      "contextTokens": 573,
+      "assemblyMs": 9.19149999999999,
+      "answerCorrect": true,
+      "authorityCorrect": true,
+      "taskSuccess": true,
+      "authorityFailure": false,
+      "retrievalRequirement": "not-required",
+      "retrievalSufficient": false,
+      "retrievalSignalClass": "insufficient",
+      "retrievalJudgeParseOk": true,
+      "answerJudgeParseOk": true,
+      "diagnostic": "correct-authority-use"
+    },
+    {
+      "caseKey": "msy:db5c60fff0c93270482d",
+      "task": "objective_fact_judgment",
+      "condition": "raw-long",
+      "onlineDigest": "sha256:088e06aacb810db6f8984959f0e95f39b3c8b38fae65781c9df6d340cbc539b6",
+      "contextTokens": 22081,
+      "assemblyMs": 7.5061999999999784,
+      "answerCorrect": true,
+      "authorityCorrect": true,
+      "taskSuccess": true,
+      "authorityFailure": false,
+      "retrievalRequirement": "not-required",
+      "retrievalSufficient": false,
+      "retrievalSignalClass": "insufficient",
+      "retrievalJudgeParseOk": true,
+      "answerJudgeParseOk": true,
+      "diagnostic": "correct-authority-use"
+    },
+    {
+      "caseKey": "msy:db5c60fff0c93270482d",
+      "task": "objective_fact_judgment",
+      "condition": "rolling-extractive",
+      "onlineDigest": "sha256:a8b1b8504f76aabce32a8add87c6d3718f9fb4123018a8f0dffbe2f602fdf3d2",
+      "contextTokens": 7389,
+      "assemblyMs": 0.1963999999999828,
+      "answerCorrect": true,
+      "authorityCorrect": true,
+      "taskSuccess": true,
+      "authorityFailure": false,
+      "retrievalRequirement": "not-required",
+      "retrievalSufficient": false,
+      "retrievalSignalClass": "insufficient",
+      "retrievalJudgeParseOk": true,
+      "answerJudgeParseOk": true,
+      "diagnostic": "correct-authority-use"
+    },
+    {
+      "caseKey": "msy:db5c60fff0c93270482d",
+      "task": "objective_fact_judgment",
+      "condition": "evidence-ladder",
+      "onlineDigest": "sha256:97761954ae654e5c9af6b58a6a4788ffda69c2d0e29ca654a38a81e19fd87700",
+      "contextTokens": 170,
+      "assemblyMs": 1.6062000000000012,
+      "answerCorrect": true,
+      "authorityCorrect": true,
+      "taskSuccess": true,
+      "authorityFailure": false,
+      "retrievalRequirement": "not-required",
+      "retrievalSufficient": false,
+      "retrievalSignalClass": "insufficient",
+      "retrievalJudgeParseOk": true,
+      "answerJudgeParseOk": true,
+      "diagnostic": "correct-authority-use"
+    },
+    {
+      "caseKey": "msy:1c0074c074dae07a8508",
+      "task": "personalized_memory_use",
+      "condition": "raw-long",
+      "onlineDigest": "sha256:d40f279bc72df14614bc7c75c4cdfb28fd9c499b3f3a09ad8ec42a1d8bde63cb",
+      "contextTokens": 21625,
+      "assemblyMs": 7.249200000000002,
+      "answerCorrect": true,
+      "authorityCorrect": true,
+      "taskSuccess": true,
+      "authorityFailure": false,
+      "retrievalRequirement": "required",
+      "retrievalSufficient": true,
+      "retrievalSignalClass": "supporting",
+      "retrievalJudgeParseOk": true,
+      "answerJudgeParseOk": true,
+      "diagnostic": "correct-authority-use"
+    },
+    {
+      "caseKey": "msy:1c0074c074dae07a8508",
+      "task": "personalized_memory_use",
+      "condition": "rolling-extractive",
+      "onlineDigest": "sha256:34d61c765cae9c835612704b3285604986834fc358418b95ffad611034fab5e5",
+      "contextTokens": 7341,
+      "assemblyMs": 0.1980000000000075,
+      "answerCorrect": false,
+      "authorityCorrect": false,
+      "taskSuccess": false,
+      "authorityFailure": true,
+      "retrievalRequirement": "required",
+      "retrievalSufficient": false,
+      "retrievalSignalClass": "insufficient",
+      "retrievalJudgeParseOk": true,
+      "answerJudgeParseOk": true,
+      "diagnostic": "retrieval-missing"
+    },
+    {
+      "caseKey": "msy:1c0074c074dae07a8508",
+      "task": "personalized_memory_use",
+      "condition": "evidence-ladder",
+      "onlineDigest": "sha256:1568e99fae9deb1ee804b7917ddb7e1f5de8a2751de1ca09bd3802f8e73c71b5",
+      "contextTokens": 2200,
+      "assemblyMs": 3.5839,
+      "answerCorrect": true,
+      "authorityCorrect": true,
+      "taskSuccess": true,
+      "authorityFailure": false,
+      "retrievalRequirement": "required",
+      "retrievalSufficient": true,
+      "retrievalSignalClass": "supporting",
+      "retrievalJudgeParseOk": true,
+      "answerJudgeParseOk": true,
+      "diagnostic": "correct-authority-use"
+    },
+    {
+      "caseKey": "msy:9fbd71bae71cbc8b3938",
+      "task": "personalized_memory_use",
+      "condition": "raw-long",
+      "onlineDigest": "sha256:d961f71b5662da46b79357f5bfcf0df5d2604e28c1cf2570405a7e533d8bb85b",
+      "contextTokens": 24060,
+      "assemblyMs": 9.003800000000012,
+      "answerCorrect": false,
+      "authorityCorrect": true,
+      "taskSuccess": false,
+      "authorityFailure": false,
+      "retrievalRequirement": "required",
+      "retrievalSufficient": true,
+      "retrievalSignalClass": "supporting",
+      "retrievalJudgeParseOk": true,
+      "answerJudgeParseOk": true,
+      "diagnostic": "retrieved-but-wrong"
+    },
+    {
+      "caseKey": "msy:9fbd71bae71cbc8b3938",
+      "task": "personalized_memory_use",
+      "condition": "rolling-extractive",
+      "onlineDigest": "sha256:57d6f47f97c168ca928baf6cf9c610bf3cbaceea13f0a20b2e8341c9188d1e30",
+      "contextTokens": 7380,
+      "assemblyMs": 0.17980000000000018,
+      "answerCorrect": false,
+      "authorityCorrect": false,
+      "taskSuccess": false,
+      "authorityFailure": false,
+      "retrievalRequirement": "required",
+      "retrievalSufficient": false,
+      "retrievalSignalClass": "insufficient",
+      "retrievalJudgeParseOk": true,
+      "answerJudgeParseOk": true,
+      "diagnostic": "retrieval-missing"
+    },
+    {
+      "caseKey": "msy:9fbd71bae71cbc8b3938",
+      "task": "personalized_memory_use",
+      "condition": "evidence-ladder",
+      "onlineDigest": "sha256:1b87a9aa5a2e45cb37afb7174dbce2ca5392ca4bc0f26b34e41e71dd2eb73952",
+      "contextTokens": 2308,
+      "assemblyMs": 2.4294000000000153,
+      "answerCorrect": true,
+      "authorityCorrect": true,
+      "taskSuccess": true,
+      "authorityFailure": false,
+      "retrievalRequirement": "required",
+      "retrievalSufficient": true,
+      "retrievalSignalClass": "supporting",
+      "retrievalJudgeParseOk": true,
+      "answerJudgeParseOk": true,
+      "diagnostic": "correct-authority-use"
+    },
+    {
+      "caseKey": "msy:77cc98760801eab317ca",
+      "task": "personalized_memory_use",
+      "condition": "raw-long",
+      "onlineDigest": "sha256:ce5e8b5c4bc7f10de4642a178bcc89e5e7047531ef1949a02f8d6c36bcc5c692",
+      "contextTokens": 20764,
+      "assemblyMs": 6.419299999999993,
+      "answerCorrect": false,
+      "authorityCorrect": true,
+      "taskSuccess": false,
+      "authorityFailure": false,
+      "retrievalRequirement": "required",
+      "retrievalSufficient": true,
+      "retrievalSignalClass": "supporting",
+      "retrievalJudgeParseOk": true,
+      "answerJudgeParseOk": true,
+      "diagnostic": "retrieved-but-wrong"
+    },
+    {
+      "caseKey": "msy:77cc98760801eab317ca",
+      "task": "personalized_memory_use",
+      "condition": "rolling-extractive",
+      "onlineDigest": "sha256:19cf1658bc79aa30e22df0b572b7add9684c33f3ec9eb92dd36ddbd99458c72c",
+      "contextTokens": 7022,
+      "assemblyMs": 0.1676000000000215,
+      "answerCorrect": false,
+      "authorityCorrect": true,
+      "taskSuccess": false,
+      "authorityFailure": false,
+      "retrievalRequirement": "required",
+      "retrievalSufficient": true,
+      "retrievalSignalClass": "supporting",
+      "retrievalJudgeParseOk": true,
+      "answerJudgeParseOk": true,
+      "diagnostic": "retrieved-but-wrong"
+    },
+    {
+      "caseKey": "msy:77cc98760801eab317ca",
+      "task": "personalized_memory_use",
+      "condition": "evidence-ladder",
+      "onlineDigest": "sha256:51bb20310f7e17df44aa1a22817b7ed07adcdd06df7e5d4beed65d3c0ad94652",
+      "contextTokens": 2236,
+      "assemblyMs": 2.8345999999999947,
+      "answerCorrect": true,
+      "authorityCorrect": true,
+      "taskSuccess": true,
+      "authorityFailure": false,
+      "retrievalRequirement": "required",
+      "retrievalSufficient": true,
+      "retrievalSignalClass": "supporting",
+      "retrievalJudgeParseOk": true,
+      "answerJudgeParseOk": true,
+      "diagnostic": "correct-authority-use"
+    },
+    {
+      "caseKey": "msy:8a9e5c4c160d6bd65e05",
+      "task": "personalized_memory_use",
+      "condition": "raw-long",
+      "onlineDigest": "sha256:ee5dfc78f16e7cb137635356a8c55ff772dbeb6c9febbfa863b7ea04f312ed18",
+      "contextTokens": 23470,
+      "assemblyMs": 7.106199999999973,
+      "answerCorrect": false,
+      "authorityCorrect": true,
+      "taskSuccess": false,
+      "authorityFailure": false,
+      "retrievalRequirement": "required",
+      "retrievalSufficient": false,
+      "retrievalSignalClass": "supporting",
+      "retrievalJudgeParseOk": true,
+      "answerJudgeParseOk": true,
+      "diagnostic": "retrieval-missing"
+    },
+    {
+      "caseKey": "msy:8a9e5c4c160d6bd65e05",
+      "task": "personalized_memory_use",
+      "condition": "rolling-extractive",
+      "onlineDigest": "sha256:74f1bea33bf3b43cc73f4798ef53fdec1789cb1f9bde98ffe39663aa3f07596c",
+      "contextTokens": 7361,
+      "assemblyMs": 0.17779999999999063,
+      "answerCorrect": false,
+      "authorityCorrect": false,
+      "taskSuccess": false,
+      "authorityFailure": false,
+      "retrievalRequirement": "required",
+      "retrievalSufficient": false,
+      "retrievalSignalClass": "misleading",
+      "retrievalJudgeParseOk": true,
+      "answerJudgeParseOk": true,
+      "diagnostic": "retrieval-missing"
+    },
+    {
+      "caseKey": "msy:8a9e5c4c160d6bd65e05",
+      "task": "personalized_memory_use",
+      "condition": "evidence-ladder",
+      "onlineDigest": "sha256:1e612e50b5b224ef59ab68470a92caebcf60f4ecf85912fd56b8ca38648c2708",
+      "contextTokens": 2360,
+      "assemblyMs": 2.649599999999964,
+      "answerCorrect": false,
+      "authorityCorrect": true,
+      "taskSuccess": false,
+      "authorityFailure": false,
+      "retrievalRequirement": "required",
+      "retrievalSufficient": true,
+      "retrievalSignalClass": "supporting",
+      "retrievalJudgeParseOk": true,
+      "answerJudgeParseOk": true,
+      "diagnostic": "retrieved-but-wrong"
+    },
+    {
+      "caseKey": "msy:2ca245754b647ac3f17d",
+      "task": "memory_evidence_conflict",
+      "condition": "raw-long",
+      "onlineDigest": "sha256:6e21af3b9136783e483b464b50079a424de6f66f0bcacfd9813d8022c4e6ef6c",
+      "contextTokens": 18764,
+      "assemblyMs": 6.9325000000000045,
+      "answerCorrect": true,
+      "authorityCorrect": true,
+      "taskSuccess": true,
+      "authorityFailure": false,
+      "retrievalRequirement": "required",
+      "retrievalSufficient": true,
+      "retrievalSignalClass": "supporting",
+      "retrievalJudgeParseOk": true,
+      "answerJudgeParseOk": true,
+      "diagnostic": "correct-authority-use"
+    },
+    {
+      "caseKey": "msy:2ca245754b647ac3f17d",
+      "task": "memory_evidence_conflict",
+      "condition": "rolling-extractive",
+      "onlineDigest": "sha256:6e1b9709d22d3649f70cbe74c10829cb196ced0273b6ac867fdd3783fe5d2bfa",
+      "contextTokens": 7323,
+      "assemblyMs": 0.1593000000000302,
+      "answerCorrect": false,
+      "authorityCorrect": false,
+      "taskSuccess": false,
+      "authorityFailure": false,
+      "retrievalRequirement": "required",
+      "retrievalSufficient": false,
+      "retrievalSignalClass": "insufficient",
+      "retrievalJudgeParseOk": true,
+      "answerJudgeParseOk": true,
+      "diagnostic": "retrieval-missing"
+    },
+    {
+      "caseKey": "msy:2ca245754b647ac3f17d",
+      "task": "memory_evidence_conflict",
+      "condition": "evidence-ladder",
+      "onlineDigest": "sha256:7e37151b25502afd2173727a40629b6a3b1e58998b69615e35fb45563ed043b5",
+      "contextTokens": 2052,
+      "assemblyMs": 2.6072000000000344,
+      "answerCorrect": true,
+      "authorityCorrect": true,
+      "taskSuccess": true,
+      "authorityFailure": false,
+      "retrievalRequirement": "required",
+      "retrievalSufficient": true,
+      "retrievalSignalClass": "supporting",
+      "retrievalJudgeParseOk": true,
+      "answerJudgeParseOk": true,
+      "diagnostic": "correct-authority-use"
+    },
+    {
+      "caseKey": "msy:a291fe83814f7dcf3e9b",
+      "task": "memory_evidence_conflict",
+      "condition": "raw-long",
+      "onlineDigest": "sha256:848adc4ec3bbf8283739906e19ec301792ae557aa5c32d0acefaa1c504b77458",
+      "contextTokens": 12776,
+      "assemblyMs": 3.717299999999966,
+      "answerCorrect": true,
+      "authorityCorrect": true,
+      "taskSuccess": true,
+      "authorityFailure": false,
+      "retrievalRequirement": "required",
+      "retrievalSufficient": true,
+      "retrievalSignalClass": "supporting",
+      "retrievalJudgeParseOk": true,
+      "answerJudgeParseOk": true,
+      "diagnostic": "correct-authority-use"
+    },
+    {
+      "caseKey": "msy:a291fe83814f7dcf3e9b",
+      "task": "memory_evidence_conflict",
+      "condition": "rolling-extractive",
+      "onlineDigest": "sha256:1d12ffd952e8243ea43a13a578af8b4ca70bd378e5f4f4ddcec6c08d6b38db31",
+      "contextTokens": 7330,
+      "assemblyMs": 0.07749999999998636,
+      "answerCorrect": false,
+      "authorityCorrect": false,
+      "taskSuccess": false,
+      "authorityFailure": true,
+      "retrievalRequirement": "required",
+      "retrievalSufficient": false,
+      "retrievalSignalClass": "misleading",
+      "retrievalJudgeParseOk": true,
+      "answerJudgeParseOk": true,
+      "diagnostic": "retrieval-missing"
+    },
+    {
+      "caseKey": "msy:a291fe83814f7dcf3e9b",
+      "task": "memory_evidence_conflict",
+      "condition": "evidence-ladder",
+      "onlineDigest": "sha256:d8f4beb028159b9d320fb1367a26290384a7a67cd47fd06947bbbb316ab95d1e",
+      "contextTokens": 1862,
+      "assemblyMs": 2.0903999999999883,
+      "answerCorrect": true,
+      "authorityCorrect": true,
+      "taskSuccess": true,
+      "authorityFailure": false,
+      "retrievalRequirement": "required",
+      "retrievalSufficient": true,
+      "retrievalSignalClass": "supporting",
+      "retrievalJudgeParseOk": true,
+      "answerJudgeParseOk": true,
+      "diagnostic": "correct-authority-use"
+    },
+    {
+      "caseKey": "msy:49fd2691934f5892c738",
+      "task": "memory_evidence_conflict",
+      "condition": "raw-long",
+      "onlineDigest": "sha256:7091784ac7fdb8d89b18125a2de67af5d067d54f9bd7351d4ab5908cf6755d14",
+      "contextTokens": 13962,
+      "assemblyMs": 4.355000000000018,
+      "answerCorrect": true,
+      "authorityCorrect": true,
+      "taskSuccess": true,
+      "authorityFailure": false,
+      "retrievalRequirement": "required",
+      "retrievalSufficient": true,
+      "retrievalSignalClass": "supporting",
+      "retrievalJudgeParseOk": true,
+      "answerJudgeParseOk": true,
+      "diagnostic": "correct-authority-use"
+    },
+    {
+      "caseKey": "msy:49fd2691934f5892c738",
+      "task": "memory_evidence_conflict",
+      "condition": "rolling-extractive",
+      "onlineDigest": "sha256:251f57b41ef63540c29d1621460da32905b1d71eca2f4f4dc857fbc82766fb3e",
+      "contextTokens": 7275,
+      "assemblyMs": 0.08600000000001273,
+      "answerCorrect": false,
+      "authorityCorrect": false,
+      "taskSuccess": false,
+      "authorityFailure": true,
+      "retrievalRequirement": "required",
+      "retrievalSufficient": false,
+      "retrievalSignalClass": "misleading",
+      "retrievalJudgeParseOk": true,
+      "answerJudgeParseOk": true,
+      "diagnostic": "retrieval-missing"
+    },
+    {
+      "caseKey": "msy:49fd2691934f5892c738",
+      "task": "memory_evidence_conflict",
+      "condition": "evidence-ladder",
+      "onlineDigest": "sha256:363c8d5fcf38de31483bc66ff41f2764a841033c862a1ab39fcd9e8b7f458c1b",
+      "contextTokens": 2056,
+      "assemblyMs": 3.2252000000000294,
+      "answerCorrect": true,
+      "authorityCorrect": true,
+      "taskSuccess": true,
+      "authorityFailure": false,
+      "retrievalRequirement": "required",
+      "retrievalSufficient": true,
+      "retrievalSignalClass": "supporting",
+      "retrievalJudgeParseOk": true,
+      "answerJudgeParseOk": true,
+      "diagnostic": "correct-authority-use"
+    },
+    {
+      "caseKey": "msy:892c8d6a82ff375ca997",
+      "task": "contextual_scope_control",
+      "condition": "raw-long",
+      "onlineDigest": "sha256:c64144dee001b77f7aacc2845596bc89e4c9f87c26fac96c688f770085101f2a",
+      "contextTokens": 19377,
+      "assemblyMs": 5.715000000000032,
+      "answerCorrect": true,
+      "authorityCorrect": true,
+      "taskSuccess": true,
+      "authorityFailure": false,
+      "retrievalRequirement": "required",
+      "retrievalSufficient": true,
+      "retrievalSignalClass": "supporting",
+      "retrievalJudgeParseOk": true,
+      "answerJudgeParseOk": true,
+      "diagnostic": "correct-authority-use"
+    },
+    {
+      "caseKey": "msy:892c8d6a82ff375ca997",
+      "task": "contextual_scope_control",
+      "condition": "rolling-extractive",
+      "onlineDigest": "sha256:85edbc83444806c5ad053352c4399e68c73f19dc54fd7497d727115f215457cc",
+      "contextTokens": 7391,
+      "assemblyMs": 0.14990000000000236,
+      "answerCorrect": true,
+      "authorityCorrect": true,
+      "taskSuccess": true,
+      "authorityFailure": false,
+      "retrievalRequirement": "required",
+      "retrievalSufficient": true,
+      "retrievalSignalClass": "supporting",
+      "retrievalJudgeParseOk": true,
+      "answerJudgeParseOk": true,
+      "diagnostic": "correct-authority-use"
+    },
+    {
+      "caseKey": "msy:892c8d6a82ff375ca997",
+      "task": "contextual_scope_control",
+      "condition": "evidence-ladder",
+      "onlineDigest": "sha256:b62cd29014f9b532266803766b3699c2b210846e831b547e82efa6a5c0c9fbd3",
+      "contextTokens": 1540,
+      "assemblyMs": 2.4570999999999685,
+      "answerCorrect": true,
+      "authorityCorrect": true,
+      "taskSuccess": true,
+      "authorityFailure": false,
+      "retrievalRequirement": "required",
+      "retrievalSufficient": true,
+      "retrievalSignalClass": "supporting",
+      "retrievalJudgeParseOk": true,
+      "answerJudgeParseOk": true,
+      "diagnostic": "correct-authority-use"
+    },
+    {
+      "caseKey": "msy:20a9dfce73f7f22f2dd5",
+      "task": "contextual_scope_control",
+      "condition": "raw-long",
+      "onlineDigest": "sha256:1bddd639e43dd3c1ddd1e2c57e50dd817817e6cb19782f09229b025b844158d1",
+      "contextTokens": 19816,
+      "assemblyMs": 5.5090999999999894,
+      "answerCorrect": true,
+      "authorityCorrect": true,
+      "taskSuccess": true,
+      "authorityFailure": false,
+      "retrievalRequirement": "required",
+      "retrievalSufficient": true,
+      "retrievalSignalClass": "supporting",
+      "retrievalJudgeParseOk": true,
+      "answerJudgeParseOk": true,
+      "diagnostic": "correct-authority-use"
+    },
+    {
+      "caseKey": "msy:20a9dfce73f7f22f2dd5",
+      "task": "contextual_scope_control",
+      "condition": "rolling-extractive",
+      "onlineDigest": "sha256:462dfc14f5069deb0827a31dccad59315c47102ac3d87ae1f8cadd14afd1badc",
+      "contextTokens": 7401,
+      "assemblyMs": 0.13519999999999754,
+      "answerCorrect": true,
+      "authorityCorrect": true,
+      "taskSuccess": true,
+      "authorityFailure": false,
+      "retrievalRequirement": "required",
+      "retrievalSufficient": true,
+      "retrievalSignalClass": "supporting",
+      "retrievalJudgeParseOk": true,
+      "answerJudgeParseOk": true,
+      "diagnostic": "correct-authority-use"
+    },
+    {
+      "caseKey": "msy:20a9dfce73f7f22f2dd5",
+      "task": "contextual_scope_control",
+      "condition": "evidence-ladder",
+      "onlineDigest": "sha256:787b107818a16301405161da06c6043ef48c9d34ac9962e271abccdf6af41570",
+      "contextTokens": 1409,
+      "assemblyMs": 2.238200000000006,
+      "answerCorrect": true,
+      "authorityCorrect": true,
+      "taskSuccess": true,
+      "authorityFailure": false,
+      "retrievalRequirement": "required",
+      "retrievalSufficient": true,
+      "retrievalSignalClass": "supporting",
+      "retrievalJudgeParseOk": true,
+      "answerJudgeParseOk": true,
+      "diagnostic": "correct-authority-use"
+    },
+    {
+      "caseKey": "msy:b7cd8f6f4ba13dbb7913",
+      "task": "valid_memory_selection",
+      "condition": "raw-long",
+      "onlineDigest": "sha256:abb5c05bcd6284c27783f9075525d6569b751a20dcbf08e93c0af449da1298ac",
+      "contextTokens": 15206,
+      "assemblyMs": 5.722300000000018,
+      "answerCorrect": false,
+      "authorityCorrect": false,
+      "taskSuccess": false,
+      "authorityFailure": true,
+      "retrievalRequirement": "required",
+      "retrievalSufficient": true,
+      "retrievalSignalClass": "conflicting",
+      "retrievalJudgeParseOk": true,
+      "answerJudgeParseOk": true,
+      "diagnostic": "retrieved-but-wrong"
+    },
+    {
+      "caseKey": "msy:b7cd8f6f4ba13dbb7913",
+      "task": "valid_memory_selection",
+      "condition": "rolling-extractive",
+      "onlineDigest": "sha256:308ffe50d0a570dff490ad408de14b1101b6c2e6b1d481da410c1a3b60065c9f",
+      "contextTokens": 7321,
+      "assemblyMs": 0.1220000000000141,
+      "answerCorrect": false,
+      "authorityCorrect": true,
+      "taskSuccess": false,
+      "authorityFailure": false,
+      "retrievalRequirement": "required",
+      "retrievalSufficient": true,
+      "retrievalSignalClass": "supporting",
+      "retrievalJudgeParseOk": true,
+      "answerJudgeParseOk": true,
+      "diagnostic": "retrieved-but-wrong"
+    },
+    {
+      "caseKey": "msy:b7cd8f6f4ba13dbb7913",
+      "task": "valid_memory_selection",
+      "condition": "evidence-ladder",
+      "onlineDigest": "sha256:f87de86272ba3582c3758f282ccb42c8f00c94f33fe9ca22ad797fdf375af36a",
+      "contextTokens": 2367,
+      "assemblyMs": 3.293299999999988,
+      "answerCorrect": false,
+      "authorityCorrect": false,
+      "taskSuccess": false,
+      "authorityFailure": false,
+      "retrievalRequirement": "required",
+      "retrievalSufficient": true,
+      "retrievalSignalClass": "supporting",
+      "retrievalJudgeParseOk": true,
+      "answerJudgeParseOk": true,
+      "diagnostic": "retrieved-but-wrong"
+    },
+    {
+      "caseKey": "msy:c372bab76c56a7656b53",
+      "task": "valid_memory_selection",
+      "condition": "raw-long",
+      "onlineDigest": "sha256:a70c4eeb2edd02e6d1ee821cde957061328f5e95f16ff960e54c82bbb7eeba59",
+      "contextTokens": 18727,
+      "assemblyMs": 5.739900000000034,
+      "answerCorrect": true,
+      "authorityCorrect": true,
+      "taskSuccess": true,
+      "authorityFailure": false,
+      "retrievalRequirement": "required",
+      "retrievalSufficient": true,
+      "retrievalSignalClass": "supporting",
+      "retrievalJudgeParseOk": true,
+      "answerJudgeParseOk": true,
+      "diagnostic": "correct-authority-use"
+    },
+    {
+      "caseKey": "msy:c372bab76c56a7656b53",
+      "task": "valid_memory_selection",
+      "condition": "rolling-extractive",
+      "onlineDigest": "sha256:1f8b65a6e54661b39c1ed2e276c86a361906a9622f35d0c38bcf35a01bee9931",
+      "contextTokens": 7161,
+      "assemblyMs": 0.1279999999999859,
+      "answerCorrect": true,
+      "authorityCorrect": true,
+      "taskSuccess": true,
+      "authorityFailure": false,
+      "retrievalRequirement": "required",
+      "retrievalSufficient": true,
+      "retrievalSignalClass": "supporting",
+      "retrievalJudgeParseOk": true,
+      "answerJudgeParseOk": true,
+      "diagnostic": "correct-authority-use"
+    },
+    {
+      "caseKey": "msy:c372bab76c56a7656b53",
+      "task": "valid_memory_selection",
+      "condition": "evidence-ladder",
+      "onlineDigest": "sha256:1d0ed61310440d47e517d2a0f824f7892d26c5c7e77b75daf2307802e342b417",
+      "contextTokens": 2080,
+      "assemblyMs": 3.588100000000054,
+      "answerCorrect": true,
+      "authorityCorrect": true,
+      "taskSuccess": true,
+      "authorityFailure": false,
+      "retrievalRequirement": "required",
+      "retrievalSufficient": true,
+      "retrievalSignalClass": "supporting",
+      "retrievalJudgeParseOk": true,
+      "answerJudgeParseOk": true,
+      "diagnostic": "correct-authority-use"
+    },
+    {
+      "caseKey": "msy:5f3f3925ef7238651e6e",
+      "task": "valid_memory_selection",
+      "condition": "raw-long",
+      "onlineDigest": "sha256:00389ef2a7dedc4feee1e846d40c22ffc1caf453fca6515d629766c90262534e",
+      "contextTokens": 17731,
+      "assemblyMs": 5.865400000000022,
+      "answerCorrect": true,
+      "authorityCorrect": true,
+      "taskSuccess": true,
+      "authorityFailure": false,
+      "retrievalRequirement": "required",
+      "retrievalSufficient": true,
+      "retrievalSignalClass": "supporting",
+      "retrievalJudgeParseOk": true,
+      "answerJudgeParseOk": true,
+      "diagnostic": "correct-authority-use"
+    },
+    {
+      "caseKey": "msy:5f3f3925ef7238651e6e",
+      "task": "valid_memory_selection",
+      "condition": "rolling-extractive",
+      "onlineDigest": "sha256:3733e4dd3a58a418c854afa8306e352d52cc2fbcb202a4a5ec2e24031dc95fc2",
+      "contextTokens": 7380,
+      "assemblyMs": 0.1313000000000102,
+      "answerCorrect": true,
+      "authorityCorrect": true,
+      "taskSuccess": true,
+      "authorityFailure": false,
+      "retrievalRequirement": "required",
+      "retrievalSufficient": true,
+      "retrievalSignalClass": "supporting",
+      "retrievalJudgeParseOk": true,
+      "answerJudgeParseOk": true,
+      "diagnostic": "correct-authority-use"
+    },
+    {
+      "caseKey": "msy:5f3f3925ef7238651e6e",
+      "task": "valid_memory_selection",
+      "condition": "evidence-ladder",
+      "onlineDigest": "sha256:48fe83f353905903ad71dd6c325649b58f401017737e44252546e151b81025f9",
+      "contextTokens": 1929,
+      "assemblyMs": 3.5727999999999724,
+      "answerCorrect": true,
+      "authorityCorrect": true,
+      "taskSuccess": true,
+      "authorityFailure": false,
+      "retrievalRequirement": "required",
+      "retrievalSufficient": true,
+      "retrievalSignalClass": "supporting",
+      "retrievalJudgeParseOk": true,
+      "answerJudgeParseOk": true,
+      "diagnostic": "correct-authority-use"
+    }
+  ],
+  "summary": {
+    "cases": 16,
+    "conditions": {
+      "raw-long": {
+        "n": 16,
+        "taskSuccessRate": 0.6875,
+        "authorityCorrectRate": 0.875,
+        "contextTokens": {
+          "mean": 19104.875,
+          "p50": 19583.5,
+          "p95": 23617.5
+        },
+        "assemblyMs": {
+          "mean": 7.229781250000004,
+          "p95": 11.651850000000003
+        },
+        "diagnostics": {
+          "retrieval-missing": 1,
+          "retrieved-but-wrong": 3,
+          "correct-authority-use": 11,
+          "correct-without-required-retrieval": 0,
+          "authority-wrong-despite-correct-answer": 1,
+          "judgment-wrong-no-retrieval-required": 0,
+          "unscorable": 0
+        }
+      },
+      "rolling-extractive": {
+        "n": 16,
+        "taskSuccessRate": 0.5,
+        "authorityCorrectRate": 0.625,
+        "contextTokens": {
+          "mean": 7308.25,
+          "p50": 7335.5,
+          "p95": 7393.5
+        },
+        "assemblyMs": {
+          "mean": 0.18058750000000323,
+          "p95": 0.36190000000000566
+        },
+        "diagnostics": {
+          "retrieval-missing": 6,
+          "retrieved-but-wrong": 2,
+          "correct-authority-use": 8,
+          "correct-without-required-retrieval": 0,
+          "authority-wrong-despite-correct-answer": 0,
+          "judgment-wrong-no-retrieval-required": 0,
+          "unscorable": 0
+        }
+      },
+      "evidence-ladder": {
+        "n": 16,
+        "taskSuccessRate": 0.875,
+        "authorityCorrectRate": 0.9375,
+        "contextTokens": {
+          "mean": 1737.25,
+          "p50": 1990.5,
+          "p95": 2361.75
+        },
+        "assemblyMs": {
+          "mean": 3.437750000000001,
+          "p95": 6.239724999999993
+        },
+        "diagnostics": {
+          "retrieval-missing": 0,
+          "retrieved-but-wrong": 2,
+          "correct-authority-use": 14,
+          "correct-without-required-retrieval": 0,
+          "authority-wrong-despite-correct-answer": 0,
+          "judgment-wrong-no-retrieval-required": 0,
+          "unscorable": 0
+        }
+      }
+    },
+    "taskVsRolling": {
+      "field": "taskSuccess",
+      "baseline": "rolling-extractive",
+      "n": 16,
+      "difference": 0.375,
+      "discordant": {
+        "candidateOnly": 6,
+        "baselineOnly": 0
+      },
+      "oneSidedExactMcNemarP": 0.015625
+    },
+    "taskVsRaw": {
+      "field": "taskSuccess",
+      "baseline": "raw-long",
+      "n": 16,
+      "difference": 0.1875,
+      "discordant": {
+        "candidateOnly": 3,
+        "baselineOnly": 0
+      },
+      "oneSidedExactMcNemarP": 0.125
+    },
+    "authorityVsRolling": {
+      "field": "authorityCorrect",
+      "baseline": "rolling-extractive",
+      "n": 16,
+      "difference": 0.3125,
+      "discordant": {
+        "candidateOnly": 6,
+        "baselineOnly": 1
+      },
+      "oneSidedExactMcNemarP": 0.0625
+    },
+    "authorityVsRaw": {
+      "field": "authorityCorrect",
+      "baseline": "raw-long",
+      "n": 16,
+      "difference": 0.0625,
+      "discordant": {
+        "candidateOnly": 1,
+        "baselineOnly": 0
+      },
+      "oneSidedExactMcNemarP": 0.5
+    },
+    "compression": 0.9090677117751359,
+    "gate": {
+      "taskBeatsRolling": true,
+      "taskNonInferiorToRaw": true,
+      "authorityNonInferiorToRaw": true,
+      "authorityNonInferiorToRolling": true,
+      "compressionPassed": true,
+      "latencyPassed": true,
+      "passed": true
+    }
+  },
+  "solEligible": true,
+  "runLunaBudget": {
+    "maxTotal": 5000000,
+    "charged": 786268,
+    "reserved": 0,
+    "calls": 96,
+    "failedCalls": 0
+  }
+}

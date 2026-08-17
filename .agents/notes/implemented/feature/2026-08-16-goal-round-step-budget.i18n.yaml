@@ -1,0 +1,6 @@
+# Bilingual-pair consistency record (docs/i18n/README.md): the git blob hash of each
+# side as of the last confirmed-consistent state. Both languages carry equal authority;
+# after editing either side, bring the other along and re-record with:
+#   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-08-16-goal-round-step-budget.md
+2026-08-16-goal-round-step-budget.md: 0db2c1914bae5e895bd631fc966785c042b83b7c
+2026-08-16-goal-round-step-budget.zh.md: 8013eb260961c9522c1101dfd3145d9a4098c5e6

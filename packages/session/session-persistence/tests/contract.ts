@@ -385,6 +385,28 @@ export function runPersistenceContract(name: string, make: () => Promise<Contrac
       }
     })
 
+    it('delete permanently removes a stored session and all its artifacts (idempotent, rejects while live)', async () => {
+      const { persistence, dispose } = await make()
+      try {
+        const m = meta('delete-me', '/work')
+        await persistence.create(m)
+        await persistence.append(m.id, oneTurnLog())
+        expect((await persistence.list()).map(x => x.id)).toContain(m.id)
+
+        await persistence.delete(m.id)
+        // The durable log is gone from list/listSnapshots and load/inspect reject.
+        expect((await persistence.list()).map(x => x.id)).not.toContain(m.id)
+        expect((await persistence.listSnapshots()).map(s => s.header.id)).not.toContain(m.id)
+        await expect(persistence.load(m.id)).rejects.toThrow('not found')
+        await expect(persistence.inspect(m.id)).rejects.toThrow('not found')
+
+        // Deleting an already-absent id is a no-op.
+        await expect(persistence.delete(m.id)).resolves.toBeUndefined()
+      } finally {
+        await dispose()
+      }
+    })
+
     it('append rejects non-JSON-serializable event data, naming the event type', async () => {
       const { persistence, dispose } = await make()
       try {

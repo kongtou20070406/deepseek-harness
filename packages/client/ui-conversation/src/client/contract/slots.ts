@@ -200,6 +200,12 @@ declare module '@deepseek-ai/dsh-client-ui-slots' {
      */
     'conversation.composer.bar': { kind: 'single'; scope: 'session-maybe'; owner: ComposerBarOwnerProps }
     /**
+     * Optional plugin-owned detail sections inside the existing ContextMeter
+     * panel. Entries receive the normal session standard kit and render only
+     * their own rows; ui-conversation owns panel placement and spacing.
+     */
+    'conversation.context.details': { kind: 'list'; scope: 'session'; owner: ContextDetailOwnerProps }
+    /**
      * The named plan-status seat in the composer tool row, immediately right
      * of the access-mode control — one occupant, so taking it means rendering
      * the plan affordance yourself. The owner passes only `locked` (see
@@ -541,10 +547,13 @@ export interface InputControlOwnerProps {
   locked: boolean
 }
 
+/** The ContextMeter detail slot has no owner-specific mutable input. */
+export type ContextDetailOwnerProps = Record<never, never>
+
 /** Full composer-bar props: standard kit & owner share & control-seat render share & injected share (hooks bound) & locale seat. */
 export type ComposerBarProps =
   PropsRuntime<'conversation.composer.bar'>
-  & PropsRenderSlots<'conversation.input.plan' | 'conversation.input.model'>
+  & PropsRenderSlots<'conversation.input.plan' | 'conversation.input.model' | 'conversation.context.details'>
   & InjectFace<ComposerBarInjected>
   & PropsLocale<'conversation'>
 

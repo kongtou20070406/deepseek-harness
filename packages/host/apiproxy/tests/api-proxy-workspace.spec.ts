@@ -565,6 +565,40 @@ describe('Host Workspace increments', () => {
       ok: false,
       error: { code: 'session-not-found', details: { sessionId: 'session-ghost' } },
     })
+
+    const restored = (async () => {
+      for (;;) {
+        const candidate = await nextHostFrame(stream)
+        if (candidate.payload.type === 'host/archived-sessions-changed') return candidate
+      }
+    })()
+    expect(expectOk(await api.workspace.archiveSession(request({ sessionId, archived: false }))).archivedSessionIds)
+      .toEqual([])
+    expect(await restored).toMatchObject({
+      payload: { type: 'host/archived-sessions-changed', archivedSessionIds: [] },
+    })
     abort.abort()
+  })
+
+  it('broadcasts a cold permanent deletion to every connected Host stream', async () => {
+    const { api, ctx } = await harness()
+    const firstAbort = new AbortController()
+    const secondAbort = new AbortController()
+    const first = api.events.host(request({}), firstAbort.signal)[Symbol.asyncIterator]()
+    const second = api.events.host(request({}), secondAbort.signal)[Symbol.asyncIterator]()
+    const sessionId = SessionId('cold-session-deleted')
+
+    const firstRemoved = nextHostFrame(first)
+    const secondRemoved = nextHostFrame(second)
+    ctx.emit('workspace/session-deleted', sessionId)
+
+    await expect(firstRemoved).resolves.toMatchObject({
+      payload: { type: 'host/session-removed', sessionId },
+    })
+    await expect(secondRemoved).resolves.toMatchObject({
+      payload: { type: 'host/session-removed', sessionId },
+    })
+    firstAbort.abort()
+    secondAbort.abort()
   })
 })

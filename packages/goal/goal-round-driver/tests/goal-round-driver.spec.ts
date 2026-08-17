@@ -863,18 +863,35 @@ describe('same-session goal driving', () => {
     expect(test.adapter.requests).toHaveLength(0)
   })
 
-  it('resets process-local scheduling state at a session-start edge', async () => {
-    const test = await harness([textResponse('after explicit resume')])
-    const created = test.ctx.goals.create(test.agent, { objective: 'restart safely', maxGoalRounds: 1 })
+  it('automatically continues an active goal at a resume session-start edge', async () => {
+    const test = await harness([textResponse('after service restart')])
+    test.ctx.goals.create(test.agent, { objective: 'restart safely', maxGoalRounds: 1 })
+    test.ctx.goals.disarm(test.agent)
+
     agentEvents(test.ctx, test.agent).emit('agent/session-start', { source: 'resume' })
-    await Promise.resolve()
 
-    expect(test.ctx.goals.get(test.agent)).toMatchObject({ activation: 'disarmed', roundsStarted: 0 })
-    expect(test.adapter.requests).toHaveLength(0)
-
-    test.ctx.goals.resume(test.agent, created)
     await waitForGoal(test.ctx, test.agent, goal => goal?.phase === 'blocked')
     expect(test.adapter.requests).toHaveLength(1)
+    expect(test.ctx.goals.get(test.agent)).toMatchObject({ roundsStarted: 1, activation: 'disarmed' })
+  })
+
+  it('keeps explicitly stopped goals inert at a resume session-start edge', async () => {
+    for (const phase of ['paused', 'blocked', 'complete'] as const) {
+      const test = await harness([])
+      const created = test.ctx.goals.create(test.agent, { objective: `stay ${phase} after restart` })
+      test.ctx.goals.disarm(test.agent)
+      if (phase === 'paused') test.ctx.goals.pause(test.agent, created)
+      else if (phase === 'blocked') {
+        test.ctx.goals.block(test.agent, created, { code: 'needs-human', message: 'Wait for input.' })
+      }
+      else test.ctx.goals.complete(test.agent, created)
+
+      agentEvents(test.ctx, test.agent).emit('agent/session-start', { source: 'resume' })
+      await new Promise((resolve) => { setImmediate(resolve) })
+
+      expect(test.ctx.goals.get(test.agent)).toMatchObject({ phase, activation: 'disarmed' })
+      expect(test.adapter.requests).toHaveLength(0)
+    }
   })
 
   it('disarms when a round turn/end cannot commit', async () => {

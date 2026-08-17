@@ -97,4 +97,29 @@ describe('SubprocessRuntime seam', () => {
       delete process.env.SCRUB_PROBE_PLAIN
     }
   })
+
+  it('scrubbedParentEnv clears the GIT_CONFIG_COUNT/KEY_n/VALUE_n group atomically (no dangling COUNT)', () => {
+    process.env.GIT_CONFIG_COUNT = '2'
+    process.env.GIT_CONFIG_KEY_0 = 'core.hooksPath'
+    process.env.GIT_CONFIG_VALUE_0 = '/tmp/hooks'
+    process.env.GIT_CONFIG_KEY_1 = 'core.editor'
+    process.env.GIT_CONFIG_VALUE_1 = 'vim'
+    process.env.GIT_CONFIG_GLOBAL = '/tmp/global.gitconfig'
+    try {
+      const env = scrubbedParentEnv()
+      expect(env.GIT_CONFIG_COUNT).toBeUndefined()
+      expect(env.GIT_CONFIG_KEY_0).toBeUndefined()
+      expect(env.GIT_CONFIG_VALUE_0).toBeUndefined()
+      expect(env.GIT_CONFIG_KEY_1).toBeUndefined()
+      expect(env.GIT_CONFIG_VALUE_1).toBeUndefined()
+      expect(env.GIT_CONFIG_GLOBAL).toBe('/tmp/global.gitconfig')
+    } finally {
+      delete process.env.GIT_CONFIG_COUNT
+      delete process.env.GIT_CONFIG_KEY_0
+      delete process.env.GIT_CONFIG_VALUE_0
+      delete process.env.GIT_CONFIG_KEY_1
+      delete process.env.GIT_CONFIG_VALUE_1
+      delete process.env.GIT_CONFIG_GLOBAL
+    }
+  })
 })

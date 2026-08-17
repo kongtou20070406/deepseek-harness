@@ -6,6 +6,12 @@
 
 包根入口导出 Cordis 插件约定、`PiAiAdapter` 与 `supportedProtocols()`；profile 解析、catalog 物化、提供方构造、回放转换和流转换保留在包内部。
 
+## OpenAI 会员登录
+
+插件同时拥有 `openai-codex` OAuth 路由。`openaiCodex` Remote 启动 pi-ai 的设备码登录，只返回非敏感的等待状态，并提供退出登录和有界的 Codex 会员用量投影。完整 Bundle 通过 DSH 凭据服务保存 OAuth 凭据；裸插件组合则退回进程内存。同一个凭据存储同时交给模型适配器和账户 Remote，因此登录完成后，下一次 `openai-codex` 请求直接可用，不必把 token 复制进设置。产品 Bundle 还会在 DSH 尚无 Codex 凭据时，从 Pi 本地 `auth.json` 做一次性导入；导入的 OAuth 对象会立即经 DSH 凭据服务持久化，token 值和来源文件都不会暴露给模型或 UI。
+
+用量从 ChatGPT 的 Codex 用量兼容端点读取，拒绝重定向，并带可配置超时（`codexUsageTimeoutMs`，默认 12 秒）与 64 KiB 响应上限。该端点不是有稳定承诺的公开 API；如果它不可用或响应格式变化，界面显示不可用，不会伪造成零用量。
+
 ## 配置
 
 按提供方配置凭据、模型 catalog 与部署特定传输设置，并以提供方路由本身为键。`apiKeyEnv` 是按请求解析的凭据*引用*，因此机密不进入该文件。省略它会让该路由处于未认证状态；对已安装 catalog 路由而言，这意味着交给 pi-ai 的提供方原生环境发现。已配置却解析不出任何值的引用则相反，会让请求以 `MISSING_CREDENTIAL` 失败，因为放行下去就会用环境里恰好持有的某个无关密钥完成认证。一条凭据服务该路由下的全部模型。

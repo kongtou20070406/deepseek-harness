@@ -187,7 +187,7 @@ ProjectionDefinition<'contextPressure', ContextPressureState> = {
       }
     }
     if (fold.deltaTokens !== 0) {
-      next = { ...next, surfaceTokens: next.surfaceTokens + fold.deltaTokens }
+      next = { ...next, surfaceTokens: Math.max(fold.minimumTokens, next.surfaceTokens + fold.deltaTokens) }
     }
     // A defined fold.claim is always freshly built, so presence decides claim
     // bookkeeping: no claim before or after this event leaves `next` as is.
@@ -202,5 +202,5 @@ ProjectionDefinition<'contextPressure', ContextPressureState> = {
       ? {}
       : { projectedTokens: Math.max(0, pressureTokens + surfaceTokens - sampledSurfaceTokens) },
   }),
-  stateVersion: 4,
+  stateVersion: 5,
 }

@@ -194,6 +194,127 @@ Types: [CommandId](commands.md)
 
 Source: [`packages/compaction/compaction/src/index.ts:96`](../../packages/compaction/compaction/src/index.ts)
 
+<a id="ctxresearchcontext--researchcontextassembler"></a>
+
+### `ctx.researchContext` — `ResearchContextAssembler`
+
+Event-sourced authority plus a disposable incremental retrieval index.
+
+```ts cordis-catalog
+/**
+ * Register a hot-path scorer. Providers must be synchronous and return immediately.
+ * @param provider - uniquely named retrieval provider.
+ * @returns a disposer that unregisters the provider.
+ */
+registerRetrievalProvider(provider: ResearchRetrievalProvider): () => void
+
+/**
+ * Install the single project-scoped authority owner for this composition.
+ * @param provider - provider that owns project-state persistence and revision checks.
+ * @returns a disposer that releases the provider when it is still current.
+ */
+registerAuthorityProvider(provider: ResearchAuthorityProvider): () => void
+
+/**
+ * Read or initialize the session's confirmed research state.
+ * @param session - Durable source session.
+ * @returns A detached copy of the current whole state.
+ */
+state(session: Session): ResearchStateProjection
+
+/**
+ * Ensure a project-owned authority record exists before a request or mutation.
+ * @param session - session whose Workspace selects the authority record.
+ * @returns a detached copy of the initialized current state.
+ */
+async stateForRequest(session: Session): Promise<ResearchStateProjection>
+
+/**
+ * Create one unconfirmed Kernel or Frame replacement.
+ * @param session - Durable source session.
+ * @param expectedRevision - Exact current state revision.
+ * @param target - Authority layer to replace if later confirmed.
+ * @param text - Complete candidate value.
+ * @returns The new state containing a pending proposal.
+ */
+async proposeAuthority( session: Session, expectedRevision: number, target: ResearchAuthorityProposal['target'], text: string, ): Promise<ResearchStateProjection>
+
+/**
+ * Confirm the exact pending authority proposal.
+ * @param session - Durable source session.
+ * @param proposalId - Exact current proposal identity.
+ * @returns The new state with the authority value committed.
+ */
+async confirmAuthority(session: Session, proposalId: string): Promise<ResearchStateProjection>
+
+/**
+ * Reject the exact pending authority proposal without changing authority.
+ * @param session - Durable source session.
+ * @param proposalId - Exact current proposal identity.
+ * @returns The new state with no pending proposal.
+ */
+async rejectAuthority(session: Session, proposalId: string): Promise<ResearchStateProjection>
+
+/**
+ * Replace model-maintained execution state without changing Kernel or Frame.
+ * @param session - Durable source session.
+ * @param expectedRevision - Exact current state revision.
+ * @param input - Complete replacement Working State.
+ * @returns The new state containing the replacement Working State.
+ */
+async updateWorking( session: Session, expectedRevision: number, input: WorkingStateInput, ): Promise<ResearchStateProjection>
+
+/**
+ * Import one bounded cross-harness continuation bridge as non-authoritative evidence.
+ * @param session - target session that records the evidence event.
+ * @param input - bounded provenance and handoff text.
+ * @returns the imported candidate with its durable event sequence.
+ */
+importHandoff(session: Session, input: ResearchHandoffInput): ResearchHandoffCandidate
+
+/**
+ * Append the latest assembly manifest for replay and UI projections.
+ * @param session - Durable source session.
+ * @param view - Completed model-visible assembly decision.
+ * @returns The append-ready manifest value.
+ */
+recordAssembly(session: Session, view: ResearchContextView): ResearchContextProjection
+
+/**
+ * Persist the exact cross-session provenance of one child-worker request.
+ * @param session - child session that records the inheritance event.
+ * @param view - compiled worker view and its parent provenance.
+ * @returns a detached copy of the persisted inheritance manifest.
+ */
+recordInheritance(session: Session, view: ResearchWorkerContextView): ResearchContextInheritanceProjection
+
+/**
+ * Assemble one bounded, source-addressed view for the current request.
+ * @param session - durable source log.
+ * @param requestMessages - admitted current-turn messages before logging.
+ * @param goal - optional active same-session Goal.
+ * @returns a complete view and the raw event seqs it materializes.
+ */
+assemble(session: Session, requestMessages: readonly Message[], goal?: ResearchContextGoal): ResearchContextView
+
+/**
+ * Compile a child request without copying the parent's transcript. The parent
+ * assembler chooses research evidence from the short delegated request; this
+ * method then adds only relevant complete child loops and the current child
+ * request. The confirmed parent Kernel therefore remains the exact prefix.
+ * @param workerSession - child session whose own completed loops may be recalled.
+ * @param requestMessages - current child request messages.
+ * @param parentSessionId - durable id of the research parent session.
+ * @param parentView - already assembled parent research view to inherit selectively.
+ * @returns the bounded worker view and exact cross-session provenance manifest.
+ */
+assembleWorker( workerSession: Session, requestMessages: readonly Message[], parentSessionId: string, parentView: ResearchContextView, ): ResearchWorkerContextView
+```
+
+Types: [Message](llm-streaming.md) · [Session](session.md)
+
+Source: [`packages/context/research-context/src/index.ts:561`](../../packages/context/research-context/src/index.ts)
+
 <a id="ctxtoolresultpruner--toolresultpruner"></a>
 
 ### `ctx.toolResultPruner` — `ToolResultPruner`

@@ -1,0 +1,695 @@
+[dblp] HTTP 429; retrying in 3s (attempt 2/4)
+[dblp] Error on query 'prompt compression long context retrieval': HTTPSConnectionPool(host='dblp.org', port=443): Max retries exceeded with url: /search/publ/api?q=prompt+compression+long+context+retrieval&format=json&h=10&f=0 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))
+[open_alex] HTTP 504; retrying in 3s (attempt 2/4)
+[open_alex] HTTP 504; retrying in 3s (attempt 2/4)
+[open_alex] HTTP 504; retrying in 3s (attempt 2/4)
+[openreview] Error on query 'long-horizon LLM agent memory context compression': openreview not installed. pip install openreview-py
+[openreview] Error on query 'LLM agent context engineering selective retrieval': openreview not installed. pip install openreview-py
+[openreview] Error on query 'agent memory consolidation forgetting long term': openreview not installed. pip install openreview-py
+[openreview] Error on query 'prompt compression long context retrieval': openreview not installed. pip install openreview-py
+[semantic_scholar] HTTP 429; retrying in 3s (attempt 2/4)
+[semantic_scholar] HTTP 429; retrying in 6s (attempt 3/4)
+[semantic_scholar] HTTP 429; retrying in 12s (attempt 4/4)
+[semantic_scholar] Error on query 'long-horizon LLM agent memory context compression': 429 Client Error:  for url: https://api.semanticscholar.org/graph/v1/paper/search?query=long-horizon+LLM+agent+memory+context+compression&offset=0&limit=10&fields=title%2Cauthors%2Cyear%2Cabstract%2CcitationCount%2Curl%2Cvenue%2CpublicationDate%2CexternalIds&year=2024-2026
+[semantic_scholar] HTTP 429; retrying in 3s (attempt 2/4)
+[semantic_scholar] HTTP 429; retrying in 6s (attempt 3/4)
+[semantic_scholar] HTTP 429; retrying in 12s (attempt 4/4)
+[semantic_scholar] HTTP 429; retrying in 3s (attempt 2/4)
+[semantic_scholar] HTTP 429; retrying in 6s (attempt 3/4)
+[semantic_scholar] HTTP 429; retrying in 12s (attempt 4/4)
+[semantic_scholar] Error on query 'agent memory consolidation forgetting long term': 429 Client Error:  for url: https://api.semanticscholar.org/graph/v1/paper/search?query=agent+memory+consolidation+forgetting+long+term&offset=0&limit=10&fields=title%2Cauthors%2Cyear%2Cabstract%2CcitationCount%2Curl%2Cvenue%2CpublicationDate%2CexternalIds&year=2024-2026
+[semantic_scholar] HTTP 429; retrying in 3s (attempt 2/4)
+[semantic_scholar] HTTP 429; retrying in 6s (attempt 3/4)
+[semantic_scholar] HTTP 429; retrying in 12s (attempt 4/4)
+[semantic_scholar] Error on query 'prompt compression long context retrieval': 429 Client Error:  for url: https://api.semanticscholar.org/graph/v1/paper/search?query=prompt+compression+long+context+retrieval&offset=0&limit=10&fields=title%2Cauthors%2Cyear%2Cabstract%2CcitationCount%2Curl%2Cvenue%2CpublicationDate%2CexternalIds&year=2024-2026
+
+per-source hits: arxiv=40, dblp=0, open_alex=40, openreview=0, semantic_scholar=10, crossref=40
+unique papers: 111 (19 cross-source duplicate records merged)
+============================================================
+  [1] (score 10) Beyond Retrieval vs Context: A Unified Evaluation Framework for External Information Management in LLM Agents
+      Authors: Alessio Rocchi
+      Year: None  Citations: 0  Venue:
+      Sources: crossref  doi:10.2139/ssrn.6830898
+      URL: https://doi.org/10.2139/ssrn.6830898
+
+  [2] (score 8) Active Context Compression: Autonomous Memory Management in LLM Agents
+      Authors: Nikhil Verma
+      Year: 2026  Citations: 0  Venue: arXiv (Cornell University)
+      Sources: open_alex  doi:10.48550/arxiv.2601.07190
+      URL: https://openalex.org/W7124118353
+
+  [3] (score 8) From Verbatim to Gist: Distilling Pyramidal Multimodal Memory via Semantic Information Bottleneck for Long-Horizon Video Agents
+      Authors: Niu Lian, Yuting Wang, Hanshu Yao...
+      Year: 2026  Citations: 0  Venue: arXiv
+      Sources: arxiv  arXiv:2603.01455
+      URL: http://arxiv.org/abs/2603.01455v3
+
+  [4] (score 7) OCR-Memory: Optical Context Retrieval for Long-Horizon Agent Memory
+      Authors: Jinze Li, Yang Zhang, Xin Yang...
+      Year: 2026  Citations: 0  Venue: arXiv
+      Sources: arxiv,crossref  doi:10.18653/v1/2026.acl-long.474 arXiv:2604.26622
+      URL: http://arxiv.org/abs/2604.26622v1
+
+  [5] (score 7) Context Collapse in Long-Horizon Agents: Benchmarking Hierarchical Memory against RAG and Summarization
+      Authors: Ebaad Raheem
+      Year: None  Citations: 0  Venue:
+      Sources: crossref  doi:10.2139/ssrn.6976218
+      URL: https://doi.org/10.2139/ssrn.6976218
+
+  [6] (score 6) PAACE: A Plan-Aware Automated Agent Context Engineering Framework
+      Authors: K. Yuksel
+      Year: 2025  Citations: 1  Venue: arXiv.org
+      Sources: semantic_scholar  doi:10.48550/arXiv.2512.16970 arXiv:2512.16970
+      URL: https://www.semanticscholar.org/paper/44e2dfb31ee6c47d0f756795830c7e7e64f46a0c
+
+  [7] (score 6) The UPS Theory (Balanced Memory): Why Infinite-Memory Agents Overload
+      Authors: Khan Alim ul haq
+      Year: 2026  Citations: 0  Venue: Zenodo (CERN European Organization for Nuclear Research)
+      Sources: open_alex  doi:10.5281/zenodo.18143623
+      URL: https://doi.org/10.5281/zenodo.18143623
+
+  [8] (score 6) Active Dreaming Memory: Biologically-Inspired Episodic Consolidation for Lifelong Learning in Autonomous Agents
+      Authors: DUDEKULA, KASIM VALI
+      Year: 2025  Citations: 0  Venue: Zenodo (CERN European Organization for Nuclear Research)
+      Sources: open_alex  doi:10.5281/zenodo.17789622
+      URL: https://doi.org/10.5281/zenodo.17789622
+
+  [9] (score 6) Oracle Agent Memory as an Enterprise Memory Substrate for Long-Horizon AI Agents
+      Authors: Richmond Alake, Cesare Bernardis, Paul Cayet...
+      Year: 2026  Citations: 0  Venue: arXiv
+      Sources: arxiv  arXiv:2607.13157
+      URL: http://arxiv.org/abs/2607.13157v1
+
+  [10] (score 6) ACON: Optimizing Context Compression for Long-horizon LLM Agents
+      Authors: Minki Kang, Wei-Ning Chen, Dongge Han...
+      Year: 2025  Citations: 0  Venue: arXiv
+      Sources: arxiv  arXiv:2510.00615
+      URL: http://arxiv.org/abs/2510.00615v3
+
+  [11] (score 6) Memory-R2: Fair Credit Assignment for Long-Horizon Memory-Augmented LLM Agents
+      Authors: Sikuan Yan, Ahmed Bahloul, Ercong Nie...
+      Year: 2026  Citations: 0  Venue: arXiv
+      Sources: arxiv  arXiv:2605.21768
+      URL: http://arxiv.org/abs/2605.21768v1
+
+  [12] (score 6) Are We Ready For An Agent-Native Memory System?
+      Authors: Wei Zhou, Xuanhe Zhou, Shaokun Han...
+      Year: 2026  Citations: 0  Venue: arXiv
+      Sources: arxiv  arXiv:2606.24775
+      URL: http://arxiv.org/abs/2606.24775v1
+
+  [13] (score 6) From Recall to Forgetting: Benchmarking Long-Term Memory for Personalized Agents
+      Authors: Md Nayem Uddin, Kumar Shubham, Eduardo Blanco...
+      Year: 2026  Citations: 0  Venue: arXiv
+      Sources: arxiv  arXiv:2604.20006
+      URL: http://arxiv.org/abs/2604.20006v1
+
+  [14] (score 6) HierMem: Context Curation Over Context Scaling — Hierarchical Memory with Invariant Constraint Placement for Long-Horizon LLM Conversations
+      Authors: Yash Doke
+      Year: None  Citations: 0  Venue:
+      Sources: crossref  doi:10.21203/rs.3.rs-10055780/v1
+      URL: https://doi.org/10.21203/rs.3.rs-10055780/v1
+
+  [15] (score 6) Layered Convergence in Autonomous Agent Memory: A Multi-Model Cognitive Architecture for Persistent Recall in Long-Running LLM Agents
+      Authors: Lance Harris
+      Year: None  Citations: 0  Venue:
+      Sources: crossref  doi:10.2139/ssrn.6616122
+      URL: https://doi.org/10.2139/ssrn.6616122
+
+  [16] (score 5) HiAgent: Hierarchical Working Memory Management for Solving Long-Horizon Agent Tasks with Large Language Model
+      Authors: Mengkang Hu, Tianxing Chen, Qiguang Chen...
+      Year: 2025  Citations: 10  Venue:
+      Sources: open_alex  doi:10.18653/v1/2025.acl-long.1575
+      URL: https://doi.org/10.18653/v1/2025.acl-long.1575
+
+  [17] (score 5) Long Context Compression with Activation Beacon
+      Authors: Peitian Zhang, Zheng Liu, Shitao Xiao...
+      Year: 2024  Citations: 2  Venue: arXiv (Cornell University)
+      Sources: open_alex  doi:10.48550/arxiv.2401.03462
+      URL: https://doi.org/10.48550/arxiv.2401.03462
+
+  [18] (score 5) Context Adaptive Memory-Efficient LLM Inference for Edge Multi-Agent Systems
+      Authors: Hamza Mohammed, Hang Yin, Sai Chand Boyapati
+      Year: 2025  Citations: 0  Venue:
+      Sources: open_alex  doi:10.65109/knjy6871
+      URL: https://doi.org/10.65109/knjy6871
+
+  [19] (score 5) ATACompressor: Adaptive Task-Aware Compression for Efficient Long-Context Processing in LLMs
+      Authors: Xuancheng Li, Haitao Li, Yujia Zhou...
+      Year: 2025  Citations: 0  Venue:
+      Sources: open_alex  doi:10.1145/3767695.3769499
+      URL: https://doi.org/10.1145/3767695.3769499
+
+  [20] (score 5) From Storage to Interpretation: User Perceptions, Practices, and Challenges with Long-term Memory in Agents
+      Authors: Brennan Jones, Nazar Ponochevnyi, Kelsey Stemmler...
+      Year: 2025  Citations: 0  Venue:
+      Sources: open_alex  doi:10.1145/3765766.3765843
+      URL: https://doi.org/10.1145/3765766.3765843
+
+  [21] (score 5) Memory Management and Contextual Consistency for Long-Running Low-Code Agents
+      Authors: Xu, Jiexi
+      Year: 2025  Citations: 0  Venue: arXiv (Cornell University)
+      Sources: open_alex  doi:10.48550/arxiv.2509.25250
+      URL: https://doi.org/10.48550/arxiv.2509.25250
+
+  [22] (score 5) Seeing, Listening, Remembering, and Reasoning: A Multimodal Agent with Long-Term Memory
+      Authors: Lin Long, Yichen He, Wentao Ye...
+      Year: 2025  Citations: 0  Venue: arXiv
+      Sources: arxiv  arXiv:2508.09736
+      URL: http://arxiv.org/abs/2508.09736v4
+
+  [23] (score 5) MemTrace: Probing What Final Accuracy Misses in Long-Term Memory
+      Authors: Xianxuan Long, Zhikai Chen, Shenglai Zeng...
+      Year: 2026  Citations: 0  Venue: arXiv
+      Sources: arxiv  arXiv:2606.17328
+      URL: http://arxiv.org/abs/2606.17328v1
+
+  [24] (score 5) Cross-Family Speculative Prefill: Training-Free Long-Context Compression with Small Draft Models
+      Authors: Shubhangi Upasani, Ravi Shanker Raju, Bo Li...
+      Year: 2026  Citations: 0  Venue: arXiv
+      Sources: arxiv  arXiv:2603.02631
+      URL: http://arxiv.org/abs/2603.02631v3
+
+  [25] (score 5) CA3-CA1 Network: How Memory Decay Shapes Consolidation and Forgetting
+      Authors: Lei Yang, Honghui Zhang, Zhongkui Sun
+      Year: None  Citations: 0  Venue:
+      Sources: crossref  doi:10.21203/rs.3.rs-9584120/v1
+      URL: https://doi.org/10.21203/rs.3.rs-9584120/v1
+
+  [26] (score 5) Large-Scale Evaluation of MaxEntRAG-Flow: Incremental Evidence Structures for Real-Time Context Compression and Joint Probabilistic Graph Retrieval in Long-Context LLMs
+      Authors: Haranadh Gavara
+      Year: None  Citations: 0  Venue:
+      Sources: crossref  doi:10.2139/ssrn.6970438
+      URL: https://doi.org/10.2139/ssrn.6970438
+
+  [27] (score 4) LongLLMLingua: Accelerating and Enhancing LLMs in Long Context Scenarios via Prompt Compression
+      Authors: Huiqiang Jiang, Qianhui Wu, Xufang Luo...
+      Year: 2024  Citations: 83  Venue: Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)
+      Sources: open_alex,crossref  doi:10.18653/v1/2024.acl-long.91
+      URL: https://doi.org/10.18653/v1/2024.acl-long.91
+
+  [28] (score 4) OpenFOAMGPT: A retrieval-augmented large language model (LLM) agent for OpenFOAM-based computational fluid dynamics
+      Authors: Sandeep Pandey, Ran Xu, Wenkang Wang...
+      Year: 2025  Citations: 71  Venue: The Physics of Fluids
+      Sources: semantic_scholar  doi:10.1063/5.0257555 arXiv:2501.06327
+      URL: https://www.semanticscholar.org/paper/454274b92a27bc5d97c1e80accc78095ae991cf0
+
+  [29] (score 4) Retrieval Augmented Generation or Long-Context LLMs? A Comprehensive Study and Hybrid Approach
+      Authors: Zhuowan Li, Cheng Li, Mingyang Zhang...
+      Year: 2024  Citations: 36  Venue:
+      Sources: open_alex  doi:10.18653/v1/2024.emnlp-industry.66
+      URL: https://doi.org/10.18653/v1/2024.emnlp-industry.66
+
+  [30] (score 4) The Complexity Trap: Simple Observation Masking Is as Efficient as LLM Summarization for Agent Context Management
+      Authors: Tobias Lindenbauer, I. Slinko, Ludwig Felder...
+      Year: 2025  Citations: 21  Venue: arXiv.org
+      Sources: semantic_scholar  doi:10.48550/arXiv.2508.21433 arXiv:2508.21433
+      URL: https://www.semanticscholar.org/paper/3b7c8c5e93e27be7d9456238afec00f229b7abc9
+
+  [31] (score 4) CRAKEN: Cybersecurity LLM Agent with Knowledge-Based Execution
+      Authors: Minghao Shao, Haoran Xi, Nanda Rani...
+      Year: 2025  Citations: 21  Venue: arXiv.org
+      Sources: semantic_scholar  doi:10.48550/arXiv.2505.17107 arXiv:2505.17107
+      URL: https://www.semanticscholar.org/paper/77efd3cf71cfe7af70e2e1130286a96a67946f68
+
+  [32] (score 4) Extending Context Window of Large Language Models via Semantic Compression
+      Authors: Weizhi Fei, Xueyan Niu, Pingyi Zhou...
+      Year: 2024  Citations: 16  Venue:
+      Sources: open_alex  doi:10.18653/v1/2024.findings-acl.306
+      URL: https://doi.org/10.18653/v1/2024.findings-acl.306
+
+  [33] (score 4) LoCoBench-Agent: An Interactive Benchmark for LLM Agents in Long-Context Software Engineering
+      Authors: Jielin Qiu, Zuxin Liu, Zhiwei Liu...
+      Year: 2025  Citations: 15  Venue: arXiv.org
+      Sources: semantic_scholar  doi:10.48550/arXiv.2511.13998 arXiv:2511.13998
+      URL: https://www.semanticscholar.org/paper/7e4d3b819547212190325d0771cafebcd009f241
+
+  [34] (score 4) Context Engineering for Multi-Agent LLM Code Assistants Using Elicit, NotebookLM, ChatGPT, and Claude Code
+      Authors: Muhammad Haseeb Bhatti
+      Year: 2025  Citations: 9  Venue: arXiv.org
+      Sources: semantic_scholar,arxiv  doi:10.48550/arXiv.2508.08322 arXiv:2508.08322
+      URL: https://www.semanticscholar.org/paper/c8f9e5ccc18cf3cac782bdb6f05f025e776a7a8c
+
+  [35] (score 4) Forgetting Curve: A Reliable Method for Evaluating Memorization Capability for Long-Context Models
+      Authors: Xinyu Liu, Runsong Zhao, Pengcheng Huang...
+      Year: 2024  Citations: 5  Venue:
+      Sources: open_alex  doi:10.18653/v1/2024.emnlp-main.269
+      URL: https://doi.org/10.18653/v1/2024.emnlp-main.269
+
+  [36] (score 4) Perception Compressor: A Training-Free Prompt Compression Framework in Long Context Scenarios
+      Authors: Jiwei Tang, Jin Xu, Tingwei Lu...
+      Year: 2025  Citations: 5  Venue: Findings of the Association for Computational Linguistics: NAACL 2025
+      Sources: open_alex,crossref  doi:10.18653/v1/2025.findings-naacl.229
+      URL: https://doi.org/10.18653/v1/2025.findings-naacl.229
+
+  [37] (score 4) 500xCompressor: Generalized Prompt Compression for Large Language Models
+      Authors: Zongqian Li, Yixuan Su, Nigel Collier
+      Year: 2025  Citations: 5  Venue:
+      Sources: open_alex  doi:10.18653/v1/2025.acl-long.1219
+      URL: https://doi.org/10.18653/v1/2025.acl-long.1219
+
+  [38] (score 4) ECoRAG: Evidentiality-guided Compression for Long Context RAG
+      Authors: Yeonseok Jeong, Jin-Su Kim, Dohyeon Lee...
+      Year: 2025  Citations: 3  Venue:
+      Sources: open_alex  doi:10.18653/v1/2025.findings-acl.1365
+      URL: https://doi.org/10.18653/v1/2025.findings-acl.1365
+
+  [39] (score 4) Retrieval Augmented Generation via Context Compression Techniques for Large Language Models
+      Authors: Pingli Jiang, Ruixuan Fan, Yating Yong
+      Year: None  Citations: 2  Venue:
+      Sources: crossref  doi:10.31219/osf.io/ua6j5
+      URL: https://doi.org/10.31219/osf.io/ua6j5
+
+  [40] (score 4) An Efficient Context-Dependent Memory Framework for LLM-Centric Agents
+      Authors: Pengyu Gao, Jinming Zhao, Xinyue Chen...
+      Year: 2025  Citations: 1  Venue:
+      Sources: open_alex  doi:10.18653/v1/2025.naacl-industry.80
+      URL: https://doi.org/10.18653/v1/2025.naacl-industry.80
+
+  [41] (score 4) Memory Architectures in Long-Term AI Agents: Beyond Simple State Representation
+      Authors: Uchechukwu Ajuzieogu
+      Year: 2025  Citations: 1  Venue:
+      Sources: open_alex  doi:10.13140/rg.2.2.26486.51527
+      URL: https://doi.org/10.13140/rg.2.2.26486.51527
+
+  [42] (score 4) Forgetting in Robotic Episodic Long-Term Memory
+      Authors: Joana Plewnia, Fabian Peller-Konrad, Tamim Asfour
+      Year: 2024  Citations: 1  Venue: 2024 IEEE International Conference on Robotics and Automation (ICRA)
+      Sources: crossref  doi:10.1109/icra57147.2024.10610299
+      URL: https://doi.org/10.1109/icra57147.2024.10610299
+
+  [43] (score 4) Efficient Prompt Compression with Evaluator Heads for Long-Context Transformer Inference
+      Authors: Weizhi Fei, Xueyan Niu, Guoqing Xie...
+      Year: 2025  Citations: 0  Venue: Advances in Neural Information Processing Systems 38
+      Sources: open_alex,crossref  doi:10.52202/085713-5171
+      URL: https://doi.org/10.52202/085713-5171
+
+  [44] (score 4) PolyKV: A Shared Asymmetrically-Compressed KV Cache Pool for Multi-Agent LLM Inference
+      Authors: Ishan Patel, Ishan Joshi
+      Year: 2026  Citations: 0  Venue: arXiv
+      Sources: arxiv  doi:10.5281/zenodo.19686729 arXiv:2604.24971
+      URL: http://arxiv.org/abs/2604.24971v1
+
+  [45] (score 4) Agent Memory Below the Prompt: Persistent Q4 KV Cache for Multi-Agent LLM Inference on Edge Devices
+      Authors: Yakov Pyotr Shkolnikov
+      Year: 2026  Citations: 0  Venue: arXiv
+      Sources: arxiv  arXiv:2603.04428
+      URL: http://arxiv.org/abs/2603.04428v1
+
+  [46] (score 4) Agents at Risk: How Users Unwittingly Undermine LLM Safety
+      Authors: Fengchao Chen, Tingmin Wu, Van Nguyen...
+      Year: 2026  Citations: 0  Venue: arXiv
+      Sources: arxiv  arXiv:2601.10758
+      URL: http://arxiv.org/abs/2601.10758v3
+
+  [47] (score 4) From Naive RAG to Deep Agentic Retrieval: An Evolving Context Engineering Pipeline for Regulatory Compliance
+      Authors: Mishca de Costa, Muhammad Saleh Anwar, Dave Mercier...
+      Year: 2026  Citations: 0  Venue: arXiv
+      Sources: arxiv  arXiv:2607.24791
+      URL: http://arxiv.org/abs/2607.24791v1
+
+  [48] (score 4) Agent Retrieval Bench: Evaluating Repository Context Retrieval for Coding Agents
+      Authors: Bowen Qin, Yi Xie
+      Year: 2026  Citations: 0  Venue: arXiv
+      Sources: arxiv  arXiv:2607.24882
+      URL: http://arxiv.org/abs/2607.24882v1
+
+  [49] (score 4) A$^2$RD: Agentic Autoregressive Diffusion for Long Video Consistency
+      Authors: Do Xuan Long, Yale Song, Min-Yen Kan...
+      Year: 2026  Citations: 0  Venue: arXiv
+      Sources: arxiv  arXiv:2605.06924
+      URL: http://arxiv.org/abs/2605.06924v1
+
+  [50] (score 4) Securing LLM-Agent Long-Term Memory Against Poisoning: Non-Malleable, Origin-Bound Authority with Machine-Checked Guarantees
+      Authors: Yedidel Louck
+      Year: 2026  Citations: 0  Venue: arXiv
+      Sources: arxiv  arXiv:2606.24322
+      URL: http://arxiv.org/abs/2606.24322v1
+
+  [51] (score 4) SCM: Sleep-Consolidated Memory with Algorithmic Forgetting for Large Language Models
+      Authors: Saish Sachin Shinde
+      Year: 2026  Citations: 0  Venue: arXiv
+      Sources: arxiv  arXiv:2604.20943
+      URL: http://arxiv.org/abs/2604.20943v1
+
+  [52] (score 4) Efficient Long Context Language Model Retrieval with Compression
+      Authors: Minju Seo, Jinheon Baek, Seongyun Lee...
+      Year: 2024  Citations: 0  Venue: arXiv
+      Sources: arxiv,crossref  doi:10.18653/v1/2025.acl-long.740 arXiv:2412.18232
+      URL: http://arxiv.org/abs/2412.18232v2
+
+  [53] (score 4) SlimInfer: Accelerating Long-Context LLM Inference via Dynamic Token Pruning
+      Authors: Lingkun Long, Rubing Yang, Yushi Huang...
+      Year: 2025  Citations: 0  Venue: arXiv
+      Sources: arxiv  arXiv:2508.06447
+      URL: http://arxiv.org/abs/2508.06447v2
+
+  [54] (score 4) M.A.K.S: Multidimensional Access Knowledge Scoring for Long-Horizon LLM Agent Memory Management
+      Authors:
+      Year: 2026  Citations: 0  Venue: Iconic Research and Engineering Journals
+      Sources: crossref  doi:10.64388/irev9i11-1718160
+      URL: https://doi.org/10.64388/irev9i11-1718160
+
+  [55] (score 4) Latent Governance in Long-Horizon LLM Systems: Memory Stability without a Persistent Compute Tax
+      Authors: Minsuk Kim
+      Year: None  Citations: 0  Venue:
+      Sources: crossref  doi:10.2139/ssrn.6054896
+      URL: https://doi.org/10.2139/ssrn.6054896
+
+  [56] (score 4) Does Memory Credit Travel? Paired Factorial Audits of LLM-Agent Memory
+      Authors: Alessio Rocchi
+      Year: None  Citations: 0  Venue:
+      Sources: crossref  doi:10.2139/ssrn.7160321
+      URL: https://doi.org/10.2139/ssrn.7160321
+
+  [57] (score 4) Context Compaction Provenance (CCP) Lab: Measuring Trust-Boundary Drift in LLM Agent Context Compaction
+      Authors: Michel Hjazeen
+      Year: None  Citations: 0  Venue:
+      Sources: crossref  doi:10.2139/ssrn.6933161
+      URL: https://doi.org/10.2139/ssrn.6933161
+
+  [58] (score 4) CEMA Memory Fabric: Benchmarking Hierarchical Memory for Long-Context Multi-Agent Systems
+      Authors: Alper Öner, Erdoğan Durukan
+      Year: 2026  Citations: 0  Venue: 2026 34th Signal Processing and Communications Applications Conference (SIU)
+      Sources: crossref  doi:10.1109/siu71813.2026.11636617
+      URL: https://doi.org/10.1109/siu71813.2026.11636617
+
+  [59] (score 4) Forgetting in long-term memory: Recognition does not induce the forgetting of similar objects
+      Authors: Jamal Williams, Timothy Brady
+      Year: 2024  Citations: 0  Venue: Journal of Vision
+      Sources: crossref  doi:10.1167/jov.24.10.1345
+      URL: https://doi.org/10.1167/jov.24.10.1345
+
+  [60] (score 4) Accelerated long-term forgetting as an objective marker of subjective memory impairment in multiple sclerosis
+      Authors: Christina Jansen, Johannes Stalter, Sigrid Reuter...
+      Year: None  Citations: 0  Venue:
+      Sources: crossref  doi:10.64898/2026.04.21.26351393
+      URL: https://doi.org/10.64898/2026.04.21.26351393
+
+  [61] (score 4) MeMAT: Multi-agent transformer with deep long-term memory, short-term memory, and persistent memory
+      Authors: Gege Sun, Weiqiang Jin, Yu Zhang...
+      Year: 2026  Citations: 0  Venue: Neurocomputing
+      Sources: crossref  doi:10.1016/j.neucom.2026.134438
+      URL: https://doi.org/10.1016/j.neucom.2026.134438
+
+  [62] (score 4) Reviewer #2 (Public review): Brief disruption of activity in a subset of dopaminergic neurons during consolidation impairs long-term memory by fragmenting sleep
+      Authors:
+      Year: 2026  Citations: 0  Venue:
+      Sources: crossref  doi:10.7554/elife.104862.2.sa2
+      URL: https://doi.org/10.7554/elife.104862.2.sa2
+
+  [63] (score 4) Reviewer #1 (Public review): Brief disruption of activity in a subset of dopaminergic neurons during consolidation impairs long-term memory by fragmenting sleep
+      Authors:
+      Year: 2026  Citations: 0  Venue:
+      Sources: crossref  doi:10.7554/elife.104862.2.sa3
+      URL: https://doi.org/10.7554/elife.104862.2.sa3
+
+  [64] (score 4) Alleviating Contextual Misguidance: Response-Aware Prompt Compression for Long-Context Question Answering
+      Authors: Haoyuan Wang, Zhen Wang, Wenmeng Zhou...
+      Year: 2026  Citations: 0  Venue: IEEE Transactions on Audio, Speech and Language Processing
+      Sources: crossref  doi:10.1109/taslpro.2026.3675784
+      URL: https://doi.org/10.1109/taslpro.2026.3675784
+
+  [65] (score 4) REAL: REtrieval-reAsoning and Logic-constructed Attention Behaviors for Long-Context KV Cache Compression
+      Authors: Mengjie Li, Yuan Feng, Xike Xie...
+      Year: 2026  Citations: 0  Venue: Proceedings of the 64th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)
+      Sources: crossref  doi:10.18653/v1/2026.acl-long.1811
+      URL: https://doi.org/10.18653/v1/2026.acl-long.1811
+
+  [66] (score 3) OrcaLoca: An LLM Agent Framework for Software Issue Localization
+      Authors: Zhongming Yu, Hejia Zhang, Yujie Zhao...
+      Year: 2025  Citations: 55  Venue: International Conference on Machine Learning
+      Sources: semantic_scholar  doi:10.48550/arXiv.2502.00350 arXiv:2502.00350
+      URL: https://www.semanticscholar.org/paper/4da39bbc36ec697bd9c6a3e8d2a54fbe563b70c3
+
+  [67] (score 3) Insights into LLM Long-Context Failures: When Transformers Know but Don’t Tell
+      Authors: Muhan Gao, Taiming Lu, Kuai Yu...
+      Year: 2024  Citations: 9  Venue:
+      Sources: open_alex  doi:10.18653/v1/2024.findings-emnlp.447
+      URL: https://doi.org/10.18653/v1/2024.findings-emnlp.447
+
+  [68] (score 3) Think-on-Graph 3.0: Efficient and Adaptive LLM Reasoning on Heterogeneous Graphs via Multi-Agent Dual-Evolving Context Retrieval
+      Authors: Xiaojun Wu, Cehao Yang, Xueyuan Lin...
+      Year: 2025  Citations: 6  Venue: arXiv.org
+      Sources: semantic_scholar,arxiv  doi:10.48550/arXiv.2509.21710 arXiv:2509.21710
+      URL: https://www.semanticscholar.org/paper/4abd0d21c427ed3224158a1d27e388d3c98da275
+
+  [69] (score 3) On the Influence of Context Size and Model Choice in Retrieval-Augmented Generation Systems
+      Authors: Juraj Vladika, Florian Matthes
+      Year: 2025  Citations: 6  Venue:
+      Sources: open_alex  doi:10.18653/v1/2025.findings-naacl.375
+      URL: https://doi.org/10.18653/v1/2025.findings-naacl.375
+
+  [70] (score 3) In-Context Former: Lightning-fast Compressing Context for Large Language Model
+      Authors: Xiangfeng Wang, Zaiyi Chen, Tong Xu...
+      Year: 2024  Citations: 5  Venue:
+      Sources: open_alex  doi:10.18653/v1/2024.findings-emnlp.138
+      URL: https://doi.org/10.18653/v1/2024.findings-emnlp.138
+
+  [71] (score 3) A Multi-Agent LLM Framework for Multi-Domain Low-Resource In-Context NER via Knowledge Retrieval, Disambiguation and Reflective Analysis
+      Authors: Wenxuan Mu, Jinzhong Ning, Di Zhao...
+      Year: 2025  Citations: 2  Venue: AAAI Conference on Artificial Intelligence
+      Sources: semantic_scholar,crossref  doi:10.48550/arXiv.2511.19083 arXiv:2511.19083
+      URL: https://www.semanticscholar.org/paper/f0b8c1e8ac68898cebc0d5fe43ddebd05b7fc6a2
+
+  [72] (score 3) NFVAgent: A Retrieval-Augmented LLM Agent for Resilient NFV Failure Recovery
+      Authors: Yeun Woo, Honguk Woo
+      Year: 2025  Citations: 1  Venue: Conference on Network and Service Management
+      Sources: semantic_scholar  doi:10.23919/CNSM67658.2025.11297536
+      URL: https://www.semanticscholar.org/paper/15cb8cc90fa3e6789ff0e6e3c481171d365c3d7f
+
+  [73] (score 3) LCIRC: A Recurrent Compression Approach for Efficient Long-form Context and Query Dependent Modeling in LLMs
+      Authors: Shihao An, Junyoung Sung, Wonpyo Park...
+      Year: 2025  Citations: 0  Venue:
+      Sources: open_alex  doi:10.18653/v1/2025.naacl-long.524
+      URL: https://doi.org/10.18653/v1/2025.naacl-long.524
+
+  [74] (score 3) Integrate-and-Fire Compressor: Learning to Compress Context for LLMs Adaptively
+      Authors: Yunlong Zhao, Xiyun Li, Ziyi Wang...
+      Year: 2025  Citations: 0  Venue:
+      Sources: open_alex  doi:10.1109/icme59968.2025.11210203
+      URL: https://doi.org/10.1109/icme59968.2025.11210203
+
+  [75] (score 3) A dynamic model of context-based retrieval
+      Authors: Madison D. Paron, James D. Paron, Michael J. Kahana
+      Year: 2025  Citations: 0  Venue: Journal of Mathematical Psychology
+      Sources: open_alex  doi:10.1016/j.jmp.2025.102957
+      URL: https://doi.org/10.1016/j.jmp.2025.102957
+
+  [76] (score 3) From Reading to Compressing: Exploring the Multi-document Reader for Prompt Compression
+      Authors: Association for Computational Linguistics 2024, Choi, Eunseong, Choi, Minjin...
+      Year: 2024  Citations: 0  Venue: Underline Science Inc.
+      Sources: open_alex  doi:10.48448/trke-1v52
+      URL: https://doi.org/10.48448/trke-1v52
+
+  [77] (score 3) MRMMIA: Membership Inference Attacks on Memory in Chat Agents
+      Authors: Kai Chen, Yan Pang, Tianhao Wang
+      Year: 2026  Citations: 0  Venue: arXiv
+      Sources: arxiv  arXiv:2605.27825
+      URL: http://arxiv.org/abs/2605.27825v1
+
+  [78] (score 3) LLandMark: A Multi-Agent Framework for Landmark-Aware Multimodal Interactive Video Retrieval
+      Authors: Minh-Chi Phung, Thien-Bao Le, Cam-Tu Tran-Thi...
+      Year: 2026  Citations: 0  Venue: arXiv
+      Sources: arxiv  arXiv:2603.02888
+      URL: http://arxiv.org/abs/2603.02888v1
+
+  [79] (score 3) VideoRAG: Retrieval-Augmented Generation with Extreme Long-Context Videos
+      Authors: Xubin Ren, Lingrui Xu, Long Xia...
+      Year: 2025  Citations: 0  Venue: arXiv
+      Sources: arxiv  arXiv:2502.01549
+      URL: http://arxiv.org/abs/2502.01549v1
+
+  [80] (score 3) mGTE: Generalized Long-Context Text Representation and Reranking Models for Multilingual Text Retrieval
+      Authors: Xin Zhang, Yanzhao Zhang, Dingkun Long...
+      Year: 2024  Citations: 0  Venue: arXiv
+      Sources: arxiv  arXiv:2407.19669
+      URL: http://arxiv.org/abs/2407.19669v2
+
+  [81] (score 3) The Long Context Conundrum: Challenges and Innovations in Scaling LLM Memory
+      Authors: Anjanava Biswas
+      Year: 2025  Citations: 0  Venue: The Edge Review
+      Sources: crossref  doi:10.63337/term.2025.53588
+      URL: https://doi.org/10.63337/term.2025.53588
+
+  [82] (score 3) Prompt Engineering: Few Shots, Chain of Thought, and Retrieval-Augmented Generation
+      Authors:
+      Year: 2025  Citations: 0  Venue: Multi-LLM Agent Collaborative Intelligence
+      Sources: crossref  doi:10.1145/3749421.3749427
+      URL: https://doi.org/10.1145/3749421.3749427
+
+  [83] (score 3) Indoor Lighting Intelligent Control Using Context-Aware-Based LLM Agent and Domain Knowledge Base
+      Authors: Yang Wang, Fukang Sun, Qiansheng Fang
+      Year: 2026  Citations: 0  Venue: Light &amp; Engineering
+      Sources: crossref  doi:10.33383/2025-068
+      URL: https://doi.org/10.33383/2025-068
+
+  [84] (score 3) PromptCraft-RAG: Context-based Prompt Enhancement of Refining Query for Retrieval Augmented Generation
+      Authors: Qinye Zhang
+      Year: 2025  Citations: 0  Venue: Applied and Computational Engineering
+      Sources: crossref  doi:10.54254/2755-2721/2025.tj23129
+      URL: https://doi.org/10.54254/2755-2721/2025.tj23129
+
+  [85] (score 3) CODEPROMPTZIP: Code-specific Prompt Compression for Retrieval-Augmented Generation in Coding Tasks with LMs
+      Authors: Pengfei He, Shaowei Wang, Tse-Hsun Chen
+      Year: 2026  Citations: 0  Venue: Findings of the Association for Computational Linguistics: ACL 2026
+      Sources: crossref  doi:10.18653/v1/2026.findings-acl.1384
+      URL: https://doi.org/10.18653/v1/2026.findings-acl.1384
+
+  [86] (score 2) RankRAG: Unifying Context Ranking with Retrieval-Augmented Generation in LLMs
+      Authors: Yue Yu, Wei Ping, Zihan Liu...
+      Year: 2024  Citations: 22  Venue:
+      Sources: open_alex  doi:10.52202/079017-3850
+      URL: https://doi.org/10.52202/079017-3850
+
+  [87] (score 2) Active forgetting and neuropsychiatric diseases
+      Authors: Jacob A. Berry, Dana C. Guhle, Ronald L. Davis
+      Year: 2024  Citations: 17  Venue: Molecular Psychiatry
+      Sources: open_alex  doi:10.1038/s41380-024-02521-9
+      URL: https://doi.org/10.1038/s41380-024-02521-9
+
+  [88] (score 2) Context Length Alone Hurts LLM Performance Despite Perfect Retrieval
+      Authors: Yufeng Du, Minyang Tian, Srikanth Ronanki...
+      Year: 2025  Citations: 16  Venue:
+      Sources: open_alex  doi:10.18653/v1/2025.findings-emnlp.1264
+      URL: https://doi.org/10.18653/v1/2025.findings-emnlp.1264
+
+  [89] (score 2) BABILong: Testing the Limits of LLMs with Long Context Reasoning-in-a-Haystack
+      Authors: Yuri Kuratov, Aydar Bulatov, Petr Anokhin...
+      Year: 2024  Citations: 6  Venue:
+      Sources: open_alex  doi:10.52202/079017-3381
+      URL: https://doi.org/10.52202/079017-3381
+
+  [90] (score 2) RAGuard: A Novel Approach for In-Context Safe Retrieval Augmented Generation for LLMs
+      Authors: Connor Walker, Koorosh Aslansefat, Mohammed Naveed Akram...
+      Year: 2025  Citations: 2  Venue: Lecture notes in computer science
+      Sources: open_alex  doi:10.1007/978-3-032-05073-1_13
+      URL: https://doi.org/10.1007/978-3-032-05073-1_13
+
+  [91] (score 2) In-Context Learning in LLMs to Improve Retrieval Models
+      Authors: Nilanjan Sinhababu
+      Year: 2024  Citations: 1  Venue:
+      Sources: open_alex  doi:10.1145/3734947.3734957
+      URL: https://doi.org/10.1145/3734947.3734957
+
+  [92] (score 2) Towards Reliable Agents: Benchmarking Customized LLM-Based Retrieval-Augmented Generation Frameworks with Deployment Validation
+      Authors: Kevin Wang, Karel Joshua Harjono, Ramon Lawrence
+      Year: 2025  Citations: 1  Venue:
+      Sources: open_alex  doi:10.18653/v1/2025.naacl-industry.53
+      URL: https://doi.org/10.18653/v1/2025.naacl-industry.53
+
+  [93] (score 2) Compressing Lengthy Context With UltraGist
+      Authors: Peitian Zhang, Zheng Liu, Shitao Xiao...
+      Year: 2024  Citations: 1  Venue: arXiv (Cornell University)
+      Sources: open_alex  doi:10.48550/arxiv.2405.16635
+      URL: https://doi.org/10.48550/arxiv.2405.16635
+
+  [94] (score 2) Agent-as-a-Graph: Knowledge Graph-Based Tool and Agent Retrieval for LLM Multi-Agent Systems
+      Authors: Faheem Nizar, Elias Lumer, Anmol Gulati...
+      Year: 2026  Citations: 1  Venue: Proceedings of the 18th International Conference on Agents and Artificial Intelligence
+      Sources: crossref  doi:10.5220/0014473600004052
+      URL: https://doi.org/10.5220/0014473600004052
+
+  [95] (score 2) Multi-agent systems for improved information retrieval - leveraging autonomous agents and LLM models
+      Authors: Aneta Poniszewska-Marańda, Maciej Kopa, Bożena Borowska
+      Year: 2025  Citations: 1  Venue: 2025 40th IEEE/ACM International Conference on Automated Software Engineering Workshops (ASEW)
+      Sources: crossref  doi:10.1109/asew67777.2025.00062
+      URL: https://doi.org/10.1109/asew67777.2025.00062
+
+  [96] (score 2) Task Scheduling & Forgetting in Multi-Task Reinforcement Learning
+      Authors: Marc Speckmann, Theresa Eimer
+      Year: 2025  Citations: 0  Venue: arXiv (Cornell University)
+      Sources: open_alex
+      URL: https://openalex.org/W4415339057
+
+  [97] (score 2) LongCoT: Benchmarking Long-Horizon Chain-of-Thought Reasoning
+      Authors: Sumeet Ramesh Motwani, Daniel Nichols, Charles London...
+      Year: 2026  Citations: 0  Venue: arXiv
+      Sources: arxiv  arXiv:2604.14140
+      URL: http://arxiv.org/abs/2604.14140v1
+
+  [98] (score 2) RoleRAG: Enhancing LLM Role-Playing via Graph Guided Retrieval
+      Authors: Yongjie Wang, Jonathan Leung, Zhiqi Shen
+      Year: 2025  Citations: 0  Venue: arXiv
+      Sources: arxiv  arXiv:2505.18541
+      URL: http://arxiv.org/abs/2505.18541v1
+
+  [99] (score 2) A Plan Reuse Mechanism for LLM-Driven Agent
+      Authors: Guopeng Li, Ruiqi Wu, Haisheng Tan
+      Year: 2025  Citations: 0  Venue: arXiv
+      Sources: arxiv  arXiv:2512.21309
+      URL: http://arxiv.org/abs/2512.21309v2
+
+  [100] (score 2) CFIR: Fast and Effective Long-Text To Image Retrieval for Large Corpora
+      Authors: Zijun Long, Xuri Ge, Richard Mccreadie...
+      Year: 2024  Citations: 0  Venue: arXiv
+      Sources: arxiv  arXiv:2402.15276
+      URL: http://arxiv.org/abs/2402.15276v3
+
+  [101] (score 2) PCToolkit: A Unified Plug-and-Play Prompt Compression Toolkit of Large Language Models
+      Authors: Jinyi Li, Yihuai Lan, Lei Wang...
+      Year: 2024  Citations: 0  Venue: arXiv
+      Sources: arxiv  arXiv:2403.17411
+      URL: http://arxiv.org/abs/2403.17411v1
+
+  [102] (score 2) Focus-dLLM: Accelerating Long-Context Diffusion LLM Inference via Confidence-Guided Context Focusing
+      Authors: Lingkun Long, Yushi Huang, Shihao Bai...
+      Year: 2026  Citations: 0  Venue: arXiv
+      Sources: arxiv  arXiv:2602.02159
+      URL: http://arxiv.org/abs/2602.02159v1
+
+  [103] (score 2) Context-Aware LLM-Based Program Repair Enhanced by Historical Patch Retrieval
+      Authors: yang li, qin luo, Peng Wu
+      Year: None  Citations: 0  Venue:
+      Sources: crossref  doi:10.2139/ssrn.5495910
+      URL: https://doi.org/10.2139/ssrn.5495910
+
+  [104] (score 2) Retrieval-Augmented Dashboards: Enabling Context-Aware Analytics through LLM Integration with BI Platforms
+      Authors: Mahesh Reddy Pathoori
+      Year: 2025  Citations: 0  Venue: Journal of Information Systems Engineering and Management
+      Sources: crossref  doi:10.52783/jisem.v10i60s.13128
+      URL: https://doi.org/10.52783/jisem.v10i60s.13128
+
+  [105] (score 2) The Agent Perspective In LLM-Based Strategic Information Retrieval Ecosystems
+      Authors: Tommy Mordo
+      Year: 2025  Citations: 0  Venue: Proceedings of the 48th International ACM SIGIR Conference on Research and Development in Information Retrieval
+      Sources: crossref  doi:10.1145/3726302.3730125
+      URL: https://doi.org/10.1145/3726302.3730125
+
+  [106] (score 1) Probing Ranking LLMs: A Mechanistic Analysis for Information Retrieval
+      Authors: Tanya Chowdhury, Atharva Nijasure, James Allan
+      Year: 2025  Citations: 3  Venue:
+      Sources: open_alex  doi:10.1145/3731120.3744603
+      URL: https://doi.org/10.1145/3731120.3744603
+
+  [107] (score 1) Focus Agent: LLM-Powered Virtual Focus Group
+      Authors: Taiyu Zhang, Xuesong Zhang, Robbe Cools...
+      Year: 2024  Citations: 0  Venue: arXiv
+      Sources: arxiv  doi:10.1145/3652988.3673918 arXiv:2409.01907
+      URL: http://arxiv.org/abs/2409.01907v1
+
+  [108] (score 1) What Does a Software Engineer Look Like? Exploring Societal Stereotypes in LLMs
+      Authors: Muneera Bano, Hashini Gunatilake, Rashina Hoda
+      Year: 2025  Citations: 0  Venue: arXiv
+      Sources: arxiv  arXiv:2501.03569
+      URL: http://arxiv.org/abs/2501.03569v1
+
+  [109] (score 1) Modified Levenberg-Marquardt Algorithm For Tensor CP Decomposition in Image Compression
+      Authors: Ramin Goudarzi Karim, Dipak Dulal, Carmeliza Navasca
+      Year: 2024  Citations: 0  Venue: arXiv
+      Sources: arxiv  doi:10.1109/DCC58796.2024.00080 arXiv:2401.04670
+      URL: http://arxiv.org/abs/2401.04670v1
+
+  [110] (score 9) [survey] A Survey of Agent Memory in the Second Half: Towards Self-Evolving and Long-Horizon Agents
+      Authors: Wei-Chieh Huang, Weizhi Zhang, Yueqing Liang...
+      Year: 2026  Citations: 0  Venue: arXiv
+      Sources: arxiv  arXiv:2602.06052
+      URL: http://arxiv.org/abs/2602.06052v4
+
+  [111] (score 3) [survey] Prompt Compression for Large Language Models: A Survey
+      Authors: Zongqian Li, Yinhong Liu, Yixuan Su...
+      Year: 2025  Citations: 9  Venue:
+      Sources: open_alex  doi:10.18653/v1/2025.naacl-long.368
+      URL: https://doi.org/10.18653/v1/2025.naacl-long.368
+
+Total: 111 unique papers (ranked; surveys sunk to the bottom).

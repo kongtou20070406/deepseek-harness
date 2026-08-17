@@ -8,6 +8,7 @@ A compaction capability family (see [capability seams](../../.agents/notes/imple
 |---|---|---|
 | [`compaction/`](compaction/README.md) | Compaction seam and event vocabulary | `ctx.compaction` |
 | [`compaction-basic/`](compaction-basic/README.md) | Token-pressure and summarization backend | registers `ctx.compaction` |
+| [`compaction-research-context/`](compaction-research-context/README.md) | Model-free per-turn selective research-view backend | registers `ctx.compaction` |
 | [`compaction-tool-result-pruner/`](compaction-tool-result-pruner/README.md) | Optional model-free tool-result pruning | `ctx.toolResultPruner` |
 | [`command-compact/`](command-compact/README.md) | Human compaction command | registers on `ctx.commands` |
 

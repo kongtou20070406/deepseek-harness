@@ -1,0 +1,4 @@
+interface:
+  display_name: "Design Research Kernel"
+  short_description: "Create a concise, testable research Idea contract"
+  default_prompt: "Use $design-research-kernel to turn my research goal into a concise Kernel proposal for confirmation."

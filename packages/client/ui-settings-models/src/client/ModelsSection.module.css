@@ -45,6 +45,81 @@
   color: var(--dsw-alias-state-success-primary);
 }
 
+.codexCard {
+  margin-top: 8px;
+  padding: 14px 16px;
+  border: 1px solid var(--dsw-alias-border-l2);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.codexHead {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.codexTitle {
+  margin: 0;
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 500;
+}
+
+.codexIntro {
+  margin: 2px 0 0;
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--dsw-alias-label-tertiary);
+}
+
+.codexConnected,
+.codexDisconnected {
+  flex: none;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.codexConnected {
+  color: var(--dsw-alias-state-success-primary);
+  background: var(--dsw-alias-state-success-tertiary);
+}
+
+.codexDisconnected {
+  color: var(--dsw-alias-label-tertiary);
+  background: var(--dsw-alias-bg-module-platform);
+}
+
+.codexCode,
+.codexUsage {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 14px;
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--dsw-alias-label-secondary);
+}
+
+.codexCode strong {
+  letter-spacing: 0.12em;
+  color: var(--dsw-alias-label-primary);
+}
+
+.codexCode a {
+  color: var(--dsw-alias-brand-primary);
+}
+
+.codexActions {
+  display: flex;
+  gap: 8px;
+}
+
 .rows {
   list-style: none;
   /* Extra air between the title/intro block and the first provider card. */

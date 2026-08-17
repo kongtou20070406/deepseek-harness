@@ -76,6 +76,8 @@ function mount(overrides: Partial<WorkspaceBrowserProps> = {}) {
     renameWorkspace: vi.fn(async () => {}),
     deleteWorkspace: vi.fn(async () => {}),
     archiveSession: vi.fn(async () => {}),
+    unarchiveSession: vi.fn(async () => {}),
+    deleteSession: vi.fn(async () => {}),
     insertWorkspaceBefore: vi.fn(async () => {}),
     insertSessionBefore: vi.fn(async () => {}),
     createWorkspace: vi.fn(async () => workspace('created', [])),
@@ -316,10 +318,14 @@ describe('WorkspaceBrowser', () => {
 
   it('archives a session from the row menu and hides archived rows in both modes', async () => {
     const archiveSession = vi.fn(async () => {})
+    const unarchiveSession = vi.fn(async () => {})
+    const open = vi.fn()
     const b = mount({
       useSessions: hook(sessionState([summary('kept-s', 2), summary('gone-s', 1)])),
       useWorkspaces: hook(workspaceState([workspace('alpha', ['kept-s', 'gone-s'])])),
       archiveSession,
+      unarchiveSession,
+      open,
     })
     fireEvent.click(screen.getByText('alpha'))
     fireEvent.click(screen.getByRole('button', { name: '会话“gone-s”的操作' }))
@@ -329,6 +335,14 @@ describe('WorkspaceBrowser', () => {
     // The archive-set echo hides the row in grouped and flat modes.
     rerender(b, { useWorkspaces: hook(workspaceState([workspace('alpha', ['kept-s', 'gone-s'])], [sid('gone-s')])) })
     expect(screen.queryByText('gone-s')).toBeNull()
+    fireEvent.click(screen.getByRole('button', { name: '查看已归档会话' }))
+    expect(screen.getByText('gone-s')).toBeTruthy()
+    fireEvent.click(screen.getByRole('button', { name: '恢复' }))
+    await waitFor(() => {
+      expect(unarchiveSession).toHaveBeenCalledWith(sid('gone-s'))
+      expect(open).toHaveBeenCalledWith(sid('gone-s'))
+    })
+    fireEvent.click(screen.getByRole('button', { name: '返回会话列表' }))
     fireEvent.click(screen.getByRole('button', { name: '视图选项' }))
     fireEvent.click(screen.getByRole('menuitem', { name: '单列表' }))
     expect(screen.getByText('kept-s')).toBeTruthy()

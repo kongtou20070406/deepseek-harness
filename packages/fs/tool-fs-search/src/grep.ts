@@ -18,7 +18,10 @@ import type { RetainedItems } from '@deepseek-ai/dsh-output-retention'
 import type { SpillRef } from '@deepseek-ai/dsh-spill'
 import type {} from '@deepseek-ai/dsh-system-prompt'
 import type { GrepMatch } from './search-core.ts'
-import { SearchError, previewLine, retainGrepMatches, runRipgrep, toWorkdirRelative, trySaveFormattedResult } from './search-core.ts'
+import {
+  SearchError, formatSearchDiagnostics, previewLine, retainGrepMatches, runRipgrep,
+  toWorkdirRelative, trySaveFormattedResult,
+} from './search-core.ts'
 import { grepSearchMeta, searchViewFromMeta } from './presentation.ts'
 import { acceptedDirectCallValue } from './direct-call.ts'
 
@@ -308,19 +311,27 @@ export function applyGrepTool(ctx: Context, caps: GrepToolCaps): void {
               },
             },
           },
+          diagnostics: { type: 'array', items: { type: 'string' } },
         },
       },
       render: (_args, value) => [{
         type: 'text',
-        text: formatRetainedGrep(retainGrepMatches(value.matches, caps.maxMatches, caps.maxLineBytes)),
+        text: formatRetainedGrep(retainGrepMatches(value.matches, caps.maxMatches, caps.maxLineBytes))
+          + formatSearchDiagnostics(value.diagnostics),
       }],
-      presentationMeta: (_args, value) =>
-        grepSearchMeta(retainGrepMatches(value.matches, caps.maxMatches, caps.maxLineBytes), caps.maxMetaBytes),
+      presentationMeta: (_args, value) => {
+        const retained = retainGrepMatches(value.matches, caps.maxMatches, caps.maxLineBytes)
+        return grepSearchMeta({
+          ...retained,
+          truncated: retained.truncated || (value.diagnostics?.length ?? 0) > 0,
+        }, caps.maxMetaBytes)
+      },
     },
     async execute(args, exec) {
       const input = parseGrepArgs(args)
       const run = await runRipgrep(ctx, exec, 'grep', buildGrepCommand(input), caps.rawOutputMaxBytes, caps.graceMs, caps.stderrMaxBytes)
-      if (run.noMatches) return { matches: [] }
+      const diagnosticValue = run.diagnostics === undefined ? {} : { diagnostics: run.diagnostics }
+      if (run.noMatches) return { matches: [], ...diagnosticValue }
 
       const all: GrepMatch[] = []
       for (const raw of parseGrepMatches(run.stdout)) {
@@ -331,7 +342,7 @@ export function applyGrepTool(ctx: Context, caps: GrepToolCaps): void {
         }
         all.push(match)
       }
-      return { matches: all }
+      return { matches: all, ...diagnosticValue }
     },
     presentCall: presentGrepCall,
     presentResult: presentGrepResult,
@@ -340,7 +351,7 @@ export function applyGrepTool(ctx: Context, caps: GrepToolCaps): void {
 
   ctx.on('tools/post-execute', async (exec, result, next) => {
     const decision = await next()
-    const value = acceptedDirectCallValue(ctx, tool, exec, result, decision) as { matches: GrepMatch[] } | undefined
+    const value = acceptedDirectCallValue(ctx, tool, exec, result, decision) as { matches: GrepMatch[]; diagnostics?: string[] } | undefined
     if (value === undefined) return decision
     const matches = value.matches
     if (matches.length <= caps.maxMatches) return decision
@@ -351,13 +362,15 @@ export function applyGrepTool(ctx: Context, caps: GrepToolCaps): void {
       ctx,
       exec,
       'grep-results.txt',
-      `Found ${matches.length} ${matchNoun(matches.length)}\n\n${formatGrepMatches(previewedAll)}`,
+      `Found ${matches.length} ${matchNoun(matches.length)}\n\n${formatGrepMatches(previewedAll)}`
+        + formatSearchDiagnostics(value.diagnostics),
     )
     return {
       kind: 'accept',
       content: [{
         type: 'text',
-        text: formatRetainedGrep(retainGrepMatches(matches, caps.maxMatches, caps.maxLineBytes), spillRef),
+        text: formatRetainedGrep(retainGrepMatches(matches, caps.maxMatches, caps.maxLineBytes), spillRef)
+          + formatSearchDiagnostics(value.diagnostics),
       }],
       ...decision.additionalContexts !== undefined ? { additionalContexts: decision.additionalContexts } : {},
     }

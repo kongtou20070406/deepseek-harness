@@ -548,6 +548,15 @@ const SERVICE_ROLES: ServiceRole[] = [
     note: 'The transport-agnostic host gateway face: it dispatches browser API calls, and each open host stream subscribes to the events it forwards rather than being pushed to through a broadcast verb.',
   },
   {
+    key: 'researchContext',
+    pkg: 'research-context',
+    title: 'Selective research-context assembly seam',
+    mode: 'seam',
+    implementations: ['research-authority-workspace'],
+    consumers: ['compaction-research-context', 'research-context-controls'],
+    note: 'Folds durable research authority, maintains a disposable loop locator index, and admits optional synchronous retrieval and Workspace authority providers; the compaction consumer logs and installs each bounded request view.',
+  },
+  {
     key: 'dynamicCordisRunner',
     pkg: 'cordis-host-runner',
     title: 'Dynamic Cordis package host runner',

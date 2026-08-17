@@ -6,6 +6,12 @@ Generic multi-provider adapter for the harness LLM seam backed by [`@earendil-wo
 
 The package root exposes the Cordis plugin contract, `PiAiAdapter`, and `supportedProtocols()`; profile resolution, catalog materialization, provider construction, replay conversion, and stream conversion remain package-internal.
 
+## OpenAI membership login
+
+The plugin also owns the `openai-codex` OAuth route. Its `openaiCodex` Remote starts pi-ai's device-code login, reports the non-secret pending state, logs out, and returns a bounded Codex subscription-usage projection. In a full bundle, the OAuth credential is stored through the DSH credentials service; in a bare plugin composition the same interface falls back to process memory. The adapter and the account Remote share one credential store, so a completed login is available to the next `openai-codex` request without copying a token into settings. The product bundle additionally enables a one-time import from Pi's local `auth.json` when DSH has no Codex credential yet; the imported OAuth object is immediately persisted through DSH's credential service, and neither token values nor the source file are exposed to the model or UI.
+
+Usage is read from ChatGPT's Codex usage compatibility endpoint with redirect rejection, a configurable timeout (`codexUsageTimeoutMs`, default 12 seconds), and a 64 KiB response limit. That endpoint is not a documented stable public API: an unavailable or changed response is reported as unavailable instead of being projected as zero usage.
+
 ## Config
 
 Configure credentials, the model catalog, and deployment-specific transport settings per provider, keyed by the provider route itself. `apiKeyEnv` is a credential *reference* resolved per request, so no secret enters this file. Omitting it leaves the route unauthenticated, which for an installed catalog route means pi-ai's provider-native ambient discovery; a configured reference that resolves to nothing fails the request with `MISSING_CREDENTIAL` instead, because falling through would authenticate with whatever unrelated key the environment happens to hold. One credential serves every model on its route.

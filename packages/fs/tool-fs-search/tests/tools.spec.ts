@@ -577,6 +577,66 @@ describe('exit semantics and failure classification', () => {
     expect(text(result)).toContain('IO error')
   })
 
+  it('keeps glob paths when ripgrep skips only access-denied entries', async () => {
+    const { ctx, subprocess } = await setup()
+    const denied = 'rg: locked: IO error for operation on locked: 拒绝访问。 (os error 5)'
+    subprocess.handler = () => runResult('readable.ts\n', { exitCode: 2, stderr: { text: denied } })
+
+    const result = await call(ctx, 'glob', { pattern: '*.ts' })
+
+    expect(result.isError).toBe(false)
+    expect(result.value).toEqual({
+      root: '.',
+      paths: ['readable.ts'],
+      diagnostics: [
+        '1 inaccessible path was skipped; readable files were still searched.',
+        denied,
+      ],
+    })
+    expect(text(result)).toContain('readable.ts')
+    expect(text(result)).toContain('Partial search; some paths were inaccessible')
+    expect(result.meta).toMatchObject({ truncated: true, total: 1 })
+  })
+
+  it('keeps grep matches and marks a truncated access-denied diagnostic tail partial', async () => {
+    const { ctx, subprocess } = await setup()
+    const denied = 'rg: /locked: Permission denied (os error 13)'
+    subprocess.handler = () => runResult(matchLine('readable.ts', 2, 'needle\n') + '\n', {
+      exitCode: 2,
+      stderr: { text: denied, lossy: true },
+    })
+
+    const result = await call(ctx, 'grep', { pattern: 'needle' })
+
+    expect(result.isError).toBe(false)
+    expect(result.value).toEqual({
+      matches: [{ path: 'readable.ts', lineNumber: 2, line: 'needle' }],
+      diagnostics: [
+        'at least 1 inaccessible path was skipped; readable files were still searched (diagnostic tail truncated).',
+        denied,
+      ],
+    })
+    expect(text(result)).toContain('Found 1 match')
+    expect(text(result)).toContain('diagnostic tail truncated')
+    expect(result.meta).toMatchObject({ truncated: true, total: 1 })
+  })
+
+  it('still fails closed when access-denied stderr also contains another I/O error', async () => {
+    const { ctx, subprocess } = await setup()
+    subprocess.handler = () => runResult('readable.ts\n', {
+      exitCode: 2,
+      stderr: { text: [
+        'rg: locked: Access is denied. (os error 5)',
+        'rg: missing.dir: IO error: no such file or directory (os error 2)',
+      ].join('\n') },
+    })
+
+    const result = await call(ctx, 'glob', { pattern: '*.ts' })
+
+    expect(result.isError).toBe(true)
+    expect(result.error).toMatchObject({ info: { code: 'SEARCH_FAILED' } })
+  })
+
   it('a nonzero exit with EMPTY stderr still reports the exit code', async () => {
     const { ctx, subprocess } = await setup()
     subprocess.handler = () => runResult('', { exitCode: 3 })

@@ -61,10 +61,10 @@ ProjectionDefinition<'contextBreakdown', ContextBreakdownState> = {
     return {
       systemTokens,
       toolsTokens,
-      messageTokens: state.messageTokens + fold.deltaTokens,
+      messageTokens: Math.max(fold.minimumTokens, state.messageTokens + fold.deltaTokens),
       ...fold.claim === undefined ? {} : { claim: fold.claim },
     }
   },
   view: ({ systemTokens, toolsTokens, messageTokens }) => ({ systemTokens, toolsTokens, messageTokens }),
-  stateVersion: 2,
+  stateVersion: 3,
 }

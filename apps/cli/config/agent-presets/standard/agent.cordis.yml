@@ -141,8 +141,8 @@
     compaction: true
     toolResultPruner: true
   config:
-    - id: compaction-basic
-      name: '@deepseek-ai/dsh-compaction-basic'
+    - id: compaction-research-context
+      name: '@deepseek-ai/dsh-compaction-research-context'
 
     - id: command-compact
       name: '@deepseek-ai/dsh-command-compact'

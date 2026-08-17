@@ -135,6 +135,10 @@ const packageFileExtras: Readonly<Record<string, readonly string[]>> = {
   '@deepseek-ai/dsh-base': ['cordis.patch.yml'],
   '@deepseek-ai/dsh-web-app': ['cordis.patch.yml'],
   '@deepseek-ai/dsh-headless': ['cordis.patch.yml'],
+  // Pi-Idea's profile layer also publishes the task-selected operating Skills
+  // that its configured skill loader exposes; they are not injected eagerly.
+  '@deepseek-ai/dsh-pi-idea-context': ['cordis.patch.yml', 'skills/**'],
+  '@deepseek-ai/dsh-pi-idea-headless': ['cordis.patch.yml'],
   '@deepseek-ai/dsh-client-ui-theme': ['lib/styles'],
   // The Python runtime uses a distinct closed-resolution bin; the public CLI
   // keeps config-owned bare-package resolution through lib/bin.js.

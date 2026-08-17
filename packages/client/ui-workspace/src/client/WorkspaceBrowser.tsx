@@ -12,7 +12,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import clsx from 'clsx'
 import {
-  Button, IconCloseFill14, IconPersonalizationOutline16,
+  Button, IconArchiveOutline20, IconCloseFill14, IconPersonalizationOutline16,
   IconProjectAddOutline16, IconSearchOutline16, Menu, Modal, Tooltip,
 } from '@deepseek-ai/dsh-client-ui-primitives'
 import type {
@@ -37,6 +37,87 @@ const SEARCH_DEBOUNCE_MS = 250
 const SEARCH_QUERY_MAX_CODE_UNITS = 500
 /** Session rows visible per Workspace before the local overflow control. */
 const COLLAPSED_SESSION_LIMIT = 5
+
+/** Archived rows stay in the Session store; restore re-publishes, remove deletes forever. */
+function ArchivedSessions({ useSessions, ids, restore, remove, open, t }: Pick<
+  WorkspaceBrowserProps,
+  'useSessions' | 'open' | 't'
+> & {
+  ids: readonly SessionId[]
+  restore: (sessionId: SessionId) => Promise<void>
+  remove: (sessionId: SessionId) => Promise<void>
+}) {
+  const sessions = useSessions(state => state)
+  const [restoring, setRestoring] = useState<SessionId | null>(null)
+  const [target, setTarget] = useState<{ id: SessionId; displayTitle: string } | null>(null)
+  const [removing, setRemoving] = useState(false)
+  const [removeError, setRemoveError] = useState<string | null>(null)
+  const rows = ids.map(id => sessions.byId[id]).filter(row => row !== undefined)
+  if (rows.length === 0) return <div className={css.searchStatus}>{t('archive.empty')}</div>
+  const confirmRemove = (): void => {
+    if (target === null) return
+    setRemoving(true)
+    setRemoveError(null)
+    remove(target.id).then(() => {
+      setTarget(null)
+    }).catch((reason: unknown) => {
+      setRemoveError(reason instanceof Error ? reason.message : String(reason))
+    }).finally(() => { setRemoving(false) })
+  }
+  return (
+    <div className={css.archivedList} role="list" aria-label={t('section.archived')}>
+      {rows.map(row => (
+        <div className={css.archivedRow} role="listitem" key={row.id}>
+          <span className={css.archivedTitle}>{row.displayTitle}</span>
+          <button
+            type="button"
+            className={css.restoreButton}
+            disabled={restoring === row.id}
+            onClick={() => {
+              setRestoring(row.id)
+              restore(row.id).then(() => { open(row.id) }).catch((reason: unknown) => {
+                console.warn('session restore rejected:', reason)
+              }).finally(() => { setRestoring(null) })
+            }}
+          >
+            {restoring === row.id ? t('archive.restoring') : t('archive.restore')}
+          </button>
+          <button
+            type="button"
+            className={css.deleteSessionButton}
+            onClick={() => { setTarget(row); setRemoveError(null) }}
+          >
+            {t('menu.deleteSession')}
+          </button>
+        </div>
+      ))}
+      <Modal
+        open={target !== null}
+        onClose={() => { if (!removing) setTarget(null) }}
+        closeLabel={t('close')}
+        title={t('deleteSession.title')}
+        {...target === null
+          ? {}
+          : { description: t('deleteSession.desc', { name: target.displayTitle }) }}
+        footer={(
+          <>
+            <Button variant="outline" disabled={removing} onClick={() => { setTarget(null) }}>{t('cancel')}</Button>
+            <Button
+              variant="outline"
+              disabled={removing}
+              onClick={confirmRemove}
+            >
+              {t('deleteSession.confirm')}
+            </Button>
+          </>
+        )}
+      >
+        {removing && <div className={css.deleteStatus} role="status">{t('deleteSession.pending')}</div>}
+        {removeError !== null && <div className={css.renameError} role="alert">{removeError}</div>}
+      </Modal>
+    </div>
+  )
+}
 
 /** Keep controlled input and RPC payload inside the session.search wire contract. */
 function sanitizeSearchQuery(value: string): string {
@@ -753,6 +834,8 @@ export function WorkspaceBrowser({
   deleteWorkspace,
   insertWorkspaceBefore,
   archiveSession,
+  unarchiveSession,
+  deleteSession,
   insertSessionBefore,
   createWorkspace,
   searchSessions,
@@ -796,6 +879,7 @@ export function WorkspaceBrowser({
   // Section-header ＋ opens the picker menu (same popover in wide and rail
   // states; the menu anchors on this button).
   const [wsPickerOpen, setWsPickerOpen] = useState(false)
+  const [archiveOpen, setArchiveOpen] = useState(false)
   const wsPlusRef = useRef<HTMLButtonElement>(null)
   const composingRef = useRef(false)
 
@@ -977,10 +1061,10 @@ export function WorkspaceBrowser({
       <div className={css.sectionHeader}>
         {wide && (
           <span className={clsx(css.sectionLabel, css.wide, searchExpanded && css.sectionLabelHidden)}>
-            {groupBy === 'flat' ? t('section.sessions') : t('section.workspaces')}
+            {archiveOpen ? t('section.archived') : groupBy === 'flat' ? t('section.sessions') : t('section.workspaces')}
           </span>
         )}
-        {wide && (
+        {wide && !archiveOpen && (
           <div className={clsx(css.searchSlot, searchExpanded && css.searchSlotExpanded)}>
             <div
               ref={searchRoot}
@@ -1038,7 +1122,7 @@ export function WorkspaceBrowser({
           </div>
         )}
         <div className={clsx(css.headerActions, wide && searchExpanded && css.headerActionsHidden)}>
-          {wide && (
+          {wide && !archiveOpen && (
             <ViewOptionsMenu
               groupBy={groupBy}
               orderBy={orderBy}
@@ -1046,6 +1130,22 @@ export function WorkspaceBrowser({
               onOrderPick={(mode) => { actions.setOrderBy(mode) }}
               t={t}
             />
+          )}
+          {(archivedSessionIds.length > 0 || archiveOpen) && (
+            <Tooltip label={archiveOpen ? t('archive.back') : t('archive.open')} side="bottom" delayMs={500}>
+              <button
+                type="button"
+                className={clsx(css.iconButton, archiveOpen && css.iconButtonActive)}
+                aria-label={archiveOpen ? t('archive.back') : t('archive.open')}
+                aria-pressed={archiveOpen}
+                onClick={() => {
+                  setArchiveOpen(value => !value)
+                  if (!wide) expandSidebar()
+                }}
+              >
+                <IconArchiveOutline20 size={wide ? 17 : 19} />
+              </button>
+            </Tooltip>
           )}
           {/* Adding is the button's one action, so a composition with no
               picking affordance has nothing to offer here: the region hides the
@@ -1106,64 +1206,75 @@ export function WorkspaceBrowser({
       {/* Always-mounted seat keeps the region's flex slot while the list
           itself is wide-only. */}
       <div className={css.listArea}>
-        {wide && (normalizedQuery !== ''
+        {wide && (archiveOpen
           ? (
-            <SearchResults
+            <ArchivedSessions
               useSessions={useSessions}
+              ids={archivedSessionIds}
+              restore={unarchiveSession}
+              remove={deleteSession}
               open={open}
-              workspaces={workspaces}
-              archivedSessionIds={archivedSessionIds}
-              query={normalizedQuery}
-              remote={remoteSearch}
-              resultLimit={searchResultLimit}
               t={t}
             />
           )
-          : groupBy === 'flat'
+          : normalizedQuery !== ''
             ? (
-              <FlatList
-                useSessions={useSessions} open={open} forkSession={forkSession}
-                onSessionRename={onSessionRename} onSessionArchive={onSessionArchive}
+              <SearchResults
+                useSessions={useSessions}
+                open={open}
+                workspaces={workspaces}
                 archivedSessionIds={archivedSessionIds}
-                orderBy={orderBy}
-                sessionOrderByAccount={sessionOrderByAccount}
-                sessionUpdatedAtByAccount={sessionUpdatedAtByAccount}
-                syncSessionOrderAccount={actions.syncSessionOrderAccount}
-                setSessionOrder={actions.setSessionOrder}
+                query={normalizedQuery}
+                remote={remoteSearch}
+                resultLimit={searchResultLimit}
                 t={t}
               />
             )
-            : (
-              <SessionTree
-                useSessions={useSessions}
-                onSessionRename={onSessionRename}
-                onSessionArchive={onSessionArchive}
-                forkSession={forkSession}
-                workspaces={workspaces}
-                groupExpansion={groupExpansion}
-                setGroupExpanded={actions.setGroupExpanded}
-                sessionOrderByAccount={sessionOrderByAccount}
-                sessionUpdatedAtByAccount={sessionUpdatedAtByAccount}
-                syncSessionOrderAccount={actions.syncSessionOrderAccount}
-                setSessionOrder={actions.setSessionOrder}
-                archivedSessionIds={archivedSessionIds}
-                startSession={startSession}
-                open={open}
-                insertWorkspaceBefore={insertWorkspaceBefore}
-                insertSessionBefore={insertSessionBefore}
-                orderBy={orderBy}
-                t={t}
-                onRenameRequest={(workspaceId, currentTitle) => {
-                  setRenameTarget({ workspaceId, currentTitle })
-                  setRenameDraft(currentTitle)
-                  setRenameError(null)
-                }}
-                onDeleteRequest={(workspaceId, title) => {
-                  setDeleteTarget({ workspaceId, title })
-                  setDeleteError(null)
-                }}
-              />
-            ))}
+            : groupBy === 'flat'
+              ? (
+                <FlatList
+                  useSessions={useSessions} open={open} forkSession={forkSession}
+                  onSessionRename={onSessionRename} onSessionArchive={onSessionArchive}
+                  archivedSessionIds={archivedSessionIds}
+                  orderBy={orderBy}
+                  sessionOrderByAccount={sessionOrderByAccount}
+                  sessionUpdatedAtByAccount={sessionUpdatedAtByAccount}
+                  syncSessionOrderAccount={actions.syncSessionOrderAccount}
+                  setSessionOrder={actions.setSessionOrder}
+                  t={t}
+                />
+              )
+              : (
+                <SessionTree
+                  useSessions={useSessions}
+                  onSessionRename={onSessionRename}
+                  onSessionArchive={onSessionArchive}
+                  forkSession={forkSession}
+                  workspaces={workspaces}
+                  groupExpansion={groupExpansion}
+                  setGroupExpanded={actions.setGroupExpanded}
+                  sessionOrderByAccount={sessionOrderByAccount}
+                  sessionUpdatedAtByAccount={sessionUpdatedAtByAccount}
+                  syncSessionOrderAccount={actions.syncSessionOrderAccount}
+                  setSessionOrder={actions.setSessionOrder}
+                  archivedSessionIds={archivedSessionIds}
+                  startSession={startSession}
+                  open={open}
+                  insertWorkspaceBefore={insertWorkspaceBefore}
+                  insertSessionBefore={insertSessionBefore}
+                  orderBy={orderBy}
+                  t={t}
+                  onRenameRequest={(workspaceId, currentTitle) => {
+                    setRenameTarget({ workspaceId, currentTitle })
+                    setRenameDraft(currentTitle)
+                    setRenameError(null)
+                  }}
+                  onDeleteRequest={(workspaceId, title) => {
+                    setDeleteTarget({ workspaceId, title })
+                    setDeleteError(null)
+                  }}
+                />
+              ))}
       </div>
 
       <Modal

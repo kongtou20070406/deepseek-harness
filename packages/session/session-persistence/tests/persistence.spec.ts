@@ -118,6 +118,10 @@ class MemoryPersistence extends SessionPersistence implements PersistenceBackend
     return this.coordinator.readFrom(id, fromSeq, signal)
   }
 
+  delete(id: SessionId, signal?: AbortSignal): Promise<void> {
+    return this.coordinator.delete(id, signal)
+  }
+
   // --- PersistenceBackend hooks (the Map storage primitives) ---
 
   // A Map-backed store has no torn tails, so `tornMarker` is never set.
@@ -159,6 +163,10 @@ class MemoryPersistence extends SessionPersistence implements PersistenceBackend
     /* v8 ignore next -- commitRepair only runs for a materialized (stored) session */
     if (!entry) return
     if (closers.length > 0) entry.events.push(...structuredClone(closers) as SessionEvent[])
+  }
+
+  async deleteStored(id: SessionId, _signal?: AbortSignal): Promise<void> {
+    this.store.delete(id)
   }
 
   async list(signal?: AbortSignal): Promise<SessionHeader[]> {
@@ -228,6 +236,10 @@ class ControlledBackend implements PersistenceBackend<never> {
     if (entry !== undefined) entry.events.push(...structuredClone(closers) as SessionEvent[])
   }
 
+  async deleteStored(id: SessionId, _signal?: AbortSignal): Promise<void> {
+    this.store.delete(id)
+  }
+
   async list(): Promise<SessionHeader[]> {
     return [...this.store.values()].map(entry => structuredClone(entry.meta))
   }
@@ -246,6 +258,21 @@ runPersistenceContract('memory', async () => {
     persistence: ctx.sessionPersistence,
     dispose: async () => { await fiber.dispose() },
   }
+})
+
+describe('SessionPersistence.delete', () => {
+  it('rejects deleting a session still bound to a live Session', async () => {
+    const ctx = new Context()
+    await ctx.plugin(SessionStore)
+    const fiber = await ctx.plugin(MemoryPersistence)
+    try {
+      const session = ctx.sessions.create(SessionId('delete-live'))
+      await expect(ctx.sessionPersistence.delete(session.id)).rejects.toThrow(/live/)
+    } finally {
+      await fiber.dispose()
+      await ctx.fiber.dispose()
+    }
+  })
 })
 
 describe('the inherited readRaw default', () => {

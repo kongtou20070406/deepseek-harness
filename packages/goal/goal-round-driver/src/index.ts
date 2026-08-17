@@ -255,6 +255,7 @@ export function apply(ctx: Context): void {
       state.attempt = undefined
       state.competingQueued = false
       state.needsCheckpoint = false
+      requestDrive(state)
     })
     ctx.on('agent/status', ({ agent, status }) => {
       const state = stateFor(agent)

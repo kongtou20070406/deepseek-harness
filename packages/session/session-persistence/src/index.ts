@@ -238,6 +238,20 @@ export abstract class SessionPersistence extends Service {
    * @returns one header and opaque revision per materialized session without loading full logs.
    */
   abstract listSnapshots(signal?: AbortSignal): Promise<SessionPersistenceSnapshot[]>
+
+  /**
+   * Permanently delete a session and every durable artifact it owns. The
+   * session MUST be archived (or otherwise released by its live owner) before
+   * delete: deleting an identity still bound to a live Session rejects. The
+   * call resolves only after the backend's delete is durable; a subsequent
+   * {@link list} no longer names the id. Deleting an already-absent id is a
+   * no-op. SQLite relies on its `ON DELETE CASCADE`; backends do not delete
+   * events individually.
+   * @param id - the persisted session to permanently delete.
+   * @param signal - optional cancellation for backend deletion work.
+   * @returns when the deletion is durably reflected by the backend.
+   */
+  abstract delete(id: SessionId, signal?: AbortSignal): Promise<void>
 }
 
 export default SessionPersistence

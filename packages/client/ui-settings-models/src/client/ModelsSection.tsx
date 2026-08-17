@@ -21,6 +21,7 @@ import { CustomProviderCard } from './CustomProviderCard.tsx'
 import { deriveKeyRef, messageOf, protocolChoices, providerUsable } from './store.ts'
 import type { ModelsSettingsState, ModelsSettingsStore, ProviderRow } from './store.ts'
 import { ProviderEditor, type ProviderEditorProps } from './ProviderEditor.tsx'
+import { OpenAICodexCard, type OpenAICodexActions } from './OpenAICodexCard.tsx'
 import type { en } from './locales.ts'
 import styles from './ModelsSection.module.css'
 
@@ -34,6 +35,8 @@ export interface ModelsSectionInjected {
   api: Pick<IApiClient, 'settings' | 'credentials' | 'llm'>
   /** Section copy. */
   t: (key: keyof typeof en) => string
+  /** OpenAI membership account and usage actions. */
+  codex: OpenAICodexActions
 }
 
 /**
@@ -169,12 +172,14 @@ export function providerCopy(template: string, target: ProviderIdentity): string
  * @returns the section, or null while the shell has not injected yet.
  */
 export function ModelsSection(props: ModelsSectionProps): ReactNode {
-  const { controller, useSnapshot, api, t } = props
+  const { controller, useSnapshot, api, t, codex } = props
   if (controller === undefined || useSnapshot === undefined || api === undefined || t === undefined) return null
-  return <Loaded injected={{ controller, useSnapshot, api, t }} />
+  return <Loaded injected={{ controller, useSnapshot, api, t, ...codex === undefined ? {} : { codex } }} />
 }
 
-function Loaded({ injected }: { injected: ModelsSectionInjected }): ReactNode {
+type LoadedInjected = Omit<ModelsSectionInjected, 'codex'> & Partial<Pick<ModelsSectionInjected, 'codex'>>
+
+function Loaded({ injected }: { injected: LoadedInjected }): ReactNode {
   const { controller, api, t } = injected
   const state = injected.useSnapshot(snapshot => snapshot)
   const [editing, setEditing] = useState<EditorTarget | undefined>(undefined)
@@ -275,6 +280,7 @@ function Loaded({ injected }: { injected: ModelsSectionInjected }): ReactNode {
     <div className={styles['section']}>
       <h2 className={styles['title']}>{t('title')}</h2>
       <p className={styles['intro']}>{t('intro')}</p>
+      {injected.codex === undefined ? null : <OpenAICodexCard actions={injected.codex} t={t} />}
       {!state.writable && state.status === 'ready' ? <p className={styles['notice']}>{t('readOnly')}</p> : null}
       {savedIdentity === undefined
         ? null

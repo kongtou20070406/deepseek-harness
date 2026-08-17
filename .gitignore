@@ -38,3 +38,44 @@ apps/web/dist/
 worktrees/
 .agents/worktrees/
 .typert-*/
+.gstack/
+
+# Pi-Idea source workspace
+.tmp/
+.tools/
+pi-idea-extension/benchmark/.cache/
+.pi/auth.json
+.pi/models-store.json
+.pi/sessions/
+.pi-runtime/
+.harness/pi-runtime/
+
+# Local DSH/Pi runtime and credentials
+.dsh/
+.dsh-dev/
+.codex-remote-attachments/
+.harness/
+debug.log
+
+# Generated benchmark caches, logs, and Python bytecode
+research/benchmarks/**/.cache-*/
+research/benchmarks/**/.selector-cache/
+research/benchmarks/**/results/*.log
+research/benchmarks/**/results/*.json
+research/benchmarks/**/results/*/
+
+# Keep the four handoff evidence files
+!research/benchmarks/bidirectional-context/results/long-horizon-luna-gate-v2-manifest.json
+!research/benchmarks/bidirectional-context/results/long-horizon-luna-gate-2026-08-13T19-32-59-784Z-8f30f13c.json
+!research/benchmarks/bidirectional-context/results/long-horizon-sol-5pct-v2-manifest.json
+!research/benchmarks/bidirectional-context/results/long-horizon-sol-5pct-e963f5d3d880-result.json
+**/__pycache__/
+**/*.pyc
+packages/typert/generator/tests/.explicit-service-missing-*/
+
+# Exported release archives
+artifacts/
+
+# Local proxy subscription files
+RbwqUvFGxHS3.yaml
+RbwqUvFGxHS3.steam-work.yaml

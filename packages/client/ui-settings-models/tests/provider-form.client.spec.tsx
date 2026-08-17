@@ -146,6 +146,13 @@ async function mountSection(options: Parameters<typeof scriptedFace>[0] = {}) {
     useSnapshot: bindSnapshotSelector(controller.store),
     api: scripted.face as never,
     t,
+    codex: {
+      status: () => Promise.resolve({ authenticated: false, login: { state: 'idle' as const } }),
+      beginLogin: () => Promise.resolve({ verificationUri: 'https://auth.openai.test/device', userCode: 'TEST-CODE' }),
+      pollLogin: () => Promise.resolve({ state: 'idle' as const }),
+      usage: () => Promise.resolve({ limits: [], observedAt: '2026-08-15T00:00:00.000Z' }),
+      logout: () => Promise.resolve({ authenticated: false, login: { state: 'idle' as const } }),
+    },
   }
   render(<ModelsSection {...injected} />)
   return { ...scripted, controller }

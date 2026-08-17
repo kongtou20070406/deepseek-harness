@@ -48,7 +48,8 @@ async function harness(options: HarnessOptions = {}) {
   const list = vi.fn(async () => listed)
   const load = vi.fn(() => { throw new Error('event bodies must not be loaded') })
   const inspect = vi.fn(() => { throw new Error('event bodies must not be inspected') })
-  ctx.provide('sessionPersistence', { list, load, inspect } as never)
+  const deleteStored = vi.fn(async (id: SessionId) => { listed = listed.filter(h => h.id !== id) })
+  ctx.provide('sessionPersistence', { list, load, inspect, delete: deleteStored } as never)
 
   if (options.sessionStore === true) {
     await ctx.plugin(SessionStore)
@@ -893,6 +894,13 @@ describe('registry-global session archive', () => {
 
     await result.registry.archiveSession(SessionId('kept'))
     expect(result.registry.archivedSessionIds).toEqual(['gone', 'kept'])
+
+    await result.registry.unarchiveSession(SessionId('gone'))
+    expect(result.registry.archivedSessionIds).toEqual(['kept'])
+    expect(workspace.sessionIds).toContain('gone')
+    const changesAfterRestore = result.changes.filter(change => change.table === '').length
+    await result.registry.unarchiveSession(SessionId('gone'))
+    expect(result.changes.filter(change => change.table === '').length).toBe(changesAfterRestore)
   })
 
   it('accepts unaccounted and live sessions but rejects unknown ids without writing', async () => {
@@ -909,6 +917,44 @@ describe('registry-global session archive', () => {
     await expect(result.registry.archiveSession(SessionId('ghost')))
       .rejects.toThrow(/cannot archive session 'ghost'/)
     expect(storedState(result.pool).archivedSessionIds).toEqual(['stray', 'live-only'])
+  })
+
+  it('permanently deletes an archived session: log gone, membership and archive bit removed', async () => {
+    const dir = await makeDir('delete-home')
+    const result = await harness({ sessions: [header('kept', dir, 100), header('dead', dir, 200)] })
+    const workspace = result.registry.list()[0]!
+    await result.registry.archiveSession(SessionId('dead'))
+    expect(result.registry.archivedSessionIds).toEqual(['dead'])
+    expect(workspace.sessionIds).toContain('dead')
+
+    const deleted: SessionId[] = []
+    const off = result.ctx.on('workspace/session-deleted', (id) => { deleted.push(id) })
+    await result.registry.deleteSession(SessionId('dead'))
+    off()
+    // The persistent log is gone, the id leaves the archive set and membership.
+    expect(result.list).toHaveBeenCalled()
+    expect(storedState(result.pool).archivedSessionIds).toEqual([])
+    expect(result.registry.archivedSessionIds).toEqual([])
+    expect(workspace.sessionIds).not.toContain('dead')
+    expect(workspace.sessionIds).toContain('kept')
+    // Emitted once, after the durable delete and bookkeeping both committed.
+    expect(deleted).toEqual([SessionId('dead')])
+  })
+
+  it('rejects permanent deletion of a live or unarchived session', async () => {
+    const dir = await makeDir('delete-live-home')
+    const live = await makeDir('delete-live-dir')
+    const result = await harness({
+      sessions: [header('kept', dir, 100)],
+      liveSessions: [header('still-live', live, 200)],
+    })
+    await result.registry.archiveSession(SessionId('kept'))
+
+    await expect(result.registry.deleteSession(SessionId('still-live')))
+      .rejects.toThrow(/live/)
+    await expect(result.registry.deleteSession(SessionId('kept'))).resolves.toBeUndefined()
+    await expect(result.registry.deleteSession(SessionId('kept')))
+      .rejects.toThrow(/not archived/)
   })
 
   it('propagates a persistence-listing failure instead of reporting an unknown session', async () => {

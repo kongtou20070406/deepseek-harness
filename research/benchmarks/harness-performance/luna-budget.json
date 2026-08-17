@@ -1,0 +1,740 @@
+{
+  "schema": 1,
+  "model": "openai-codex/gpt-5.6-luna",
+  "hardLimit": 100000000,
+  "usage": {
+    "input": 16973891,
+    "output": 2304847,
+    "cacheRead": 0,
+    "cacheWrite": 0,
+    "total": 19278738
+  },
+  "calls": 4102,
+  "failedCalls": 11,
+  "conservativeCharges": 820775,
+  "runs": {
+    "runtime-probe": {
+      "calls": 4,
+      "failedCalls": 3,
+      "usage": {
+        "input": 197075,
+        "output": 11,
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "total": 197086
+      }
+    },
+    "context-pilot-2026-08-12T17-23-12-382Z-4": {
+      "calls": 144,
+      "failedCalls": 0,
+      "usage": {
+        "input": 531864,
+        "output": 22124,
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "total": 553988
+      }
+    },
+    "context-pilot-2026-08-12T17-31-38-801Z-4": {
+      "calls": 4,
+      "failedCalls": 0,
+      "usage": {
+        "input": 13397,
+        "output": 147,
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "total": 13544
+      }
+    },
+    "context-pilot-2026-08-12T17-32-34-311Z-4": {
+      "calls": 44,
+      "failedCalls": 0,
+      "usage": {
+        "input": 172770,
+        "output": 8231,
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "total": 181001
+      }
+    },
+    "context-pilot-2026-08-12T17-35-16-371Z-8": {
+      "calls": 192,
+      "failedCalls": 0,
+      "usage": {
+        "input": 718586,
+        "output": 29987,
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "total": 748573
+      }
+    },
+    "oracle-latency-2026-08-12T22-33-36-613Z": {
+      "calls": 2,
+      "failedCalls": 0,
+      "usage": {
+        "input": 3375,
+        "output": 48,
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "total": 3423
+      }
+    },
+    "oracle-latency-2026-08-12T22-33-47-062Z": {
+      "calls": 16,
+      "failedCalls": 0,
+      "usage": {
+        "input": 25679,
+        "output": 354,
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "total": 26033
+      }
+    },
+    "selector-benchmark-2026-08-12T23-00-13-290Z": {
+      "calls": 223,
+      "failedCalls": 0,
+      "usage": {
+        "input": 1523112,
+        "output": 23957,
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "total": 1547069
+      }
+    },
+    "selector-benchmark-2026-08-12T23-17-58-726Z": {
+      "calls": 24,
+      "failedCalls": 0,
+      "usage": {
+        "input": 43587,
+        "output": 571,
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "total": 44158
+      }
+    },
+    "selector-benchmark-2026-08-12T23-37-17-041Z": {
+      "calls": 24,
+      "failedCalls": 0,
+      "usage": {
+        "input": 76107,
+        "output": 585,
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "total": 76692
+      }
+    },
+    "selector-benchmark-2026-08-13T00-01-16-972Z": {
+      "calls": 8,
+      "failedCalls": 0,
+      "usage": {
+        "input": 25575,
+        "output": 179,
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "total": 25754
+      }
+    },
+    "selector-benchmark-2026-08-13T00-02-46-236Z": {
+      "calls": 24,
+      "failedCalls": 0,
+      "usage": {
+        "input": 59129,
+        "output": 544,
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "total": 59673
+      }
+    },
+    "longmemeval-2026-08-13T00-48-26-469Z": {
+      "calls": 3,
+      "failedCalls": 0,
+      "usage": {
+        "input": 2541,
+        "output": 1302,
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "total": 3843
+      }
+    },
+    "longmemeval-2026-08-13T00-48-57-450Z": {
+      "calls": 20,
+      "failedCalls": 0,
+      "usage": {
+        "input": 24131,
+        "output": 6039,
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "total": 30170
+      }
+    },
+    "longmemeval-2026-08-13T01-07-56-473Z": {
+      "calls": 4,
+      "failedCalls": 0,
+      "usage": {
+        "input": 15861,
+        "output": 3844,
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "total": 19705
+      }
+    },
+    "longmemeval-2026-08-13T01-09-53-698Z": {
+      "calls": 26,
+      "failedCalls": 0,
+      "usage": {
+        "input": 104014,
+        "output": 20633,
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "total": 124647
+      }
+    },
+    "longmemeval-2026-08-13T01-13-01-609Z": {
+      "calls": 66,
+      "failedCalls": 0,
+      "usage": {
+        "input": 267543,
+        "output": 53040,
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "total": 320583
+      }
+    },
+    "longmemeval-2026-08-13T01-16-58-035Z": {
+      "calls": 37,
+      "failedCalls": 0,
+      "usage": {
+        "input": 150409,
+        "output": 25003,
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "total": 175412
+      }
+    },
+    "longmemeval-2026-08-13T01-20-17-689Z": {
+      "calls": 143,
+      "failedCalls": 0,
+      "usage": {
+        "input": 596229,
+        "output": 104072,
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "total": 700301
+      }
+    },
+    "longmemeval-2026-08-13T01-31-34-553Z": {
+      "calls": 17,
+      "failedCalls": 1,
+      "usage": {
+        "input": 150383,
+        "output": 12601,
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "total": 162984
+      }
+    },
+    "longmemeval-2026-08-13T01-35-14-756Z": {
+      "calls": 76,
+      "failedCalls": 0,
+      "usage": {
+        "input": 322868,
+        "output": 63899,
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "total": 386767
+      }
+    },
+    "longmemeval-2026-08-13T01-38-55-636Z": {
+      "calls": 1035,
+      "failedCalls": 1,
+      "usage": {
+        "input": 4463564,
+        "output": 885060,
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "total": 5348624
+      }
+    },
+    "longmemeval-2026-08-13T01-44-55-410Z": {
+      "calls": 517,
+      "failedCalls": 0,
+      "usage": {
+        "input": 2195154,
+        "output": 433371,
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "total": 2628525
+      }
+    },
+    "longmemeval-2026-08-13T02-39-59-422Z": {
+      "calls": 71,
+      "failedCalls": 0,
+      "usage": {
+        "input": 291485,
+        "output": 62101,
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "total": 353586
+      }
+    },
+    "longmemeval-2026-08-13T02-53-27-133Z": {
+      "calls": 354,
+      "failedCalls": 0,
+      "usage": {
+        "input": 1487735,
+        "output": 310428,
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "total": 1798163
+      }
+    },
+    "memsyco-2026-08-13T03-59-47-094Z-ae5d1869": {
+      "calls": 22,
+      "failedCalls": 0,
+      "usage": {
+        "input": 18494,
+        "output": 18121,
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "total": 36615
+      }
+    },
+    "memsyco-2026-08-13T04-03-35-569Z-ae5d1869": {
+      "calls": 56,
+      "failedCalls": 0,
+      "usage": {
+        "input": 88039,
+        "output": 31944,
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "total": 119983
+      }
+    },
+    "memsyco-2026-08-13T04-14-38-250Z-ae5d1869": {
+      "calls": 20,
+      "failedCalls": 0,
+      "usage": {
+        "input": 42712,
+        "output": 13363,
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "total": 56075
+      }
+    },
+    "memsyco-four-local-2026-08-13T05-28-39-793Z-8650fcb6": {
+      "calls": 26,
+      "failedCalls": 0,
+      "usage": {
+        "input": 48193,
+        "output": 10090,
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "total": 58283
+      }
+    },
+    "memsyco-four-local-2026-08-13T05-38-23-913Z-8650fcb6": {
+      "calls": 15,
+      "failedCalls": 0,
+      "usage": {
+        "input": 35111,
+        "output": 7740,
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "total": 42851
+      }
+    },
+    "memsyco-four-local-2026-08-13T05-43-29-095Z-3a1b6243": {
+      "calls": 53,
+      "failedCalls": 0,
+      "usage": {
+        "input": 93848,
+        "output": 23143,
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "total": 116991
+      }
+    },
+    "memsyco-four-local-2026-08-13T05-54-28-610Z-3a1b6243": {
+      "calls": 35,
+      "failedCalls": 3,
+      "usage": {
+        "input": 297174,
+        "output": 13801,
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "total": 310975
+      }
+    },
+    "memsyco-provider-diagnostic-v1": {
+      "calls": 1,
+      "failedCalls": 0,
+      "usage": {
+        "input": 1438,
+        "output": 280,
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "total": 1718
+      }
+    },
+    "luna-hard-1pct-2026-08-13T13-09-17-022Z-1ab0e64f": {
+      "calls": 1,
+      "failedCalls": 1,
+      "usage": {
+        "input": 71001,
+        "output": 0,
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "total": 71001
+      }
+    },
+    "luna-hard-1pct-2026-08-13T13-10-07-912Z-1ab0e64f": {
+      "calls": 57,
+      "failedCalls": 0,
+      "usage": {
+        "input": 120418,
+        "output": 9221,
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "total": 129639
+      }
+    },
+    "luna-hard-1pct-2026-08-13T13-16-25-283Z-1ab0e64f": {
+      "calls": 32,
+      "failedCalls": 0,
+      "usage": {
+        "input": 84611,
+        "output": 5424,
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "total": 90035
+      }
+    },
+    "evidence-ladder-luna-gate-2026-08-13T15-32-10-676Z-055560eb": {
+      "calls": 1,
+      "failedCalls": 1,
+      "usage": {
+        "input": 70779,
+        "output": 0,
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "total": 70779
+      }
+    },
+    "evidence-ladder-luna-gate-2026-08-13T15-32-40-859Z-055560eb": {
+      "calls": 1,
+      "failedCalls": 0,
+      "usage": {
+        "input": 1066,
+        "output": 39,
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "total": 1105
+      }
+    },
+    "evidence-ladder-luna-gate-2026-08-13T15-33-40-887Z-055560eb": {
+      "calls": 127,
+      "failedCalls": 0,
+      "usage": {
+        "input": 234875,
+        "output": 20275,
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "total": 255150
+      }
+    },
+    "evidence-ladder-luna-gate-2026-08-13T15-55-27-194Z-b5d432cd": {
+      "calls": 128,
+      "failedCalls": 0,
+      "usage": {
+        "input": 224127,
+        "output": 18298,
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "total": 242425
+      }
+    },
+    "evidence-ladder-luna-gate-2026-08-13T16-09-29-797Z-674b2213": {
+      "calls": 128,
+      "failedCalls": 0,
+      "usage": {
+        "input": 218794,
+        "output": 16508,
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "total": 235302
+      }
+    },
+    "evidence-ladder-luna-gate-2026-08-13T16-30-00-547Z-e674e372": {
+      "calls": 128,
+      "failedCalls": 0,
+      "usage": {
+        "input": 221319,
+        "output": 19068,
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "total": 240387
+      }
+    },
+    "long-horizon-luna-gate-2026-08-13T16-57-27-010Z-4de8f67c": {
+      "calls": 96,
+      "failedCalls": 0,
+      "usage": {
+        "input": 777086,
+        "output": 15324,
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "total": 792410
+      }
+    },
+    "long-horizon-luna-gate-2026-08-13T19-32-41-543Z-8f30f13c": {
+      "calls": 1,
+      "failedCalls": 1,
+      "usage": {
+        "input": 90442,
+        "output": 0,
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "total": 90442
+      }
+    },
+    "long-horizon-luna-gate-2026-08-13T19-32-59-784Z-8f30f13c": {
+      "calls": 96,
+      "failedCalls": 0,
+      "usage": {
+        "input": 772191,
+        "output": 14077,
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "total": 786268
+      }
+    }
+  },
+  "recent": [
+    {
+      "at": "2026-08-13T19:39:32.917Z",
+      "runId": "long-horizon-luna-gate-2026-08-13T19-32-59-784Z-8f30f13c",
+      "caseId": "msy:892c8d6a82ff375ca997",
+      "condition": "judge-lane_04340e79f9afb18476ffd801",
+      "charged": 9110,
+      "failed": false,
+      "error": null
+    },
+    {
+      "at": "2026-08-13T19:39:37.998Z",
+      "runId": "long-horizon-luna-gate-2026-08-13T19-32-59-784Z-8f30f13c",
+      "caseId": "msy:20a9dfce73f7f22f2dd5",
+      "condition": "answer-raw-long",
+      "charged": 14687,
+      "failed": false,
+      "error": null
+    },
+    {
+      "at": "2026-08-13T19:39:43.861Z",
+      "runId": "long-horizon-luna-gate-2026-08-13T19-32-59-784Z-8f30f13c",
+      "caseId": "msy:20a9dfce73f7f22f2dd5",
+      "condition": "answer-evidence-ladder",
+      "charged": 1496,
+      "failed": false,
+      "error": null
+    },
+    {
+      "at": "2026-08-13T19:39:48.582Z",
+      "runId": "long-horizon-luna-gate-2026-08-13T19-32-59-784Z-8f30f13c",
+      "caseId": "msy:20a9dfce73f7f22f2dd5",
+      "condition": "answer-rolling-extractive",
+      "charged": 4435,
+      "failed": false,
+      "error": null
+    },
+    {
+      "at": "2026-08-13T19:39:53.387Z",
+      "runId": "long-horizon-luna-gate-2026-08-13T19-32-59-784Z-8f30f13c",
+      "caseId": "msy:20a9dfce73f7f22f2dd5",
+      "condition": "judge-lane_2c8df99a9ae4a2e495079e1b",
+      "charged": 8364,
+      "failed": false,
+      "error": null
+    },
+    {
+      "at": "2026-08-13T19:39:59.349Z",
+      "runId": "long-horizon-luna-gate-2026-08-13T19-32-59-784Z-8f30f13c",
+      "caseId": "msy:20a9dfce73f7f22f2dd5",
+      "condition": "judge-lane_dcefaf2c2500ce7350abe851",
+      "charged": 2176,
+      "failed": false,
+      "error": null
+    },
+    {
+      "at": "2026-08-13T19:40:05.979Z",
+      "runId": "long-horizon-luna-gate-2026-08-13T19-32-59-784Z-8f30f13c",
+      "caseId": "msy:20a9dfce73f7f22f2dd5",
+      "condition": "judge-lane_7cc03ff3128b4784f1339487",
+      "charged": 17800,
+      "failed": false,
+      "error": null
+    },
+    {
+      "at": "2026-08-13T19:40:11.736Z",
+      "runId": "long-horizon-luna-gate-2026-08-13T19-32-59-784Z-8f30f13c",
+      "caseId": "msy:b7cd8f6f4ba13dbb7913",
+      "condition": "answer-rolling-extractive",
+      "charged": 4656,
+      "failed": false,
+      "error": null
+    },
+    {
+      "at": "2026-08-13T19:40:19.700Z",
+      "runId": "long-horizon-luna-gate-2026-08-13T19-32-59-784Z-8f30f13c",
+      "caseId": "msy:b7cd8f6f4ba13dbb7913",
+      "condition": "answer-evidence-ladder",
+      "charged": 2117,
+      "failed": false,
+      "error": null
+    },
+    {
+      "at": "2026-08-13T19:40:26.573Z",
+      "runId": "long-horizon-luna-gate-2026-08-13T19-32-59-784Z-8f30f13c",
+      "caseId": "msy:b7cd8f6f4ba13dbb7913",
+      "condition": "answer-raw-long",
+      "charged": 12045,
+      "failed": false,
+      "error": null
+    },
+    {
+      "at": "2026-08-13T19:40:33.122Z",
+      "runId": "long-horizon-luna-gate-2026-08-13T19-32-59-784Z-8f30f13c",
+      "caseId": "msy:b7cd8f6f4ba13dbb7913",
+      "condition": "judge-lane_159ca8bfbb82294e70fd2ae9",
+      "charged": 2750,
+      "failed": false,
+      "error": null
+    },
+    {
+      "at": "2026-08-13T19:40:40.776Z",
+      "runId": "long-horizon-luna-gate-2026-08-13T19-32-59-784Z-8f30f13c",
+      "caseId": "msy:b7cd8f6f4ba13dbb7913",
+      "condition": "judge-lane_8f31b5cb0a5c8077dadbe30f",
+      "charged": 9943,
+      "failed": false,
+      "error": null
+    },
+    {
+      "at": "2026-08-13T19:40:46.498Z",
+      "runId": "long-horizon-luna-gate-2026-08-13T19-32-59-784Z-8f30f13c",
+      "caseId": "msy:b7cd8f6f4ba13dbb7913",
+      "condition": "judge-lane_4cfde35e5188d1cd8c5ee971",
+      "charged": 14803,
+      "failed": false,
+      "error": null
+    },
+    {
+      "at": "2026-08-13T19:40:51.190Z",
+      "runId": "long-horizon-luna-gate-2026-08-13T19-32-59-784Z-8f30f13c",
+      "caseId": "msy:c372bab76c56a7656b53",
+      "condition": "answer-evidence-ladder",
+      "charged": 1769,
+      "failed": false,
+      "error": null
+    },
+    {
+      "at": "2026-08-13T19:40:56.948Z",
+      "runId": "long-horizon-luna-gate-2026-08-13T19-32-59-784Z-8f30f13c",
+      "caseId": "msy:c372bab76c56a7656b53",
+      "condition": "answer-raw-long",
+      "charged": 14350,
+      "failed": false,
+      "error": null
+    },
+    {
+      "at": "2026-08-13T19:41:01.130Z",
+      "runId": "long-horizon-luna-gate-2026-08-13T19-32-59-784Z-8f30f13c",
+      "caseId": "msy:c372bab76c56a7656b53",
+      "condition": "answer-rolling-extractive",
+      "charged": 4428,
+      "failed": false,
+      "error": null
+    },
+    {
+      "at": "2026-08-13T19:41:05.254Z",
+      "runId": "long-horizon-luna-gate-2026-08-13T19-32-59-784Z-8f30f13c",
+      "caseId": "msy:c372bab76c56a7656b53",
+      "condition": "judge-lane_541f841d4d927dfdc396472b",
+      "charged": 17293,
+      "failed": false,
+      "error": null
+    },
+    {
+      "at": "2026-08-13T19:41:09.488Z",
+      "runId": "long-horizon-luna-gate-2026-08-13T19-32-59-784Z-8f30f13c",
+      "caseId": "msy:c372bab76c56a7656b53",
+      "condition": "judge-lane_8a41174ff8348698777bec39",
+      "charged": 2325,
+      "failed": false,
+      "error": null
+    },
+    {
+      "at": "2026-08-13T19:41:14.436Z",
+      "runId": "long-horizon-luna-gate-2026-08-13T19-32-59-784Z-8f30f13c",
+      "caseId": "msy:c372bab76c56a7656b53",
+      "condition": "judge-lane_1d471bdefae71624838c1873",
+      "charged": 8277,
+      "failed": false,
+      "error": null
+    },
+    {
+      "at": "2026-08-13T19:41:19.610Z",
+      "runId": "long-horizon-luna-gate-2026-08-13T19-32-59-784Z-8f30f13c",
+      "caseId": "msy:5f3f3925ef7238651e6e",
+      "condition": "answer-rolling-extractive",
+      "charged": 4551,
+      "failed": false,
+      "error": null
+    },
+    {
+      "at": "2026-08-13T19:41:24.558Z",
+      "runId": "long-horizon-luna-gate-2026-08-13T19-32-59-784Z-8f30f13c",
+      "caseId": "msy:5f3f3925ef7238651e6e",
+      "condition": "answer-raw-long",
+      "charged": 13564,
+      "failed": false,
+      "error": null
+    },
+    {
+      "at": "2026-08-13T19:41:29.025Z",
+      "runId": "long-horizon-luna-gate-2026-08-13T19-32-59-784Z-8f30f13c",
+      "caseId": "msy:5f3f3925ef7238651e6e",
+      "condition": "answer-evidence-ladder",
+      "charged": 1665,
+      "failed": false,
+      "error": null
+    },
+    {
+      "at": "2026-08-13T19:41:33.001Z",
+      "runId": "long-horizon-luna-gate-2026-08-13T19-32-59-784Z-8f30f13c",
+      "caseId": "msy:5f3f3925ef7238651e6e",
+      "condition": "judge-lane_16b313d4c38fb0a5026f8b4f",
+      "charged": 2253,
+      "failed": false,
+      "error": null
+    },
+    {
+      "at": "2026-08-13T19:41:37.827Z",
+      "runId": "long-horizon-luna-gate-2026-08-13T19-32-59-784Z-8f30f13c",
+      "caseId": "msy:5f3f3925ef7238651e6e",
+      "condition": "judge-lane_73bbfe9d3fe590c8cde1cb28",
+      "charged": 16490,
+      "failed": false,
+      "error": null
+    },
+    {
+      "at": "2026-08-13T19:41:42.367Z",
+      "runId": "long-horizon-luna-gate-2026-08-13T19-32-59-784Z-8f30f13c",
+      "caseId": "msy:5f3f3925ef7238651e6e",
+      "condition": "judge-lane_5a990c8a11d14b05e4a02425",
+      "charged": 8566,
+      "failed": false,
+      "error": null
+    }
+  ],
+  "updatedAt": "2026-08-13T19:41:42.367Z"
+}

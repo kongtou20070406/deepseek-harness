@@ -1,0 +1,68 @@
+{
+  "schema": 1,
+  "benchmark": "pi-idea-context-assembly-cpu-v1",
+  "date": "2026-08-13",
+  "command": "npm run bench:context",
+  "workdir": "D:/Myfile/work space/pi-idea/pi-idea-extension",
+  "cpuOnly": true,
+  "historyBlocks": 5000,
+  "sourceMessages": 4001,
+  "hotPathSourceMessages": 8,
+  "retrievedCandidates": 20,
+  "iterations": 2000,
+  "warmup": 200,
+  "fullLoop": {
+    "meanMs": 0.6728,
+    "p50Ms": 0.6119,
+    "p95Ms": 0.8044,
+    "p99Ms": 2.7301,
+    "maxMs": 3.9439
+  },
+  "continuationLoop": {
+    "rootedBlocks": 21,
+    "meanMs": 0.6435,
+    "p50Ms": 0.5811,
+    "p95Ms": 0.733,
+    "p99Ms": 2.6622,
+    "maxMs": 3.1458
+  },
+  "backgroundWorker": {
+    "batchEntries": 8,
+    "batches": 500,
+    "totalMs": 638.6975,
+    "scheduleCall": {
+      "meanMs": 0.0043,
+      "p50Ms": 0.0038,
+      "p95Ms": 0.005,
+      "p99Ms": 0.0113,
+      "maxMs": 0.1102
+    },
+    "callerEventLoopDelay": {
+      "meanMs": 0.8506,
+      "p50Ms": 0.0687,
+      "p95Ms": 3.8822,
+      "p99Ms": 14.5135,
+      "maxMs": 14.558
+    }
+  },
+  "deterministicSegmentation": {
+    "inputChars": 19601,
+    "fragments": 21,
+    "byteExactReconstruction": true,
+    "meanMs": 1.5206,
+    "p50Ms": 1.4594,
+    "p95Ms": 1.8724,
+    "p99Ms": 2.2414,
+    "maxMs": 4.2525
+  },
+  "gates": {
+    "fullLoopP95Under100ms": true,
+    "fullLoopP95Under10msStretch": true,
+    "continuationLoopP95Under100ms": true,
+    "continuationLoopP95Under10msStretch": true,
+    "loopWaitsForSegmentation": false,
+    "backgroundScheduleP95Under10ms": true,
+    "callerEventLoopDelayP95Under10ms": true
+  },
+  "claimBoundary": "CPU engineering latency only; no Sol task-performance claim."
+}

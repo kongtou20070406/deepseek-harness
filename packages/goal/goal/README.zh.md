@@ -25,7 +25,7 @@
 
 严格回放只从 `goal/change` 派生生命周期变更，并拒绝形状错误、不连续 revision、非法生命周期转换、每目标时间戳非单调，以及不连续的已准入 Goal Round。只有来源为 goal 且已准入的 `user/message` 事件会推进正数 Round。挂钟时间倒退时，变更时间戳会限制在不早于上一次目标更新的值。增量回放会把游标保留在第一个损坏事件处；`goal/changed` 会在持久事件提交后触发，监听器失败会被隔离处理。
 
-续行启用状态绝不持久化。新缓存与每次触发 `agent/session-start` 时都会停用续行，即使回放找到了持久 phase 为 active 的目标。续行驱动器在卸载前或持久性不确定后也会调用 `disarm()`。因此，会话恢复、fork 与驱动器替换会保留目标、phase、revision 和已准入 Round 数量，却不会启动工作；之后必须通过显式 resume 变更重新启用续行。
+续行启用状态绝不持久化。新缓存起始为停用状态，startup/fork 边缘会让回放得到的目标保持静默。resume 边缘只会重新启用持久 phase 为 active 的目标，因此服务重启中断的目标可继续执行，且不会写入虚假的 goal revision。paused、blocked 与 complete 目标保持停用。续行驱动器在卸载前或持久性不确定后也会调用 `disarm()`；如果之后没有会话 resume，则仍需显式 resume 变更来重新启用续行。
 
 单独发布的 `./invariant` 配套模块会为每个已挂接会话维护独立折叠。它会在候选事件进入持久日志前拒绝格式错误的 goal 变更、不连续 revision、非法生命周期转换、时间戳回退，以及不连续的已准入 Round。
 

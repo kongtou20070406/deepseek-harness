@@ -62,6 +62,24 @@ export function scrubbedParentEnv(): Record<string, string> {
   for (const [key, value] of Object.entries(process.env)) {
     if (value !== undefined && !SENSITIVE_ENV_PATTERN.test(key) && !key.toUpperCase().startsWith(DSH_ENV_PREFIX)) env[key] = value
   }
+  return dropGitConfigGroup(env)
+}
+
+/**
+ * Atomically drop Git's indexed command-line configuration group from a child
+ * environment: the credential-shaped heuristic alone removes `KEY_n` entries
+ * (`KEY` matches) but leaves a dangling `GIT_CONFIG_COUNT`/`GIT_CONFIG_VALUE_n`,
+ * which Git then reads as a missing config key. Clearing exactly the indexed
+ * group together never leaves a COUNT without its paired KEY/VALUE while
+ * preserving independent controls such as `GIT_CONFIG_GLOBAL` and
+ * `GIT_CONFIG_SYSTEM`.
+ * @param env - the scrubbed base environment.
+ * @returns `env` with no indexed Git command-line configuration entries.
+ */
+export function dropGitConfigGroup(env: Record<string, string>): Record<string, string> {
+  for (const key of Object.keys(env)) {
+    if (/^GIT_CONFIG_(?:COUNT|KEY_\d+|VALUE_\d+)$/i.test(key)) Reflect.deleteProperty(env, key)
+  }
   return env
 }
 

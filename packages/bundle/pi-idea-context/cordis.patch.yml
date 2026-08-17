@@ -1,0 +1,35 @@
+# Pi-Idea context-only overlay. Every Session owns its append-only Idea state;
+# the Workspace package below is read-only and only seeds unmigrated old chats.
+
+- insert:
+    - id: research-context
+      name: '@deepseek-ai/dsh-research-context'
+      config:
+        kernel: >-
+          本对话的持久 Idea 尚未形成；从用户当前明确目标建立，若多种解释会改变实际动作，先自动进入讨论。
+        maxViewChars: 48000
+        maxViewTokens: 48000
+        maxKernelTokens: 256
+        fallbackAuthorityTokens: 4096
+        recentTurns: 4
+        maxEvidenceTurns: 8
+        maxInquiryNodes: 64
+    - id: research-authority-workspace
+      name: '@deepseek-ai/dsh-research-authority-workspace'
+    - id: research-context-controls
+      name: '@deepseek-ai/dsh-research-context-controls'
+    - id: model-execution-policy
+      name: '@deepseek-ai/dsh-model-execution-policy'
+    - id: skill-filesystem-pi-idea
+      name: '@deepseek-ai/dsh-skill-filesystem'
+      config:
+        providerName: pi-idea-bundle
+        includeDefaultRoots: false
+        customSkillDirs:
+          - !!js "process.getBuiltinModule('node:url').fileURLToPath(new URL('skills/', baseUrl))"
+    - id: goal-round-step-budget
+      name: '@deepseek-ai/dsh-goal-round-step-budget'
+      config:
+        maxStepsPerGoalRound: 32
+    - id: client-ui-research-context
+      name: '@deepseek-ai/dsh-client-ui-research-context'

@@ -2694,6 +2694,22 @@ function createFixtureWorld(options: FixtureOptions): FixtureWorld {
         }
         return ok(request, { archivedSessionIds: [...archivedSessionIds] })
       },
+      deleteSession: (request) => {
+        const missing = requireSession(request)
+        if (missing !== undefined) return missing
+        const { sessionId } = request.payload
+        if (!archivedSessionIds.includes(sessionId)) {
+          return err(request, { code: 'session-not-archived', message: `session '${sessionId}' is not archived`, details: { sessionId } })
+        }
+        const next = archivedSessionIds.filter(id => id !== sessionId)
+        archivedSessionIds.length = 0
+        archivedSessionIds.push(...next)
+        for (const workspace of workspaces) {
+          workspace.sessionIds = workspace.sessionIds.filter(id => id !== sessionId)
+        }
+        emitHost({ type: 'host/archived-sessions-changed', archivedSessionIds: [...archivedSessionIds] })
+        return ok(request, { archivedSessionIds: [...archivedSessionIds] })
+      },
     },
     agentPresets: {
       // Both trusts appear, because a surface must present a locally authored
@@ -3105,6 +3121,7 @@ export class FixtureApiClient extends AbstractApiClient {
       case 'workspace.insertBefore': return this.api.workspace.insertBefore(request)
       case 'workspace.insertSessionBefore': return this.api.workspace.insertSessionBefore(request)
       case 'workspace.archiveSession': return this.api.workspace.archiveSession(request)
+      case 'workspace.deleteSession': return this.api.workspace.deleteSession(request)
       case 'skill.list': return this.api.skills.list(request)
       case 'agentPreset.list': return this.api.agentPresets.list(request)
       case 'agentPreset.select': return this.api.agentPresets.select(request)

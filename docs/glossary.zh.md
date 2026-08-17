@@ -24,7 +24,7 @@ DeepSeek Harness 的领域词汇为每个概念规定一个规范术语。各术
 
 - **目标**：附着在现有会话上的单个持久完成目标，带有按修订号演进的 `active` / `paused` / `blocked` / `complete` 阶段和 Goal Round 上限；`blocked` 保留策略代码与说明。目标是一种状态，不是调度器，也不是一段独立对话；会话日志仍是其真源。
 - **Goal Round**：为当前目标接纳的一次续行周期。同会话驱动器将 Goal Round 具体化为一个由目标触发的[轮次](#turn)，其中可包含零个或多个步骤；同一会话中无关的人类轮次不消耗 Goal Round 上限。<a id="goal-round"></a>
-- **目标激活**：续行消费方接纳下一个 Goal Round 的进程本地权限。激活态为 `armed` 或 `disarmed`；它有意不参与持久回放，因此在恢复或 fork 后，只有随后通过 `/goal` 或模型工具执行一次经人类授权的恢复变更，自动工作才能开始。
+- **目标激活**：续行消费方接纳下一个 Goal Round 的进程本地权限。激活态为 `armed` 或 `disarmed`，且有意不参与持久回放。会话 resume 只会重新启用持久 phase 为 active 的目标，使服务重启后的工作继续；fork/startup 与已停止 phase 保持静默，直到通过 `/goal` 或模型工具执行经人类授权的 resume 变更。
 
 ## 人类命令
 

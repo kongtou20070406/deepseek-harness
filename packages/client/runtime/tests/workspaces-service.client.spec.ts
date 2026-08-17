@@ -468,12 +468,17 @@ describe('WorkspaceRuntime', () => {
     expect(workspaces.list.getSnapshot().archivedSessionIds).toEqual(['s-idle', 's-open'])
     expect(sessions.list.getSnapshot().current).toBeUndefined()
 
+    api.onWorkspaceArchiveSession = () => Promise.resolve(ok({ archivedSessionIds: [sid('s-open')] }))
+    await expect(workspaces.unarchiveSession(sid('s-idle'))).resolves.toBeUndefined()
+    expect(api.callsOf('workspace.archiveSession').at(-1)).toEqual({ sessionId: 's-idle', archived: false })
+    expect(workspaces.list.getSnapshot().archivedSessionIds).toEqual(['s-open'])
+
     // A Host failure leaves the set and the selection untouched.
     api.onWorkspaceArchiveSession = () => Promise.resolve(err({
       code: 'session-not-found', message: 'no session ghost', details: { sessionId: sid('ghost') },
     }))
     await expect(workspaces.archiveSession(sid('ghost'))).rejects.toThrow(/session-not-found/)
-    expect(workspaces.list.getSnapshot().archivedSessionIds).toEqual(['s-idle', 's-open'])
+    expect(workspaces.list.getSnapshot().archivedSessionIds).toEqual(['s-open'])
 
     // The changed frame and the list baseline both re-install the full set.
     workspaces.handleHostEnvelope({

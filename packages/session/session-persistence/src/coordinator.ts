@@ -212,6 +212,18 @@ export interface PersistenceBackend<TornMarker = unknown> {
    * backend omits it.
    */
   close?(): Promise<void>
+
+  /**
+   * Durably remove one stored session and every artifact it owns. Called after
+   * the coordinator has confirmed no live owner and drained any in-flight
+   * writes. Must resolve after the removal is durable; a subsequent
+   * {@link loadStored} returns `undefined`. Removing an absent id is a no-op.
+   * A backend with per-session artifacts removes the artifact; SQLite deletes
+   * the `sessions` row and relies on its `ON DELETE CASCADE` for events.
+   * @param id - persisted session to permanently delete.
+   * @param signal - optional cancellation for the backend delete.
+   */
+  deleteStored(id: SessionId, signal?: AbortSignal): Promise<void>
 }
 
 /** Per-session write state held by the coordinator's in-memory bookkeeping. */
@@ -772,6 +784,32 @@ export class PersistenceCoordinator<TornMarker = unknown> {
       this.preparations.discard(reservation)
       return reservation.source.inspection
     }
+  }
+
+  /**
+   * Permanently delete one stored session. Rejects while the identity is still
+   * bound to a live Session; run on the same per-id chain as writes so an
+   * in-flight append cannot race the removal. Durably removes every artifact
+   * the backend owns, then drops the coordinator's in-memory state for the id.
+   * @param id - persisted session to permanently delete.
+   * @param signal - optional cancellation for the backend delete.
+   */
+  async delete(id: SessionId, signal?: AbortSignal): Promise<void> {
+    await this.waitForRetirement(id, signal)
+    if (this.ctx.sessions.get(id) !== undefined) {
+      throw new Error(`cannot delete session "${id}" while it is live`)
+    }
+    await this.serialize(id, () => this.deleteCore(id, signal), signal)
+  }
+
+  private async deleteCore(id: SessionId, signal?: AbortSignal): Promise<void> {
+    signal?.throwIfAborted()
+    if (this.ctx.sessions.get(id) !== undefined) {
+      throw new Error(`cannot delete session "${id}" while it is live`)
+    }
+    await this.backend.deleteStored(id, signal)
+    this.states.delete(id)
+    this.preparations.invalidate(id)
   }
 
   /**

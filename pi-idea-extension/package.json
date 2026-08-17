@@ -1,0 +1,30 @@
+{
+  "name": "pi-idea-extension",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "description": "Optional long-running Scientific Idea retention for ordinary Pi conversations.",
+  "keywords": ["pi-package"],
+  "pi": {
+    "extensions": ["./extensions"],
+    "themes": ["./themes"]
+  },
+  "bin": {
+    "pi-idea": "./bin/pi-idea.js"
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-ai": "*",
+    "@earendil-works/pi-coding-agent": "*",
+    "@earendil-works/pi-tui": "*"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "cli": "node bin/pi-idea.js",
+    "web": "node web/server.js --open",
+    "bench:context": "node benchmark/context-assembly-cpu.js",
+    "bench:intent": "node benchmark/multiturn-intent-drift.js",
+    "test:pi": "node test/pi-rpc-smoke.js",
+    "test:web": "node test/web-server-smoke.js",
+    "test:installed": "node test/pi-installed-smoke.js"
+  }
+}

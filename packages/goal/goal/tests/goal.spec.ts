@@ -187,15 +187,52 @@ describe('GoalService creation and replay', () => {
     expect(child.session.header.seedLength).toBe(parent.session.seq)
   })
 
-  it('disarms live activation on every session-start edge', async () => {
+  it('rearms an active goal on resume without waking explicitly stopped goals', async () => {
     const { ctx, agent, session } = await harness()
-    let goal = ctx.goals.create(agent, { objective: 'stay stopped after resume' })
-    expect(goal.activation).toBe('armed')
+    const goal = ctx.goals.create(agent, { objective: 'continue after restart' })
+    const durableLength = session.events.length
+    for (const source of ['startup', 'clear', 'compact'] as const) {
+      agentEvents(ctx, agent).emit('agent/session-start', { source })
+      expect(ctx.goals.get(agent)).toMatchObject({ activation: 'disarmed', revision: 1 })
+      expect(session.events).toHaveLength(durableLength)
+
+      agentEvents(ctx, agent).emit('agent/session-start', { source: 'resume' })
+      expect(ctx.goals.get(agent)).toMatchObject({ activation: 'armed', revision: 1 })
+      expect(session.events).toHaveLength(durableLength)
+    }
+
+    let stopped = ctx.goals.pause(agent, goal)
     agentEvents(ctx, agent).emit('agent/session-start', { source: 'resume' })
-    expect(ctx.goals.get(agent)?.activation).toBe('disarmed')
-    goal = ctx.goals.resume(agent, goal)
-    expect(goal).toMatchObject({ phase: 'active', activation: 'armed', revision: 2 })
+    expect(ctx.goals.get(agent)).toMatchObject({ phase: 'paused', activation: 'disarmed' })
+
+    stopped = ctx.goals.resume(agent, stopped)
+    stopped = ctx.goals.block(agent, stopped, { code: 'needs-human', message: 'Wait for input.' })
+    agentEvents(ctx, agent).emit('agent/session-start', { source: 'resume' })
+    expect(ctx.goals.get(agent)).toMatchObject({ phase: 'blocked', activation: 'disarmed' })
+
+    stopped = ctx.goals.resume(agent, stopped)
+    ctx.goals.complete(agent, stopped)
+    agentEvents(ctx, agent).emit('agent/session-start', { source: 'resume' })
+    expect(ctx.goals.get(agent)).toMatchObject({ phase: 'complete', activation: 'disarmed' })
     expect(() => foldGoal(session.events)).not.toThrow()
+  })
+
+  it('does not rearm an active goal whose round budget is exhausted', async () => {
+    const { ctx, agent, session } = await harness()
+    const goal = ctx.goals.create(agent, { objective: 'stop at the durable limit', maxGoalRounds: 1 })
+    ctx.goals.disarm(agent)
+    appendRound(session, goal, 1)
+
+    agentEvents(ctx, agent).emit('agent/session-start', { source: 'resume' })
+
+    expect(ctx.goals.get(agent)).toMatchObject({
+      phase: 'active',
+      roundsStarted: 1,
+      maxGoalRounds: 1,
+      activation: 'disarmed',
+      revision: 1,
+    })
+    expect(session.events).toHaveLength(4)
   })
 
   it('lets a lifecycle owner disarm without writing a durable revision', async () => {

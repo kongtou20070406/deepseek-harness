@@ -655,7 +655,7 @@ export const SERVICE_API: readonly ServiceApiEntry[] = [
       },
       {
         signature: 'disarm(agent: Agent): GoalView | undefined',
-        description: 'Remove process-local continuation authority without changing durable goal phase or revision. Lifecycle owners use this before unloading a driver; a later human-authorized resume records the new activation edge.',
+        description: 'Remove process-local continuation authority without changing durable goal phase or revision. Lifecycle owners use this before unloading a driver; a later session resume rearms an active goal, while stopped phases still require an explicit human-authorized resume mutation.',
         parameters: [{ name: 'agent', description: 'owning live agent.' }],
         returns: 'a fresh disarmed view, or `undefined` when no goal is current.',
       },
@@ -964,6 +964,108 @@ export const SERVICE_API: readonly ServiceApiEntry[] = [
     ],
   },
   {
+    key: 'researchContext',
+    summary: 'Event-sourced authority plus a disposable incremental retrieval index.',
+    description: 'Event-sourced authority plus a disposable incremental retrieval index.',
+    methods: [
+      {
+        signature: 'readonly config: Readonly<ResolvedResearchContextConfig>',
+        description: 'Validated immutable deployment defaults and selection limits.',
+        parameters: [],
+      },
+      {
+        signature: 'registerRetrievalProvider(provider: ResearchRetrievalProvider): () => void',
+        description: 'Register a hot-path scorer. Providers must be synchronous and return immediately.',
+        parameters: [{ name: 'provider', description: 'uniquely named retrieval provider.' }],
+        returns: 'a disposer that unregisters the provider.',
+      },
+      {
+        signature: 'registerAuthorityProvider(provider: ResearchAuthorityProvider): () => void',
+        description: 'Install the single project-scoped authority owner for this composition.',
+        parameters: [{ name: 'provider', description: 'provider that owns project-state persistence and revision checks.' }],
+        returns: 'a disposer that releases the provider when it is still current.',
+      },
+      {
+        signature: 'isEnabled(session: Session): boolean',
+        description: 'Return whether this Session should include Idea context in model requests.',
+        parameters: [{ name: 'session', description: 'Durable source session.' }],
+        returns: 'whether the Session includes Idea context in model requests.',
+      },
+      {
+        signature: 'setEnabled(session: Session, enabled: boolean): boolean',
+        description: 'Persist a per-Session Idea switch; repeated writes are no-ops.',
+        parameters: [{ name: 'session', description: 'Durable source session.' }, { name: 'enabled', description: 'Whether to include Idea context in future model requests.' }],
+        returns: 'the resulting enabled value.',
+      },
+      {
+        signature: 'state(session: Session): ResearchStateProjection',
+        description: 'Read or initialize the session\'s confirmed research state.',
+        parameters: [{ name: 'session', description: 'Durable source session.' }],
+        returns: 'A detached copy of the current whole state.',
+      },
+      {
+        signature: 'async stateForRequest(session: Session): Promise<ResearchStateProjection>',
+        description: 'Ensure a project-owned authority record exists before a request or mutation.',
+        parameters: [{ name: 'session', description: 'session whose Workspace selects the authority record.' }],
+        returns: 'a detached copy of the initialized current state.',
+      },
+      {
+        signature: 'async proposeAuthority( session: Session, expectedRevision: number, target: ResearchAuthorityProposal[\'target\'], text: string, ): Promise<ResearchStateProjection>',
+        description: 'Create one unconfirmed Kernel or Frame replacement.',
+        parameters: [{ name: 'session', description: 'Durable source session.' }, { name: 'expectedRevision', description: 'Exact current state revision.' }, { name: 'target', description: 'Authority layer to replace if later confirmed.' }, { name: 'text', description: 'Complete candidate value.' }],
+        returns: 'The new state containing a pending proposal.',
+      },
+      {
+        signature: 'async confirmAuthority(session: Session, proposalId: string): Promise<ResearchStateProjection>',
+        description: 'Confirm the exact pending authority proposal.',
+        parameters: [{ name: 'session', description: 'Durable source session.' }, { name: 'proposalId', description: 'Exact current proposal identity.' }],
+        returns: 'The new state with the authority value committed.',
+      },
+      {
+        signature: 'async rejectAuthority(session: Session, proposalId: string): Promise<ResearchStateProjection>',
+        description: 'Reject the exact pending authority proposal without changing authority.',
+        parameters: [{ name: 'session', description: 'Durable source session.' }, { name: 'proposalId', description: 'Exact current proposal identity.' }],
+        returns: 'The new state with no pending proposal.',
+      },
+      {
+        signature: 'async updateWorking( session: Session, expectedRevision: number, input: WorkingStateInput, ): Promise<ResearchStateProjection>',
+        description: 'Replace model-maintained execution state without changing Kernel or Frame.',
+        parameters: [{ name: 'session', description: 'Durable source session.' }, { name: 'expectedRevision', description: 'Exact current state revision.' }, { name: 'input', description: 'Complete replacement Working State.' }],
+        returns: 'The new state containing the replacement Working State.',
+      },
+      {
+        signature: 'importHandoff(session: Session, input: ResearchHandoffInput): ResearchHandoffCandidate',
+        description: 'Import one bounded cross-harness continuation bridge as non-authoritative evidence.',
+        parameters: [{ name: 'session', description: 'target session that records the evidence event.' }, { name: 'input', description: 'bounded provenance and handoff text.' }],
+        returns: 'the imported candidate with its durable event sequence.',
+      },
+      {
+        signature: 'recordAssembly(session: Session, view: ResearchContextView): ResearchContextProjection',
+        description: 'Append the latest assembly manifest for replay and UI projections.',
+        parameters: [{ name: 'session', description: 'Durable source session.' }, { name: 'view', description: 'Completed model-visible assembly decision.' }],
+        returns: 'The append-ready manifest value.',
+      },
+      {
+        signature: 'recordInheritance(session: Session, view: ResearchWorkerContextView): ResearchContextInheritanceProjection',
+        description: 'Persist the exact cross-session provenance of one child-worker request.',
+        parameters: [{ name: 'session', description: 'child session that records the inheritance event.' }, { name: 'view', description: 'compiled worker view and its parent provenance.' }],
+        returns: 'a detached copy of the persisted inheritance manifest.',
+      },
+      {
+        signature: 'assemble(session: Session, requestMessages: readonly Message[], goal?: ResearchContextGoal): ResearchContextView',
+        description: 'Assemble one bounded, source-addressed view for the current request.',
+        parameters: [{ name: 'session', description: 'durable source log.' }, { name: 'requestMessages', description: 'admitted current-turn messages before logging.' }, { name: 'goal', description: 'optional active same-session Goal.' }],
+        returns: 'a complete view and the raw event seqs it materializes.',
+      },
+      {
+        signature: 'assembleWorker( workerSession: Session, requestMessages: readonly Message[], parentSessionId: string, parentView: ResearchContextView, ): ResearchWorkerContextView',
+        description: 'Compile a child request without copying the parent\'s transcript. The parent assembler chooses research evidence from the short delegated request; this method then adds only relevant complete child loops and the current child request. The confirmed parent Kernel therefore remains the exact prefix.',
+        parameters: [{ name: 'workerSession', description: 'child session whose own completed loops may be recalled.' }, { name: 'requestMessages', description: 'current child request messages.' }, { name: 'parentSessionId', description: 'durable id of the research parent session.' }, { name: 'parentView', description: 'already assembled parent research view to inherit selectively.' }],
+        returns: 'the bounded worker view and exact cross-session provenance manifest.',
+      },
+    ],
+  },
+  {
     key: 'sandbox',
     summary: 'Abstract process-sandbox service.',
     description: 'Abstract process-sandbox service. confine must return enforcing argv or fail closed at wrap or runner-execution time; silent unconfined passthrough is forbidden. Functional probes arbitrate multi-runner chains and may be skipped for a sole candidate, whose own refusal remains the fail-closed end.',
@@ -1073,6 +1175,12 @@ export const SERVICE_API: readonly ServiceApiEntry[] = [
         description: 'List materialized sessions with cheap per-log change tokens.\n\nRepeated observations of an unchanged log return the same revision. A successful mutating load repair changes the next listed revision. Revisions also distinguish independently backed stores so backend-local counters cannot compare equal across different persistence sources.',
         parameters: [{ name: 'signal', description: 'optional cancellation for backend snapshot-listing work.' }],
         returns: 'one header and opaque revision per materialized session without loading full logs.',
+      },
+      {
+        signature: 'abstract delete(id: SessionId, signal?: AbortSignal): Promise<void>',
+        description: 'Permanently delete a session and every durable artifact it owns. The session MUST be archived (or otherwise released by its live owner) before delete: deleting an identity still bound to a live Session rejects. The call resolves only after the backend\'s delete is durable; a subsequent list no longer names the id. Deleting an already-absent id is a no-op. SQLite relies on its `ON DELETE CASCADE`; backends do not delete events individually.',
+        parameters: [{ name: 'id', description: 'the persisted session to permanently delete.' }, { name: 'signal', description: 'optional cancellation for backend deletion work.' }],
+        returns: 'when the deletion is durably reflected by the backend.',
       },
     ],
   },
@@ -2146,6 +2254,18 @@ export const SERVICE_API: readonly ServiceApiEntry[] = [
         returns: 'resolution after durability.',
       },
       {
+        signature: 'unarchiveSession(sessionId: SessionId): Promise<void>',
+        description: 'Remove one session from the durable archive set. The session log and its workspace accounting slot never moved, so restoring only changes this membership bit. A non-archived id is an idempotent no-op.',
+        parameters: [{ name: 'sessionId', description: 'The session to restore.' }],
+        returns: 'resolution after durability.',
+      },
+      {
+        signature: 'deleteSession(sessionId: SessionId): Promise<void>',
+        description: 'Permanently delete one archived session: the durable log, every workspace membership slot, and the archive-set bit. Rejects while the id is live or not archived — permanent deletion is a distinct, confirmed action that must never run on an unarchived or still-open session. The persistence delete commits before any durable registry bookkeeping is rewritten.',
+        parameters: [{ name: 'sessionId', description: 'The archived session to permanently delete.' }],
+        returns: 'resolution after the durable log and registry state are gone.',
+      },
+      {
         signature: 'async resolveByPath(path: string): Promise<Workspace | undefined>',
         description: 'Resolve by canonical directory path without creating or mutating a workspace. A missing path rejects during `realpath`; an existing unowned directory returns `undefined`.',
         parameters: [{ name: 'path', description: 'Existing directory path in any spelling.' }],
@@ -2604,6 +2724,14 @@ export const EVENT_API: readonly EventApiEntry[] = [
     summary: 'A workflow run started — the script\'s meta block validated, the body about to execute.',
     description: 'A workflow run started — the script\'s meta block validated, the body about to execute. Paired with Events[\'workflow/end\'].',
     parameters: [{ name: 'info', description: 'the run\'s identity snapshot (id + meta).' }],
+  },
+  {
+    name: 'workspace/session-deleted',
+    mode: 'emit',
+    signature: '\'workspace/session-deleted\'(sessionId: SessionId): void',
+    summary: 'A session was permanently deleted: the durable log, every workspace membership slot, and the archive-set bit are already gone when this fires.',
+    description: 'A session was permanently deleted: the durable log, every workspace membership slot, and the archive-set bit are already gone when this fires. Emitted AFTER the persistence delete and the registry bookkeeping both committed, so listeners observe a consistent post-delete state. The removed session is cold (not live) by the time this event reaches any listener.',
+    parameters: [{ name: 'sessionId', description: 'the permanently deleted session id.' }],
   },
 ]
 
@@ -3594,6 +3722,62 @@ export const TYPE_API: readonly TypeApiEntry[] = [
     declaration: 'export type RequestRunOutcome = \'approved\' | \'completed\' | \'rejected\' | \'cancelled\' | \'failed\';',
   },
   {
+    name: 'ResearchAuthorityProposal',
+    declaration: 'export interface ResearchAuthorityProposal {\n    readonly id: string;\n    readonly target: \'kernel\' | \'frame\';\n    readonly baseVersion: number | null;\n    readonly text: string;\n    readonly proposedAt: number;\n}',
+  },
+  {
+    name: 'ResearchAuthorityProvider',
+    declaration: 'export interface ResearchAuthorityProvider {\n    readonly id: string;\n    read(session: Session): ResearchStateProjection | undefined;\n    initialize(session: Session, initial: ResearchStateProjection): Promise<ResearchStateProjection>;\n    commit(session: Session, expectedRevision: number, next: ResearchStateProjection): Promise<ResearchStateProjection>;\n}',
+  },
+  {
+    name: 'ResearchAuthorityValue',
+    declaration: 'export interface ResearchAuthorityValue {\n    readonly version: number;\n    readonly text: string;\n    readonly confirmedAt: number;\n}',
+  },
+  {
+    name: 'ResearchContextComponents',
+    declaration: 'export interface ResearchContextComponents {\n    readonly kernelTokens: number;\n    readonly frameTokens: number;\n    readonly workingTokens: number;\n    readonly goalTokens: number;\n    readonly historyTokens: number;\n    readonly locatorTokens: number;\n}',
+  },
+  {
+    name: 'ResearchContextGoal',
+    declaration: 'export interface ResearchContextGoal {\n    readonly id: string;\n    readonly objective: string;\n    readonly phase: string;\n    readonly roundsStarted: number;\n}',
+  },
+  {
+    name: 'ResearchContextInheritanceProjection',
+    declaration: 'export interface ResearchContextInheritanceProjection {\n    readonly parentSessionId: string;\n    readonly parentStateRevision: number;\n    readonly parentSourceSeqs: readonly number[];\n    readonly parentSelectedTurns: readonly number[];\n    readonly workerSourceSeqs: readonly number[];\n    readonly workerSelectedTurns: readonly number[];\n    readonly workerOmittedTurns: readonly number[];\n    readonly estimatedTokens: number;\n    readonly assemblyMicros: number;\n    readonly viewHash: string;\n    readonly goalId?: string;\n}',
+  },
+  {
+    name: 'ResearchContextProjection',
+    declaration: 'export interface ResearchContextProjection {\n    readonly stateRevision: number;\n    readonly turn: number | null;\n    readonly selectedTurns: readonly number[];\n    readonly selectedLocators: readonly string[];\n    readonly partialTurns: readonly number[];\n    readonly omittedTurnCount: number;\n    readonly sourceSeqs: readonly number[];\n    readonly estimatedTokens: number;\n    readonly assemblyMicros: number;\n    readonly components: ResearchContextComponents;\n    readonly goalId?: string;\n}',
+  },
+  {
+    name: 'ResearchContextView',
+    declaration: 'export interface ResearchContextView {\n    readonly text: string;\n    readonly sourceSeqs: readonly number[];\n    readonly selectedTurns: readonly number[];\n    readonly selectedLocators: readonly string[];\n    readonly partialTurns: readonly number[];\n    readonly omittedTurns: readonly number[];\n    readonly scannedEvents: number;\n    readonly stateRevision: number;\n    readonly estimatedTokens: number;\n    readonly assemblyMicros: number;\n    readonly components: ResearchContextComponents;\n    readonly goalId?: string;\n}',
+  },
+  {
+    name: 'ResearchHandoffCandidate',
+    declaration: 'export interface ResearchHandoffCandidate {\n    readonly id: string;\n    readonly sourceHarness: string;\n    readonly sourceSessionId: string;\n    readonly projectPath?: string;\n    readonly anchors: readonly string[];\n    readonly text: string;\n    readonly importedAt: number;\n    readonly importEventSeq: number;\n}',
+  },
+  {
+    name: 'ResearchHandoffInput',
+    declaration: 'export interface ResearchHandoffInput {\n    readonly sourceHarness: string;\n    readonly sourceSessionId: string;\n    readonly projectPath?: string;\n    readonly anchors?: readonly string[];\n    readonly text: string;\n    readonly createdAt?: number;\n}',
+  },
+  {
+    name: 'ResearchRetrievalProvider',
+    declaration: 'export interface ResearchRetrievalProvider {\n    readonly id: string;\n    score(query: ReadonlySet<string>, candidate: {\n        readonly turn: number;\n        readonly kind: \'loop\' | LoopRowKind | \'handoff\';\n        readonly text: string;\n        readonly terms: ReadonlySet<string>;\n    }): number;\n}',
+  },
+  {
+    name: 'ResearchStateProjection',
+    declaration: 'export interface ResearchStateProjection {\n    readonly revision: number;\n    readonly kernel: ResearchAuthorityValue;\n    readonly frame?: ResearchAuthorityValue;\n    readonly working?: ResearchWorkingState;\n    readonly proposal?: ResearchAuthorityProposal;\n    readonly updatedAt: number;\n}',
+  },
+  {
+    name: 'ResearchWorkerContextView',
+    declaration: 'export interface ResearchWorkerContextView {\n    readonly text: string;\n    readonly manifest: ResearchContextInheritanceProjection;\n}',
+  },
+  {
+    name: 'ResearchWorkingState',
+    declaration: 'export interface ResearchWorkingState {\n    readonly revision: number;\n    readonly currentTask: string;\n    readonly unresolved: readonly string[];\n    readonly nextAction: string;\n    readonly evidenceRoots: readonly number[];\n    readonly updatedAt: number;\n}',
+  },
+  {
     name: 'ResolvedAlwaysRetryPolicy',
     declaration: 'export interface ResolvedAlwaysRetryPolicy extends ResolvedRetryBackoff {\n    readonly mode: \'always\';\n}',
   },
@@ -3635,7 +3819,7 @@ export const TYPE_API: readonly TypeApiEntry[] = [
   },
   {
     name: 'RpcErrorDetailsMap',
-    declaration: 'export interface RpcErrorDetailsMap {\n    \'bad-request\': {\n        issues: ZodIssue[];\n    };\n    \'cancelled\': {};\n    \'session-not-found\': {\n        sessionId: SessionId;\n    };\n    \'model-unavailable\': {\n        provider: string;\n        model: string;\n    };\n    \'session-conflict\': {\n        sessionId: SessionId;\n        requestedCwd: string;\n        existingCwd?: string;\n    };\n    \'invalid-time-zone\': {\n        value: string;\n    };\n    \'workspace-attach-failed\': {\n        sessionId: SessionId;\n        workspaceId: string;\n    };\n    \'workspace-not-found\': {\n        workspaceId: string;\n    };\n    \'workspace-invalid-path\': {\n        path: string;\n    };\n    \'workspace-name-conflict\': {\n        name: string;\n    };\n    \'workspace-move-invalid\': {\n        workspaceId: string;\n        sessionId: SessionId;\n        beforeSessionId?: SessionId;\n    };\n    \'directory-unreadable\': {\n        path: string;\n    };\n    \'directory-exists\': {\n        path: string;\n    };\n    \'directory-create-failed\': {\n        path: string;\n    };\n    \'directory-picker-unavailable\': {\n        capability: string;\n    };\n    \'agent-preset-read-only\': {\n        agentPreset: string;\n        reason: string;\n    };\n    \'agent-preset-locked\': {\n        sessionId: SessionId;\n        agentPreset: string;\n    };\n    \'agent-preset-conflict\': {\n        sessionId: SessionId;\n        requestedPreset: string;\n        existingPreset?: string;\n    };\n    \'agent-preset-not-found\': {\n        agentPreset: string;\n      /* …truncated — full shape in source */',
+    declaration: 'export interface RpcErrorDetailsMap {\n    \'bad-request\': {\n        issues: ZodIssue[];\n    };\n    \'cancelled\': {};\n    \'session-not-found\': {\n        sessionId: SessionId;\n    };\n    \'session-live\': {\n        sessionId: SessionId;\n    };\n    \'session-not-archived\': {\n        sessionId: SessionId;\n    };\n    \'model-unavailable\': {\n        provider: string;\n        model: string;\n    };\n    \'session-conflict\': {\n        sessionId: SessionId;\n        requestedCwd: string;\n        existingCwd?: string;\n    };\n    \'invalid-time-zone\': {\n        value: string;\n    };\n    \'workspace-attach-failed\': {\n        sessionId: SessionId;\n        workspaceId: string;\n    };\n    \'workspace-not-found\': {\n        workspaceId: string;\n    };\n    \'workspace-invalid-path\': {\n        path: string;\n    };\n    \'workspace-name-conflict\': {\n        name: string;\n    };\n    \'workspace-move-invalid\': {\n        workspaceId: string;\n        sessionId: SessionId;\n        beforeSessionId?: SessionId;\n    };\n    \'directory-unreadable\': {\n        path: string;\n    };\n    \'directory-exists\': {\n        path: string;\n    };\n    \'directory-create-failed\': {\n        path: string;\n    };\n    \'directory-picker-unavailable\': {\n        capability: string;\n    };\n    \'agent-preset-read-only\': {\n        agentPreset: string;\n        reason: string;\n    };\n    \'agent-preset-locked\': {\n        sessionId: SessionId;\n        agentPreset: string;\n    };\n    \'agent-preset-conflict\': {\n        sessionId: SessionId;\n        reque /* …truncated — full shape in source */',
   },
   {
     name: 'RpcId',
@@ -4644,6 +4828,10 @@ export const TYPE_API: readonly TypeApiEntry[] = [
   {
     name: 'WorkflowStopReason',
     declaration: 'export type WorkflowStopReason = \'completed\' | \'cancelled\' | \'error\';',
+  },
+  {
+    name: 'WorkingStateInput',
+    declaration: 'export interface WorkingStateInput {\n    readonly currentTask: string;\n    readonly unresolved: readonly string[];\n    readonly nextAction: string;\n    readonly evidenceRoots: readonly number[];\n}',
   },
 ]
 

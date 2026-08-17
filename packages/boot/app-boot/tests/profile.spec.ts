@@ -164,6 +164,8 @@ describe('loadProfile', () => {
   it('normalizes only the exact installation-owned headless bundle tuple', () => {
     const anchor = stageInstallation({
       '@deepseek-ai/dsh-base': { patch: '[]\n' },
+      '@deepseek-ai/dsh-pi-idea-context': { patch: '[]\n' },
+      '@deepseek-ai/dsh-pi-idea-headless': { patch: '[]\n' },
       '@deepseek-ai/dsh-web-app': { patch: '[]\n' },
       '@deepseek-ai/dsh-headless': { patch: '[]\n' },
       'custom-bundle': { patch: '[]\n' },
@@ -175,7 +177,10 @@ describe('loadProfile', () => {
     ])
     loadProfile('t', 'headless', anchor, home)
     expect(readProfileManifest('t', stock).dsh?.profile?.bundles)
-      .toEqual(['@deepseek-ai/dsh-base', '@deepseek-ai/dsh-headless'])
+      .toEqual([
+        '@deepseek-ai/dsh-base', '@deepseek-ai/dsh-pi-idea-context',
+        '@deepseek-ai/dsh-pi-idea-headless', '@deepseek-ai/dsh-headless',
+      ])
 
     const customHome = tmp()
     const custom = resolveProfileDir('headless', customHome)

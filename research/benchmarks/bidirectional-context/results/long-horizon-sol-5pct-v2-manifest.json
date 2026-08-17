@@ -1,0 +1,2296 @@
+{
+  "schema": 1,
+  "protocol": "pi-idea-long-horizon-sol-raw-vs-dialogue-islands-v2",
+  "frozenAt": "2026-08-13T19:42:19.014Z",
+  "dataSha256": "sha256:2f4153d11a2cf4bd05b919d6e01adabdbe3cb695729adfbab2938f02dd37cecb",
+  "compilerVersion": "proof-carrying-dialogue-islands-v6.4",
+  "sourceDigest": "60a8e535036176d10be11ac6380fdd41e804e6f4f002ba87ac6a982d3c04cd41",
+  "sample": {
+    "seed": "pi-idea-long-horizon-sol-independent-5pct-v2",
+    "percent": 5,
+    "count": 78,
+    "taskCounts": {
+      "objective_fact_judgment": 15,
+      "personalized_memory_use": 15,
+      "memory_evidence_conflict": 15,
+      "contextual_scope_control": 15,
+      "valid_memory_selection": 18
+    },
+    "excludedPriorModelCases": 326
+  },
+  "assembly": {
+    "distractorCount": 8,
+    "rawBudget": 65536,
+    "compactBudget": 8192,
+    "conditions": [
+      "raw-long",
+      "evidence-ladder"
+    ],
+    "cpuOnly": true
+  },
+  "cases": [
+    {
+      "caseKey": "msy:a4ddb09d7c9fa53b35f8",
+      "officialId": "consensus_obj_000176",
+      "task": "objective_fact_judgment",
+      "distractorCaseKeys": [
+        "msy:45d3d554836495724e4e",
+        "msy:132842c22ef3c3d387f5",
+        "msy:fcdd63fe046e0c4455e1",
+        "msy:0abf38bbf3f5daf35e91",
+        "msy:98b1bd5c30d88c4167e5",
+        "msy:7f55422dfbd48b8aeee4",
+        "msy:5868c35cab154279f8e9",
+        "msy:d5adcd55e7bb98e01a44"
+      ],
+      "targetAfter": 2,
+      "totalTurns": 99,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 24018,
+          "outputHash": "2c456a8542510c23d0f09c33a362d4660689204937687231e67cf33b985fc62c",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 1117,
+          "outputHash": "0ac7fe94618ce4038f8843387e8b87eb820c94204191c504d7bafc69d92aa5e9",
+          "targetEvidenceCoverage": 0.625
+        }
+      }
+    },
+    {
+      "caseKey": "msy:b78018088c300879fdf5",
+      "officialId": "consensus_obj_000022",
+      "task": "objective_fact_judgment",
+      "distractorCaseKeys": [
+        "msy:12a185cf906444168beb",
+        "msy:7016bdb9e2e7381afa31",
+        "msy:7372f589c96edba11c08",
+        "msy:1125b552f4473c99ee79",
+        "msy:3eb6b4c47089e8f18d9c",
+        "msy:d697c5a7e0680e36f319",
+        "msy:44d50a502eacc08cd265",
+        "msy:5479bdcd1a3f83b2acd6"
+      ],
+      "targetAfter": 2,
+      "totalTurns": 82,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 20996,
+          "outputHash": "1d8947a62e1d416eb084480984ae5110454b5134c9ad4db04c61550b066b9249",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 556,
+          "outputHash": "2bc6ddbcd518ee3054b29521ea302033ac986aa9c34489cafcee83cd0b2a1bcb",
+          "targetEvidenceCoverage": 0.3333333333333333
+        }
+      }
+    },
+    {
+      "caseKey": "msy:60ad154def1fee42a368",
+      "officialId": "consensus_obj_000240",
+      "task": "objective_fact_judgment",
+      "distractorCaseKeys": [
+        "msy:7b50c5ebeece3bb01477",
+        "msy:b89a9aea66a1fbe879a6",
+        "msy:5868c35cab154279f8e9",
+        "msy:8800f513d7bc9bc26e25",
+        "msy:67c9eda05ba9cc4d411b",
+        "msy:ead54198f3ee5163f50b",
+        "msy:3355d6811560096e5025",
+        "msy:3d849b204522cd53dd8e"
+      ],
+      "targetAfter": 4,
+      "totalTurns": 88,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 20931,
+          "outputHash": "8e0635866e1e4782ada7912cc26b0b079e039c93826a44eacd63044a0090241d",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 1287,
+          "outputHash": "ac534e6894290008539b40ab432b21855c72fde154c0f9ff26a3215cccd41ee5",
+          "targetEvidenceCoverage": 0.6
+        }
+      }
+    },
+    {
+      "caseKey": "msy:b053e2604cc502578681",
+      "officialId": "consensus_obj_000145",
+      "task": "objective_fact_judgment",
+      "distractorCaseKeys": [
+        "msy:f25489927ce17dcb2beb",
+        "msy:4e8d252b6003354948b8",
+        "msy:4fa238d86c2e4d91fdf2",
+        "msy:a7049b7ae0ed2e92b278",
+        "msy:af1289e651a503380669",
+        "msy:5df5fcd184a18f2ec3ba",
+        "msy:4b219fb9193181c597b7",
+        "msy:0fd0849d7078eafc41c0"
+      ],
+      "targetAfter": 4,
+      "totalTurns": 83,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 20746,
+          "outputHash": "4ef3787ad38b621bbf05bcba568bcd8a029ea04315146dfefbdc9a2836e01472",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 170,
+          "outputHash": "3629299eebf27caf37742c462ab0cba905b4d731d65e150fefbfd2a162fa16e2",
+          "targetEvidenceCoverage": 0
+        }
+      }
+    },
+    {
+      "caseKey": "msy:bb08d2cb8306f4740947",
+      "officialId": "consensus_obj_000124",
+      "task": "objective_fact_judgment",
+      "distractorCaseKeys": [
+        "msy:c1efe6478ee310c015ba",
+        "msy:8fa403958e0c8a326b53",
+        "msy:70d9dee7e4318589aeb4",
+        "msy:2ffef863cb87d8acc7d0",
+        "msy:d042c4d6d08c54b75a97",
+        "msy:d073ad4c2e3ee820ecc7",
+        "msy:4cbe9d64089d71a312e7",
+        "msy:eaf6dfe069ad1cef0ba6"
+      ],
+      "targetAfter": 4,
+      "totalTurns": 79,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 18897,
+          "outputHash": "cafa6ed39fbc6f2872f38ba705377b7324cfc165d530510cac7fcc754e69440f",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 899,
+          "outputHash": "556763c7d000cf2aa72db26e016c4f0968c2c59fab392586f6d892bc9892998c",
+          "targetEvidenceCoverage": 0.6666666666666666
+        }
+      }
+    },
+    {
+      "caseKey": "msy:48cf22479b8bd419fc69",
+      "officialId": "consensus_obj_000274",
+      "task": "objective_fact_judgment",
+      "distractorCaseKeys": [
+        "msy:71ebfdc658f5ced3c123",
+        "msy:aff1e56d69f89a08ffb8",
+        "msy:92255fa1bd854fa8f7ce",
+        "msy:de414089b310e3c6517d",
+        "msy:94c508355de291d66f62",
+        "msy:b53373b83c1ed1271231",
+        "msy:b73072397e9c910a35cf",
+        "msy:5a0e7b442207f5aeca74"
+      ],
+      "targetAfter": 4,
+      "totalTurns": 79,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 16630,
+          "outputHash": "dcbfefd8ac2a8bfef5b1b14ab3ee867ac5d908fa9da0c14e87f08a3729571f1b",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 556,
+          "outputHash": "af34d236f098d1c092656f0d51e095baf3423d7c845b1d27bc46d282e0a414c2",
+          "targetEvidenceCoverage": 0.3333333333333333
+        }
+      }
+    },
+    {
+      "caseKey": "msy:debbebbf2e364217cd99",
+      "officialId": "consensus_obj_000147",
+      "task": "objective_fact_judgment",
+      "distractorCaseKeys": [
+        "msy:802be82fb1f0daf9d1f2",
+        "msy:acc1af545aee2bced6b3",
+        "msy:bbffaab6c3663a12e7ce",
+        "msy:0db2035fe0ecd158a2de",
+        "msy:9cfb9ec65dbccc6c1668",
+        "msy:3353c929ff819112e871",
+        "msy:14f5149d6ddcdd934c51",
+        "msy:a8d30f05a16c16a6b7b7"
+      ],
+      "targetAfter": 4,
+      "totalTurns": 90,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 21813,
+          "outputHash": "f96bacac9e7b1f8ee4e8b11e7238b0484012ffd66da5f8e80bde2404f8771e61",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 1276,
+          "outputHash": "fb6ca46a43e5d427e14e87f5334b70797883448f607b02fe1305ab0122a5d373",
+          "targetEvidenceCoverage": 0.6
+        }
+      }
+    },
+    {
+      "caseKey": "msy:5058940716d0c882e2ed",
+      "officialId": "consensus_obj_000236",
+      "task": "objective_fact_judgment",
+      "distractorCaseKeys": [
+        "msy:164a7178f2ccd649f3d5",
+        "msy:599e43f3c9b6f85dfeb7",
+        "msy:36ba3aadec8fc0871a80",
+        "msy:0b07dea2aaab2fd1e907",
+        "msy:94cda2abba5dd887367c",
+        "msy:5e021d9d9dd128c51d8f",
+        "msy:bef658f04d22734c86f7",
+        "msy:79c9eba3418099af3cab"
+      ],
+      "targetAfter": 2,
+      "totalTurns": 88,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 19900,
+          "outputHash": "0bc00c4f9c9f8d729786d1a5577471378dc7e4940772c427bf1ae72b0499a51a",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 1093,
+          "outputHash": "163197a03f274c4bed228050d8fcedcd3e169c6689d80d65af8ff12495af5e9f",
+          "targetEvidenceCoverage": 0.625
+        }
+      }
+    },
+    {
+      "caseKey": "msy:0e4d03b0bf4b77efc051",
+      "officialId": "consensus_obj_000268",
+      "task": "objective_fact_judgment",
+      "distractorCaseKeys": [
+        "msy:0e03bc873f83ada2cb57",
+        "msy:de414089b310e3c6517d",
+        "msy:e632d5ec3be53a37233c",
+        "msy:a9723acddf40c4272874",
+        "msy:f88ab3a1d8f683603237",
+        "msy:02c88635bb61f98f1ff8",
+        "msy:3f13fb458e2ddfd42537",
+        "msy:0f95ef1596feae94dfa0"
+      ],
+      "targetAfter": 3,
+      "totalTurns": 72,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 14101,
+          "outputHash": "cb0f5cda677b3c68806c6e2393359fd5089973df73a0f5708310ed2819dbc34f",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 910,
+          "outputHash": "33e101901ad634801c52afb27a8663142f5e042a559c31dcb7bc12f507241027",
+          "targetEvidenceCoverage": 0.6666666666666666
+        }
+      }
+    },
+    {
+      "caseKey": "msy:aee41912872662e0e34c",
+      "officialId": "consensus_obj_000224",
+      "task": "objective_fact_judgment",
+      "distractorCaseKeys": [
+        "msy:fb471955dcb454358981",
+        "msy:4fd490afad0bbfcb6740",
+        "msy:125bea6bd3c3fd88b44b",
+        "msy:43c6864b0d4a41fa8ca9",
+        "msy:a321db61398e54ecfc78",
+        "msy:0db2035fe0ecd158a2de",
+        "msy:a3a3fbc1d9cb21c8d5bc",
+        "msy:6b101cfed73ff770c557"
+      ],
+      "targetAfter": 3,
+      "totalTurns": 85,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 20475,
+          "outputHash": "0a617ac5cd7df81521dfafac81c0ef5392b2792e776de32e2a91bf9c142bf9cd",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 170,
+          "outputHash": "3629299eebf27caf37742c462ab0cba905b4d731d65e150fefbfd2a162fa16e2",
+          "targetEvidenceCoverage": 0
+        }
+      }
+    },
+    {
+      "caseKey": "msy:f3c3e5442d3f8bb83dad",
+      "officialId": "consensus_obj_000138",
+      "task": "objective_fact_judgment",
+      "distractorCaseKeys": [
+        "msy:3bf0ceff1d7e995eefc6",
+        "msy:5104ac4a4f1a26642735",
+        "msy:b479cf330d911f7a8eb6",
+        "msy:f90cd4cdfaa66cebb3e6",
+        "msy:8765f82fc7d58f58d238",
+        "msy:0c9f0d7fb21bb0a6a38c",
+        "msy:69c16d40fb7312724004",
+        "msy:8d6baa421222bfebacf0"
+      ],
+      "targetAfter": 3,
+      "totalTurns": 91,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 22258,
+          "outputHash": "d2a667590598ad7597c45671ed441dcfecfc18b45631a4e7244ccb14eb7b8b0c",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 937,
+          "outputHash": "36b5c6ccf4cfebf8c17a0f8352eb79235e0cb4abf3153a89a3619deb30db6b09",
+          "targetEvidenceCoverage": 0.4
+        }
+      }
+    },
+    {
+      "caseKey": "msy:092c193353dc4051161f",
+      "officialId": "consensus_obj_000169",
+      "task": "objective_fact_judgment",
+      "distractorCaseKeys": [
+        "msy:e3eb36e5280133671c8f",
+        "msy:dd6e7080aacb0e90dd20",
+        "msy:92725a71acbde7cacb76",
+        "msy:ef8b14e2136ef11f6b24",
+        "msy:4b2e705bcd57249a2360",
+        "msy:28c585719a18c752c122",
+        "msy:2851918ed5ad2b68c582",
+        "msy:d33431dffbe3aea7df71"
+      ],
+      "targetAfter": 4,
+      "totalTurns": 81,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 20353,
+          "outputHash": "20951f8dcf3d8e3ab3eb2ac57ad4c0e6cbbaf943c032f398e1fbedce98c9858c",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 929,
+          "outputHash": "1c0880aebc1c49d6d4cfb4e278e949b7cd3ecdb450fe04102dd8231409ee5678",
+          "targetEvidenceCoverage": 0.6666666666666666
+        }
+      }
+    },
+    {
+      "caseKey": "msy:041a84cc21af45c84fb1",
+      "officialId": "consensus_obj_000237",
+      "task": "objective_fact_judgment",
+      "distractorCaseKeys": [
+        "msy:faba83809b9c8f706bea",
+        "msy:cea4cd6d33733f1dda59",
+        "msy:e3015527cb722587f018",
+        "msy:3b62ca6fbdb0c94b5c12",
+        "msy:509b686dc324fc2efeae",
+        "msy:49d24d496d2ec8f00e62",
+        "msy:c4ff52238c80e394c984",
+        "msy:9b890af367a472d03349"
+      ],
+      "targetAfter": 3,
+      "totalTurns": 82,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 19207,
+          "outputHash": "45ed81fde295c26c0f6b02f32eeb858ec4808205b9afdbd93d8b1508083ec1e8",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 1311,
+          "outputHash": "6659818e071d0a5f4b44eee4f17da08b07d6e198ccf60192b10a7541aca02850",
+          "targetEvidenceCoverage": 0.6
+        }
+      }
+    },
+    {
+      "caseKey": "msy:791de69c4c495f023eea",
+      "officialId": "consensus_obj_000039",
+      "task": "objective_fact_judgment",
+      "distractorCaseKeys": [
+        "msy:2ca25e3144d4a0c47912",
+        "msy:1807cb5aa90964c10c6e",
+        "msy:c9f203718fcef48966ff",
+        "msy:2aa794aec87f902e8937",
+        "msy:8f979b63510168b738fc",
+        "msy:d713d643fcf41be04e53",
+        "msy:20ebf0f7aa51b98a5f20",
+        "msy:214ae8bd8b9647f7d07c"
+      ],
+      "targetAfter": 4,
+      "totalTurns": 92,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 21568,
+          "outputHash": "d041e10b8f60fe182bd8172c50aba241b541d65ab7c322ad1303a939b6c6ed58",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 1318,
+          "outputHash": "104ab6d1f31a59aa4cffff7af69a7f2b28a3d99d8f493b20de2a383544b72a91",
+          "targetEvidenceCoverage": 0.6
+        }
+      }
+    },
+    {
+      "caseKey": "msy:730985cfac272b37c73b",
+      "officialId": "consensus_obj_000173",
+      "task": "objective_fact_judgment",
+      "distractorCaseKeys": [
+        "msy:1dae643c260731943a24",
+        "msy:3dfcd90c1a228259282e",
+        "msy:acc1af545aee2bced6b3",
+        "msy:51717d206756e79d459b",
+        "msy:e293f95beb5bae1ffc13",
+        "msy:c4a4e0ea7f0074258436",
+        "msy:3105526cef42c2ab2430",
+        "msy:8bb58207dc7413fdca9b"
+      ],
+      "targetAfter": 2,
+      "totalTurns": 78,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 19230,
+          "outputHash": "7925e7c3ba2e606643aae14b7ee2dd9f587c8695967610712c92c1f71278b3e4",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 756,
+          "outputHash": "13eb0f653ad5bf390ca72e8713ae7a8a37840744e9eb3ca9da99a38bcfb27380",
+          "targetEvidenceCoverage": 0.375
+        }
+      }
+    },
+    {
+      "caseKey": "msy:71090531f0a2baa1c557",
+      "officialId": "v11_001253",
+      "task": "personalized_memory_use",
+      "distractorCaseKeys": [
+        "msy:8ceba8332d735bf59dd8",
+        "msy:8271c0ddf2547c12b998",
+        "msy:67c9eda05ba9cc4d411b",
+        "msy:8c19fb7d9f71fab33e1f",
+        "msy:e68635b73266e8213c03",
+        "msy:ae6622c5a093363dab5c",
+        "msy:70bf4067e5b40acec41e",
+        "msy:d201d44742a2841d083a"
+      ],
+      "targetAfter": 3,
+      "totalTurns": 83,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 18208,
+          "outputHash": "6c112f67d4e65c233bfe110656e9de61a5d2136e0fb7c843aef29fccd8a67a4b",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 1994,
+          "outputHash": "36430231d7b9cdc807ab53b432b2cf5db3be1b8eedffe591060559e7823e1e0a",
+          "targetEvidenceCoverage": 0.8571428571428571
+        }
+      }
+    },
+    {
+      "caseKey": "msy:319490bd787f1289e38b",
+      "officialId": "v11_001152",
+      "task": "personalized_memory_use",
+      "distractorCaseKeys": [
+        "msy:1f0a14cd7cb08a8750b8",
+        "msy:791636de8cee49c912e2",
+        "msy:6b115f9de804d8abd2bb",
+        "msy:d201d44742a2841d083a",
+        "msy:9402ed3fe1384083e907",
+        "msy:747670b5315ca63077c2",
+        "msy:c633e1f814b333a3c950",
+        "msy:77c95dd81631a1337b3f"
+      ],
+      "targetAfter": 2,
+      "totalTurns": 77,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 17519,
+          "outputHash": "7167ad947d434874cb5fadc6acf3853e9b553e9b9c9582a240a54ed84377dbe9",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 2115,
+          "outputHash": "5cb047790819a00fc3a3e477b6408ac7a4f970292bdb1d12191160167df2cadb",
+          "targetEvidenceCoverage": 0.8571428571428571
+        }
+      }
+    },
+    {
+      "caseKey": "msy:4c1347ff48aff95634fd",
+      "officialId": "rec_gen_0041",
+      "task": "personalized_memory_use",
+      "distractorCaseKeys": [
+        "msy:87c512ac3f3896275416",
+        "msy:656bcf6c13d182170e7c",
+        "msy:a3f1f8125d4a20af6f9c",
+        "msy:c50dbfde0bcae4158d33",
+        "msy:6b442ff9d0fa4c31618c",
+        "msy:759bebbb5b063eec84c3",
+        "msy:af4af57d50f836ec45b5",
+        "msy:f932135054a6a88d6c79"
+      ],
+      "targetAfter": 2,
+      "totalTurns": 83,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 15540,
+          "outputHash": "2c628bc8ed213277be48808a9376df6f80624d076931a74972bfd7b2e4742d4c",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 465,
+          "outputHash": "c68ba6484e515e6f8f0a57f2ad07406427b5fc484601293200e68fdc4de33db5",
+          "targetEvidenceCoverage": 0.5
+        }
+      }
+    },
+    {
+      "caseKey": "msy:7d770fc2c3a0d7cb84dc",
+      "officialId": "rec_gen_0066",
+      "task": "personalized_memory_use",
+      "distractorCaseKeys": [
+        "msy:1acb6ef4a3c95ba94e46",
+        "msy:ddeb5fd79a8e5590675f",
+        "msy:823e66fa800f0d07f3ad",
+        "msy:618c55c5319117cba9ca",
+        "msy:e03312d64eace0ded334",
+        "msy:0531d78a2b9526ef8f85",
+        "msy:ae18104e273a3a17bcb3",
+        "msy:ec0875f59d7bc0193437"
+      ],
+      "targetAfter": 3,
+      "totalTurns": 88,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 19828,
+          "outputHash": "4dbe56ca24cc0656dd5959a5818e0a68c8b10a410816c9b66100f51072504fb1",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 716,
+          "outputHash": "a136529ce01e27ff21e5626a3bc58cf6345986b93f9d6dd52bb9ef2b5d3aba16",
+          "targetEvidenceCoverage": 1
+        }
+      }
+    },
+    {
+      "caseKey": "msy:e59011ef18515e21acfe",
+      "officialId": "v11_001169",
+      "task": "personalized_memory_use",
+      "distractorCaseKeys": [
+        "msy:86b6308628af52f198e6",
+        "msy:0fceb33362a9b628eacc",
+        "msy:27ccd15ebf34e1bb7bec",
+        "msy:281843b0ec4366c5ff40",
+        "msy:249695963db59ab3068b",
+        "msy:dc8add509778a8c3d4ba",
+        "msy:e374ebf7823b82c76c46",
+        "msy:2f942ce686cf331a0f73"
+      ],
+      "targetAfter": 2,
+      "totalTurns": 85,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 21528,
+          "outputHash": "9623c9a7ef6e8b1d9f777d7e6a1880d42e356a0c0bfed71dec31e76f7b60d567",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 1967,
+          "outputHash": "dc81e2f78a9c0dcd9f822ec1a16e025d7a833397cec0c69a468276493af3e4bb",
+          "targetEvidenceCoverage": 0.8571428571428571
+        }
+      }
+    },
+    {
+      "caseKey": "msy:de13333e22392eaaa242",
+      "officialId": "v11_001227",
+      "task": "personalized_memory_use",
+      "distractorCaseKeys": [
+        "msy:5242ac65ce68f6cb5527",
+        "msy:4c005c30ae4d68e47470",
+        "msy:d79c41a94a7f038256e3",
+        "msy:56fee27c9e9fa3eed824",
+        "msy:9e7e84244e722df52fed",
+        "msy:82f4fc7f1d6139fabf7c",
+        "msy:d7d070b3e33559a940c8",
+        "msy:7662743654b7076d6b90"
+      ],
+      "targetAfter": 3,
+      "totalTurns": 83,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 17726,
+          "outputHash": "7abde58750db7b755f16bdfdb7141543ecc9c692b568358ca64bfaf68d6be0b6",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 1901,
+          "outputHash": "8af2945dc95b153d2f0aa1d41e116e179f303e3bf4c2e7ff7042f24167ed1526",
+          "targetEvidenceCoverage": 0.8571428571428571
+        }
+      }
+    },
+    {
+      "caseKey": "msy:cb0756edcb1bd1185565",
+      "officialId": "rec_gen_0037",
+      "task": "personalized_memory_use",
+      "distractorCaseKeys": [
+        "msy:35750b1ed62efaa08dc2",
+        "msy:faf47754159597c671d8",
+        "msy:2b313714b6fa242f30c3",
+        "msy:0db2035fe0ecd158a2de",
+        "msy:e68635b73266e8213c03",
+        "msy:4fb28f71d221b154f2c0",
+        "msy:73af69f473ce8d0de767",
+        "msy:d5d896824f5adefef436"
+      ],
+      "targetAfter": 3,
+      "totalTurns": 89,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 18439,
+          "outputHash": "dd1615b91a21d7f228bce4eec41cf1f830233fd6be66f8fa515740eb730d16de",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 461,
+          "outputHash": "d1b473821a44c24b972e164140064ce73264037fbd50f33a77b3912880bf841b",
+          "targetEvidenceCoverage": 0.5
+        }
+      }
+    },
+    {
+      "caseKey": "msy:64cb3c88131e74bdc9be",
+      "officialId": "rec_gen_0054",
+      "task": "personalized_memory_use",
+      "distractorCaseKeys": [
+        "msy:c532c917d9787f93a9dd",
+        "msy:451d666366cd0510d5a3",
+        "msy:fc562a5a3ad3ac580873",
+        "msy:ae18104e273a3a17bcb3",
+        "msy:d8334b66f7c37d52ae81",
+        "msy:a2182f628dbdb78627bb",
+        "msy:6d22380d5545a390d7ca",
+        "msy:953546c10cb5dcaf9940"
+      ],
+      "targetAfter": 4,
+      "totalTurns": 86,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 17092,
+          "outputHash": "49d998fa11f1914278dadc939989327633843f4eb105c8476aa198e7c4d461bc",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 719,
+          "outputHash": "02028f1750447bda93d8faa6d6486366fa780fba485d673e5562d5ee61fc41e2",
+          "targetEvidenceCoverage": 1
+        }
+      }
+    },
+    {
+      "caseKey": "msy:6b8befe3bb220820b007",
+      "officialId": "v11_001240",
+      "task": "personalized_memory_use",
+      "distractorCaseKeys": [
+        "msy:8186a350c32edc8bd385",
+        "msy:bec6c17d18a823c6d9a6",
+        "msy:d9a3a863928f5186317c",
+        "msy:dd6e7080aacb0e90dd20",
+        "msy:1e9ca617731227745960",
+        "msy:7648fdbd6182e5194be8",
+        "msy:097ab2d5c778ac843cfe",
+        "msy:41253c427cfb275726ff"
+      ],
+      "targetAfter": 4,
+      "totalTurns": 84,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 19497,
+          "outputHash": "a928a33c866ada96793a7631042f7da1e1bdbf4e954bd979a9ee174ad8094812",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 1917,
+          "outputHash": "d5c54389a2c17f96cafb3870cf457752fa920660483d784e90b9bfcf979f5c67",
+          "targetEvidenceCoverage": 0.8571428571428571
+        }
+      }
+    },
+    {
+      "caseKey": "msy:793ca97aafba2dd8c1a2",
+      "officialId": "v11_001122",
+      "task": "personalized_memory_use",
+      "distractorCaseKeys": [
+        "msy:a7a22c4f93d7a13e562f",
+        "msy:0bf2915914c66a0f3e2c",
+        "msy:9d27a13299101dfd9873",
+        "msy:b35d24441ad5e7241028",
+        "msy:a972f28960b34f2e0a28",
+        "msy:b78018088c300879fdf5",
+        "msy:a60ef6ef4b9cca1dd349",
+        "msy:fc5d81364bef44ee8f0d"
+      ],
+      "targetAfter": 2,
+      "totalTurns": 73,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 18412,
+          "outputHash": "699ffaf04fae8dbf10451637d74f9cc49e9ea2307c77a7d1e16a9cfe57e35d28",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 721,
+          "outputHash": "4c7f9e0f5d7f67a06f59c4193629ad2b4bc6a7e5a914ad67201156db7d8b64e1",
+          "targetEvidenceCoverage": 0.2857142857142857
+        }
+      }
+    },
+    {
+      "caseKey": "msy:a903372c2e19d5858248",
+      "officialId": "v11_001283",
+      "task": "personalized_memory_use",
+      "distractorCaseKeys": [
+        "msy:f6194bab85a84d05650b",
+        "msy:abe5808820ccbf7e543d",
+        "msy:9a97495a593955ea185e",
+        "msy:a14277d3163cbf594fde",
+        "msy:bbffaab6c3663a12e7ce",
+        "msy:8d49b31c64b3f70449fe",
+        "msy:02b6a8735f5a48a19b8b",
+        "msy:c4a4e0ea7f0074258436"
+      ],
+      "targetAfter": 2,
+      "totalTurns": 96,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 24777,
+          "outputHash": "d2b0fbf5e463ee1bcb1bc2df0e53858e2a37720e1c4e97afb14ad493d8a7b094",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 2091,
+          "outputHash": "af6bff995c048678cc6d0baac3485ce455156335a8f21b145878eb3b1b28812c",
+          "targetEvidenceCoverage": 0.8571428571428571
+        }
+      }
+    },
+    {
+      "caseKey": "msy:3c796a522cabddddfe04",
+      "officialId": "rec_gen_0034",
+      "task": "personalized_memory_use",
+      "distractorCaseKeys": [
+        "msy:867f5ceb63f6a4e693ed",
+        "msy:1e7275b8966418aeb3c2",
+        "msy:d5d896824f5adefef436",
+        "msy:092c193353dc4051161f",
+        "msy:8a70be2878aee4fca467",
+        "msy:4d9eca2cdcb7a2b21058",
+        "msy:35a84fd40b5182bc8421",
+        "msy:dedefaeaee2082600718"
+      ],
+      "targetAfter": 3,
+      "totalTurns": 75,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 15940,
+          "outputHash": "64a1a5a9620946a3569880a8386f5688b12001dc3afaee83151e70c2aa06925d",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 713,
+          "outputHash": "3804bb5316a6c3a287030af17d753b421851cc2cf2172de99d9f17e38e95593b",
+          "targetEvidenceCoverage": 1
+        }
+      }
+    },
+    {
+      "caseKey": "msy:fa226a007f2974a21ef4",
+      "officialId": "v11_001260",
+      "task": "personalized_memory_use",
+      "distractorCaseKeys": [
+        "msy:c1e74dde7dfb54f2cf7f",
+        "msy:656414794991b17514b8",
+        "msy:9c272eb42bf8b647c101",
+        "msy:1125b552f4473c99ee79",
+        "msy:125bea6bd3c3fd88b44b",
+        "msy:377d8116599bcd8f12f9",
+        "msy:93c9be9179f60811977b",
+        "msy:f8447af78d1ca03d452d"
+      ],
+      "targetAfter": 3,
+      "totalTurns": 85,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 22132,
+          "outputHash": "d73a5d92e0f5e386217499d5b3a6a5481f3baded3a0d0d7b404330b80bb4445e",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 2276,
+          "outputHash": "345b81f02d42b58705948b0f0fcf203445f4e9f0f73e99468ea304359552471a",
+          "targetEvidenceCoverage": 0.8571428571428571
+        }
+      }
+    },
+    {
+      "caseKey": "msy:738e7c0eb7a804171dd5",
+      "officialId": "v11_001192",
+      "task": "personalized_memory_use",
+      "distractorCaseKeys": [
+        "msy:164bc591ef4f0dc5a02b",
+        "msy:b0f7f32295aec2576c5f",
+        "msy:0a7e4dbe1517fd9092b6",
+        "msy:c890457a579a1fde507c",
+        "msy:6b442ff9d0fa4c31618c",
+        "msy:93c9be9179f60811977b",
+        "msy:488466f351f936e0910e",
+        "msy:6b949ac9258f220d67b4"
+      ],
+      "targetAfter": 4,
+      "totalTurns": 77,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 15493,
+          "outputHash": "5e8d55750636338ec63706c9a21e68d5ce50c55bb31ee5b2c80710a9cd750796",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 1722,
+          "outputHash": "f66c6fd4c6bead93821c8f81dee17552bee5226bc8d109c9f7ae9e939bb647b6",
+          "targetEvidenceCoverage": 0.875
+        }
+      }
+    },
+    {
+      "caseKey": "msy:4cbe9d64089d71a312e7",
+      "officialId": "v11_001230",
+      "task": "personalized_memory_use",
+      "distractorCaseKeys": [
+        "msy:d331179491ac23bacdb5",
+        "msy:b056c688781edf9badf0",
+        "msy:284bbc6ac4b58e50958d",
+        "msy:b9115ce3ea00ff9ad3b8",
+        "msy:8c8457fce0a907196aab",
+        "msy:978a06882435a4c68c98",
+        "msy:75b2e7c1b1804447f156",
+        "msy:bb08d2cb8306f4740947"
+      ],
+      "targetAfter": 3,
+      "totalTurns": 83,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 18644,
+          "outputHash": "ba7477d1eb2caa0500bd5a969a3cf6b016f846d1aa45c3507b8678ac265a6526",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 2058,
+          "outputHash": "4ec461f5e2851d2c11b2bb268b604c699888020f166cf2434c3588144548b17d",
+          "targetEvidenceCoverage": 0.8571428571428571
+        }
+      }
+    },
+    {
+      "caseKey": "msy:7372f589c96edba11c08",
+      "officialId": "emc_search_000228",
+      "task": "memory_evidence_conflict",
+      "distractorCaseKeys": [
+        "msy:7c49874a01c5a6e0b590",
+        "msy:ba15669cb16b765ed259",
+        "msy:02c88635bb61f98f1ff8",
+        "msy:26abdaba5694bc3997d3",
+        "msy:fea1a1ee68b76b9f0578",
+        "msy:f3c3e5442d3f8bb83dad",
+        "msy:d8b7657dd5fd2890040e",
+        "msy:35750b1ed62efaa08dc2"
+      ],
+      "targetAfter": 3,
+      "totalTurns": 91,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 18375,
+          "outputHash": "ae6958e27aa5cadd37061d5bdb3e5090e2afec8f6d7d7214329fd0bfa1c7c6a5",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 2195,
+          "outputHash": "d064e50189a8ec72f3e0433e6cf934b7eabff919ebcc555f56bdf0464057eea3",
+          "targetEvidenceCoverage": 0.875
+        }
+      }
+    },
+    {
+      "caseKey": "msy:523502756920f4105758",
+      "officialId": "emc_search_000113",
+      "task": "memory_evidence_conflict",
+      "distractorCaseKeys": [
+        "msy:bc23f31ed689f67ec672",
+        "msy:9449920fdf6fe52fdedb",
+        "msy:461ed9e28f768aa5d9ec",
+        "msy:77cc53d63b2785a91d03",
+        "msy:9a97495a593955ea185e",
+        "msy:8961b7969f4f9d6f7bdd",
+        "msy:864842b31901f9a3844b",
+        "msy:ad1cb2f855f9d3e99aca"
+      ],
+      "targetAfter": 2,
+      "totalTurns": 93,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 23202,
+          "outputHash": "f3956b6103e86f6b826d1dd3ff03ac1beb299b6cee4d2c9972a93549943c7f11",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 2028,
+          "outputHash": "ff87a3d1f0621b77baa164a8ef2d053fc1643f4f1378f664f1352b6b33ff314d",
+          "targetEvidenceCoverage": 0.75
+        }
+      }
+    },
+    {
+      "caseKey": "msy:ff02431e8d50e58ca50e",
+      "officialId": "emc_search_000162",
+      "task": "memory_evidence_conflict",
+      "distractorCaseKeys": [
+        "msy:75fa1e1b60233781a00f",
+        "msy:ebaa7b62e6231cf24e1b",
+        "msy:6ea9a1598374c7318a0c",
+        "msy:e173617befaaa31de132",
+        "msy:5bf78e1ec57a544af736",
+        "msy:9381998b005d7938ee38",
+        "msy:51717d206756e79d459b",
+        "msy:5868c35cab154279f8e9"
+      ],
+      "targetAfter": 4,
+      "totalTurns": 91,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 21382,
+          "outputHash": "b87be704a6ab0c0b088bfab6405a3433ce6e7179ed4b08b05645458eab02d121",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 2168,
+          "outputHash": "a371ff7aff4f3f462bc20b95a19da1dcbe39c328a84bb90ff0082fd964c906d2",
+          "targetEvidenceCoverage": 0.875
+        }
+      }
+    },
+    {
+      "caseKey": "msy:a14277d3163cbf594fde",
+      "officialId": "emc_search_000138",
+      "task": "memory_evidence_conflict",
+      "distractorCaseKeys": [
+        "msy:f8faa5043913bc5c6395",
+        "msy:35750b1ed62efaa08dc2",
+        "msy:18dd9c61342c79db2169",
+        "msy:c0940c40b5a06db63a3e",
+        "msy:8c4ea69b182cb9b85bf5",
+        "msy:540ca7a5f978c04b77a9",
+        "msy:f942d0233233df11a290",
+        "msy:eb23205ebfe61d941bad"
+      ],
+      "targetAfter": 2,
+      "totalTurns": 86,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 19066,
+          "outputHash": "57d24f611e334cfc7baf3ba5edffc6ebe9e4752c4ddc3e590dd3d49d065890ca",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 2151,
+          "outputHash": "743f9a986993146670f8461d2c43641834cbf00891a42295c09c6b205a953c27",
+          "targetEvidenceCoverage": 0.875
+        }
+      }
+    },
+    {
+      "caseKey": "msy:64563d74e68f6aee9d7f",
+      "officialId": "emc_search_000030",
+      "task": "memory_evidence_conflict",
+      "distractorCaseKeys": [
+        "msy:6f9ce90f693f23f1b72c",
+        "msy:a57de9145c1c9ba24460",
+        "msy:b2a26bb046b7e6634087",
+        "msy:a7049b7ae0ed2e92b278",
+        "msy:eb9b399ef8d11ff645e8",
+        "msy:daba4f09eb6ffa1e2431",
+        "msy:8f88ac298705e52885c5",
+        "msy:6dca543f290cbc6465a1"
+      ],
+      "targetAfter": 3,
+      "totalTurns": 94,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 23663,
+          "outputHash": "a7956b9dcc5d64b5489f5913e193e22ffc3b9c6a6cd03f76839d170b46d1b117",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 2155,
+          "outputHash": "cad42530827949522b7f8294fc031cd0e94f1c12f18a5f283c9f6d5526948f09",
+          "targetEvidenceCoverage": 0.875
+        }
+      }
+    },
+    {
+      "caseKey": "msy:ffc8b5c07a7a61e35e87",
+      "officialId": "emc_search_000140",
+      "task": "memory_evidence_conflict",
+      "distractorCaseKeys": [
+        "msy:71a62bbdad54e7642344",
+        "msy:bba8a25bbf095b36d048",
+        "msy:bc5da76acfa07f7a5443",
+        "msy:fa226a007f2974a21ef4",
+        "msy:4781223094799f1e0539",
+        "msy:ed75a58b19be80af1fe9",
+        "msy:4f43b0c023feffa17d5b",
+        "msy:fc125eed7a3f1add59ba"
+      ],
+      "targetAfter": 2,
+      "totalTurns": 82,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 20365,
+          "outputHash": "1665895152c88985649aa9578334b427fa5658a38152748d5d5c80723c979b1c",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 1585,
+          "outputHash": "b30017303859ae527f5764d684cb2633a3d54398a40c5068c6f5fb82cc31ebf3",
+          "targetEvidenceCoverage": 0.5
+        }
+      }
+    },
+    {
+      "caseKey": "msy:da4a0ef9d3b5a1cb7d92",
+      "officialId": "emc_search_000185",
+      "task": "memory_evidence_conflict",
+      "distractorCaseKeys": [
+        "msy:33fc6fa7783a06e0ec8f",
+        "msy:4b88a3fde23154a1d699",
+        "msy:397e72331df3665393fe",
+        "msy:30087463cb003f82edd2",
+        "msy:3fb72717a4da7b199275",
+        "msy:823e66fa800f0d07f3ad",
+        "msy:57a02ec1798d922b4ed8",
+        "msy:590bbe3531144d186e6a"
+      ],
+      "targetAfter": 2,
+      "totalTurns": 84,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 17560,
+          "outputHash": "45d6d0849a36646bbd96a729ff8f6e13d9466b01909ac5d67125adc27e42d5b4",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 1575,
+          "outputHash": "9d82da6377cdcae550bc9c646cff0a69584bdf00c46014d558ab29032e1cb346",
+          "targetEvidenceCoverage": 0.5
+        }
+      }
+    },
+    {
+      "caseKey": "msy:c8318fa97f2846914df3",
+      "officialId": "emc_search_000047",
+      "task": "memory_evidence_conflict",
+      "distractorCaseKeys": [
+        "msy:319490bd787f1289e38b",
+        "msy:6248b10ae436bdee3433",
+        "msy:42740520ee2d88d1ed18",
+        "msy:078acd06f733dc1b8f01",
+        "msy:d8b7657dd5fd2890040e",
+        "msy:36ccc71f108f20e6c9f0",
+        "msy:787a15eda62f530087f7",
+        "msy:6f9ce90f693f23f1b72c"
+      ],
+      "targetAfter": 4,
+      "totalTurns": 85,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 19731,
+          "outputHash": "3916ba94e2d94e1da8694e858f881e1ecb6ae7947255832ccd5028a5c1b8202f",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 2191,
+          "outputHash": "a3cb25b633ab4b0e74f739699cbfecdaa5fd252dc1a45f9cf11ca8a2b5c50520",
+          "targetEvidenceCoverage": 0.875
+        }
+      }
+    },
+    {
+      "caseKey": "msy:68fae89e4e42bddd46d3",
+      "officialId": "emc_search_000194",
+      "task": "memory_evidence_conflict",
+      "distractorCaseKeys": [
+        "msy:4a115777b6a51a27c785",
+        "msy:4e932977d04aa7ad4686",
+        "msy:1807cb5aa90964c10c6e",
+        "msy:7aae3728f591b3884ea2",
+        "msy:e632d5ec3be53a37233c",
+        "msy:9b51fa8bdd02328346f3",
+        "msy:e34d610d559471785df9",
+        "msy:28c585719a18c752c122"
+      ],
+      "targetAfter": 4,
+      "totalTurns": 95,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 22371,
+          "outputHash": "36b46d89f66ee19cb90cbc1219ecb7cdd689b1a9f31076c4848eb934303eaf8b",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 1969,
+          "outputHash": "e2aa323d6ce042e6abbb99bd7ace947cbf7d8ec25244e1dc9aa488c30c6c32b5",
+          "targetEvidenceCoverage": 0.75
+        }
+      }
+    },
+    {
+      "caseKey": "msy:b851e60d3145f68e8af4",
+      "officialId": "emc_search_000225",
+      "task": "memory_evidence_conflict",
+      "distractorCaseKeys": [
+        "msy:751d6a3b12d7f984b430",
+        "msy:fea102a48d368120b334",
+        "msy:094a1e976c773504f8d0",
+        "msy:dbbdb8b36784c0b78b8d",
+        "msy:44e137e2747c24f39c74",
+        "msy:b96d529de14e39033a09",
+        "msy:93b4b7c5e3e32b96a805",
+        "msy:866a78bcc31bdc5ca854"
+      ],
+      "targetAfter": 4,
+      "totalTurns": 79,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 20827,
+          "outputHash": "266d43cac136c5f4fe954f9689c32ad58a1265ef22132eed697bc682b6f0ec49",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 2034,
+          "outputHash": "3721c599009f11b8a47d0ae11b9980d67ef08530cdbfaeab6d468fdd01d0a1ec",
+          "targetEvidenceCoverage": 0.75
+        }
+      }
+    },
+    {
+      "caseKey": "msy:0bf2915914c66a0f3e2c",
+      "officialId": "emc_search_000251",
+      "task": "memory_evidence_conflict",
+      "distractorCaseKeys": [
+        "msy:d36871d39c0b10ef5e58",
+        "msy:28c585719a18c752c122",
+        "msy:e69c810793879b34cce7",
+        "msy:2c18437f8d25b296b538",
+        "msy:a56d30eae079ce15ec0f",
+        "msy:49a1072f1fdfc630750d",
+        "msy:465c93c72f6b6cc3b56f",
+        "msy:b60a9127d7561194a28b"
+      ],
+      "targetAfter": 2,
+      "totalTurns": 85,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 21240,
+          "outputHash": "0014226b6cbd60589726228c0ffb53c31cb378200b48d389ab995064371bbf85",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 2173,
+          "outputHash": "b33df7845df0d500e5bdc5f0f2cce9c31d61c4203fc1a401c58d6edb2d0ee74d",
+          "targetEvidenceCoverage": 0.875
+        }
+      }
+    },
+    {
+      "caseKey": "msy:b9cc725530accdef1863",
+      "officialId": "emc_search_000120",
+      "task": "memory_evidence_conflict",
+      "distractorCaseKeys": [
+        "msy:f6194bab85a84d05650b",
+        "msy:663e6ec865ed6f1cebb8",
+        "msy:164bc591ef4f0dc5a02b",
+        "msy:bedd9300593de69d1db4",
+        "msy:8c19fb7d9f71fab33e1f",
+        "msy:7aae3728f591b3884ea2",
+        "msy:22c73a42a8e68f0afeda",
+        "msy:c53059965ab514c24392"
+      ],
+      "targetAfter": 2,
+      "totalTurns": 87,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 19806,
+          "outputHash": "27efa2e5ba011f9257e2b6c760297653cd08effd07472bcc64d8ff0d6f97faa1",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 2163,
+          "outputHash": "b73fbf32a7a075ae869a618ed1df1795558821c431f81c5d3a7fbe1f53aadc48",
+          "targetEvidenceCoverage": 0.875
+        }
+      }
+    },
+    {
+      "caseKey": "msy:5ac02da175774a72ff5e",
+      "officialId": "emc_search_000287",
+      "task": "memory_evidence_conflict",
+      "distractorCaseKeys": [
+        "msy:62ff2679af4781c611d5",
+        "msy:c4a4e0ea7f0074258436",
+        "msy:5d09ef588f98b8439875",
+        "msy:8dd4b2d5720ccdf557ac",
+        "msy:b7d1e198067df6c6c0e9",
+        "msy:86b15fe5bfc06fc188e3",
+        "msy:507c443c5932ddf2df5f",
+        "msy:a88a157eb5df192ebec5"
+      ],
+      "targetAfter": 4,
+      "totalTurns": 95,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 21679,
+          "outputHash": "d70f4eee0b7b1cf4e04e012d84806f69d0d068c357b90cc67f8eafaabad99c5b",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 2135,
+          "outputHash": "6191236d969dc0537cc3fba4d051e88af8f0410e2a921f1c136bf97d31d99c57",
+          "targetEvidenceCoverage": 0.875
+        }
+      }
+    },
+    {
+      "caseKey": "msy:8c263897c2ec43adea17",
+      "officialId": "emc_search_000043",
+      "task": "memory_evidence_conflict",
+      "distractorCaseKeys": [
+        "msy:d9034dcd7226fa49aa2d",
+        "msy:f982da8caf1504f212ab",
+        "msy:170bb5f8942573aa13e6",
+        "msy:0c346e064e1406520b7c",
+        "msy:3a55e604122f1433dd2f",
+        "msy:292be5bf55aa053ca9ac",
+        "msy:8800f513d7bc9bc26e25",
+        "msy:1c79977c47a62d219cf1"
+      ],
+      "targetAfter": 2,
+      "totalTurns": 87,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 21000,
+          "outputHash": "8644a3d7448acbe526a478614534862c83e89676fdaa0d1463bb334c69b5ba04",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 2113,
+          "outputHash": "ca60cb1a6f27f33d067c4d7f8f09e791c05acee8689ac7ffeae24a03183b971c",
+          "targetEvidenceCoverage": 0.875
+        }
+      }
+    },
+    {
+      "caseKey": "msy:5b0b9e38c1e755ab0ff5",
+      "officialId": "emc_search_000214",
+      "task": "memory_evidence_conflict",
+      "distractorCaseKeys": [
+        "msy:a7a22c4f93d7a13e562f",
+        "msy:2d43c620375043c9d45b",
+        "msy:9f34a3a6510d69e896f6",
+        "msy:0fdaab38f61306f35c75",
+        "msy:b4560b4b800f47079168",
+        "msy:8271c0ddf2547c12b998",
+        "msy:d9034dcd7226fa49aa2d",
+        "msy:777904b3bc7d5d3c705a"
+      ],
+      "targetAfter": 3,
+      "totalTurns": 92,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 21600,
+          "outputHash": "17e0c9cc1e55e199aca79718a0bd9144b1c4e7ba70e3afd036ca2ad487f71376",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 2052,
+          "outputHash": "3192634d317611ed454499408a1ee6772f41bf5664340d34b3f16498c279db00",
+          "targetEvidenceCoverage": 0.75
+        }
+      }
+    },
+    {
+      "caseKey": "msy:972207832e633c5c5db0",
+      "officialId": "mso_hard_000199",
+      "task": "contextual_scope_control",
+      "distractorCaseKeys": [
+        "msy:46b8fef803a8b860bbc6",
+        "msy:c633e1f814b333a3c950",
+        "msy:66a331f4a4c031490d87",
+        "msy:35c72a9220a9599596aa",
+        "msy:a5166f70b95ac4ef38e9",
+        "msy:e45243a8b7ab6ce85adb",
+        "msy:f6194bab85a84d05650b",
+        "msy:9402ed3fe1384083e907"
+      ],
+      "targetAfter": 3,
+      "totalTurns": 81,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 18733,
+          "outputHash": "bebc53dfe8de03fb798a314e48476fbcb0326bd08e5b379e3a79465337bfe2d6",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 1386,
+          "outputHash": "c8f688d132b824670cba38f17013f886478cefc4844b66a59fe00bdacaaed765",
+          "targetEvidenceCoverage": 0.7
+        }
+      }
+    },
+    {
+      "caseKey": "msy:712e5aabcb67a1304c4c",
+      "officialId": "mso_hard_000078",
+      "task": "contextual_scope_control",
+      "distractorCaseKeys": [
+        "msy:effaf18d9fc794faee1e",
+        "msy:49ea2a82ad70d01ef50f",
+        "msy:41d93eb3db066527b98f",
+        "msy:793ca97aafba2dd8c1a2",
+        "msy:4c9cf8c4e1addbe10816",
+        "msy:ca7517f8ba4eeec31c74",
+        "msy:fbb06677dc0f0cfbddf2",
+        "msy:0ca41ea2ec9e1abb3c3e"
+      ],
+      "targetAfter": 3,
+      "totalTurns": 65,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 13449,
+          "outputHash": "d99b49693aa260617a5516e9397abfac6dbfceff3abe3d217faf4ae7beeba658",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 1105,
+          "outputHash": "164459e970221c52171e01e7f01a7c7382461814bf0f3ae23b3f32652f8d9dd4",
+          "targetEvidenceCoverage": 0.5
+        }
+      }
+    },
+    {
+      "caseKey": "msy:fc5dd67500de0b7bb699",
+      "officialId": "mso_hard_000097",
+      "task": "contextual_scope_control",
+      "distractorCaseKeys": [
+        "msy:0c6934bfaa5483b481c1",
+        "msy:30087463cb003f82edd2",
+        "msy:88e3d80dc9fae12dc309",
+        "msy:dd6e7080aacb0e90dd20",
+        "msy:c8e4b64b25b13f679c17",
+        "msy:15b413e9c067b17aa369",
+        "msy:9873c1a6ea932d1617b5",
+        "msy:27f0b4d0c00cb74d03a7"
+      ],
+      "targetAfter": 4,
+      "totalTurns": 87,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 20958,
+          "outputHash": "d4f6f87275e06ff0aee0d1f40033d7d584023bef077b2fb486d3374b2ddb8bba",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 1517,
+          "outputHash": "76e0440e6a855983e4bec521769dba3156c1c21f61a28546225e7449cbd9c824",
+          "targetEvidenceCoverage": 0.7
+        }
+      }
+    },
+    {
+      "caseKey": "msy:451d666366cd0510d5a3",
+      "officialId": "mso_hard_000021",
+      "task": "contextual_scope_control",
+      "distractorCaseKeys": [
+        "msy:292be5bf55aa053ca9ac",
+        "msy:6d6d688b65b3a666cb0e",
+        "msy:c890457a579a1fde507c",
+        "msy:8f63e5f1d3d887eb018e",
+        "msy:7ddf68564c8bcb2bffa6",
+        "msy:d2bc0a35c8c0a0b6f509",
+        "msy:6b442ff9d0fa4c31618c",
+        "msy:ecc53bf9e850f0eb5e6a"
+      ],
+      "targetAfter": 4,
+      "totalTurns": 80,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 18841,
+          "outputHash": "599113beb5b7fa60a2f10512b38a11999bf5ad79afdb4977a6dbeb2ea5b5cc88",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 1092,
+          "outputHash": "fa2e67be11478c4de96e758001aa1830554d8671678f3be740f5e3bc46faca77",
+          "targetEvidenceCoverage": 0.5
+        }
+      }
+    },
+    {
+      "caseKey": "msy:5d3dafffaee0601e8589",
+      "officialId": "mso_hard_000109",
+      "task": "contextual_scope_control",
+      "distractorCaseKeys": [
+        "msy:07016903c28615f02f95",
+        "msy:4c005c30ae4d68e47470",
+        "msy:eb9b399ef8d11ff645e8",
+        "msy:ba15669cb16b765ed259",
+        "msy:5bf78e1ec57a544af736",
+        "msy:5d09ef588f98b8439875",
+        "msy:48e58bcb04bfeda2bb16",
+        "msy:9e7e84244e722df52fed"
+      ],
+      "targetAfter": 4,
+      "totalTurns": 87,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 22400,
+          "outputHash": "35b716ffb3b98ab92e430b00985d4d1451b96076fb5b68b7f44428b8a4830f8b",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 950,
+          "outputHash": "c59647cf64b4247bc91af868a23cdea9f87d69ec9e2e723ea48abac5856fd432",
+          "targetEvidenceCoverage": 0.5
+        }
+      }
+    },
+    {
+      "caseKey": "msy:ec0875f59d7bc0193437",
+      "officialId": "mso_hard_000264",
+      "task": "contextual_scope_control",
+      "distractorCaseKeys": [
+        "msy:c65db69f50bee2b86732",
+        "msy:5058940716d0c882e2ed",
+        "msy:09dc4478c54d0ed765dd",
+        "msy:4b6d543b1a8aaf00ac4f",
+        "msy:ed75a58b19be80af1fe9",
+        "msy:666a14612f0288663176",
+        "msy:5b73923333745e687c44",
+        "msy:a5a2302d69bcebb40278"
+      ],
+      "targetAfter": 4,
+      "totalTurns": 82,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 19222,
+          "outputHash": "16a73cd734627aa7fc9e2ba011e97f558cf50a5edfad673bfef5b46a4d6efb8b",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 1489,
+          "outputHash": "01b0e435f64c4be066a83883c554cce002382643e982b62170cdfd87b0668ded",
+          "targetEvidenceCoverage": 0.7
+        }
+      }
+    },
+    {
+      "caseKey": "msy:d65a1ac06c1c811852d4",
+      "officialId": "mso_hard_000054",
+      "task": "contextual_scope_control",
+      "distractorCaseKeys": [
+        "msy:c734ba7d86e72e3d277d",
+        "msy:6d7f74b96f0412d8822f",
+        "msy:ca7517f8ba4eeec31c74",
+        "msy:4b2e705bcd57249a2360",
+        "msy:6c554de10ec99a54df28",
+        "msy:92725a71acbde7cacb76",
+        "msy:3faca30ef20aa9971a86",
+        "msy:7372f589c96edba11c08"
+      ],
+      "targetAfter": 2,
+      "totalTurns": 74,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 16429,
+          "outputHash": "ed4d97bf342f4a5782e30f214d1ece7f3cc9cdd4b1225d3d17f511cc0b7e1768",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 1073,
+          "outputHash": "97328a193e8f2f7bf031493d28445d49af34c3b0c9c0d8ea2b53136155799939",
+          "targetEvidenceCoverage": 0.5
+        }
+      }
+    },
+    {
+      "caseKey": "msy:a1bd5925126b7f032820",
+      "officialId": "mso_hard_000056",
+      "task": "contextual_scope_control",
+      "distractorCaseKeys": [
+        "msy:644b833ebfb508b4b967",
+        "msy:7372f589c96edba11c08",
+        "msy:8dbdaae82d88df50a29d",
+        "msy:ce9c2162f19b5cf059a8",
+        "msy:b4560b4b800f47079168",
+        "msy:8c8457fce0a907196aab",
+        "msy:a669fcfb39961fbf2f27",
+        "msy:41d93eb3db066527b98f"
+      ],
+      "targetAfter": 3,
+      "totalTurns": 71,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 15696,
+          "outputHash": "7f7fc23259e3b396caace5723fca183ccdafc1f3d79d24b129a7f4e1eb981e57",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 1517,
+          "outputHash": "9bda4146a6ea32a71bccad4287dfe173f35a167672568a7c1507cea41f8170ea",
+          "targetEvidenceCoverage": 0.7
+        }
+      }
+    },
+    {
+      "caseKey": "msy:18dd9c61342c79db2169",
+      "officialId": "mso_hard_000055",
+      "task": "contextual_scope_control",
+      "distractorCaseKeys": [
+        "msy:f831664d3b10dadc1766",
+        "msy:a2610bf4bd9245f5649c",
+        "msy:b3a6a0bfbe13788ce045",
+        "msy:5721c0fddf2fbca66a2e",
+        "msy:b851e60d3145f68e8af4",
+        "msy:a2cdfb77fa27a2923f7e",
+        "msy:ae18104e273a3a17bcb3",
+        "msy:9a44bddf504692fdaf2d"
+      ],
+      "targetAfter": 3,
+      "totalTurns": 88,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 21669,
+          "outputHash": "5cf94190271b60ea73b68c66ad04e98a174bad11ab1268b08b8f9ae52176f4ac",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 1062,
+          "outputHash": "e24fe4c3d141e4529ab032ded2b95ef18a4d287397b7f4c0be60440fe74fdade",
+          "targetEvidenceCoverage": 0.5
+        }
+      }
+    },
+    {
+      "caseKey": "msy:5167b6a27b4b75223a33",
+      "officialId": "mso_hard_000031",
+      "task": "contextual_scope_control",
+      "distractorCaseKeys": [
+        "msy:b096ffa04782c12ea27a",
+        "msy:df103ab56b537f6f4d0e",
+        "msy:41253c427cfb275726ff",
+        "msy:fbb06677dc0f0cfbddf2",
+        "msy:618c55c5319117cba9ca",
+        "msy:eb08ebe518d8c9da37ce",
+        "msy:2458ab734629313e8499",
+        "msy:7507ead3ebe126f6a0cf"
+      ],
+      "targetAfter": 4,
+      "totalTurns": 82,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 18929,
+          "outputHash": "eadd23b127de5e07435b44d6e985f4aa9e611b840d05f45ceabb482717641213",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 1279,
+          "outputHash": "1b662b9af5f96a205d481cf5c6960cd19aa890147e241a4dfc350dbb3091d19f",
+          "targetEvidenceCoverage": 0.6
+        }
+      }
+    },
+    {
+      "caseKey": "msy:3921d40aacd19d9a94d2",
+      "officialId": "mso_hard_000132",
+      "task": "contextual_scope_control",
+      "distractorCaseKeys": [
+        "msy:30744e20494ecd6639a0",
+        "msy:ff69e32f3ba2fcd12bd8",
+        "msy:3d8e6d93551f82282a5a",
+        "msy:48e58bcb04bfeda2bb16",
+        "msy:c9143dc5f127961fe1d8",
+        "msy:758b05e496630251089b",
+        "msy:63daa5cdf056d45706cf",
+        "msy:c8318fa97f2846914df3"
+      ],
+      "targetAfter": 2,
+      "totalTurns": 92,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 24326,
+          "outputHash": "fefe2586a7cb7ef4c3a3eebf895f6dbebd78ac40157ef2e9822e16ff3337f4be",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 1260,
+          "outputHash": "17cb948bd9f0904445fb157749e2f34ce16713385e38e45884fef92235cd404e",
+          "targetEvidenceCoverage": 0.6
+        }
+      }
+    },
+    {
+      "caseKey": "msy:33ff74e2919ceae289da",
+      "officialId": "mso_hard_000235",
+      "task": "contextual_scope_control",
+      "distractorCaseKeys": [
+        "msy:4cbe9d64089d71a312e7",
+        "msy:8b1bc6b7b6ddee02b987",
+        "msy:6b8befe3bb220820b007",
+        "msy:15d281be09aa76d8d85d",
+        "msy:9d9a099e20c94dbeb52e",
+        "msy:93b4b7c5e3e32b96a805",
+        "msy:c561b556e09d69bccd05",
+        "msy:aff1e56d69f89a08ffb8"
+      ],
+      "targetAfter": 4,
+      "totalTurns": 64,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 14968,
+          "outputHash": "da191aba1295fe48477c96c9b521b1c2da858a71a2e4c81fd178f9cedd079857",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 1326,
+          "outputHash": "cbbe1bf515ea44da2abf34c2d981668b0e275776472e43ee7a406be13ebab36e",
+          "targetEvidenceCoverage": 0.7
+        }
+      }
+    },
+    {
+      "caseKey": "msy:a4e2720b15be1d1e261f",
+      "officialId": "mso_hard_000144",
+      "task": "contextual_scope_control",
+      "distractorCaseKeys": [
+        "msy:ad1cb2f855f9d3e99aca",
+        "msy:bbffaab6c3663a12e7ce",
+        "msy:d10b7098692a81bde8a3",
+        "msy:47650fd6a4e5a227ed1e",
+        "msy:e75f767cbd944e14040c",
+        "msy:ee6d789af76248b12e58",
+        "msy:1b67627042a6131be8c9",
+        "msy:8a70be2878aee4fca467"
+      ],
+      "targetAfter": 2,
+      "totalTurns": 97,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 24853,
+          "outputHash": "ccc7738840e93c0ec68fad3f945a3b33fa1dbf189affe67f99eab1ceadc373d5",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 1128,
+          "outputHash": "a94415f19ba42563c23a905709c57c8fdfaa61a9006efe1a3f8cb9e75a3d667a",
+          "targetEvidenceCoverage": 0.6
+        }
+      }
+    },
+    {
+      "caseKey": "msy:84745461cae479f2d75d",
+      "officialId": "mso_hard_000168",
+      "task": "contextual_scope_control",
+      "distractorCaseKeys": [
+        "msy:9d9a099e20c94dbeb52e",
+        "msy:ddd168f53046fbfac675",
+        "msy:e418bb1a92a34f161311",
+        "msy:beab16eb51d3a0952c74",
+        "msy:801f9b656c5bdb3f079b",
+        "msy:3a7499b21f5ff53f2013",
+        "msy:2148661e7be91a89250b",
+        "msy:7f5fdc2e73d3df7f3d86"
+      ],
+      "targetAfter": 2,
+      "totalTurns": 77,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 19486,
+          "outputHash": "2c4fd0b8eabc945dda91d171b43e6f8a04017c744d0d21996b580361b0cf911e",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 1391,
+          "outputHash": "af61e0e6146b8a659b86a92ed63f7f9cd14c9c6ce95ee294083f43320cda187a",
+          "targetEvidenceCoverage": 0.7
+        }
+      }
+    },
+    {
+      "caseKey": "msy:54159b4f9152f91a853e",
+      "officialId": "mso_hard_000075",
+      "task": "contextual_scope_control",
+      "distractorCaseKeys": [
+        "msy:af4af57d50f836ec45b5",
+        "msy:e3015527cb722587f018",
+        "msy:c505c1f363371b9db691",
+        "msy:2f541949796dfa295505",
+        "msy:1748e0295ca287f117da",
+        "msy:c24abea07d16cc115242",
+        "msy:c890457a579a1fde507c",
+        "msy:c561b556e09d69bccd05"
+      ],
+      "targetAfter": 2,
+      "totalTurns": 82,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 18055,
+          "outputHash": "2f207042f4e30080a48a4c0a0da68685181c8597801286c73a2ab5519ed4d221",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 947,
+          "outputHash": "c28a5fc5c411dc6734a08952f7e1842fc6f5d5858fd5ebf60d42f2d6340c6a8a",
+          "targetEvidenceCoverage": 0.5
+        }
+      }
+    },
+    {
+      "caseKey": "msy:dc8add509778a8c3d4ba",
+      "officialId": "v11_000466",
+      "task": "valid_memory_selection",
+      "distractorCaseKeys": [
+        "msy:1f0a14cd7cb08a8750b8",
+        "msy:5c05116d0b091326aadf",
+        "msy:f01c247aa3ad7c8b55d2",
+        "msy:bba8a25bbf095b36d048",
+        "msy:2148661e7be91a89250b",
+        "msy:e632d5ec3be53a37233c",
+        "msy:0c6934bfaa5483b481c1",
+        "msy:1b0e0a969f98538e794f"
+      ],
+      "targetAfter": 2,
+      "totalTurns": 78,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 17005,
+          "outputHash": "f8ec072af1050fd6c5a9ae928b2516b508e7f84dadf486515ae9c1e56cd18be7",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 1507,
+          "outputHash": "39f0cd56bd9512526bb026c962c2b78deaedead4d7147f1f583b7cd6f9018995",
+          "targetEvidenceCoverage": 0.35714285714285715
+        }
+      }
+    },
+    {
+      "caseKey": "msy:aeab861e2c2bbfd91f76",
+      "officialId": "v11_000886",
+      "task": "valid_memory_selection",
+      "distractorCaseKeys": [
+        "msy:3a50d3a692f2173a7f94",
+        "msy:96e78b10d8823becb6ed",
+        "msy:faba83809b9c8f706bea",
+        "msy:6b442ff9d0fa4c31618c",
+        "msy:6d7f74b96f0412d8822f",
+        "msy:eb9b399ef8d11ff645e8",
+        "msy:5c53126b1e595f799a3d",
+        "msy:617e084cf0551cba7e79"
+      ],
+      "targetAfter": 2,
+      "totalTurns": 76,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 19290,
+          "outputHash": "16603b8854441258753c4c8d9b3da4ada20418c9f4e33c9b2e658c83df9d066f",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 1925,
+          "outputHash": "3e11e26b5feb73d893bac82affd1f8b242a2014bef26c7c71450a8ed7dc6998e",
+          "targetEvidenceCoverage": 0.5833333333333334
+        }
+      }
+    },
+    {
+      "caseKey": "msy:f76d7dca80c77cb86560",
+      "officialId": "v11_001080",
+      "task": "valid_memory_selection",
+      "distractorCaseKeys": [
+        "msy:164a7178f2ccd649f3d5",
+        "msy:1cb22deb733ec835b3f0",
+        "msy:11b8dfe47d95178485f3",
+        "msy:3353c929ff819112e871",
+        "msy:0d6b68996be8d42b7c03",
+        "msy:5b0b9e38c1e755ab0ff5",
+        "msy:0a7e4dbe1517fd9092b6",
+        "msy:6bc92ea6ed46f987853d"
+      ],
+      "targetAfter": 4,
+      "totalTurns": 74,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 15653,
+          "outputHash": "8aad176a92d43f3a938e55b46846c100dd7115c6108c673a2f4674ff65ef2717",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 2245,
+          "outputHash": "a79da092b70ed12f36a8a85043a35ff4235eb8148df4b13dcab08064dc7eafb5",
+          "targetEvidenceCoverage": 0.5833333333333334
+        }
+      }
+    },
+    {
+      "caseKey": "msy:1edbf0732b7353764b94",
+      "officialId": "v11_000393",
+      "task": "valid_memory_selection",
+      "distractorCaseKeys": [
+        "msy:6b442ff9d0fa4c31618c",
+        "msy:97c67ccf423eb348b716",
+        "msy:562da4271e844c5e96cd",
+        "msy:5058940716d0c882e2ed",
+        "msy:2c31f2e238911b4dde71",
+        "msy:c4ff52238c80e394c984",
+        "msy:241133df27c5aeec6fa9",
+        "msy:51bcc1a99577355e43b7"
+      ],
+      "targetAfter": 3,
+      "totalTurns": 78,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 18186,
+          "outputHash": "25f8bdd278197af3df2d507e05bcf620510f2a09527bf81978dc31569b5d814e",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 1615,
+          "outputHash": "69391deb0e8181893f9ff4c50fa080b6c69d412260a1eddd30b94ba1b316e816",
+          "targetEvidenceCoverage": 0.35714285714285715
+        }
+      }
+    },
+    {
+      "caseKey": "msy:f8447af78d1ca03d452d",
+      "officialId": "v11_000890",
+      "task": "valid_memory_selection",
+      "distractorCaseKeys": [
+        "msy:3843da03d6fe1eac3267",
+        "msy:7d729daaabfbbe7131de",
+        "msy:7c5da8d4055c9406054c",
+        "msy:94c508355de291d66f62",
+        "msy:6ac94bd6f2797ec14608",
+        "msy:8097905416100b0ad495",
+        "msy:61a3ac8d9106cd566c69",
+        "msy:0bf2915914c66a0f3e2c"
+      ],
+      "targetAfter": 3,
+      "totalTurns": 79,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 19619,
+          "outputHash": "96f510ccd8199cdb6c0f96e79ed1dbd4aa10bff91e438925bdfde96a2476003d",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 1847,
+          "outputHash": "27fcc582c34d09f825055654b25c6ca367b6e1063f88f2e025da264e3b802862",
+          "targetEvidenceCoverage": 0.5
+        }
+      }
+    },
+    {
+      "caseKey": "msy:88f3fec792db95244793",
+      "officialId": "v11_000709",
+      "task": "valid_memory_selection",
+      "distractorCaseKeys": [
+        "msy:ead54198f3ee5163f50b",
+        "msy:656414794991b17514b8",
+        "msy:793ca97aafba2dd8c1a2",
+        "msy:45d3d554836495724e4e",
+        "msy:4fd490afad0bbfcb6740",
+        "msy:fd3f0b211a41f2481bbb",
+        "msy:549b633f5baae1dba535",
+        "msy:562da4271e844c5e96cd"
+      ],
+      "targetAfter": 4,
+      "totalTurns": 74,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 17170,
+          "outputHash": "1f30cfd4b28f8816779b0d5029e640e20178873bbda2dbe6c9551d0b81c64d6c",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 1689,
+          "outputHash": "7ce797a58670ff25929d5f056494b1c9592f4bece62ca1cd9d8127911fd5ead0",
+          "targetEvidenceCoverage": 0.6666666666666666
+        }
+      }
+    },
+    {
+      "caseKey": "msy:df103ab56b537f6f4d0e",
+      "officialId": "v11_000427",
+      "task": "valid_memory_selection",
+      "distractorCaseKeys": [
+        "msy:3662de12967d9e0525d2",
+        "msy:4c9cf8c4e1addbe10816",
+        "msy:e274ea396916115c73e1",
+        "msy:d61493bb64179f7f494c",
+        "msy:d9034dcd7226fa49aa2d",
+        "msy:dd5fba25cfa8fb0cfbf9",
+        "msy:46475788e25c158730ba",
+        "msy:bd78fa22c0f718296f15"
+      ],
+      "targetAfter": 4,
+      "totalTurns": 85,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 18676,
+          "outputHash": "9e7da39849dc49d7efb02131b5f98cd5740afd50ecb14bae2bc543cb303eb448",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 2507,
+          "outputHash": "cb45bd1b2a562a519e5d59ad33d613e5a3080d46a73cd5ec0f85cb534a91c41a",
+          "targetEvidenceCoverage": 0.6666666666666666
+        }
+      }
+    },
+    {
+      "caseKey": "msy:47650fd6a4e5a227ed1e",
+      "officialId": "v11_000421",
+      "task": "valid_memory_selection",
+      "distractorCaseKeys": [
+        "msy:6aaf8413b07a97990b53",
+        "msy:58f2b00374bd4181b74e",
+        "msy:ae83bb87195ddb963758",
+        "msy:cee556d78da962443919",
+        "msy:90a6e2a8bb34835ebd11",
+        "msy:507c443c5932ddf2df5f",
+        "msy:3eb6b4c47089e8f18d9c",
+        "msy:a60ef6ef4b9cca1dd349"
+      ],
+      "targetAfter": 4,
+      "totalTurns": 85,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 17739,
+          "outputHash": "0c72279c29f36701920f7afd79921ceefcec4dc4d34ed3b4986b5120476327ab",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 2405,
+          "outputHash": "71991258cdc941cc1815bdd0a309e458ca1d35161b333deaa21c276f0d79718c",
+          "targetEvidenceCoverage": 0.6
+        }
+      }
+    },
+    {
+      "caseKey": "msy:b3b53a56e46682c93936",
+      "officialId": "v11_001027",
+      "task": "valid_memory_selection",
+      "distractorCaseKeys": [
+        "msy:00667669fd41204174d3",
+        "msy:0fcd97435bd151846c37",
+        "msy:358c5fad3a9c1d025320",
+        "msy:3a7499b21f5ff53f2013",
+        "msy:7c5da8d4055c9406054c",
+        "msy:75b2e7c1b1804447f156",
+        "msy:425206d7490424f74fe3",
+        "msy:6f405304cfb1beb5439e"
+      ],
+      "targetAfter": 4,
+      "totalTurns": 80,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 18551,
+          "outputHash": "600da5cd7c7803f6de390582426df3fde376d47c9e7f59e3a6ac60a28e1c2548",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 2517,
+          "outputHash": "691e440d5db90011256086e3adc2a9cbc92df1d460d7aa98f19a085434d8a3b8",
+          "targetEvidenceCoverage": 0.5833333333333334
+        }
+      }
+    },
+    {
+      "caseKey": "msy:076910663311bcc44cf9",
+      "officialId": "v11_000392",
+      "task": "valid_memory_selection",
+      "distractorCaseKeys": [
+        "msy:5721c0fddf2fbca66a2e",
+        "msy:a4e2720b15be1d1e261f",
+        "msy:0564409f1269f6e04452",
+        "msy:dedefaeaee2082600718",
+        "msy:6ea9a1598374c7318a0c",
+        "msy:417ad6406edaf63a24cb",
+        "msy:a20f82f920ff5f439870",
+        "msy:ce9c2162f19b5cf059a8"
+      ],
+      "targetAfter": 3,
+      "totalTurns": 84,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 16637,
+          "outputHash": "ef528d0768aa721130e9bf3c11e4e11a5eb0c76f2ebb98caf12d6839be4a90dd",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 1702,
+          "outputHash": "152aad3b4124a781c6fabb2ac863e66b32dac0112ce2259bbbfa5b84610058ca",
+          "targetEvidenceCoverage": 0.5384615384615384
+        }
+      }
+    },
+    {
+      "caseKey": "msy:73af69f473ce8d0de767",
+      "officialId": "v11_000702",
+      "task": "valid_memory_selection",
+      "distractorCaseKeys": [
+        "msy:3f1cb4f2cdbb2fb03b0c",
+        "msy:7eae10d054e82b616441",
+        "msy:4c9cf8c4e1addbe10816",
+        "msy:17411020484fe8a15178",
+        "msy:7d770fc2c3a0d7cb84dc",
+        "msy:75b2e7c1b1804447f156",
+        "msy:2f658ca34cd830d7852b",
+        "msy:96c31da14be388580332"
+      ],
+      "targetAfter": 4,
+      "totalTurns": 80,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 17387,
+          "outputHash": "6beb46a17a0ec23c9c87b2efac577431ecfc458e7ff66bfecb043ef5e265fe70",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 1189,
+          "outputHash": "1c404b31483d9cf4f8b571264c8553b1b79af641bfb66d990d8ce78e64f8a587",
+          "targetEvidenceCoverage": 0.3333333333333333
+        }
+      }
+    },
+    {
+      "caseKey": "msy:7f55422dfbd48b8aeee4",
+      "officialId": "v11_000658",
+      "task": "valid_memory_selection",
+      "distractorCaseKeys": [
+        "msy:5d3dafffaee0601e8589",
+        "msy:a68c4d6285b5fb40b25c",
+        "msy:5caa1fbd5c1f2723408d",
+        "msy:be5daab636b8951d01cc",
+        "msy:75b88ef0ae733fc28356",
+        "msy:b0f7f32295aec2576c5f",
+        "msy:710b1da9176ac0859367",
+        "msy:d6b25c5fe7dc9bee2012"
+      ],
+      "targetAfter": 4,
+      "totalTurns": 76,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 16582,
+          "outputHash": "22bf4cb73bfcbc78fda9a9cc70710eefe935ad9264032d365825243aa0be288c",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 1499,
+          "outputHash": "7635a33c67e47ece2b74c0fe2625c743ff8550204447d1319e30d75bb4ac3c36",
+          "targetEvidenceCoverage": 0.42857142857142855
+        }
+      }
+    },
+    {
+      "caseKey": "msy:4e8d252b6003354948b8",
+      "officialId": "v11_000872",
+      "task": "valid_memory_selection",
+      "distractorCaseKeys": [
+        "msy:e2713daebb45cdf150c4",
+        "msy:bc23f31ed689f67ec672",
+        "msy:06b4277cb6b185333b4f",
+        "msy:c61a1ba98fd7508e4bee",
+        "msy:509a79f01c4e60be8a2c",
+        "msy:f9ebe051e665f3e12b30",
+        "msy:d783b7b74ce1c251ccc3",
+        "msy:9630bed439ac67e846e1"
+      ],
+      "targetAfter": 4,
+      "totalTurns": 72,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 15763,
+          "outputHash": "689ffd68c28859057cc3c73197399ad6bf7360fa89379a63dd93a85fa261903d",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 1649,
+          "outputHash": "471d0232a791354ec0a8a332e8cb8afe19e4ce5a3fef3b45a2b4c14404d66eac",
+          "targetEvidenceCoverage": 0.5
+        }
+      }
+    },
+    {
+      "caseKey": "msy:52a1ba667c969e33c8d4",
+      "officialId": "v11_001083",
+      "task": "valid_memory_selection",
+      "distractorCaseKeys": [
+        "msy:0db2035fe0ecd158a2de",
+        "msy:2dc4e0bc1f39b88eecf1",
+        "msy:fbb06677dc0f0cfbddf2",
+        "msy:0e03bc873f83ada2cb57",
+        "msy:f010e32a7087153877c7",
+        "msy:8bb58207dc7413fdca9b",
+        "msy:28946a7e3f52c8d7bcc0",
+        "msy:faba83809b9c8f706bea"
+      ],
+      "targetAfter": 3,
+      "totalTurns": 74,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 15739,
+          "outputHash": "48bf6b059ac8481d88fb31bcec7a37bf6b8d24b91c25682fb1da6f3c1b46be90",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 2040,
+          "outputHash": "147075b3e4c47e8e2ae2579d5e5ceaa53ba7a3382e62af01abec4919016efab3",
+          "targetEvidenceCoverage": 0.5833333333333334
+        }
+      }
+    },
+    {
+      "caseKey": "msy:2185b4e052dc3f6d0343",
+      "officialId": "v11_000977",
+      "task": "valid_memory_selection",
+      "distractorCaseKeys": [
+        "msy:4c597b54b3e0767f2f3b",
+        "msy:86b6308628af52f198e6",
+        "msy:d98e348d91e80bc0997b",
+        "msy:c03d7918403e44ea9760",
+        "msy:c561b556e09d69bccd05",
+        "msy:7a22f8679e70204cf8f0",
+        "msy:df10ca5d678443b11a7e",
+        "msy:65239b7ea49391b88e7d"
+      ],
+      "targetAfter": 3,
+      "totalTurns": 80,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 17597,
+          "outputHash": "e0d124b3adaa46945f8f39ced8df1ab60dde898a233c0807312c2456e0b186bf",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 1016,
+          "outputHash": "7165a9893f894422f974b9ef11f4603be43b7fee8768fe7ebb5eade75bbbdeff",
+          "targetEvidenceCoverage": 0.25
+        }
+      }
+    },
+    {
+      "caseKey": "msy:9adfd6c5f9d7e5113ce7",
+      "officialId": "v11_000979",
+      "task": "valid_memory_selection",
+      "distractorCaseKeys": [
+        "msy:f1d999b67b3fde958589",
+        "msy:db4e51fd6c54c5b75a56",
+        "msy:27af9763ea16136768d3",
+        "msy:9449920fdf6fe52fdedb",
+        "msy:d8b7657dd5fd2890040e",
+        "msy:a1bd5925126b7f032820",
+        "msy:87c613008c6f5cedfa47",
+        "msy:025dd51c2c9ba7154665"
+      ],
+      "targetAfter": 2,
+      "totalTurns": 86,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 18837,
+          "outputHash": "d658567fe467b4a4f39623570fd2afe50d3066651ba519acbe9a3b12d626ae29",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 2134,
+          "outputHash": "e442d35b6d97283e98f89b5d27d7cd9a4aeec4463f38e5e647da7ba54b178761",
+          "targetEvidenceCoverage": 0.42857142857142855
+        }
+      }
+    },
+    {
+      "caseKey": "msy:71848c72ae97cb814b43",
+      "officialId": "v11_000713",
+      "task": "valid_memory_selection",
+      "distractorCaseKeys": [
+        "msy:86330c089a6c254c71ce",
+        "msy:1af96dd2e38faec75fd7",
+        "msy:fbe0f37103acb2c31036",
+        "msy:f3c3e5442d3f8bb83dad",
+        "msy:d9a3a863928f5186317c",
+        "msy:4509bc8f0a14c5497935",
+        "msy:488ad3eb92b9a4f2a461",
+        "msy:15a820c1f1dad50bacb7"
+      ],
+      "targetAfter": 2,
+      "totalTurns": 80,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 18504,
+          "outputHash": "09a8a775f02cf6e5bf4e8a55a12596ef53d2a9b3d29234cf9f4bc20c1134b41f",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 2520,
+          "outputHash": "dd1d65063389b11c04845f554c6711797721d13ea1d976ce18fa31130a0c25ec",
+          "targetEvidenceCoverage": 0.5833333333333334
+        }
+      }
+    },
+    {
+      "caseKey": "msy:abe5808820ccbf7e543d",
+      "officialId": "v11_000475",
+      "task": "valid_memory_selection",
+      "distractorCaseKeys": [
+        "msy:9d9a099e20c94dbeb52e",
+        "msy:a0f72f7b97227862cc59",
+        "msy:5e021d9d9dd128c51d8f",
+        "msy:c505c1f363371b9db691",
+        "msy:5b6ababd2e85bc00a765",
+        "msy:4cbe9d64089d71a312e7",
+        "msy:937a3364306485e20873",
+        "msy:b9115ce3ea00ff9ad3b8"
+      ],
+      "targetAfter": 2,
+      "totalTurns": 84,
+      "assemblies": {
+        "raw-long": {
+          "contextTokens": 19412,
+          "outputHash": "e836009979942a0c2c7448fda57a9833c459bd363a7eaf5108ce49a972d9477d",
+          "targetEvidenceCoverage": 1
+        },
+        "evidence-ladder": {
+          "contextTokens": 2118,
+          "outputHash": "60626d057e6bf7377d27188dafc21f1b3d0a026a9eb02c4691f1ff2c704dc105",
+          "targetEvidenceCoverage": 0.4666666666666667
+        }
+      }
+    }
+  ],
+  "manifestHash": "sha256:b40e3ff44bbe74973ed797c3f3ced860562ee2f48a9e349818aae963f5d3d880"
+}

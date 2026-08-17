@@ -112,6 +112,19 @@ describe('ContextMeter', () => {
     expect(panel.getElementsByClassName(segmentClass)).toHaveLength(1)
   })
 
+  it('renders plugin-owned context details inside the native breakdown panel', () => {
+    const view = render(
+      <ContextMeter
+        useProjection={projections({ contextPressure: { pressureTokens: 32_000, contextWindow: 128_000 } })}
+        t={t}
+        details={<section aria-label="research assembly">Kernel ~80 · 历史 loops 2</section>}
+      />,
+    )
+    fireEvent.click(view.getByRole('button', { name: '上下文已用 25%' }))
+    const panel = view.container.querySelector('[role="dialog"]')!
+    expect(panel.querySelector('[aria-label="research assembly"]')?.textContent).toContain('历史 loops 2')
+  })
+
   it('closes when capacity disappears and stays closed when it returns', () => {
     let values: Record<string, unknown> = {
       contextPressure: { pressureTokens: 32_000, contextWindow: 128_000 },

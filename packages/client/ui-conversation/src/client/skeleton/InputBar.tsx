@@ -36,6 +36,15 @@ import css from './InputBar.module.css'
 /** Decoration product of the no-session state (no machine, empty draft). */
 const INERT_DECORATIONS: DraftDecorations = { token: null, chips: [], textRefs: [], hint: null }
 
+/** Markdown may arrive without a MIME type on Windows, so accept its standard names too. */
+const MARKDOWN_FILE_NAME = /\.(?:md|markdown)$/iu
+
+function isMarkdownFile(file: File): boolean {
+  return file.type === 'text/markdown'
+    || file.type === 'text/x-markdown'
+    || MARKDOWN_FILE_NAME.test(file.name)
+}
+
 /** Rail thumbnail carrying its source attachment for the open/remove callbacks. */
 interface ComposerRailItem extends AttachmentRailItem {
   attachment: ComposerAttachment
@@ -64,6 +73,7 @@ export function InputBar({
   const planActive = useProjection('plan', plan => plan !== undefined && (plan.pending ? !plan.active : plan.active))
   // Absent (undefined: no frame yet) and cleared (null) both mean no goal.
   const hasGoal = useProjection('goal', goal => goal != null)
+  const contextDetails = renderSlot('conversation.context.details', {})
   // Session-maybe: the machine faces are absent together while no session is
   // current; the bar renders the same DOM inert instead of a parallel tree.
   const live = input !== undefined && keyboard !== undefined && inputActions !== undefined
@@ -397,7 +407,7 @@ export function InputBar({
       .filter(item => item.kind === 'file')
       .map(item => item.getAsFile())
       .filter((file): file is File => file !== null)
-    if (files.length > 0) intakeImages(files)
+    if (files.length > 0) intakeFiles(files)
     const text = e.clipboardData.getData('text/plain')
     if (text === '') {
       if (files.length > 0) e.preventDefault()
@@ -448,6 +458,35 @@ export function InputBar({
     if (rejected !== null) showToast(rejected)
   }, [addImages, attachments, imageLimits, showToast, t])
 
+  // Markdown is plain model-visible text, not a second attachment protocol:
+  // import it into the editable draft while all remaining files keep the
+  // existing image validation/storage path. This preserves the original text
+  // exactly and avoids a duplicate binary store for a text-native format.
+  const intakeFiles = useCallback((files: readonly File[]): void => {
+    const markdownFiles = files.filter(isMarkdownFile)
+    const otherFiles = files.filter(file => !isMarkdownFile(file))
+    if (otherFiles.length > 0) {
+      if (addImages === undefined) showToast(t('image.serviceUnavailable'))
+      else intakeImages(otherFiles)
+    }
+    if (markdownFiles.length === 0 || keyboard === undefined) return
+    void Promise.all(markdownFiles.map(file => file.text()))
+      .then((parts) => {
+        const el = inputRef.current
+        if (el === null) return
+        const body = parts.join('\n\n')
+        if (body === '') return
+        const current = keyboard.snapshot.draft
+        const separator = current === '' || current.endsWith('\n\n') ? '' : '\n\n'
+        const text = separator + body
+        keyboard.pasteBegin(text, { start: current.length, end: current.length })
+        const caret = current.length + text.length
+        restoreCaret(el, caret)
+        keyboard.track(keyboard.snapshot.draft, caret)
+      })
+      .catch(() => { showToast(t('file.readFailed')) })
+  }, [addImages, intakeImages, keyboard, restoreCaret, showToast, t])
+
   // Whole-page file-drop intake (DeepSeek Chat behavior): the listeners live
   // on the document so a drop anywhere over the window adds images, not only
   // over the composer card. Safe as document-level state: the composer-bar
@@ -455,7 +494,7 @@ export function InputBar({
   // Text drags carry no 'Files' type and pass through untouched, keeping the
   // native drop-text-into-textarea path. The overlay layer itself is
   // pointer-inert, so it never disturbs the enter/leave count.
-  const canAcceptDrop = !locked && !machineBusy && addImages !== undefined
+  const canAcceptDrop = !locked && !machineBusy && keyboard !== undefined
   useEffect(() => {
     const hasFiles = (event: globalThis.DragEvent): boolean =>
       event.dataTransfer?.types.includes('Files') ?? false
@@ -489,7 +528,7 @@ export function InputBar({
       event.preventDefault()
       reset()
       if (!canAcceptDrop) return
-      intakeImages([...(event.dataTransfer?.files ?? [])])
+      intakeFiles([...(event.dataTransfer?.files ?? [])])
     }
     document.addEventListener('dragenter', onDragEnter)
     document.addEventListener('dragover', onDragOver)
@@ -625,7 +664,7 @@ export function InputBar({
       }
     }
     pushPlain(draft.length)
-    if (deco.hint !== null) {
+    if (deco.hint !== null && !machineBusy && notice === null) {
       // Claim tokens have the `/name ` format (trailing space); trim to the bare name.
       const commandName = input?.claim?.token.slice(1).trim() ?? ''
       const hintKey = `hint.${commandName === 'goal' && hasGoal ? 'goal.active' : commandName}`
@@ -754,7 +793,7 @@ export function InputBar({
           <div className={css.trailing}>
             {rightItems}
             {renderSlot('conversation.input.model', { locked: modelSeatLocked })}
-            <ContextMeter useProjection={useProjection} t={t} />
+            <ContextMeter useProjection={useProjection} t={t} details={contextDetails} />
             {interruptible && (
               <Tooltip label={t('input.stop')} side="top" delayMs={500}>
                 <button

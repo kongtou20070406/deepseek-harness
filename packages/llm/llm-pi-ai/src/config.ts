@@ -40,6 +40,9 @@ export const DEFAULT_CONTEXT_WINDOW = 262_144
 /** Output capability assumed for a model neither configuration nor the catalog sizes. */
 export const DEFAULT_MAX_TOKENS = 32_768
 
+/** Default deadline for the optional Codex subscription-usage query. */
+export const DEFAULT_CODEX_USAGE_TIMEOUT_MS = 12_000
+
 /**
  * Modalities assumed for a model neither configuration nor the catalog
  * declares. Text is the floor every supported protocol certainly carries, so
@@ -176,6 +179,10 @@ export interface Config {
    * and registers them the moment a settings section supplies profiles.
    */
   providers?: Record<string, PiAiProviderProfile>
+  /** Deadline for the non-model Codex subscription-usage request. */
+  codexUsageTimeoutMs?: number
+  /** Reuse Pi's native OpenAI Codex OAuth login when the Harness store is empty. */
+  codexImportPiAuth?: boolean
 }
 
 const thinkingBudgets = z.object({
@@ -254,6 +261,8 @@ const profile = z.object({
 /** Runtime schema for {@link Config}. */
 export const Config: z<Config> = z.object({
   providers: z.dict(profile).default({}),
+  codexUsageTimeoutMs: z.number().step(1).min(1).max(MAX_TIMER_DELAY_MS).default(DEFAULT_CODEX_USAGE_TIMEOUT_MS),
+  codexImportPiAuth: z.boolean().default(false),
 })
 
 /**

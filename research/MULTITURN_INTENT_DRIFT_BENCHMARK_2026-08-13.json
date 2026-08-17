@@ -1,0 +1,534 @@
+{
+  "schema": 1,
+  "benchmark": "Pi-Idea Multi-Turn Intent Continuity Replay v1",
+  "generatedAt": "2026-08-13T00:00:00.000Z",
+  "limits": [
+    "The rolling baseline is a transparent deterministic Codex-style simulation, not the proprietary Codex compactor.",
+    "This benchmark measures context sufficiency and drift exposure, not downstream Sol answer quality.",
+    "Scenario structures are derived from bounded Obelisk history retrieval; contents are anonymized synthetic fixtures.",
+    "Pi-Idea receives user-confirmed narrow state and pointer frames; this is the architecture under test, not an equal-input retriever contest."
+  ],
+  "budgets": {
+    "strategyContextTokens": 900
+  },
+  "provenance": {
+    "source": "bounded Obelisk user-message audit on 2026-08-13",
+    "observedArchetypes": [
+      "bare continuation",
+      "late correction",
+      "task switch",
+      "scope and authority",
+      "new constraint"
+    ]
+  },
+  "aggregate": {
+    "rolling": {
+      "scenarios": 6,
+      "passRate": 0.6666666666666666,
+      "goalDriftRate": 0.16666666666666666,
+      "meanExpectedCoverage": 0.8333333333333334,
+      "forbiddenLeakScenarios": 2,
+      "staleMentionScenarios": 1,
+      "unresolvedStaleLeakScenarios": 0,
+      "questionDuplicationScenarios": 0,
+      "meanTokens": 818.8333333333334,
+      "meanFractionOfFullLedger": 0.4457298441297209
+    },
+    "piIdea": {
+      "scenarios": 6,
+      "passRate": 1,
+      "goalDriftRate": 0,
+      "meanExpectedCoverage": 1,
+      "forbiddenLeakScenarios": 0,
+      "staleMentionScenarios": 0,
+      "unresolvedStaleLeakScenarios": 0,
+      "questionDuplicationScenarios": 0,
+      "meanTokens": 195,
+      "meanFractionOfFullLedger": 0.1201114521523531
+    },
+    "retrievalOnlyAblation": {
+      "scenarios": 6,
+      "passRate": 0.3333333333333333,
+      "goalDriftRate": 0,
+      "meanExpectedCoverage": 0.8333333333333334,
+      "forbiddenLeakScenarios": 2,
+      "staleMentionScenarios": 1,
+      "unresolvedStaleLeakScenarios": 0,
+      "questionDuplicationScenarios": 0,
+      "meanTokens": 274,
+      "meanFractionOfFullLedger": 0.12501579223510353
+    }
+  },
+  "scenarios": [
+    {
+      "id": "bare-continue",
+      "archetype": "真实历史中大量单独的继续消息",
+      "prompt": "继续",
+      "expected": [
+        "CONFIRMED_GOAL=BUILD_EXTERNAL_MEMORY_CONTEXT_ASSEMBLY",
+        "ACTIVE_NODE=BUILD_DRIFT_BENCHMARK",
+        "NEXT_STEP=RUN_PAIRED_REPLAY",
+        "CONSTRAINT=CPU_ONLY"
+      ],
+      "forbidden": [
+        "NOISY_SECRET_COMMAND_1"
+      ],
+      "staleMarkers": [],
+      "full": {
+        "context": "USER: CONFIRMED_GOAL=BUILD_EXTERNAL_MEMORY_CONTEXT_ASSEMBLY\nPRIORITY=TASK_PERFORMANCE_THEN_INPUT_TOKENS_THEN_CPU_LATENCY\nCONSTRAINT=CPU_ONLY\nCONSTRAINT=RAW_PERMANENT_UNTIL_USER_CLEANUP\nCONSTRAINT=OBELISK_COMPATIBILITY_NOT_HOT_PATH\n\nASSISTANT: 我会以已确认科研目标为最高层约束。\n\nUSER: 局部工程事项 setup-0：检查缓存、格式和测试日志。LOCAL_setup_0\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_0；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-1：检查缓存、格式和测试日志。LOCAL_setup_1\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_1；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-2：检查缓存、格式和测试日志。LOCAL_setup_2\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_2；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-3：检查缓存、格式和测试日志。LOCAL_setup_3\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_3；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-4：检查缓存、格式和测试日志。LOCAL_setup_4\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_4；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-5：检查缓存、格式和测试日志。LOCAL_setup_5\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_5；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-6：检查缓存、格式和测试日志。LOCAL_setup_6\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_6；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-7：检查缓存、格式和测试日志。LOCAL_setup_7\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_7；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-8：检查缓存、格式和测试日志。LOCAL_setup_8\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_8；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-9：检查缓存、格式和测试日志。LOCAL_setup_9\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_9；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-10：检查缓存、格式和测试日志。LOCAL_setup_10\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_10；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-11：检查缓存、格式和测试日志。LOCAL_setup_11\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_11；这不是研究方向变更。\n\nUSER: 现在构建目标漂移测试。ACTIVE_NODE=BUILD_DRIFT_BENCHMARK；不要转去模型路由。\n\nASSISTANT: 已建立测试骨架，下一步是运行 paired replay。NEXT_STEP=RUN_PAIRED_REPLAY\n\nASSISTANT: TOOL_CALL shell {\"command\":\"NOISY_SECRET_COMMAND_1\"}\n\nTOOLRESULT: TOOL_LOG_1 routine check passed\n\nUSER: 继续",
+        "tokens": 913
+      },
+      "rolling": {
+        "context": "[ROLLING_COMPACTION_SIMULATION]\n\nUSER: CONFIRMED_GOAL=BUILD_EXTERNAL_MEMORY_CONTEXT_ASSEMBLY\nPRIORITY=TASK_PERFORMANCE_THEN_INPUT_TOKENS_THEN_CPU_LATENCY\nCONSTRAINT=CPU_ONLY\nCONSTRAINT=RAW_PERMANENT_UNTIL_USER_CLEANUP\nCONSTRAINT=OBELISK_COMPATIBILITY_NOT_HOT_PATH\n\nASSISTANT: 我会以已确认科研目标为最高层约束。\n\nUSER: 局部工程事项 setup-0：检查缓存、格式和测试日志。LOCAL_setup_0\n\nUSER: 局部工程事项 setup-1：检查缓存、格式和测试日志。LOCAL_setup_1\n\nUSER: 局部工程事项 setup-2：检查缓存、格式和测试日志。LOCAL_setup_2\n\nUSER: 局部工程事项 setup-3：检查缓存、格式和测试日志。LOCAL_setup_3\n\nUSER: 局部工程事项 setup-4：检查缓存、格式和测试日志。LOCAL_setup_4\n\n[RECENT_RAW_TAIL]\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_4；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-5：检查缓存、格式和测试日志。LOCAL_setup_5\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_5；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-6：检查缓存、格式和测试日志。LOCAL_setup_6\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_6；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-7：检查缓存、格式和测试日志。LOCAL_setup_7\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_7；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-8：检查缓存、格式和测试日志。LOCAL_setup_8\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_8；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-9：检查缓存、格式和测试日志。LOCAL_setup_9\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_9；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-10：检查缓存、格式和测试日志。LOCAL_setup_10\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_10；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-11：检查缓存、格式和测试日志。LOCAL_setup_11\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_11；这不是研究方向变更。\n\nUSER: 现在构建目标漂移测试。ACTIVE_NODE=BUILD_DRIFT_BENCHMARK；不要转去模型路由。\n\nASSISTANT: 已建立测试骨架，下一步是运行 paired replay。NEXT_STEP=RUN_PAIRED_REPLAY\n\nASSISTANT: TOOL_CALL shell {\"command\":\"NOISY_SECRET_COMMAND_1\"}\n\nTOOLRESULT: TOOL_LOG_1 routine check passed\n\nUSER: 继续",
+        "tokens": 811,
+        "prefixMessages": 11,
+        "tailMessages": 19,
+        "summaryMessages": 7,
+        "score": {
+          "expected": 4,
+          "expectedHits": 4,
+          "coverage": 1,
+          "missing": [],
+          "forbiddenHits": [
+            "NOISY_SECRET_COMMAND_1"
+          ],
+          "staleHits": [],
+          "unresolvedStaleLeak": false,
+          "goalDrift": false,
+          "currentQuestionExactlyOnce": true,
+          "pass": false
+        }
+      },
+      "piIdea": {
+        "context": "CONFIRMED_GOAL=BUILD_EXTERNAL_MEMORY_CONTEXT_ASSEMBLY\nPRIORITY=TASK_PERFORMANCE_THEN_INPUT_TOKENS_THEN_CPU_LATENCY\nCONSTRAINT=CPU_ONLY\nCONSTRAINT=RAW_PERMANENT_UNTIL_USER_CLEANUP\nCONSTRAINT=OBELISK_COMPATIBILITY_NOT_HOT_PATH\n\n[NARROW_CONFIRMED_STATE]\nACTIVE_NODE=BUILD_DRIFT_BENCHMARK\nNEXT_STEP=RUN_PAIRED_REPLAY\n\n<history_evidence authority=\"verbatim-raw\">\n[e:82f930f72830b09a k=user_text src=\"user\" eid=\"active-bench-u\" idea=\"rmance-first\" stage=\"nt-benchmark\"]\n现在构建目标漂移测试。ACTIVE_NODE=BUILD_DRIFT_BENCHMARK；不要转去模型路由。\n\n[e:36a87ca59c51669c k=assistant_final src=\"assistant\" eid=\"active-bench-a\" idea=\"rmance-first\" stage=\"nt-benchmark\"]\n已建立测试骨架，下一步是运行 paired replay。NEXT_STEP=RUN_PAIRED_REPLAY\n\n[e:b6636a2f217d7a3d k=tool_result src=\"shell\" eid=\"active-bench-tr-\" idea=\"rmance-first\" stage=\"nt-benchmark\"]\nTOOL_LOG_1 routine check passed\n</history_evidence>\n\nUSER: 继续",
+        "tokens": 299,
+        "overflow": false,
+        "selectedBlocks": 3,
+        "continuationRoots": 3,
+        "score": {
+          "expected": 4,
+          "expectedHits": 4,
+          "coverage": 1,
+          "missing": [],
+          "forbiddenHits": [],
+          "staleHits": [],
+          "unresolvedStaleLeak": false,
+          "goalDrift": false,
+          "currentQuestionExactlyOnce": true,
+          "pass": true
+        }
+      },
+      "retrievalOnly": {
+        "context": "CONFIRMED_GOAL=BUILD_EXTERNAL_MEMORY_CONTEXT_ASSEMBLY\nPRIORITY=TASK_PERFORMANCE_THEN_INPUT_TOKENS_THEN_CPU_LATENCY\nCONSTRAINT=CPU_ONLY\nCONSTRAINT=RAW_PERMANENT_UNTIL_USER_CLEANUP\nCONSTRAINT=OBELISK_COMPATIBILITY_NOT_HOT_PATH\n\n<history_evidence authority=\"verbatim-raw\">\n[e:b6636a2f217d7a3d k=tool_result src=\"shell\" eid=\"active-bench-tr-\" idea=\"rmance-first\" stage=\"nt-benchmark\"]\nTOOL_LOG_1 routine check passed\n</history_evidence>\n\nUSER: 继续",
+        "tokens": 140,
+        "overflow": false,
+        "selectedBlocks": 1,
+        "continuationRoots": 0,
+        "score": {
+          "expected": 4,
+          "expectedHits": 2,
+          "coverage": 0.5,
+          "missing": [
+            "ACTIVE_NODE=BUILD_DRIFT_BENCHMARK",
+            "NEXT_STEP=RUN_PAIRED_REPLAY"
+          ],
+          "forbiddenHits": [],
+          "staleHits": [],
+          "unresolvedStaleLeak": false,
+          "goalDrift": false,
+          "currentQuestionExactlyOnce": true,
+          "pass": false
+        }
+      }
+    },
+    {
+      "id": "late-correction",
+      "archetype": "用户纠正旧参数后经过很多局部回合再次询问",
+      "prompt": "当前 warmup 参数到底是什么？",
+      "expected": [
+        "CONFIRMED_GOAL=BUILD_EXTERNAL_MEMORY_CONTEXT_ASSEMBLY",
+        "ACTIVE_WARMUP=200",
+        "CONSTRAINT=CPU_ONLY"
+      ],
+      "forbidden": [],
+      "staleMarkers": [
+        "PARAM_BIAS=-1"
+      ],
+      "full": {
+        "context": "USER: CONFIRMED_GOAL=BUILD_EXTERNAL_MEMORY_CONTEXT_ASSEMBLY\nPRIORITY=TASK_PERFORMANCE_THEN_INPUT_TOKENS_THEN_CPU_LATENCY\nCONSTRAINT=CPU_ONLY\nCONSTRAINT=RAW_PERMANENT_UNTIL_USER_CLEANUP\nCONSTRAINT=OBELISK_COMPATIBILITY_NOT_HOT_PATH\n\nASSISTANT: 我会以已确认科研目标为最高层约束。\n\nUSER: 局部工程事项 setup-0：检查缓存、格式和测试日志。LOCAL_setup_0\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_0；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-1：检查缓存、格式和测试日志。LOCAL_setup_1\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_1；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-2：检查缓存、格式和测试日志。LOCAL_setup_2\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_2；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-3：检查缓存、格式和测试日志。LOCAL_setup_3\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_3；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-4：检查缓存、格式和测试日志。LOCAL_setup_4\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_4；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-5：检查缓存、格式和测试日志。LOCAL_setup_5\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_5；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-6：检查缓存、格式和测试日志。LOCAL_setup_6\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_6；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-7：检查缓存、格式和测试日志。LOCAL_setup_7\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_7；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-8：检查缓存、格式和测试日志。LOCAL_setup_8\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_8；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-9：检查缓存、格式和测试日志。LOCAL_setup_9\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_9；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-10：检查缓存、格式和测试日志。LOCAL_setup_10\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_10；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-11：检查缓存、格式和测试日志。LOCAL_setup_11\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_11；这不是研究方向变更。\n\nUSER: 先试 PARAM_BIAS=-1。\n\nASSISTANT: 当前候选是 PARAM_BIAS=-1。\n\nUSER: 纠正：不是 PARAM_BIAS=-1，ACTIVE_WARMUP=200 才是当前决定。\n\nASSISTANT: 已更正，ACTIVE_WARMUP=200。\n\nUSER: 局部工程事项 after-correction-0：检查缓存、格式和测试日志。LOCAL_after-correction_0\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_after-correction_0；这不是研究方向变更。\n\nUSER: 局部工程事项 after-correction-1：检查缓存、格式和测试日志。LOCAL_after-correction_1\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_after-correction_1；这不是研究方向变更。\n\nUSER: 局部工程事项 after-correction-2：检查缓存、格式和测试日志。LOCAL_after-correction_2\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_after-correction_2；这不是研究方向变更。\n\nUSER: 局部工程事项 after-correction-3：检查缓存、格式和测试日志。LOCAL_after-correction_3\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_after-correction_3；这不是研究方向变更。\n\nUSER: 局部工程事项 after-correction-4：检查缓存、格式和测试日志。LOCAL_after-correction_4\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_after-correction_4；这不是研究方向变更。\n\nUSER: 局部工程事项 after-correction-5：检查缓存、格式和测试日志。LOCAL_after-correction_5\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_after-correction_5；这不是研究方向变更。\n\nUSER: 局部工程事项 after-correction-6：检查缓存、格式和测试日志。LOCAL_after-correction_6\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_after-correction_6；这不是研究方向变更。\n\nUSER: 局部工程事项 after-correction-7：检查缓存、格式和测试日志。LOCAL_after-correction_7\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_after-correction_7；这不是研究方向变更。\n\nUSER: 局部工程事项 after-correction-8：检查缓存、格式和测试日志。LOCAL_after-correction_8\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_after-correction_8；这不是研究方向变更。\n\nUSER: 局部工程事项 after-correction-9：检查缓存、格式和测试日志。LOCAL_after-correction_9\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_after-correction_9；这不是研究方向变更。\n\nUSER: 局部工程事项 after-correction-10：检查缓存、格式和测试日志。LOCAL_after-correction_10\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_after-correction_10；这不是研究方向变更。\n\nUSER: 局部工程事项 after-correction-11：检查缓存、格式和测试日志。LOCAL_after-correction_11\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_after-correction_11；这不是研究方向变更。\n\nUSER: 局部工程事项 after-correction-12：检查缓存、格式和测试日志。LOCAL_after-correction_12\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_after-correction_12；这不是研究方向变更。\n\nUSER: 局部工程事项 after-correction-13：检查缓存、格式和测试日志。LOCAL_after-correction_13\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_after-correction_13；这不是研究方向变更。\n\nUSER: 局部工程事项 after-correction-14：检查缓存、格式和测试日志。LOCAL_after-correction_14\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_after-correction_14；这不是研究方向变更。\n\nUSER: 局部工程事项 after-correction-15：检查缓存、格式和测试日志。LOCAL_after-correction_15\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_after-correction_15；这不是研究方向变更。\n\nUSER: 局部工程事项 after-correction-16：检查缓存、格式和测试日志。LOCAL_after-correction_16\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_after-correction_16；这不是研究方向变更。\n\nUSER: 局部工程事项 after-correction-17：检查缓存、格式和测试日志。LOCAL_after-correction_17\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_after-correction_17；这不是研究方向变更。\n\nUSER: 当前 warmup 参数到底是什么？",
+        "tokens": 2144
+      },
+      "rolling": {
+        "context": "[ROLLING_COMPACTION_SIMULATION]\n\nUSER: CONFIRMED_GOAL=BUILD_EXTERNAL_MEMORY_CONTEXT_ASSEMBLY\nPRIORITY=TASK_PERFORMANCE_THEN_INPUT_TOKENS_THEN_CPU_LATENCY\nCONSTRAINT=CPU_ONLY\nCONSTRAINT=RAW_PERMANENT_UNTIL_USER_CLEANUP\nCONSTRAINT=OBELISK_COMPATIBILITY_NOT_HOT_PATH\n\nUSER: 先试 PARAM_BIAS=-1。\n\nUSER: 纠正：不是 PARAM_BIAS=-1，ACTIVE_WARMUP=200 才是当前决定。\n\nUSER: 局部工程事项 after-correction-7：检查缓存、格式和测试日志。LOCAL_after-correction_7\n\nUSER: 局部工程事项 after-correction-8：检查缓存、格式和测试日志。LOCAL_after-correction_8\n\nUSER: 局部工程事项 after-correction-9：检查缓存、格式和测试日志。LOCAL_after-correction_9\n\nUSER: 局部工程事项 after-correction-10：检查缓存、格式和测试日志。LOCAL_after-correction_10\n\n[RECENT_RAW_TAIL]\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_after-correction_10；这不是研究方向变更。\n\nUSER: 局部工程事项 after-correction-11：检查缓存、格式和测试日志。LOCAL_after-correction_11\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_after-correction_11；这不是研究方向变更。\n\nUSER: 局部工程事项 after-correction-12：检查缓存、格式和测试日志。LOCAL_after-correction_12\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_after-correction_12；这不是研究方向变更。\n\nUSER: 局部工程事项 after-correction-13：检查缓存、格式和测试日志。LOCAL_after-correction_13\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_after-correction_13；这不是研究方向变更。\n\nUSER: 局部工程事项 after-correction-14：检查缓存、格式和测试日志。LOCAL_after-correction_14\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_after-correction_14；这不是研究方向变更。\n\nUSER: 局部工程事项 after-correction-15：检查缓存、格式和测试日志。LOCAL_after-correction_15\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_after-correction_15；这不是研究方向变更。\n\nUSER: 局部工程事项 after-correction-16：检查缓存、格式和测试日志。LOCAL_after-correction_16\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_after-correction_16；这不是研究方向变更。\n\nUSER: 局部工程事项 after-correction-17：检查缓存、格式和测试日志。LOCAL_after-correction_17\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_after-correction_17；这不是研究方向变更。\n\nUSER: 当前 warmup 参数到底是什么？",
+        "tokens": 812,
+        "prefixMessages": 51,
+        "tailMessages": 15,
+        "summaryMessages": 7,
+        "score": {
+          "expected": 3,
+          "expectedHits": 3,
+          "coverage": 1,
+          "missing": [],
+          "forbiddenHits": [],
+          "staleHits": [
+            "PARAM_BIAS=-1"
+          ],
+          "unresolvedStaleLeak": false,
+          "goalDrift": false,
+          "currentQuestionExactlyOnce": true,
+          "pass": true
+        }
+      },
+      "piIdea": {
+        "context": "CONFIRMED_GOAL=BUILD_EXTERNAL_MEMORY_CONTEXT_ASSEMBLY\nPRIORITY=TASK_PERFORMANCE_THEN_INPUT_TOKENS_THEN_CPU_LATENCY\nCONSTRAINT=CPU_ONLY\nCONSTRAINT=RAW_PERMANENT_UNTIL_USER_CLEANUP\nCONSTRAINT=OBELISK_COMPATIBILITY_NOT_HOT_PATH\n\n[NARROW_CONFIRMED_STATE]\nCURRENT_PARAMETER=ACTIVE_WARMUP=200\n\nUSER: 当前 warmup 参数到底是什么？",
+        "tokens": 106,
+        "overflow": false,
+        "selectedBlocks": 0,
+        "continuationRoots": 0,
+        "score": {
+          "expected": 3,
+          "expectedHits": 3,
+          "coverage": 1,
+          "missing": [],
+          "forbiddenHits": [],
+          "staleHits": [],
+          "unresolvedStaleLeak": false,
+          "goalDrift": false,
+          "currentQuestionExactlyOnce": true,
+          "pass": true
+        }
+      },
+      "retrievalOnly": {
+        "context": "CONFIRMED_GOAL=BUILD_EXTERNAL_MEMORY_CONTEXT_ASSEMBLY\nPRIORITY=TASK_PERFORMANCE_THEN_INPUT_TOKENS_THEN_CPU_LATENCY\nCONSTRAINT=CPU_ONLY\nCONSTRAINT=RAW_PERMANENT_UNTIL_USER_CLEANUP\nCONSTRAINT=OBELISK_COMPATIBILITY_NOT_HOT_PATH\n\n<history_evidence authority=\"verbatim-raw\">\n[e:4fd22ba91844837b k=user_text src=\"user\" eid=\"correct-param-u\" idea=\"rmance-first\" stage=\"nt-benchmark\"]\n纠正：不是 PARAM_BIAS=-1，ACTIVE_WARMUP=200 才是当前决定。\n\n[e:943975a2facf7230 k=assistant_final src=\"assistant\" eid=\"correct-param-a\" idea=\"rmance-first\" stage=\"nt-benchmark\"]\n已更正，ACTIVE_WARMUP=200。\n</history_evidence>\n\nUSER: 当前 warmup 参数到底是什么？",
+        "tokens": 210,
+        "overflow": false,
+        "selectedBlocks": 2,
+        "continuationRoots": 0,
+        "score": {
+          "expected": 3,
+          "expectedHits": 3,
+          "coverage": 1,
+          "missing": [],
+          "forbiddenHits": [],
+          "staleHits": [
+            "PARAM_BIAS=-1"
+          ],
+          "unresolvedStaleLeak": false,
+          "goalDrift": false,
+          "currentQuestionExactlyOnce": true,
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "switch-and-return",
+      "archetype": "中途切换工作，随后明确返回旧主线",
+      "prompt": "回到 LOCATOR_THEN_FULL_ISLAND 主线，验收标准是什么？",
+      "expected": [
+        "CONFIRMED_GOAL=BUILD_EXTERNAL_MEMORY_CONTEXT_ASSEMBLY",
+        "MAINLINE=LOCATOR_THEN_FULL_ISLAND",
+        "NO_ORPHAN_FRAGMENT"
+      ],
+      "forbidden": [],
+      "staleMarkers": [],
+      "full": {
+        "context": "USER: CONFIRMED_GOAL=BUILD_EXTERNAL_MEMORY_CONTEXT_ASSEMBLY\nPRIORITY=TASK_PERFORMANCE_THEN_INPUT_TOKENS_THEN_CPU_LATENCY\nCONSTRAINT=CPU_ONLY\nCONSTRAINT=RAW_PERMANENT_UNTIL_USER_CLEANUP\nCONSTRAINT=OBELISK_COMPATIBILITY_NOT_HOT_PATH\n\nASSISTANT: 我会以已确认科研目标为最高层约束。\n\nUSER: 局部工程事项 setup-0：检查缓存、格式和测试日志。LOCAL_setup_0\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_0；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-1：检查缓存、格式和测试日志。LOCAL_setup_1\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_1；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-2：检查缓存、格式和测试日志。LOCAL_setup_2\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_2；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-3：检查缓存、格式和测试日志。LOCAL_setup_3\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_3；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-4：检查缓存、格式和测试日志。LOCAL_setup_4\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_4；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-5：检查缓存、格式和测试日志。LOCAL_setup_5\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_5；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-6：检查缓存、格式和测试日志。LOCAL_setup_6\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_6；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-7：检查缓存、格式和测试日志。LOCAL_setup_7\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_7；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-8：检查缓存、格式和测试日志。LOCAL_setup_8\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_8；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-9：检查缓存、格式和测试日志。LOCAL_setup_9\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_9；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-10：检查缓存、格式和测试日志。LOCAL_setup_10\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_10；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-11：检查缓存、格式和测试日志。LOCAL_setup_11\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_11；这不是研究方向变更。\n\nUSER: 主线节点 MAINLINE=LOCATOR_THEN_FULL_ISLAND，验收是 NO_ORPHAN_FRAGMENT。\n\nASSISTANT: 已记录主线和验收。\n\nUSER: 局部工程事项 side-task-0：检查缓存、格式和测试日志。LOCAL_side-task_0\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_side-task_0；这不是研究方向变更。\n\nUSER: 局部工程事项 side-task-1：检查缓存、格式和测试日志。LOCAL_side-task_1\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_side-task_1；这不是研究方向变更。\n\nUSER: 局部工程事项 side-task-2：检查缓存、格式和测试日志。LOCAL_side-task_2\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_side-task_2；这不是研究方向变更。\n\nUSER: 局部工程事项 side-task-3：检查缓存、格式和测试日志。LOCAL_side-task_3\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_side-task_3；这不是研究方向变更。\n\nUSER: 局部工程事项 side-task-4：检查缓存、格式和测试日志。LOCAL_side-task_4\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_side-task_4；这不是研究方向变更。\n\nUSER: 局部工程事项 side-task-5：检查缓存、格式和测试日志。LOCAL_side-task_5\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_side-task_5；这不是研究方向变更。\n\nUSER: 局部工程事项 side-task-6：检查缓存、格式和测试日志。LOCAL_side-task_6\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_side-task_6；这不是研究方向变更。\n\nUSER: 局部工程事项 side-task-7：检查缓存、格式和测试日志。LOCAL_side-task_7\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_side-task_7；这不是研究方向变更。\n\nUSER: 局部工程事项 side-task-8：检查缓存、格式和测试日志。LOCAL_side-task_8\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_side-task_8；这不是研究方向变更。\n\nUSER: 局部工程事项 side-task-9：检查缓存、格式和测试日志。LOCAL_side-task_9\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_side-task_9；这不是研究方向变更。\n\nUSER: 局部工程事项 side-task-10：检查缓存、格式和测试日志。LOCAL_side-task_10\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_side-task_10；这不是研究方向变更。\n\nUSER: 局部工程事项 side-task-11：检查缓存、格式和测试日志。LOCAL_side-task_11\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_side-task_11；这不是研究方向变更。\n\nUSER: 局部工程事项 side-task-12：检查缓存、格式和测试日志。LOCAL_side-task_12\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_side-task_12；这不是研究方向变更。\n\nUSER: 局部工程事项 side-task-13：检查缓存、格式和测试日志。LOCAL_side-task_13\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_side-task_13；这不是研究方向变更。\n\nUSER: 局部工程事项 side-task-14：检查缓存、格式和测试日志。LOCAL_side-task_14\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_side-task_14；这不是研究方向变更。\n\nUSER: 局部工程事项 side-task-15：检查缓存、格式和测试日志。LOCAL_side-task_15\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_side-task_15；这不是研究方向变更。\n\nUSER: 局部工程事项 side-task-16：检查缓存、格式和测试日志。LOCAL_side-task_16\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_side-task_16；这不是研究方向变更。\n\nUSER: 局部工程事项 side-task-17：检查缓存、格式和测试日志。LOCAL_side-task_17\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_side-task_17；这不是研究方向变更。\n\nUSER: 局部工程事项 side-task-18：检查缓存、格式和测试日志。LOCAL_side-task_18\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_side-task_18；这不是研究方向变更。\n\nUSER: 局部工程事项 side-task-19：检查缓存、格式和测试日志。LOCAL_side-task_19\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_side-task_19；这不是研究方向变更。\n\nUSER: 局部工程事项 side-task-20：检查缓存、格式和测试日志。LOCAL_side-task_20\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_side-task_20；这不是研究方向变更。\n\nUSER: 局部工程事项 side-task-21：检查缓存、格式和测试日志。LOCAL_side-task_21\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_side-task_21；这不是研究方向变更。\n\nUSER: 局部工程事项 side-task-22：检查缓存、格式和测试日志。LOCAL_side-task_22\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_side-task_22；这不是研究方向变更。\n\nUSER: 局部工程事项 side-task-23：检查缓存、格式和测试日志。LOCAL_side-task_23\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_side-task_23；这不是研究方向变更。\n\nUSER: 回到 LOCATOR_THEN_FULL_ISLAND 主线，验收标准是什么？",
+        "tokens": 2397
+      },
+      "rolling": {
+        "context": "[ROLLING_COMPACTION_SIMULATION]\n\nUSER: CONFIRMED_GOAL=BUILD_EXTERNAL_MEMORY_CONTEXT_ASSEMBLY\nPRIORITY=TASK_PERFORMANCE_THEN_INPUT_TOKENS_THEN_CPU_LATENCY\nCONSTRAINT=CPU_ONLY\nCONSTRAINT=RAW_PERMANENT_UNTIL_USER_CLEANUP\nCONSTRAINT=OBELISK_COMPATIBILITY_NOT_HOT_PATH\n\nUSER: 主线节点 MAINLINE=LOCATOR_THEN_FULL_ISLAND，验收是 NO_ORPHAN_FRAGMENT。\n\nASSISTANT: 已记录主线和验收。\n\nUSER: 局部工程事项 side-task-12：检查缓存、格式和测试日志。LOCAL_side-task_12\n\nUSER: 局部工程事项 side-task-13：检查缓存、格式和测试日志。LOCAL_side-task_13\n\nUSER: 局部工程事项 side-task-14：检查缓存、格式和测试日志。LOCAL_side-task_14\n\nUSER: 局部工程事项 side-task-15：检查缓存、格式和测试日志。LOCAL_side-task_15\n\n[RECENT_RAW_TAIL]\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_side-task_15；这不是研究方向变更。\n\nUSER: 局部工程事项 side-task-16：检查缓存、格式和测试日志。LOCAL_side-task_16\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_side-task_16；这不是研究方向变更。\n\nUSER: 局部工程事项 side-task-17：检查缓存、格式和测试日志。LOCAL_side-task_17\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_side-task_17；这不是研究方向变更。\n\nUSER: 局部工程事项 side-task-18：检查缓存、格式和测试日志。LOCAL_side-task_18\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_side-task_18；这不是研究方向变更。\n\nUSER: 局部工程事项 side-task-19：检查缓存、格式和测试日志。LOCAL_side-task_19\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_side-task_19；这不是研究方向变更。\n\nUSER: 局部工程事项 side-task-20：检查缓存、格式和测试日志。LOCAL_side-task_20\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_side-task_20；这不是研究方向变更。\n\nUSER: 局部工程事项 side-task-21：检查缓存、格式和测试日志。LOCAL_side-task_21\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_side-task_21；这不是研究方向变更。\n\nUSER: 局部工程事项 side-task-22：检查缓存、格式和测试日志。LOCAL_side-task_22\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_side-task_22；这不是研究方向变更。\n\nUSER: 局部工程事项 side-task-23：检查缓存、格式和测试日志。LOCAL_side-task_23\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_side-task_23；这不是研究方向变更。\n\nUSER: 回到 LOCATOR_THEN_FULL_ISLAND 主线，验收标准是什么？",
+        "tokens": 827,
+        "prefixMessages": 59,
+        "tailMessages": 17,
+        "summaryMessages": 7,
+        "score": {
+          "expected": 3,
+          "expectedHits": 3,
+          "coverage": 1,
+          "missing": [],
+          "forbiddenHits": [],
+          "staleHits": [],
+          "unresolvedStaleLeak": false,
+          "goalDrift": false,
+          "currentQuestionExactlyOnce": true,
+          "pass": true
+        }
+      },
+      "piIdea": {
+        "context": "CONFIRMED_GOAL=BUILD_EXTERNAL_MEMORY_CONTEXT_ASSEMBLY\nPRIORITY=TASK_PERFORMANCE_THEN_INPUT_TOKENS_THEN_CPU_LATENCY\nCONSTRAINT=CPU_ONLY\nCONSTRAINT=RAW_PERMANENT_UNTIL_USER_CLEANUP\nCONSTRAINT=OBELISK_COMPATIBILITY_NOT_HOT_PATH\n\n<history_evidence authority=\"verbatim-raw\">\n[e:a622155e8b71fd72 k=user_text src=\"user\" eid=\"mainline-u\" idea=\"rmance-first\" stage=\"nt-benchmark\"]\n主线节点 MAINLINE=LOCATOR_THEN_FULL_ISLAND，验收是 NO_ORPHAN_FRAGMENT。\n\n[e:2c84120caf05cd1e k=assistant_final src=\"assistant\" eid=\"mainline-a\" idea=\"rmance-first\" stage=\"nt-benchmark\"]\n已记录主线和验收。\n</history_evidence>\n\nUSER: 回到 LOCATOR_THEN_FULL_ISLAND 主线，验收标准是什么？",
+        "tokens": 218,
+        "overflow": false,
+        "selectedBlocks": 2,
+        "continuationRoots": 0,
+        "score": {
+          "expected": 3,
+          "expectedHits": 3,
+          "coverage": 1,
+          "missing": [],
+          "forbiddenHits": [],
+          "staleHits": [],
+          "unresolvedStaleLeak": false,
+          "goalDrift": false,
+          "currentQuestionExactlyOnce": true,
+          "pass": true
+        }
+      },
+      "retrievalOnly": {
+        "context": "CONFIRMED_GOAL=BUILD_EXTERNAL_MEMORY_CONTEXT_ASSEMBLY\nPRIORITY=TASK_PERFORMANCE_THEN_INPUT_TOKENS_THEN_CPU_LATENCY\nCONSTRAINT=CPU_ONLY\nCONSTRAINT=RAW_PERMANENT_UNTIL_USER_CLEANUP\nCONSTRAINT=OBELISK_COMPATIBILITY_NOT_HOT_PATH\n\n<history_evidence authority=\"verbatim-raw\">\n[e:a622155e8b71fd72 k=user_text src=\"user\" eid=\"mainline-u\" idea=\"rmance-first\" stage=\"nt-benchmark\"]\n主线节点 MAINLINE=LOCATOR_THEN_FULL_ISLAND，验收是 NO_ORPHAN_FRAGMENT。\n\n[e:2c84120caf05cd1e k=assistant_final src=\"assistant\" eid=\"mainline-a\" idea=\"rmance-first\" stage=\"nt-benchmark\"]\n已记录主线和验收。\n</history_evidence>\n\nUSER: 回到 LOCATOR_THEN_FULL_ISLAND 主线，验收标准是什么？",
+        "tokens": 218,
+        "overflow": false,
+        "selectedBlocks": 2,
+        "continuationRoots": 0,
+        "score": {
+          "expected": 3,
+          "expectedHits": 3,
+          "coverage": 1,
+          "missing": [],
+          "forbiddenHits": [],
+          "staleHits": [],
+          "unresolvedStaleLeak": false,
+          "goalDrift": false,
+          "currentQuestionExactlyOnce": true,
+          "pass": true
+        }
+      }
+    },
+    {
+      "id": "authority-and-scope",
+      "archetype": "工具证据、模型推断和用户授权必须分层",
+      "prompt": "现在允许做什么、验证到了什么？",
+      "expected": [
+        "CONFIRMED_GOAL=BUILD_EXTERNAL_MEMORY_CONTEXT_ASSEMBLY",
+        "AUTH_SCOPE=CPU_STATIC_ONLY",
+        "VERIFIED_EVENT=PI_AUTH_INVALID",
+        "EXIT_CODE=2"
+      ],
+      "forbidden": [
+        "SOL_MODEL_RUN"
+      ],
+      "staleMarkers": [],
+      "full": {
+        "context": "USER: CONFIRMED_GOAL=BUILD_EXTERNAL_MEMORY_CONTEXT_ASSEMBLY\nPRIORITY=TASK_PERFORMANCE_THEN_INPUT_TOKENS_THEN_CPU_LATENCY\nCONSTRAINT=CPU_ONLY\nCONSTRAINT=RAW_PERMANENT_UNTIL_USER_CLEANUP\nCONSTRAINT=OBELISK_COMPATIBILITY_NOT_HOT_PATH\n\nASSISTANT: 我会以已确认科研目标为最高层约束。\n\nUSER: 局部工程事项 setup-0：检查缓存、格式和测试日志。LOCAL_setup_0\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_0；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-1：检查缓存、格式和测试日志。LOCAL_setup_1\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_1；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-2：检查缓存、格式和测试日志。LOCAL_setup_2\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_2；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-3：检查缓存、格式和测试日志。LOCAL_setup_3\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_3；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-4：检查缓存、格式和测试日志。LOCAL_setup_4\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_4；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-5：检查缓存、格式和测试日志。LOCAL_setup_5\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_5；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-6：检查缓存、格式和测试日志。LOCAL_setup_6\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_6；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-7：检查缓存、格式和测试日志。LOCAL_setup_7\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_7；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-8：检查缓存、格式和测试日志。LOCAL_setup_8\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_8；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-9：检查缓存、格式和测试日志。LOCAL_setup_9\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_9；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-10：检查缓存、格式和测试日志。LOCAL_setup_10\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_10；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-11：检查缓存、格式和测试日志。LOCAL_setup_11\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_11；这不是研究方向变更。\n\nUSER: 只做 CPU 静态验证；禁止启动 Sol，禁止 GPU。AUTH_SCOPE=CPU_STATIC_ONLY\n\nASSISTANT: 明白，我不会启动模型。\n\nTOOLRESULT: VERIFIED_EVENT=PI_AUTH_INVALID EXIT_CODE=2\n\nUSER: 报告当前可验证状态。\n\nASSISTANT: 我猜登录已经有效，可以直接启动 SOL_MODEL_RUN。\n\nUSER: 局部工程事项 after-auth-0：检查缓存、格式和测试日志。LOCAL_after-auth_0\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_after-auth_0；这不是研究方向变更。\n\nUSER: 局部工程事项 after-auth-1：检查缓存、格式和测试日志。LOCAL_after-auth_1\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_after-auth_1；这不是研究方向变更。\n\nUSER: 局部工程事项 after-auth-2：检查缓存、格式和测试日志。LOCAL_after-auth_2\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_after-auth_2；这不是研究方向变更。\n\nUSER: 局部工程事项 after-auth-3：检查缓存、格式和测试日志。LOCAL_after-auth_3\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_after-auth_3；这不是研究方向变更。\n\nUSER: 局部工程事项 after-auth-4：检查缓存、格式和测试日志。LOCAL_after-auth_4\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_after-auth_4；这不是研究方向变更。\n\nUSER: 局部工程事项 after-auth-5：检查缓存、格式和测试日志。LOCAL_after-auth_5\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_after-auth_5；这不是研究方向变更。\n\nUSER: 局部工程事项 after-auth-6：检查缓存、格式和测试日志。LOCAL_after-auth_6\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_after-auth_6；这不是研究方向变更。\n\nUSER: 局部工程事项 after-auth-7：检查缓存、格式和测试日志。LOCAL_after-auth_7\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_after-auth_7；这不是研究方向变更。\n\nUSER: 局部工程事项 after-auth-8：检查缓存、格式和测试日志。LOCAL_after-auth_8\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_after-auth_8；这不是研究方向变更。\n\nUSER: 局部工程事项 after-auth-9：检查缓存、格式和测试日志。LOCAL_after-auth_9\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_after-auth_9；这不是研究方向变更。\n\nUSER: 局部工程事项 after-auth-10：检查缓存、格式和测试日志。LOCAL_after-auth_10\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_after-auth_10；这不是研究方向变更。\n\nUSER: 局部工程事项 after-auth-11：检查缓存、格式和测试日志。LOCAL_after-auth_11\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_after-auth_11；这不是研究方向变更。\n\nUSER: 局部工程事项 after-auth-12：检查缓存、格式和测试日志。LOCAL_after-auth_12\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_after-auth_12；这不是研究方向变更。\n\nUSER: 局部工程事项 after-auth-13：检查缓存、格式和测试日志。LOCAL_after-auth_13\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_after-auth_13；这不是研究方向变更。\n\nUSER: 现在允许做什么、验证到了什么？",
+        "tokens": 1824
+      },
+      "rolling": {
+        "context": "[ROLLING_COMPACTION_SIMULATION]\n\nUSER: CONFIRMED_GOAL=BUILD_EXTERNAL_MEMORY_CONTEXT_ASSEMBLY\nPRIORITY=TASK_PERFORMANCE_THEN_INPUT_TOKENS_THEN_CPU_LATENCY\nCONSTRAINT=CPU_ONLY\nCONSTRAINT=RAW_PERMANENT_UNTIL_USER_CLEANUP\nCONSTRAINT=OBELISK_COMPATIBILITY_NOT_HOT_PATH\n\nUSER: 只做 CPU 静态验证；禁止启动 Sol，禁止 GPU。AUTH_SCOPE=CPU_STATIC_ONLY\n\nASSISTANT: 明白，我不会启动模型。\n\nTOOLRESULT: VERIFIED_EVENT=PI_AUTH_INVALID EXIT_CODE=2\n\nUSER: 报告当前可验证状态。\n\nUSER: 局部工程事项 after-auth-3：检查缓存、格式和测试日志。LOCAL_after-auth_3\n\nUSER: 局部工程事项 after-auth-4：检查缓存、格式和测试日志。LOCAL_after-auth_4\n\nUSER: 局部工程事项 after-auth-5：检查缓存、格式和测试日志。LOCAL_after-auth_5\n\n[RECENT_RAW_TAIL]\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_after-auth_5；这不是研究方向变更。\n\nUSER: 局部工程事项 after-auth-6：检查缓存、格式和测试日志。LOCAL_after-auth_6\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_after-auth_6；这不是研究方向变更。\n\nUSER: 局部工程事项 after-auth-7：检查缓存、格式和测试日志。LOCAL_after-auth_7\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_after-auth_7；这不是研究方向变更。\n\nUSER: 局部工程事项 after-auth-8：检查缓存、格式和测试日志。LOCAL_after-auth_8\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_after-auth_8；这不是研究方向变更。\n\nUSER: 局部工程事项 after-auth-9：检查缓存、格式和测试日志。LOCAL_after-auth_9\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_after-auth_9；这不是研究方向变更。\n\nUSER: 局部工程事项 after-auth-10：检查缓存、格式和测试日志。LOCAL_after-auth_10\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_after-auth_10；这不是研究方向变更。\n\nUSER: 局部工程事项 after-auth-11：检查缓存、格式和测试日志。LOCAL_after-auth_11\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_after-auth_11；这不是研究方向变更。\n\nUSER: 局部工程事项 after-auth-12：检查缓存、格式和测试日志。LOCAL_after-auth_12\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_after-auth_12；这不是研究方向变更。\n\nUSER: 局部工程事项 after-auth-13：检查缓存、格式和测试日志。LOCAL_after-auth_13\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_after-auth_13；这不是研究方向变更。\n\nUSER: 现在允许做什么、验证到了什么？",
+        "tokens": 826,
+        "prefixMessages": 42,
+        "tailMessages": 17,
+        "summaryMessages": 8,
+        "score": {
+          "expected": 4,
+          "expectedHits": 4,
+          "coverage": 1,
+          "missing": [],
+          "forbiddenHits": [],
+          "staleHits": [],
+          "unresolvedStaleLeak": false,
+          "goalDrift": false,
+          "currentQuestionExactlyOnce": true,
+          "pass": true
+        }
+      },
+      "piIdea": {
+        "context": "CONFIRMED_GOAL=BUILD_EXTERNAL_MEMORY_CONTEXT_ASSEMBLY\nPRIORITY=TASK_PERFORMANCE_THEN_INPUT_TOKENS_THEN_CPU_LATENCY\nCONSTRAINT=CPU_ONLY\nCONSTRAINT=RAW_PERMANENT_UNTIL_USER_CLEANUP\nCONSTRAINT=OBELISK_COMPATIBILITY_NOT_HOT_PATH\n\n[NARROW_CONFIRMED_STATE]\nCURRENT_AUTHORITY=AUTH_SCOPE=CPU_STATIC_ONLY\nLATEST_VERIFIED_EVIDENCE=auth-check\n\n<history_evidence authority=\"verbatim-raw\">\n[e:018437196ee70c74 k=tool_result src=\"auth-check\" eid=\"auth-tool\" idea=\"rmance-first\" stage=\"nt-benchmark\"]\nVERIFIED_EVENT=PI_AUTH_INVALID EXIT_CODE=2\n</history_evidence>\n\nUSER: 现在允许做什么、验证到了什么？",
+        "tokens": 190,
+        "overflow": false,
+        "selectedBlocks": 1,
+        "continuationRoots": 1,
+        "score": {
+          "expected": 4,
+          "expectedHits": 4,
+          "coverage": 1,
+          "missing": [],
+          "forbiddenHits": [],
+          "staleHits": [],
+          "unresolvedStaleLeak": false,
+          "goalDrift": false,
+          "currentQuestionExactlyOnce": true,
+          "pass": true
+        }
+      },
+      "retrievalOnly": {
+        "context": "CONFIRMED_GOAL=BUILD_EXTERNAL_MEMORY_CONTEXT_ASSEMBLY\nPRIORITY=TASK_PERFORMANCE_THEN_INPUT_TOKENS_THEN_CPU_LATENCY\nCONSTRAINT=CPU_ONLY\nCONSTRAINT=RAW_PERMANENT_UNTIL_USER_CLEANUP\nCONSTRAINT=OBELISK_COMPATIBILITY_NOT_HOT_PATH\n\n<history_evidence authority=\"verbatim-raw\">\n[e:018437196ee70c74 k=tool_result src=\"auth-check\" eid=\"auth-tool\" idea=\"rmance-first\" stage=\"nt-benchmark\"]\nVERIFIED_EVENT=PI_AUTH_INVALID EXIT_CODE=2\n\n[e:9db1bbf62c210c52 k=user_text src=\"user\" eid=\"model-guess-u\" idea=\"rmance-first\" stage=\"nt-benchmark\"]\n报告当前可验证状态。\n\n[e:5bb6ca1d385e6a8e k=assistant_final src=\"assistant\" eid=\"model-guess-a\" idea=\"rmance-first\" stage=\"nt-benchmark\"]\n我猜登录已经有效，可以直接启动 SOL_MODEL_RUN。\n</history_evidence>\n\nUSER: 现在允许做什么、验证到了什么？",
+        "tokens": 258,
+        "overflow": false,
+        "selectedBlocks": 3,
+        "continuationRoots": 0,
+        "score": {
+          "expected": 4,
+          "expectedHits": 3,
+          "coverage": 0.75,
+          "missing": [
+            "AUTH_SCOPE=CPU_STATIC_ONLY"
+          ],
+          "forbiddenHits": [
+            "SOL_MODEL_RUN"
+          ],
+          "staleHits": [],
+          "unresolvedStaleLeak": false,
+          "goalDrift": false,
+          "currentQuestionExactlyOnce": true,
+          "pass": false
+        }
+      }
+    },
+    {
+      "id": "task-switch-with-new-constraint",
+      "archetype": "追加任务不能覆盖原目标，新权限约束必须立即生效",
+      "prompt": "继续做当前节点",
+      "expected": [
+        "CONFIRMED_GOAL=BUILD_EXTERNAL_MEMORY_CONTEXT_ASSEMBLY",
+        "RAW_POLICY=PERMANENT",
+        "ACTIVE_NODE=COMPARE_ROLLING_COMPACTION",
+        "不要先做工具线程"
+      ],
+      "forbidden": [],
+      "staleMarkers": [],
+      "full": {
+        "context": "USER: CONFIRMED_GOAL=BUILD_EXTERNAL_MEMORY_CONTEXT_ASSEMBLY\nPRIORITY=TASK_PERFORMANCE_THEN_INPUT_TOKENS_THEN_CPU_LATENCY\nCONSTRAINT=CPU_ONLY\nCONSTRAINT=RAW_PERMANENT_UNTIL_USER_CLEANUP\nCONSTRAINT=OBELISK_COMPATIBILITY_NOT_HOT_PATH\n\nASSISTANT: 我会以已确认科研目标为最高层约束。\n\nUSER: 局部工程事项 setup-0：检查缓存、格式和测试日志。LOCAL_setup_0\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_0；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-1：检查缓存、格式和测试日志。LOCAL_setup_1\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_1；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-2：检查缓存、格式和测试日志。LOCAL_setup_2\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_2；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-3：检查缓存、格式和测试日志。LOCAL_setup_3\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_3；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-4：检查缓存、格式和测试日志。LOCAL_setup_4\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_4；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-5：检查缓存、格式和测试日志。LOCAL_setup_5\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_5；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-6：检查缓存、格式和测试日志。LOCAL_setup_6\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_6；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-7：检查缓存、格式和测试日志。LOCAL_setup_7\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_7；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-8：检查缓存、格式和测试日志。LOCAL_setup_8\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_8；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-9：检查缓存、格式和测试日志。LOCAL_setup_9\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_9；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-10：检查缓存、格式和测试日志。LOCAL_setup_10\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_10；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-11：检查缓存、格式和测试日志。LOCAL_setup_11\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_11；这不是研究方向变更。\n\nUSER: RAW_POLICY=PERMANENT。除非用户明确清理，否则永远保留 raw。\n\nASSISTANT: 已记录 raw 永久保留。\n\nUSER: 局部工程事项 middle-0：检查缓存、格式和测试日志。LOCAL_middle_0\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_middle_0；这不是研究方向变更。\n\nUSER: 局部工程事项 middle-1：检查缓存、格式和测试日志。LOCAL_middle_1\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_middle_1；这不是研究方向变更。\n\nUSER: 局部工程事项 middle-2：检查缓存、格式和测试日志。LOCAL_middle_2\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_middle_2；这不是研究方向变更。\n\nUSER: 局部工程事项 middle-3：检查缓存、格式和测试日志。LOCAL_middle_3\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_middle_3；这不是研究方向变更。\n\nUSER: 局部工程事项 middle-4：检查缓存、格式和测试日志。LOCAL_middle_4\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_middle_4；这不是研究方向变更。\n\nUSER: 局部工程事项 middle-5：检查缓存、格式和测试日志。LOCAL_middle_5\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_middle_5；这不是研究方向变更。\n\nUSER: 局部工程事项 middle-6：检查缓存、格式和测试日志。LOCAL_middle_6\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_middle_6；这不是研究方向变更。\n\nUSER: 局部工程事项 middle-7：检查缓存、格式和测试日志。LOCAL_middle_7\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_middle_7；这不是研究方向变更。\n\nUSER: 局部工程事项 middle-8：检查缓存、格式和测试日志。LOCAL_middle_8\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_middle_8；这不是研究方向变更。\n\nUSER: 局部工程事项 middle-9：检查缓存、格式和测试日志。LOCAL_middle_9\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_middle_9；这不是研究方向变更。\n\nUSER: 局部工程事项 middle-10：检查缓存、格式和测试日志。LOCAL_middle_10\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_middle_10；这不是研究方向变更。\n\nUSER: 局部工程事项 middle-11：检查缓存、格式和测试日志。LOCAL_middle_11\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_middle_11；这不是研究方向变更。\n\nUSER: 局部工程事项 middle-12：检查缓存、格式和测试日志。LOCAL_middle_12\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_middle_12；这不是研究方向变更。\n\nUSER: 局部工程事项 middle-13：检查缓存、格式和测试日志。LOCAL_middle_13\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_middle_13；这不是研究方向变更。\n\nUSER: 局部工程事项 middle-14：检查缓存、格式和测试日志。LOCAL_middle_14\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_middle_14；这不是研究方向变更。\n\nUSER: 局部工程事项 middle-15：检查缓存、格式和测试日志。LOCAL_middle_15\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_middle_15；这不是研究方向变更。\n\nUSER: 局部工程事项 middle-16：检查缓存、格式和测试日志。LOCAL_middle_16\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_middle_16；这不是研究方向变更。\n\nUSER: 局部工程事项 middle-17：检查缓存、格式和测试日志。LOCAL_middle_17\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_middle_17；这不是研究方向变更。\n\nUSER: 局部工程事项 middle-18：检查缓存、格式和测试日志。LOCAL_middle_18\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_middle_18；这不是研究方向变更。\n\nUSER: 局部工程事项 middle-19：检查缓存、格式和测试日志。LOCAL_middle_19\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_middle_19；这不是研究方向变更。\n\nUSER: 还有：先测滚动压缩，不要先做工具线程。ACTIVE_NODE=COMPARE_ROLLING_COMPACTION\n\nASSISTANT: 当前节点切换为 COMPARE_ROLLING_COMPACTION。\n\nUSER: 继续做当前节点",
+        "tokens": 2126
+      },
+      "rolling": {
+        "context": "[ROLLING_COMPACTION_SIMULATION]\n\nUSER: CONFIRMED_GOAL=BUILD_EXTERNAL_MEMORY_CONTEXT_ASSEMBLY\nPRIORITY=TASK_PERFORMANCE_THEN_INPUT_TOKENS_THEN_CPU_LATENCY\nCONSTRAINT=CPU_ONLY\nCONSTRAINT=RAW_PERMANENT_UNTIL_USER_CLEANUP\nCONSTRAINT=OBELISK_COMPATIBILITY_NOT_HOT_PATH\n\nUSER: RAW_POLICY=PERMANENT。除非用户明确清理，否则永远保留 raw。\n\nUSER: 局部工程事项 middle-7：检查缓存、格式和测试日志。LOCAL_middle_7\n\nUSER: 局部工程事项 middle-8：检查缓存、格式和测试日志。LOCAL_middle_8\n\nUSER: 局部工程事项 middle-9：检查缓存、格式和测试日志。LOCAL_middle_9\n\nUSER: 局部工程事项 middle-10：检查缓存、格式和测试日志。LOCAL_middle_10\n\nUSER: 局部工程事项 middle-11：检查缓存、格式和测试日志。LOCAL_middle_11\n\n[RECENT_RAW_TAIL]\n\nUSER: 局部工程事项 middle-12：检查缓存、格式和测试日志。LOCAL_middle_12\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_middle_12；这不是研究方向变更。\n\nUSER: 局部工程事项 middle-13：检查缓存、格式和测试日志。LOCAL_middle_13\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_middle_13；这不是研究方向变更。\n\nUSER: 局部工程事项 middle-14：检查缓存、格式和测试日志。LOCAL_middle_14\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_middle_14；这不是研究方向变更。\n\nUSER: 局部工程事项 middle-15：检查缓存、格式和测试日志。LOCAL_middle_15\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_middle_15；这不是研究方向变更。\n\nUSER: 局部工程事项 middle-16：检查缓存、格式和测试日志。LOCAL_middle_16\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_middle_16；这不是研究方向变更。\n\nUSER: 局部工程事项 middle-17：检查缓存、格式和测试日志。LOCAL_middle_17\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_middle_17；这不是研究方向变更。\n\nUSER: 局部工程事项 middle-18：检查缓存、格式和测试日志。LOCAL_middle_18\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_middle_18；这不是研究方向变更。\n\nUSER: 局部工程事项 middle-19：检查缓存、格式和测试日志。LOCAL_middle_19\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_middle_19；这不是研究方向变更。\n\nUSER: 还有：先测滚动压缩，不要先做工具线程。ACTIVE_NODE=COMPARE_ROLLING_COMPACTION\n\nASSISTANT: 当前节点切换为 COMPARE_ROLLING_COMPACTION。\n\nUSER: 继续做当前节点",
+        "tokens": 822,
+        "prefixMessages": 52,
+        "tailMessages": 18,
+        "summaryMessages": 7,
+        "score": {
+          "expected": 4,
+          "expectedHits": 4,
+          "coverage": 1,
+          "missing": [],
+          "forbiddenHits": [],
+          "staleHits": [],
+          "unresolvedStaleLeak": false,
+          "goalDrift": false,
+          "currentQuestionExactlyOnce": true,
+          "pass": true
+        }
+      },
+      "piIdea": {
+        "context": "CONFIRMED_GOAL=BUILD_EXTERNAL_MEMORY_CONTEXT_ASSEMBLY\nPRIORITY=TASK_PERFORMANCE_THEN_INPUT_TOKENS_THEN_CPU_LATENCY\nCONSTRAINT=CPU_ONLY\nCONSTRAINT=RAW_PERMANENT_UNTIL_USER_CLEANUP\nCONSTRAINT=OBELISK_COMPATIBILITY_NOT_HOT_PATH\n\n[NARROW_CONFIRMED_STATE]\nRETENTION=RAW_POLICY=PERMANENT\nACTIVE_NODE=COMPARE_ROLLING_COMPACTION\nSCOPE=不要先做工具线程\n\n<history_evidence authority=\"verbatim-raw\">\n[e:b3dba53b614704b6 k=user_text src=\"user\" eid=\"new-node-u\" idea=\"rmance-first\" stage=\"nt-benchmark\"]\n还有：先测滚动压缩，不要先做工具线程。ACTIVE_NODE=COMPARE_ROLLING_COMPACTION\n\n[e:36a2be7eaea48f79 k=assistant_final src=\"assistant\" eid=\"new-node-a\" idea=\"rmance-first\" stage=\"nt-benchmark\"]\n当前节点切换为 COMPARE_ROLLING_COMPACTION。\n</history_evidence>\n\nUSER: 继续做当前节点",
+        "tokens": 259,
+        "overflow": false,
+        "selectedBlocks": 2,
+        "continuationRoots": 2,
+        "score": {
+          "expected": 4,
+          "expectedHits": 4,
+          "coverage": 1,
+          "missing": [],
+          "forbiddenHits": [],
+          "staleHits": [],
+          "unresolvedStaleLeak": false,
+          "goalDrift": false,
+          "currentQuestionExactlyOnce": true,
+          "pass": true
+        }
+      },
+      "retrievalOnly": {
+        "context": "CONFIRMED_GOAL=BUILD_EXTERNAL_MEMORY_CONTEXT_ASSEMBLY\nPRIORITY=TASK_PERFORMANCE_THEN_INPUT_TOKENS_THEN_CPU_LATENCY\nCONSTRAINT=CPU_ONLY\nCONSTRAINT=RAW_PERMANENT_UNTIL_USER_CLEANUP\nCONSTRAINT=OBELISK_COMPATIBILITY_NOT_HOT_PATH\n\n<history_evidence authority=\"verbatim-raw\">\n[e:b3dba53b614704b6 k=user_text src=\"user\" eid=\"new-node-u\" idea=\"rmance-first\" stage=\"nt-benchmark\"]\n还有：先测滚动压缩，不要先做工具线程。ACTIVE_NODE=COMPARE_ROLLING_COMPACTION\n\n[e:36a2be7eaea48f79 k=assistant_final src=\"assistant\" eid=\"new-node-a\" idea=\"rmance-first\" stage=\"nt-benchmark\"]\n当前节点切换为 COMPARE_ROLLING_COMPACTION。\n</history_evidence>\n\nUSER: 继续做当前节点",
+        "tokens": 217,
+        "overflow": false,
+        "selectedBlocks": 2,
+        "continuationRoots": 0,
+        "score": {
+          "expected": 4,
+          "expectedHits": 3,
+          "coverage": 0.75,
+          "missing": [
+            "RAW_POLICY=PERMANENT"
+          ],
+          "forbiddenHits": [],
+          "staleHits": [],
+          "unresolvedStaleLeak": false,
+          "goalDrift": false,
+          "currentQuestionExactlyOnce": true,
+          "pass": false
+        }
+      }
+    },
+    {
+      "id": "goal-crowding-stress",
+      "archetype": "大量局部目标挤压最初研究意图",
+      "prompt": "我们最初确认、现在仍然有效的研究总目标是什么？",
+      "expected": [
+        "CONFIRMED_GOAL=BUILD_EXTERNAL_MEMORY_CONTEXT_ASSEMBLY",
+        "PRIORITY=TASK_PERFORMANCE_THEN_INPUT_TOKENS_THEN_CPU_LATENCY"
+      ],
+      "forbidden": [
+        "LOCAL_GOAL_47"
+      ],
+      "staleMarkers": [],
+      "full": {
+        "context": "USER: CONFIRMED_GOAL=BUILD_EXTERNAL_MEMORY_CONTEXT_ASSEMBLY\nPRIORITY=TASK_PERFORMANCE_THEN_INPUT_TOKENS_THEN_CPU_LATENCY\nCONSTRAINT=CPU_ONLY\nCONSTRAINT=RAW_PERMANENT_UNTIL_USER_CLEANUP\nCONSTRAINT=OBELISK_COMPATIBILITY_NOT_HOT_PATH\n\nASSISTANT: 我会以已确认科研目标为最高层约束。\n\nUSER: 局部工程事项 setup-0：检查缓存、格式和测试日志。LOCAL_setup_0\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_0；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-1：检查缓存、格式和测试日志。LOCAL_setup_1\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_1；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-2：检查缓存、格式和测试日志。LOCAL_setup_2\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_2；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-3：检查缓存、格式和测试日志。LOCAL_setup_3\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_3；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-4：检查缓存、格式和测试日志。LOCAL_setup_4\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_4；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-5：检查缓存、格式和测试日志。LOCAL_setup_5\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_5；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-6：检查缓存、格式和测试日志。LOCAL_setup_6\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_6；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-7：检查缓存、格式和测试日志。LOCAL_setup_7\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_7；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-8：检查缓存、格式和测试日志。LOCAL_setup_8\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_8；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-9：检查缓存、格式和测试日志。LOCAL_setup_9\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_9；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-10：检查缓存、格式和测试日志。LOCAL_setup_10\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_10；这不是研究方向变更。\n\nUSER: 局部工程事项 setup-11：检查缓存、格式和测试日志。LOCAL_setup_11\n\nASSISTANT: 已记录局部结果 LOCAL_RESULT_setup_11；这不是研究方向变更。\n\nUSER: 当前局部目标=LOCAL_GOAL_0；验收 LOCAL_ACCEPT_0。这只是执行节点。\n\nASSISTANT: 局部目标 LOCAL_GOAL_0 已推进，研究总目标未重新确认。\n\nUSER: 当前局部目标=LOCAL_GOAL_1；验收 LOCAL_ACCEPT_1。这只是执行节点。\n\nASSISTANT: 局部目标 LOCAL_GOAL_1 已推进，研究总目标未重新确认。\n\nUSER: 当前局部目标=LOCAL_GOAL_2；验收 LOCAL_ACCEPT_2。这只是执行节点。\n\nASSISTANT: 局部目标 LOCAL_GOAL_2 已推进，研究总目标未重新确认。\n\nUSER: 当前局部目标=LOCAL_GOAL_3；验收 LOCAL_ACCEPT_3。这只是执行节点。\n\nASSISTANT: 局部目标 LOCAL_GOAL_3 已推进，研究总目标未重新确认。\n\nUSER: 当前局部目标=LOCAL_GOAL_4；验收 LOCAL_ACCEPT_4。这只是执行节点。\n\nASSISTANT: 局部目标 LOCAL_GOAL_4 已推进，研究总目标未重新确认。\n\nUSER: 当前局部目标=LOCAL_GOAL_5；验收 LOCAL_ACCEPT_5。这只是执行节点。\n\nASSISTANT: 局部目标 LOCAL_GOAL_5 已推进，研究总目标未重新确认。\n\nUSER: 当前局部目标=LOCAL_GOAL_6；验收 LOCAL_ACCEPT_6。这只是执行节点。\n\nASSISTANT: 局部目标 LOCAL_GOAL_6 已推进，研究总目标未重新确认。\n\nUSER: 当前局部目标=LOCAL_GOAL_7；验收 LOCAL_ACCEPT_7。这只是执行节点。\n\nASSISTANT: 局部目标 LOCAL_GOAL_7 已推进，研究总目标未重新确认。\n\nUSER: 当前局部目标=LOCAL_GOAL_8；验收 LOCAL_ACCEPT_8。这只是执行节点。\n\nASSISTANT: 局部目标 LOCAL_GOAL_8 已推进，研究总目标未重新确认。\n\nUSER: 当前局部目标=LOCAL_GOAL_9；验收 LOCAL_ACCEPT_9。这只是执行节点。\n\nASSISTANT: 局部目标 LOCAL_GOAL_9 已推进，研究总目标未重新确认。\n\nUSER: 当前局部目标=LOCAL_GOAL_10；验收 LOCAL_ACCEPT_10。这只是执行节点。\n\nASSISTANT: 局部目标 LOCAL_GOAL_10 已推进，研究总目标未重新确认。\n\nUSER: 当前局部目标=LOCAL_GOAL_11；验收 LOCAL_ACCEPT_11。这只是执行节点。\n\nASSISTANT: 局部目标 LOCAL_GOAL_11 已推进，研究总目标未重新确认。\n\nUSER: 当前局部目标=LOCAL_GOAL_12；验收 LOCAL_ACCEPT_12。这只是执行节点。\n\nASSISTANT: 局部目标 LOCAL_GOAL_12 已推进，研究总目标未重新确认。\n\nUSER: 当前局部目标=LOCAL_GOAL_13；验收 LOCAL_ACCEPT_13。这只是执行节点。\n\nASSISTANT: 局部目标 LOCAL_GOAL_13 已推进，研究总目标未重新确认。\n\nUSER: 当前局部目标=LOCAL_GOAL_14；验收 LOCAL_ACCEPT_14。这只是执行节点。\n\nASSISTANT: 局部目标 LOCAL_GOAL_14 已推进，研究总目标未重新确认。\n\nUSER: 当前局部目标=LOCAL_GOAL_15；验收 LOCAL_ACCEPT_15。这只是执行节点。\n\nASSISTANT: 局部目标 LOCAL_GOAL_15 已推进，研究总目标未重新确认。\n\nUSER: 当前局部目标=LOCAL_GOAL_16；验收 LOCAL_ACCEPT_16。这只是执行节点。\n\nASSISTANT: 局部目标 LOCAL_GOAL_16 已推进，研究总目标未重新确认。\n\nUSER: 当前局部目标=LOCAL_GOAL_17；验收 LOCAL_ACCEPT_17。这只是执行节点。\n\nASSISTANT: 局部目标 LOCAL_GOAL_17 已推进，研究总目标未重新确认。\n\nUSER: 当前局部目标=LOCAL_GOAL_18；验收 LOCAL_ACCEPT_18。这只是执行节点。\n\nASSISTANT: 局部目标 LOCAL_GOAL_18 已推进，研究总目标未重新确认。\n\nUSER: 当前局部目标=LOCAL_GOAL_19；验收 LOCAL_ACCEPT_19。这只是执行节点。\n\nASSISTANT: 局部目标 LOCAL_GOAL_19 已推进，研究总目标未重新确认。\n\nUSER: 当前局部目标=LOCAL_GOAL_20；验收 LOCAL_ACCEPT_20。这只是执行节点。\n\nASSISTANT: 局部目标 LOCAL_GOAL_20 已推进，研究总目标未重新确认。\n\nUSER: 当前局部目标=LOCAL_GOAL_21；验收 LOCAL_ACCEPT_21。这只是执行节点。\n\nASSISTANT: 局部目标 LOCAL_GOAL_21 已推进，研究总目标未重新确认。\n\nUSER: 当前局部目标=LOCAL_GOAL_22；验收 LOCAL_ACCEPT_22。这只是执行节点。\n\nASSISTANT: 局部目标 LOCAL_GOAL_22 已推进，研究总目标未重新确认。\n\nUSER: 当前局部目标=LOCAL_GOAL_23；验收 LOCAL_ACCEPT_23。这只是执行节点。\n\nASSISTANT: 局部目标 LOCAL_GOAL_23 已推进，研究总目标未重新确认。\n\nUSER: 当前局部目标=LOCAL_GOAL_24；验收 LOCAL_ACCEPT_24。这只是执行节点。\n\nASSISTANT: 局部目标 LOCAL_GOAL_24 已推进，研究总目标未重新确认。\n\nUSER: 当前局部目标=LOCAL_GOAL_25；验收 LOCAL_ACCEPT_25。这只是执行节点。\n\nASSISTANT: 局部目标 LOCAL_GOAL_25 已推进，研究总目标未重新确认。\n\nUSER: 当前局部目标=LOCAL_GOAL_26；验收 LOCAL_ACCEPT_26。这只是执行节点。\n\nASSISTANT: 局部目标 LOCAL_GOAL_26 已推进，研究总目标未重新确认。\n\nUSER: 当前局部目标=LOCAL_GOAL_27；验收 LOCAL_ACCEPT_27。这只是执行节点。\n\nASSISTANT: 局部目标 LOCAL_GOAL_27 已推进，研究总目标未重新确认。\n\nUSER: 当前局部目标=LOCAL_GOAL_28；验收 LOCAL_ACCEPT_28。这只是执行节点。\n\nASSISTANT: 局部目标 LOCAL_GOAL_28 已推进，研究总目标未重新确认。\n\nUSER: 当前局部目标=LOCAL_GOAL_29；验收 LOCAL_ACCEPT_29。这只是执行节点。\n\nASSISTANT: 局部目标 LOCAL_GOAL_29 已推进，研究总目标未重新确认。\n\nUSER: 当前局部目标=LOCAL_GOAL_30；验收 LOCAL_ACCEPT_30。这只是执行节点。\n\nASSISTANT: 局部目标 LOCAL_GOAL_30 已推进，研究总目标未重新确认。\n\nUSER: 当前局部目标=LOCAL_GOAL_31；验收 LOCAL_ACCEPT_31。这只是执行节点。\n\nASSISTANT: 局部目标 LOCAL_GOAL_31 已推进，研究总目标未重新确认。\n\nUSER: 当前局部目标=LOCAL_GOAL_32；验收 LOCAL_ACCEPT_32。这只是执行节点。\n\nASSISTANT: 局部目标 LOCAL_GOAL_32 已推进，研究总目标未重新确认。\n\nUSER: 当前局部目标=LOCAL_GOAL_33；验收 LOCAL_ACCEPT_33。这只是执行节点。\n\nASSISTANT: 局部目标 LOCAL_GOAL_33 已推进，研究总目标未重新确认。\n\nUSER: 当前局部目标=LOCAL_GOAL_34；验收 LOCAL_ACCEPT_34。这只是执行节点。\n\nASSISTANT: 局部目标 LOCAL_GOAL_34 已推进，研究总目标未重新确认。\n\nUSER: 当前局部目标=LOCAL_GOAL_35；验收 LOCAL_ACCEPT_35。这只是执行节点。\n\nASSISTANT: 局部目标 LOCAL_GOAL_35 已推进，研究总目标未重新确认。\n\nUSER: 当前局部目标=LOCAL_GOAL_36；验收 LOCAL_ACCEPT_36。这只是执行节点。\n\nASSISTANT: 局部目标 LOCAL_GOAL_36 已推进，研究总目标未重新确认。\n\nUSER: 当前局部目标=LOCAL_GOAL_37；验收 LOCAL_ACCEPT_37。这只是执行节点。\n\nASSISTANT: 局部目标 LOCAL_GOAL_37 已推进，研究总目标未重新确认。\n\nUSER: 当前局部目标=LOCAL_GOAL_38；验收 LOCAL_ACCEPT_38。这只是执行节点。\n\nASSISTANT: 局部目标 LOCAL_GOAL_38 已推进，研究总目标未重新确认。\n\nUSER: 当前局部目标=LOCAL_GOAL_39；验收 LOCAL_ACCEPT_39。这只是执行节点。\n\nASSISTANT: 局部目标 LOCAL_GOAL_39 已推进，研究总目标未重新确认。\n\nUSER: 当前局部目标=LOCAL_GOAL_40；验收 LOCAL_ACCEPT_40。这只是执行节点。\n\nASSISTANT: 局部目标 LOCAL_GOAL_40 已推进，研究总目标未重新确认。\n\nUSER: 当前局部目标=LOCAL_GOAL_41；验收 LOCAL_ACCEPT_41。这只是执行节点。\n\nASSISTANT: 局部目标 LOCAL_GOAL_41 已推进，研究总目标未重新确认。\n\nUSER: 当前局部目标=LOCAL_GOAL_42；验收 LOCAL_ACCEPT_42。这只是执行节点。\n\nASSISTANT: 局部目标 LOCAL_GOAL_42 已推进，研究总目标未重新确认。\n\nUSER: 当前局部目标=LOCAL_GOAL_43；验收 LOCAL_ACCEPT_43。这只是执行节点。\n\nASSISTANT: 局部目标 LOCAL_GOAL_43 已推进，研究总目标未重新确认。\n\nUSER: 当前局部目标=LOCAL_GOAL_44；验收 LOCAL_ACCEPT_44。这只是执行节点。\n\nASSISTANT: 局部目标 LOCAL_GOAL_44 已推进，研究总目标未重新确认。\n\nUSER: 当前局部目标=LOCAL_GOAL_45；验收 LOCAL_ACCEPT_45。这只是执行节点。\n\nASSISTANT: 局部目标 LOCAL_GOAL_45 已推进，研究总目标未重新确认。\n\nUSER: 当前局部目标=LOCAL_GOAL_46；验收 LOCAL_ACCEPT_46。这只是执行节点。\n\nASSISTANT: 局部目标 LOCAL_GOAL_46 已推进，研究总目标未重新确认。\n\nUSER: 当前局部目标=LOCAL_GOAL_47；验收 LOCAL_ACCEPT_47。这只是执行节点。\n\nASSISTANT: 局部目标 LOCAL_GOAL_47 已推进，研究总目标未重新确认。\n\nUSER: 我们最初确认、现在仍然有效的研究总目标是什么？",
+        "tokens": 3657
+      },
+      "rolling": {
+        "context": "[ROLLING_COMPACTION_SIMULATION]\n\nUSER: 当前局部目标=LOCAL_GOAL_31；验收 LOCAL_ACCEPT_31。这只是执行节点。\n\nUSER: 当前局部目标=LOCAL_GOAL_32；验收 LOCAL_ACCEPT_32。这只是执行节点。\n\nUSER: 当前局部目标=LOCAL_GOAL_33；验收 LOCAL_ACCEPT_33。这只是执行节点。\n\nUSER: 当前局部目标=LOCAL_GOAL_34；验收 LOCAL_ACCEPT_34。这只是执行节点。\n\nUSER: 当前局部目标=LOCAL_GOAL_35；验收 LOCAL_ACCEPT_35。这只是执行节点。\n\nUSER: 当前局部目标=LOCAL_GOAL_36；验收 LOCAL_ACCEPT_36。这只是执行节点。\n\nUSER: 当前局部目标=LOCAL_GOAL_37；验收 LOCAL_ACCEPT_37。这只是执行节点。\n\nUSER: 当前局部目标=LOCAL_GOAL_38；验收 LOCAL_ACCEPT_38。这只是执行节点。\n\n[RECENT_RAW_TAIL]\n\nUSER: 当前局部目标=LOCAL_GOAL_39；验收 LOCAL_ACCEPT_39。这只是执行节点。\n\nASSISTANT: 局部目标 LOCAL_GOAL_39 已推进，研究总目标未重新确认。\n\nUSER: 当前局部目标=LOCAL_GOAL_40；验收 LOCAL_ACCEPT_40。这只是执行节点。\n\nASSISTANT: 局部目标 LOCAL_GOAL_40 已推进，研究总目标未重新确认。\n\nUSER: 当前局部目标=LOCAL_GOAL_41；验收 LOCAL_ACCEPT_41。这只是执行节点。\n\nASSISTANT: 局部目标 LOCAL_GOAL_41 已推进，研究总目标未重新确认。\n\nUSER: 当前局部目标=LOCAL_GOAL_42；验收 LOCAL_ACCEPT_42。这只是执行节点。\n\nASSISTANT: 局部目标 LOCAL_GOAL_42 已推进，研究总目标未重新确认。\n\nUSER: 当前局部目标=LOCAL_GOAL_43；验收 LOCAL_ACCEPT_43。这只是执行节点。\n\nASSISTANT: 局部目标 LOCAL_GOAL_43 已推进，研究总目标未重新确认。\n\nUSER: 当前局部目标=LOCAL_GOAL_44；验收 LOCAL_ACCEPT_44。这只是执行节点。\n\nASSISTANT: 局部目标 LOCAL_GOAL_44 已推进，研究总目标未重新确认。\n\nUSER: 当前局部目标=LOCAL_GOAL_45；验收 LOCAL_ACCEPT_45。这只是执行节点。\n\nASSISTANT: 局部目标 LOCAL_GOAL_45 已推进，研究总目标未重新确认。\n\nUSER: 当前局部目标=LOCAL_GOAL_46；验收 LOCAL_ACCEPT_46。这只是执行节点。\n\nASSISTANT: 局部目标 LOCAL_GOAL_46 已推进，研究总目标未重新确认。\n\nUSER: 当前局部目标=LOCAL_GOAL_47；验收 LOCAL_ACCEPT_47。这只是执行节点。\n\nASSISTANT: 局部目标 LOCAL_GOAL_47 已推进，研究总目标未重新确认。\n\nUSER: 我们最初确认、现在仍然有效的研究总目标是什么？",
+        "tokens": 815,
+        "prefixMessages": 104,
+        "tailMessages": 18,
+        "summaryMessages": 8,
+        "score": {
+          "expected": 2,
+          "expectedHits": 0,
+          "coverage": 0,
+          "missing": [
+            "CONFIRMED_GOAL=BUILD_EXTERNAL_MEMORY_CONTEXT_ASSEMBLY",
+            "PRIORITY=TASK_PERFORMANCE_THEN_INPUT_TOKENS_THEN_CPU_LATENCY"
+          ],
+          "forbiddenHits": [
+            "LOCAL_GOAL_47"
+          ],
+          "staleHits": [],
+          "unresolvedStaleLeak": false,
+          "goalDrift": true,
+          "currentQuestionExactlyOnce": true,
+          "pass": false
+        }
+      },
+      "piIdea": {
+        "context": "CONFIRMED_GOAL=BUILD_EXTERNAL_MEMORY_CONTEXT_ASSEMBLY\nPRIORITY=TASK_PERFORMANCE_THEN_INPUT_TOKENS_THEN_CPU_LATENCY\nCONSTRAINT=CPU_ONLY\nCONSTRAINT=RAW_PERMANENT_UNTIL_USER_CLEANUP\nCONSTRAINT=OBELISK_COMPATIBILITY_NOT_HOT_PATH\n\nUSER: 我们最初确认、现在仍然有效的研究总目标是什么？",
+        "tokens": 98,
+        "overflow": false,
+        "selectedBlocks": 0,
+        "continuationRoots": 0,
+        "score": {
+          "expected": 2,
+          "expectedHits": 2,
+          "coverage": 1,
+          "missing": [],
+          "forbiddenHits": [],
+          "staleHits": [],
+          "unresolvedStaleLeak": false,
+          "goalDrift": false,
+          "currentQuestionExactlyOnce": true,
+          "pass": true
+        }
+      },
+      "retrievalOnly": {
+        "context": "CONFIRMED_GOAL=BUILD_EXTERNAL_MEMORY_CONTEXT_ASSEMBLY\nPRIORITY=TASK_PERFORMANCE_THEN_INPUT_TOKENS_THEN_CPU_LATENCY\nCONSTRAINT=CPU_ONLY\nCONSTRAINT=RAW_PERMANENT_UNTIL_USER_CLEANUP\nCONSTRAINT=OBELISK_COMPATIBILITY_NOT_HOT_PATH\n\n<history_evidence authority=\"verbatim-raw\">\n[e:adc9973fc7435975 k=user_text src=\"user\" eid=\"crowd-44-u\" idea=\"rmance-first\" stage=\"nt-benchmark\"]\n当前局部目标=LOCAL_GOAL_44；验收 LOCAL_ACCEPT_44。这只是执行节点。\n\n[e:c86ec5cad9aedc70 k=assistant_final src=\"assistant\" eid=\"crowd-44-a\" idea=\"rmance-first\" stage=\"nt-benchmark\"]\n局部目标 LOCAL_GOAL_44 已推进，研究总目标未重新确认。\n\n[e:4da7963b7b7ed7e3 k=user_text src=\"user\" eid=\"crowd-45-u\" idea=\"rmance-first\" stage=\"nt-benchmark\"]\n当前局部目标=LOCAL_GOAL_45；验收 LOCAL_ACCEPT_45。这只是执行节点。\n\n[e:52ca86520ac342f6 k=assistant_final src=\"assistant\" eid=\"crowd-45-a\" idea=\"rmance-first\" stage=\"nt-benchmark\"]\n局部目标 LOCAL_GOAL_45 已推进，研究总目标未重新确认。\n\n[e:1a80134d5aeb4bc3 k=user_text src=\"user\" eid=\"crowd-46-u\" idea=\"rmance-first\" stage=\"nt-benchmark\"]\n当前局部目标=LOCAL_GOAL_46；验收 LOCAL_ACCEPT_46。这只是执行节点。\n\n[e:827b0e02f1d0bf8c k=assistant_final src=\"assistant\" eid=\"crowd-46-a\" idea=\"rmance-first\" stage=\"nt-benchmark\"]\n局部目标 LOCAL_GOAL_46 已推进，研究总目标未重新确认。\n\n[e:45909da1ae9ea898 k=user_text src=\"user\" eid=\"crowd-47-u\" idea=\"rmance-first\" stage=\"nt-benchmark\"]\n当前局部目标=LOCAL_GOAL_47；验收 LOCAL_ACCEPT_47。这只是执行节点。\n\n[e:be8a82025951e7a9 k=assistant_final src=\"assistant\" eid=\"crowd-47-a\" idea=\"rmance-first\" stage=\"nt-benchmark\"]\n局部目标 LOCAL_GOAL_47 已推进，研究总目标未重新确认。\n</history_evidence>\n\nUSER: 我们最初确认、现在仍然有效的研究总目标是什么？",
+        "tokens": 601,
+        "overflow": false,
+        "selectedBlocks": 8,
+        "continuationRoots": 0,
+        "score": {
+          "expected": 2,
+          "expectedHits": 2,
+          "coverage": 1,
+          "missing": [],
+          "forbiddenHits": [
+            "LOCAL_GOAL_47"
+          ],
+          "staleHits": [],
+          "unresolvedStaleLeak": false,
+          "goalDrift": false,
+          "currentQuestionExactlyOnce": true,
+          "pass": false
+        }
+      }
+    }
+  ]
+}

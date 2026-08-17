@@ -15,8 +15,10 @@ export const name = 'llm-pi-ai-invariant'
 export const inject = ['invariants']
 
 /**
- * No runtime invariant: this package exposes no independent event sequence or mutable data relation
- * beyond contracts enforced at its owning seam.
+ * No runtime invariant: OAuth authority remains the credentials service (or
+ * the bare composition's in-memory store). The Remote is a direct projection
+ * of that authority plus one disposable in-flight controller, not an
+ * independent event sequence.
  */
 const install: InvariantInstaller = () => {}
 

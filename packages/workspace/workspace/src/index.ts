@@ -52,6 +52,28 @@ export class WorkspaceUnknownSessionError extends Error {
   }
 }
 
+/** A permanent delete named a session that is still live. */
+export class WorkspaceSessionLiveError extends Error {
+  /**
+   * @param sessionId - The live session id.
+   */
+  constructor(readonly sessionId: SessionId) {
+    super(`cannot permanently delete session '${sessionId}' while it is live`)
+    this.name = 'WorkspaceSessionLiveError'
+  }
+}
+
+/** A permanent delete named a session that is not archived. */
+export class WorkspaceSessionNotArchivedError extends Error {
+  /**
+   * @param sessionId - The unarchived session id.
+   */
+  constructor(readonly sessionId: SessionId) {
+    super(`cannot permanently delete session '${sessionId}': it is not archived`)
+    this.name = 'WorkspaceSessionNotArchivedError'
+  }
+}
+
 /** A workspace reorder named a source or anchor absent from the durable registry order. */
 export class WorkspaceOrderInvalidError extends Error {
   /**
@@ -67,6 +89,20 @@ export class WorkspaceOrderInvalidError extends Error {
 declare module '@deepseek-ai/cordis' {
   interface Context {
     workspaceRegistry: WorkspaceRegistry
+  }
+
+  interface Events {
+    /**
+     * A session was permanently deleted: the durable log, every workspace
+     * membership slot, and the archive-set bit are already gone when this
+     * fires. Emitted AFTER the persistence delete and the registry bookkeeping
+     * both committed, so listeners observe a consistent post-delete state. The
+     * removed session is cold (not live) by the time this event reaches any
+     * listener.
+     * @param sessionId - the permanently deleted session id.
+     * @mode emit
+     */
+    'workspace/session-deleted'(sessionId: SessionId): void
   }
 }
 
@@ -251,6 +287,64 @@ export class WorkspaceRegistry extends Service {
       }
       const state = this.requireState()
       await this.setState({ ...state, archivedSessionIds: [...state.archivedSessionIds, sessionId] })
+    })
+  }
+
+  /**
+   * Remove one session from the durable archive set. The session log and its
+   * workspace accounting slot never moved, so restoring only changes this
+   * membership bit. A non-archived id is an idempotent no-op.
+   * @param sessionId - The session to restore.
+   * @returns resolution after durability.
+   */
+  unarchiveSession(sessionId: SessionId): Promise<void> {
+    return this.enqueueOperation(async () => {
+      const state = this.requireState()
+      if (!state.archivedSessionIds.includes(sessionId)) return
+      await this.setState({
+        ...state,
+        archivedSessionIds: state.archivedSessionIds.filter(id => id !== sessionId),
+      })
+    })
+  }
+
+  /**
+   * Permanently delete one archived session: the durable log, every workspace
+   * membership slot, and the archive-set bit. Rejects while the id is live or
+   * not archived — permanent deletion is a distinct, confirmed action that
+   * must never run on an unarchived or still-open session. The persistence
+   * delete commits before any durable registry bookkeeping is rewritten.
+   * @param sessionId - The archived session to permanently delete.
+   * @returns resolution after the durable log and registry state are gone.
+   */
+  deleteSession(sessionId: SessionId): Promise<void> {
+    return this.enqueueOperation(async () => {
+      const state = this.requireState()
+      if (this.ctx.get('sessions')?.get(sessionId) !== undefined) {
+        throw new WorkspaceSessionLiveError(sessionId)
+      }
+      if (!state.archivedSessionIds.includes(sessionId)) {
+        throw new WorkspaceSessionNotArchivedError(sessionId)
+      }
+      await this.ctx.sessionPersistence.delete(sessionId)
+      // The durable log is gone; drop the id from every workspace account via
+      // the entity write path (which prunes the entity's snapshot) while the
+      // header index still resolves the id, then clear the registry index and
+      // the archive-set bit in one registry write.
+      for (const entity of this.entities.values()) {
+        await entity.detachSession(sessionId)
+      }
+      this.headers.delete(sessionId)
+      this.sessionPaths.delete(sessionId)
+      this.invalidSessionPaths.delete(sessionId)
+      await this.setState({
+        initialized: state.initialized,
+        workspaceIds: state.workspaceIds,
+        archivedSessionIds: state.archivedSessionIds.filter(id => id !== sessionId),
+      })
+      // Publish only after both the durable delete and the bookkeeping rewrite
+      // committed, so every listener observes a consistent post-delete state.
+      this.ctx.emit('workspace/session-deleted', sessionId)
     })
   }
 

@@ -1,0 +1,553 @@
+{
+  "schema": 1,
+  "frozenAt": "2026-08-13T19:32:31.040Z",
+  "seed": "pi-idea-proof-carrying-dialogue-islands-long-horizon-v2",
+  "label": "unseen multi-project long-horizon Luna-low screen; frozen before model answers",
+  "dataSha256": "sha256:2f4153d11a2cf4bd05b919d6e01adabdbe3cb695729adfbab2938f02dd37cecb",
+  "compilerVersion": "proof-carrying-dialogue-islands-v6.4",
+  "sourceDigest": "530c5df66149307f77bd4279554c2d8bdd025b19f6900837eeba23292154ea7e",
+  "excludedPriorModelCases": 310,
+  "sampleSize": 16,
+  "taskCounts": {
+    "objective_fact_judgment": 4,
+    "personalized_memory_use": 4,
+    "memory_evidence_conflict": 3,
+    "contextual_scope_control": 2,
+    "valid_memory_selection": 3
+  },
+  "distractorCount": 8,
+  "rawBudget": 32768,
+  "compactBudget": 8192,
+  "model": "gpt-5.6-luna:low",
+  "cases": [
+    {
+      "caseKey": "msy:9d539c42885c7a5a5ecc",
+      "officialId": "consensus_obj_000201",
+      "task": "objective_fact_judgment",
+      "hardness": 1480,
+      "distractorCaseKeys": [
+        "msy:ae83bb87195ddb963758",
+        "msy:d0b504057975cd5f1727",
+        "msy:b0ab9952d99e87be4836",
+        "msy:f4f834dfb7cbeaebe10a",
+        "msy:7507ead3ebe126f6a0cf",
+        "msy:0cacc3032ad5e3119c9c",
+        "msy:857d994957211d2c7132",
+        "msy:82db20038aa094028761"
+      ],
+      "targetAfter": 3,
+      "totalTurns": 79,
+      "contextTokens": {
+        "raw-long": 19790,
+        "rolling-extractive": 7287,
+        "evidence-ladder": 1327
+      },
+      "targetEvidenceCoverage": {
+        "raw-long": 1,
+        "rolling-extractive": 0.5,
+        "evidence-ladder": 0.6
+      },
+      "outputHashes": {
+        "raw-long": "9606c681d9185944a973bb4fb235c8b9fa6325d001a7ebac8acd1dc19481795b",
+        "rolling-extractive": "6c67ba8aeb937b704900990bf96089ba491eea7cd895560995f221aa161a94d2",
+        "evidence-ladder": "7876e3a461d199d17357d4ad8b766e7e2e279acea390ae9001f1cbd11ae5d75d"
+      }
+    },
+    {
+      "caseKey": "msy:51aecc26c6f1a002b0d8",
+      "officialId": "consensus_obj_000057",
+      "task": "objective_fact_judgment",
+      "hardness": 1478,
+      "distractorCaseKeys": [
+        "msy:fa756b72e0f817d1a257",
+        "msy:05f1475e90cdade714a8",
+        "msy:2b7e62b082a3f132bd68",
+        "msy:86b6308628af52f198e6",
+        "msy:fb9c06e1b7f90c687b20",
+        "msy:1dae643c260731943a24",
+        "msy:6b19bffcb328c74486cc",
+        "msy:a3f1f8125d4a20af6f9c"
+      ],
+      "targetAfter": 4,
+      "totalTurns": 78,
+      "contextTokens": {
+        "raw-long": 16905,
+        "rolling-extractive": 7389,
+        "evidence-ladder": 1327
+      },
+      "targetEvidenceCoverage": {
+        "raw-long": 1,
+        "rolling-extractive": 0.5,
+        "evidence-ladder": 0.6
+      },
+      "outputHashes": {
+        "raw-long": "f25687bb6b504ca5a2fcfd14c764d318281421ce320e4085eed9050cf54e9686",
+        "rolling-extractive": "15c598afc5706c118aa7bf11d47c8cd7a32bf05091f64a992c1dde3e93a46c50",
+        "evidence-ladder": "ff1d05106160bccbf6b2ee6fcb3e0de68c0a8727f33694f7c4918a2802879c28"
+      }
+    },
+    {
+      "caseKey": "msy:f914c8e0e6af32d639d0",
+      "officialId": "consensus_obj_000114",
+      "task": "objective_fact_judgment",
+      "hardness": 1478,
+      "distractorCaseKeys": [
+        "msy:7e32425b7892cdb2372a",
+        "msy:523502756920f4105758",
+        "msy:a88a157eb5df192ebec5",
+        "msy:e1c24bbc16331b8ce8e1",
+        "msy:0c445181951ae23c6382",
+        "msy:34a7a6dcd220fa35c481",
+        "msy:5e021d9d9dd128c51d8f",
+        "msy:759bebbb5b063eec84c3"
+      ],
+      "targetAfter": 3,
+      "totalTurns": 84,
+      "contextTokens": {
+        "raw-long": 20624,
+        "rolling-extractive": 7181,
+        "evidence-ladder": 573
+      },
+      "targetEvidenceCoverage": {
+        "raw-long": 1,
+        "rolling-extractive": 0.5,
+        "evidence-ladder": 0.2
+      },
+      "outputHashes": {
+        "raw-long": "ec5b721364fd891962868cca45c20ff88a9615da64c817fc36cb4ed7e5d42da0",
+        "rolling-extractive": "0334595fa772207c253e2795b18d6ebe1f34aafeb28538c2d09f6ef8403b5b01",
+        "evidence-ladder": "3d94ac14643f577fa0b099b013aa3baa3a093fcfa649522dca6b2531b7e1f1a7"
+      }
+    },
+    {
+      "caseKey": "msy:db5c60fff0c93270482d",
+      "officialId": "consensus_obj_000186",
+      "task": "objective_fact_judgment",
+      "hardness": 1477,
+      "distractorCaseKeys": [
+        "msy:8800f513d7bc9bc26e25",
+        "msy:132842c22ef3c3d387f5",
+        "msy:561edacc36a91b88064b",
+        "msy:572a5ac26e76650fe0fa",
+        "msy:a321db61398e54ecfc78",
+        "msy:a5bea0a3eeb4227d48d1",
+        "msy:6f405304cfb1beb5439e",
+        "msy:50d99f7ad8eb5039681f"
+      ],
+      "targetAfter": 2,
+      "totalTurns": 93,
+      "contextTokens": {
+        "raw-long": 22081,
+        "rolling-extractive": 7389,
+        "evidence-ladder": 170
+      },
+      "targetEvidenceCoverage": {
+        "raw-long": 1,
+        "rolling-extractive": 0,
+        "evidence-ladder": 0
+      },
+      "outputHashes": {
+        "raw-long": "4fece78876889a0a93dc81e085bea48d0ee20332ecd0358dc6655a49284ff79e",
+        "rolling-extractive": "5f0b1f81e15971b634d8945f8549a7734e6b84c6277f75b235725d2d69c31bd3",
+        "evidence-ladder": "3629299eebf27caf37742c462ab0cba905b4d731d65e150fefbfd2a162fa16e2"
+      }
+    },
+    {
+      "caseKey": "msy:1c0074c074dae07a8508",
+      "officialId": "v11_001185",
+      "task": "personalized_memory_use",
+      "hardness": 1002218,
+      "distractorCaseKeys": [
+        "msy:22c73a42a8e68f0afeda",
+        "msy:bd374000bdde97259e73",
+        "msy:f3c26c1394381058a9d7",
+        "msy:a2cdfb77fa27a2923f7e",
+        "msy:e6ce60767f86783dd19b",
+        "msy:2fc9bda77178c62f5db8",
+        "msy:63730125d6eff24fbc0e",
+        "msy:98b1bd5c30d88c4167e5"
+      ],
+      "targetAfter": 2,
+      "totalTurns": 85,
+      "contextTokens": {
+        "raw-long": 21625,
+        "rolling-extractive": 7341,
+        "evidence-ladder": 2200
+      },
+      "targetEvidenceCoverage": {
+        "raw-long": 1,
+        "rolling-extractive": 0,
+        "evidence-ladder": 0.8571428571428571
+      },
+      "outputHashes": {
+        "raw-long": "f0d6d0a38ed88094051e8240d8439c4d45fb78090c9d75a26a6f1151487377f6",
+        "rolling-extractive": "0676eb3d75cae15637c338f04f7c82dbdc9cccccac4740858d2cb9c638e99834",
+        "evidence-ladder": "4d17d17728f13ae90701d4b940ba5ed5260f26fb007e5dc1f91b841fb4aed5a1"
+      }
+    },
+    {
+      "caseKey": "msy:9fbd71bae71cbc8b3938",
+      "officialId": "v11_001297",
+      "task": "personalized_memory_use",
+      "hardness": 1002216,
+      "distractorCaseKeys": [
+        "msy:523502756920f4105758",
+        "msy:fa65783a6d77e4d7ec4b",
+        "msy:90cdb5cef0cf67aec1f9",
+        "msy:0931ae56296f812af284",
+        "msy:561edacc36a91b88064b",
+        "msy:928dfd9e648de80054b1",
+        "msy:c76cafc9b0b18e4a7558",
+        "msy:52a1ba667c969e33c8d4"
+      ],
+      "targetAfter": 2,
+      "totalTurns": 91,
+      "contextTokens": {
+        "raw-long": 24060,
+        "rolling-extractive": 7380,
+        "evidence-ladder": 2308
+      },
+      "targetEvidenceCoverage": {
+        "raw-long": 1,
+        "rolling-extractive": 0,
+        "evidence-ladder": 0.8571428571428571
+      },
+      "outputHashes": {
+        "raw-long": "403f59d075b9a80eae605de145cedb32ac7820a593b7d64832dc28190fb41435",
+        "rolling-extractive": "fe966211c1dd44c8f3ed5a9031d69ef0653271a7df1261f6079636a819e3cf8f",
+        "evidence-ladder": "01fd4c14d7eb45103a2b7f0d86d3303da144e0110a66c06db75c77b64d85d51f"
+      }
+    },
+    {
+      "caseKey": "msy:77cc98760801eab317ca",
+      "officialId": "v11_001264",
+      "task": "personalized_memory_use",
+      "hardness": 1002212,
+      "distractorCaseKeys": [
+        "msy:0d6b68996be8d42b7c03",
+        "msy:33f9925909925cfb2f85",
+        "msy:7e32425b7892cdb2372a",
+        "msy:ecab629f3f669f6bc08c",
+        "msy:76a8e1cd939f7ec191ee",
+        "msy:72612a385467209c16f1",
+        "msy:d7d070b3e33559a940c8",
+        "msy:ee79053490045206d719"
+      ],
+      "targetAfter": 4,
+      "totalTurns": 87,
+      "contextTokens": {
+        "raw-long": 20764,
+        "rolling-extractive": 7022,
+        "evidence-ladder": 2236
+      },
+      "targetEvidenceCoverage": {
+        "raw-long": 1,
+        "rolling-extractive": 0.42857142857142855,
+        "evidence-ladder": 0.8571428571428571
+      },
+      "outputHashes": {
+        "raw-long": "37d65adde867648cf09436ed82dcf6a3822122468bbca6bcbf189e9a9688e9f0",
+        "rolling-extractive": "c5c201359b2503f0198a0e9b2caf8d051b8c6bf42fe9e91587ba65e83dd8f30b",
+        "evidence-ladder": "1090b5d86c1993bdaba02a5bbc26bbf4a82d4ac3578388aa1f51372c47531bfc"
+      }
+    },
+    {
+      "caseKey": "msy:8a9e5c4c160d6bd65e05",
+      "officialId": "v11_001099",
+      "task": "personalized_memory_use",
+      "hardness": 1002188,
+      "distractorCaseKeys": [
+        "msy:2ef212c4ab654097f589",
+        "msy:0c874eead0846f67607c",
+        "msy:c2cc6ec273e15a81ee3e",
+        "msy:978a06882435a4c68c98",
+        "msy:5762e1d18449c68dae7f",
+        "msy:df35f3f6cf043ee6d02b",
+        "msy:c3edcb77beda8b250cb6",
+        "msy:b1870b5841eab48d1f57"
+      ],
+      "targetAfter": 3,
+      "totalTurns": 96,
+      "contextTokens": {
+        "raw-long": 23470,
+        "rolling-extractive": 7361,
+        "evidence-ladder": 2360
+      },
+      "targetEvidenceCoverage": {
+        "raw-long": 1,
+        "rolling-extractive": 0.14285714285714285,
+        "evidence-ladder": 0.8571428571428571
+      },
+      "outputHashes": {
+        "raw-long": "60a307daaecd45d2f28bb81b4d16a276e65d9ab1e3ed8a510c7c072379325740",
+        "rolling-extractive": "2f4f8904a85b99fb9766151bd64983e401ac94a2ce6a6a7c8f5e8ece4fe26dfb",
+        "evidence-ladder": "9e36521e41d6824cd8050ceafc194e8c0c9af5fa881dc69bb7acb870aadf7c1e"
+      }
+    },
+    {
+      "caseKey": "msy:2ca245754b647ac3f17d",
+      "officialId": "emc_search_000210",
+      "task": "memory_evidence_conflict",
+      "hardness": 1001909,
+      "distractorCaseKeys": [
+        "msy:64b7680fef131aee49a9",
+        "msy:8f88ac298705e52885c5",
+        "msy:e8037fd66ed368a00422",
+        "msy:cae9b9fcbfef8af08573",
+        "msy:6b115f9de804d8abd2bb",
+        "msy:e0299ded850f839f6bb1",
+        "msy:48e58bcb04bfeda2bb16",
+        "msy:26abdaba5694bc3997d3"
+      ],
+      "targetAfter": 2,
+      "totalTurns": 81,
+      "contextTokens": {
+        "raw-long": 18764,
+        "rolling-extractive": 7323,
+        "evidence-ladder": 2052
+      },
+      "targetEvidenceCoverage": {
+        "raw-long": 1,
+        "rolling-extractive": 0,
+        "evidence-ladder": 0.75
+      },
+      "outputHashes": {
+        "raw-long": "cafcd21d3081de786f664b6bff5cfb13b715ede282fbf7ce916146c367c7646e",
+        "rolling-extractive": "2604c2f27a0109dec2473dc25cdecf669f716a033ce2d878c586fb5a0789c67c",
+        "evidence-ladder": "6bff8999914fb1aea6fd74129a43b0b3af184fac1907347f88d57a0d1d9cca81"
+      }
+    },
+    {
+      "caseKey": "msy:a291fe83814f7dcf3e9b",
+      "officialId": "emc_search_000290",
+      "task": "memory_evidence_conflict",
+      "hardness": 1001908,
+      "distractorCaseKeys": [
+        "msy:97c69e0938d0633f22fa",
+        "msy:bbe18636d6c5164cf66c",
+        "msy:372e44ddb13245a6277b",
+        "msy:d39751e843d5971c50f8",
+        "msy:f93b2727a39e040bc569",
+        "msy:101da5d351dc99d24f90",
+        "msy:6a48780e4bddb2088c57",
+        "msy:8d6baa421222bfebacf0"
+      ],
+      "targetAfter": 2,
+      "totalTurns": 72,
+      "contextTokens": {
+        "raw-long": 12776,
+        "rolling-extractive": 7330,
+        "evidence-ladder": 1862
+      },
+      "targetEvidenceCoverage": {
+        "raw-long": 1,
+        "rolling-extractive": 0.5,
+        "evidence-ladder": 0.625
+      },
+      "outputHashes": {
+        "raw-long": "d197beac0f2ec5005809d82eea3cafc48f7bd86fb9bd60b46ec5b8baa553a755",
+        "rolling-extractive": "86f9437a64aed264581be50b78d5aa3048f5982347d377fb3a1bdb4194f422c4",
+        "evidence-ladder": "4f1a88c9a906f725b0c6319fcbdd4c3f83a1eb1e6833ea5b2e2c29f57c9a50dc"
+      }
+    },
+    {
+      "caseKey": "msy:49fd2691934f5892c738",
+      "officialId": "emc_search_000110",
+      "task": "memory_evidence_conflict",
+      "hardness": 1001905,
+      "distractorCaseKeys": [
+        "msy:fd1c28d6aefa58e027fa",
+        "msy:fea102a48d368120b334",
+        "msy:4d9eca2cdcb7a2b21058",
+        "msy:27bd1173fbd20933c64e",
+        "msy:892c8d6a82ff375ca997",
+        "msy:d8334b66f7c37d52ae81",
+        "msy:bd047b14a2a8c4f1132a",
+        "msy:f9ebe051e665f3e12b30"
+      ],
+      "targetAfter": 2,
+      "totalTurns": 73,
+      "contextTokens": {
+        "raw-long": 13962,
+        "rolling-extractive": 7275,
+        "evidence-ladder": 2056
+      },
+      "targetEvidenceCoverage": {
+        "raw-long": 1,
+        "rolling-extractive": 0.5,
+        "evidence-ladder": 0.75
+      },
+      "outputHashes": {
+        "raw-long": "ea2052d8145f17e827f34bd19e7e7682e3a3180b143da28dc4d154d00dcc3e8b",
+        "rolling-extractive": "53f4fa76f503caeb867de488df6536f48169d91feb899d01f66ce304bab21a65",
+        "evidence-ladder": "eb8995da89b21d248d73db3735d97150ce86b395e6a0e8b253b2c7a6ca59d20c"
+      }
+    },
+    {
+      "caseKey": "msy:892c8d6a82ff375ca997",
+      "officialId": "mso_hard_000253",
+      "task": "contextual_scope_control",
+      "hardness": 1001419,
+      "distractorCaseKeys": [
+        "msy:8765f82fc7d58f58d238",
+        "msy:60a068952392dee884b1",
+        "msy:a7049b7ae0ed2e92b278",
+        "msy:e1f1b6071967f781c9ad",
+        "msy:7455e37b90e58b67da79",
+        "msy:067d3160d0ff5a9f96eb",
+        "msy:041a84cc21af45c84fb1",
+        "msy:fa1ea34b7ddd7316dc07"
+      ],
+      "targetAfter": 2,
+      "totalTurns": 86,
+      "contextTokens": {
+        "raw-long": 19377,
+        "rolling-extractive": 7391,
+        "evidence-ladder": 1540
+      },
+      "targetEvidenceCoverage": {
+        "raw-long": 1,
+        "rolling-extractive": 0.2,
+        "evidence-ladder": 0.7
+      },
+      "outputHashes": {
+        "raw-long": "f90142d29f9d6f59786ec0499567b4b1a5f4c7223b51aaf413e76a38070d6b5a",
+        "rolling-extractive": "c4dfd4e36dfa09aa96144926f6e58e799e5c034b598a0c8422f235fb60ade589",
+        "evidence-ladder": "278ed279bf0a59d41a88e2af7a22bc6a4713fd1deb9c71540989355fff7fb72f"
+      }
+    },
+    {
+      "caseKey": "msy:20a9dfce73f7f22f2dd5",
+      "officialId": "mso_hard_000139",
+      "task": "contextual_scope_control",
+      "hardness": 1001416,
+      "distractorCaseKeys": [
+        "msy:fb083b2887244ffecd8a",
+        "msy:69c16d40fb7312724004",
+        "msy:8555fdd0f8a5e56e951d",
+        "msy:2093e4b62e340408620b",
+        "msy:94c30f0f595be03d2452",
+        "msy:4b205beed8ac5b526535",
+        "msy:c76cafc9b0b18e4a7558",
+        "msy:5721c0fddf2fbca66a2e"
+      ],
+      "targetAfter": 4,
+      "totalTurns": 81,
+      "contextTokens": {
+        "raw-long": 19816,
+        "rolling-extractive": 7401,
+        "evidence-ladder": 1409
+      },
+      "targetEvidenceCoverage": {
+        "raw-long": 1,
+        "rolling-extractive": 0.1,
+        "evidence-ladder": 0.7
+      },
+      "outputHashes": {
+        "raw-long": "eca683d2123e9a870262991bad3817e990a8cce6965c430ec8dd20a3bd8ea2f1",
+        "rolling-extractive": "32d1b9ecf872a0584490b74d9bab7b275f8615a461cf5520bb1c7db1e89e529a",
+        "evidence-ladder": "4ccc0c2871875c789072be546652acda9acc934159b7b163e9b9601998f0d9a7"
+      }
+    },
+    {
+      "caseKey": "msy:b7cd8f6f4ba13dbb7913",
+      "officialId": "v11_001087",
+      "task": "valid_memory_selection",
+      "hardness": 1002946,
+      "distractorCaseKeys": [
+        "msy:5a4eaca14df662437dc7",
+        "msy:ca7517f8ba4eeec31c74",
+        "msy:efb3362176f42e95b588",
+        "msy:07629c8670e316feffd5",
+        "msy:0db2035fe0ecd158a2de",
+        "msy:3c659eca4cc880a75b9c",
+        "msy:730985cfac272b37c73b",
+        "msy:67c9eda05ba9cc4d411b"
+      ],
+      "targetAfter": 3,
+      "totalTurns": 74,
+      "contextTokens": {
+        "raw-long": 15206,
+        "rolling-extractive": 7321,
+        "evidence-ladder": 2367
+      },
+      "targetEvidenceCoverage": {
+        "raw-long": 1,
+        "rolling-extractive": 0.7692307692307693,
+        "evidence-ladder": 0.6153846153846154
+      },
+      "outputHashes": {
+        "raw-long": "28701691544c263074e23f97d107928532b6761529619bb8ddb869697d3aae2b",
+        "rolling-extractive": "6cf4ffa4eb7b5e77b0962aa36ac288d658bfeb220cd821c99666d39236e4423f",
+        "evidence-ladder": "64b0bfc9f65e4011d22ed5dfb9c3db454322b88b21f360f0a705c5cd089e7436"
+      }
+    },
+    {
+      "caseKey": "msy:c372bab76c56a7656b53",
+      "officialId": "v11_000926",
+      "task": "valid_memory_selection",
+      "hardness": 1002851,
+      "distractorCaseKeys": [
+        "msy:2ae2be7948517e0d34d8",
+        "msy:1d33c10596a3ab7bed03",
+        "msy:80bf768ab0c34ba2620f",
+        "msy:af23ee4fd1330c514176",
+        "msy:aff1e56d69f89a08ffb8",
+        "msy:3a50d3a692f2173a7f94",
+        "msy:b2a8a8124388c101ab1c",
+        "msy:5a0e7b442207f5aeca74"
+      ],
+      "targetAfter": 4,
+      "totalTurns": 82,
+      "contextTokens": {
+        "raw-long": 18727,
+        "rolling-extractive": 7161,
+        "evidence-ladder": 2080
+      },
+      "targetEvidenceCoverage": {
+        "raw-long": 1,
+        "rolling-extractive": 0.5,
+        "evidence-ladder": 0.5833333333333334
+      },
+      "outputHashes": {
+        "raw-long": "906b6bda562fa7166cc86903927b215d25cca859175e39f3b20a3aaf8c41b02f",
+        "rolling-extractive": "00f8ae5f1c79840cc6fb8ed31aa6a1020ed6bd77c1e2c066ffd02eb9bedc743b",
+        "evidence-ladder": "b161922cf313c98c482d98039f948740ab8dff1f0d466431e522c7161a445356"
+      }
+    },
+    {
+      "caseKey": "msy:5f3f3925ef7238651e6e",
+      "officialId": "v11_000969",
+      "task": "valid_memory_selection",
+      "hardness": 1002823,
+      "distractorCaseKeys": [
+        "msy:49a5f1a89269d59c7eb9",
+        "msy:42b2177440b546e808ae",
+        "msy:4521f10c64c02d740bd6",
+        "msy:27bd1173fbd20933c64e",
+        "msy:7d770fc2c3a0d7cb84dc",
+        "msy:7df0ece366e405a40f7f",
+        "msy:70bf4067e5b40acec41e",
+        "msy:b096ffa04782c12ea27a"
+      ],
+      "targetAfter": 4,
+      "totalTurns": 79,
+      "contextTokens": {
+        "raw-long": 17731,
+        "rolling-extractive": 7380,
+        "evidence-ladder": 1929
+      },
+      "targetEvidenceCoverage": {
+        "raw-long": 1,
+        "rolling-extractive": 0.6666666666666666,
+        "evidence-ladder": 0.5833333333333334
+      },
+      "outputHashes": {
+        "raw-long": "13e0ad23debd00eabfb80d07a622c1784288630b9515eb2af3920e7c74baaf24",
+        "rolling-extractive": "a30e9b0e2a81460980fdf5ba6912f8465398859de075ba8b4e4fcf1553a2f93c",
+        "evidence-ladder": "f06f5ce925d277d6ff39116ba0293042c6885366a7c63071f0db57e59f9fc889"
+      }
+    }
+  ],
+  "manifestDigest": "8f30f13c6cc03eceff718d2780e9989cd7f6cded66cb71806740c212eb062569"
+}

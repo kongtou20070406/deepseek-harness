@@ -170,7 +170,8 @@ get(agent: Agent): GoalView | undefined
 /**
  * Remove process-local continuation authority without changing durable goal
  * phase or revision. Lifecycle owners use this before unloading a driver;
- * a later human-authorized {@link resume} records the new activation edge.
+ * a later session resume rearms an active goal, while stopped phases still
+ * require an explicit human-authorized {@link resume} mutation.
  * @param agent - owning live agent.
  * @returns a fresh disarmed view, or `undefined` when no goal is current.
  */

@@ -9,7 +9,7 @@
 import { Context } from '@deepseek-ai/cordis'
 import z from '@deepseek-ai/schemastery'
 import { readdirSync } from 'node:fs'
-import { open, mkdir, readFile, readdir, realpath, link, rm, stat, truncate } from 'node:fs/promises'
+import { open, mkdir, readFile, readdir, realpath, link, rm, rmdir, stat, truncate } from 'node:fs/promises'
 import { dirname, join, resolve } from 'node:path'
 import { performance } from 'node:perf_hooks'
 import { scheduler } from 'node:timers/promises'
@@ -197,6 +197,10 @@ export class JsonlSessionPersistence extends SessionPersistence implements Persi
   // parses the stored prefix (both encodings) and skips forward to fromSeq.
   readFrom(id: SessionId, fromSeq: number, signal?: AbortSignal): Promise<{ meta: SessionHeader; events: SessionEvent[] }> {
     return this.coordinator.readFrom(id, fromSeq, signal)
+  }
+
+  delete(id: SessionId, signal?: AbortSignal): Promise<void> {
+    return this.coordinator.delete(id, signal)
   }
 
   // One method serves both public `list` and the backend hook; delegating it to
@@ -441,6 +445,32 @@ export class JsonlSessionPersistence extends SessionPersistence implements Persi
     if (tornMarker !== undefined) await this.repair(meta, tornMarker.truncateTo)
     const repairedEvents = [...(tornMarker?.recoveredEvents ?? []), ...closers]
     if (repairedEvents.length > 0) await this.appendLines(meta, repairedEvents)
+  }
+
+  /**
+   * Durably remove one session's log plus the session directory that owns it.
+   * Resolves the physical log across project directories (cwd may be unknown),
+   * removes it, then removes the now-empty session directory. An absent id
+   * no-ops. The log path never reuses the reusable-append-vs-truncate helper
+   * set; removal is a separate durable effect.
+   */
+  async deleteStored(id: SessionId, signal?: AbortSignal): Promise<void> {
+    signal?.throwIfAborted()
+    await this.ensureRootEncoding()
+    signal?.throwIfAborted()
+    const path = await this.findLog(id, signal)
+    signal?.throwIfAborted()
+    if (path === undefined) return
+    await rm(path, { force: true })
+    signal?.throwIfAborted()
+    // Best-effort: leave the session directory if it still holds other entries;
+    // `rmdir` only removes an empty directory (ENOTEMPTY otherwise), so a
+    // non-empty directory is left intact — deletion of the log is durable.
+    try {
+      await rmdir(dirname(path))
+    } catch {
+      /* v8 ignore next -- a non-empty directory is the expected benign case */
+    }
   }
 
   /** List valid unique stored sessions' metadata (header line only — no full-log parse). */

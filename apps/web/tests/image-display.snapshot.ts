@@ -143,7 +143,7 @@ it('accepts pasted images into the composer rail in order and removes them', asy
     },
   })
   const toast = await screen.findByRole('alert')
-  expect(toast.textContent).toContain('Only PNG, JPG, WebP, and GIF images are supported')
+  expect(toast.textContent).toContain('Only PNG, JPG, WebP, and GIF images and Markdown files are supported')
   await waitFor(() => {
     expect(screen.queryByRole('alert')).toBeNull()
   }, { timeout: 6_000 })
@@ -165,9 +165,9 @@ it('accepts a whole-page drop under the limits-labeled overlay and refuses an ov
   const dataTransfer = { types: ['Files'], files: [image], dropEffect: 'none' }
   fireEvent.dragEnter(document.body, { dataTransfer })
   const overlay = await screen.findByRole('status')
-  expect(overlay.textContent).toContain('Drag images here to add them')
+  expect(overlay.textContent).toContain('Drag images or Markdown files here to add them')
   await waitFor(() => {
-    expect(overlay.textContent).toContain('Up to 20 images, 5MB each')
+    expect(overlay.textContent).toContain('Images: up to 20, 5MB each')
   })
 
   // Dropping on the transcript area (not the composer card) lands in the rail.

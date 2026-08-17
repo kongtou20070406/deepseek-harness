@@ -232,6 +232,29 @@ export class WorkspaceManager {
   }
 
   /**
+   * Restore one session by removing it from the Host archive set.
+   * @param sessionId - archived session to restore.
+   * @returns the wire result.
+   */
+  async unarchiveSession(sessionId: SessionId): Promise<RpcResult<{ archivedSessionIds: SessionId[] }>> {
+    const { result } = await this.api.workspace.archiveSession({ sessionId, archived: false })
+    if (result.ok) this.installArchived(result.value.archivedSessionIds)
+    return result
+  }
+
+  /**
+   * Permanently delete one archived session and install the Host's updated
+   * archive set without waiting for the changed frame.
+   * @param sessionId - archived session to permanently delete.
+   * @returns the wire result.
+   */
+  async deleteSession(sessionId: SessionId): Promise<RpcResult<{ archivedSessionIds: SessionId[] }>> {
+    const { result } = await this.api.workspace.deleteSession({ sessionId })
+    if (result.ok) this.installArchived(result.value.archivedSessionIds)
+    return result
+  }
+
+  /**
    * Host-frame entry. Non-workspace frames are ignored so the runtime can
    * fan one host stream out to both object managers.
    * @param envelope - host stream envelope.

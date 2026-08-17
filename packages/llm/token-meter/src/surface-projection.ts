@@ -41,6 +41,8 @@ export interface ShadowPriceClaim {
 export interface SurfaceTokensFold {
   /** Signed change in the surface total; 0 for events off the surface. */
   readonly deltaTokens: number
+  /** Known lower bound after this event; a metered replacement still contains its replacement message. */
+  readonly minimumTokens: number
   /** Claim to carry into the next event; undefined when none survives. */
   readonly claim: ShadowPriceClaim | undefined
 }
@@ -71,24 +73,25 @@ export function foldSurfaceProjection(
     const { shadowedRange, shadowedTokenCount } = event.data
     return {
       deltaTokens: 0,
+      minimumTokens: 0,
       claim: { start: shadowedRange.start, end: shadowedRange.end, tokens: shadowedTokenCount },
     }
   }
-  if (!isSurfaceEvent(event)) return { deltaTokens: 0, claim: undefined }
+  if (!isSurfaceEvent(event)) return { deltaTokens: 0, minimumTokens: 0, claim: undefined }
   const message = deriveEventMessage(event)
   const tokens = message === null ? 0 : estimateMessage(message)
   const op = event.surfaceOp
-  if (op === 'append') return { deltaTokens: tokens, claim: undefined }
+  if (op === 'append') return { deltaTokens: tokens, minimumTokens: 0, claim: undefined }
   // Sessions recorded before the shadow-price protocol log replacements with
   // no adjacent metering event; the bounded state cannot reconstruct the
   // replaced range's price, so fold those neutrally — historical replay
   // degrades to drift instead of failing.
-  if (claim === undefined) return { deltaTokens: 0, claim: undefined }
+  if (claim === undefined) return { deltaTokens: 0, minimumTokens: 0, claim: undefined }
   if (claim.start !== op.start || claim.end !== op.end) {
     throw new Error(
       `token surface: replace at seq ${event.seq} over range ${op.start}-${op.end} has no adjacent shadow price`
       + ` (armed claim covers ${claim.start}-${claim.end})`,
     )
   }
-  return { deltaTokens: tokens - claim.tokens, claim: undefined }
+  return { deltaTokens: tokens - claim.tokens, minimumTokens: tokens, claim: undefined }
 }

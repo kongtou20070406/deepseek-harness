@@ -104,6 +104,16 @@ export interface WorkspaceApi {
    * session persistence fails with `session-not-found`. Returns the full
    * updated set (same snapshot the changed frame carries).
    */
-  archiveSession(request: RpcRequest<{ sessionId: SessionId }>):
+  archiveSession(request: RpcRequest<{ sessionId: SessionId; archived?: boolean }>):
+  Promise<RpcResponse<{ archivedSessionIds: SessionId[] }>>
+
+  /**
+   * Permanently deletes one ARCHIVED session: its durable log, every workspace
+   * membership slot, and its archive-set bit. Rejects while the id is live
+   * (`session-live`) or not archived (`session-not-archived`) — permanent
+   * deletion is a distinct confirmed action, never applied to an unarchived or
+   * open session. Returns the full updated archive set.
+   */
+  deleteSession(request: RpcRequest<{ sessionId: SessionId }>):
   Promise<RpcResponse<{ archivedSessionIds: SessionId[] }>>
 }

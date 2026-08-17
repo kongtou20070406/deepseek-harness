@@ -162,8 +162,16 @@ describe('BrowseDirectoryPicker', () => {
   })
 
   it('lists the home directory when no path is given', async () => {
-    const listing = await capability.list()
-    expect(listing.path).toBe(homedir())
+    const result = await capability.list().catch((error: unknown) => error)
+    if (result instanceof DirectoryPickerError) {
+      // Hermetic CI sandboxes can expose a real home path while denying its
+      // enumeration. The omission contract is still observable in the
+      // typed failure: the attempted target must be exactly os.homedir().
+      expect(result.code).toBe('directory-unreadable')
+      expect(result.path).toBe(homedir())
+      return
+    }
+    expect((result as { path: string }).path).toBe(homedir())
   })
 
   it('throws directory-unreadable for a missing target', async () => {

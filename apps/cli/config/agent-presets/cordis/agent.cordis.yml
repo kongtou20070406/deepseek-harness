@@ -129,8 +129,8 @@
     compaction: true
     toolResultPruner: true
   config:
-    - id: compaction-basic
-      name: '@deepseek-ai/dsh-compaction-basic'
+    - id: compaction-research-context
+      name: '@deepseek-ai/dsh-compaction-research-context'
 
     - id: command-compact
       name: '@deepseek-ai/dsh-command-compact'
@@ -260,3 +260,13 @@
 
 - id: tool-skill
   name: '@deepseek-ai/dsh-tool-skill'
+
+# ── presentation ────────────────────────────────────────────────────────────
+
+# Creation mode keeps its self-modification tools and presents the ordinary
+# coding catalog through the same Code Mode SDK as the PTC preset. This lets a
+# migrated agent inspect, patch and verify its own Harness in fewer round trips.
+- id: tool-presentation
+  name: '@deepseek-ai/dsh-agent-tool-presentation'
+  config:
+    mode: code

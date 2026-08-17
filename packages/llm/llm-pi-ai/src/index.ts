@@ -62,13 +62,17 @@ import type { AdapterRegistrationHandle, DirectoryRegistrationHandle, LlmConfigu
 import { deepEqualJson, installSettingsSection, settingsNamespace } from '@deepseek-ai/dsh-settings'
 import { PiAiAdapter } from './adapter.ts'
 import { catalogProviderIds, catalogProviderTakesApiKey } from './catalog.ts'
-import { assertServiceable, Config, resolveProfiles } from './config.ts'
+import { assertServiceable, Config, DEFAULT_CODEX_USAGE_TIMEOUT_MS, resolveProfiles } from './config.ts'
 import type { ResolvedPiAiProviderProfile } from './config.ts'
 import { discoverModels } from './discovery.ts'
+import { OpenAICodexAccount } from './codex-account.ts'
+import { HarnessPiAiCredentialStore } from './codex-credentials.ts'
 
 export { PiAiAdapter } from './adapter.ts'
 export type { PiAiAdapterOptions } from './adapter.ts'
 export { Config } from './config.ts'
+export { OpenAICodexAccount } from './codex-account.ts'
+export type * from './codex-types.ts'
 export type {
   PiAiCompatProfile,
   PiAiModality,
@@ -134,13 +138,10 @@ function directoryEntries(
       declared: !catalog.has(provider),
     })
   }
-  // A provider whose only native method is OAuth leaves this adapter nothing
-  // to authenticate with, so offering it would put a card on the settings page
-  // whose own posture — no key, credentials discovered by the provider — fails
-  // every request. Catalog *membership* is unaffected, so `declare` above still
-  // answers what pi-ai ships.
+  // This plugin owns a persistent OAuth store for openai-codex; other catalog
+  // routes still need an api-key method before the Models page may offer them.
   for (const provider of catalog) {
-    if (catalogProviderTakesApiKey(provider)) declare(provider, provider)
+    if (provider === 'openai-codex' || catalogProviderTakesApiKey(provider)) declare(provider, provider)
   }
   for (const [provider, profile] of profiles) declare(provider, profile.displayName)
   return [...entries.values()]
@@ -172,6 +173,28 @@ export function apply(ctx: Context, config: Config): void {
   }
   profiles()
 
+  // A full bundle mounts the persistent credentials service. Bare/plugin-unit
+  // compositions retain pi-ai's in-memory behavior instead of refusing to
+  // mount solely because persistence is absent.
+  const piCredentials = new HarnessPiAiCredentialStore(ctx.get('credentials'), {
+    importPiAuth: current().codexImportPiAuth ?? false,
+  })
+  // `credentials` is optional for bare adapter compositions, but in a full
+  // Cordis tree it may mount after llm-pi-ai. Follow that service dynamically
+  // so a login can never be stranded in the process-local fallback merely
+  // because activation order happened to put this plugin first.
+  const credentialsFiber = ctx.inject(['credentials'], (childCtx: Context) => {
+    const unbind = piCredentials.bind(childCtx.credentials)
+    childCtx.effect(() => unbind, 'llm-pi-ai: release credential service binding')
+  })
+  ctx.effect(() => () => credentialsFiber.dispose(), 'llm-pi-ai: dispose optional credential binding')
+  const codexAccount = new OpenAICodexAccount(
+    ctx,
+    piCredentials,
+    () => current().codexUsageTimeoutMs ?? DEFAULT_CODEX_USAGE_TIMEOUT_MS,
+  )
+  ctx.effect(() => () => codexAccount.close(), 'llm-pi-ai: settle OpenAI membership login')
+
   const resolveApiKey = async (
     provider: string,
     profile: ResolvedPiAiProviderProfile,
@@ -201,6 +224,7 @@ export function apply(ctx: Context, config: Config): void {
     profiles,
     resolveApiKey,
     resolveAttachments: () => ctx.get('attachments'),
+    credentials: piCredentials,
   })
   // The full installed catalog is configurable from the moment the plugin
   // mounts — dormant or not — so configuration surfaces can offer every

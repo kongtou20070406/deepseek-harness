@@ -195,8 +195,14 @@ export class GoalService extends TypertRemoteService {
     this.resolved = {
       defaultMaxGoalRounds: resolveMaxGoalRounds(config.defaultMaxGoalRounds ?? 256),
     }
-    ctx.on('agent/session-start', ({ agent }) => {
-      this.cache(agent.session).activation = 'disarmed'
+    ctx.on('agent/session-start', ({ agent, source }) => {
+      const cache = this.cache(agent.session)
+      this.sync(agent.session, cache)
+      cache.activation = source === 'resume'
+        && cache.state.goal?.phase === 'active'
+        && cache.state.roundsStarted < cache.state.goal.maxGoalRounds
+        ? 'armed'
+        : 'disarmed'
     })
     // The `goal` projection unit: last-wins fold of goal/change whole values
     // (see applyGoalProjection). The unit child activates only when a
@@ -229,7 +235,8 @@ export class GoalService extends TypertRemoteService {
   /**
    * Remove process-local continuation authority without changing durable goal
    * phase or revision. Lifecycle owners use this before unloading a driver;
-   * a later human-authorized {@link resume} records the new activation edge.
+   * a later session resume rearms an active goal, while stopped phases still
+   * require an explicit human-authorized {@link resume} mutation.
    * @param agent - owning live agent.
    * @returns a fresh disarmed view, or `undefined` when no goal is current.
    */

@@ -38,6 +38,11 @@
   background: var(--dsw-alias-interactive-bg-hover);
 }
 
+.iconButtonActive {
+  color: var(--dsw-alias-label-primary);
+  background: var(--dsw-alias-interactive-bg-selected);
+}
+
 /* Section header: title, an inline search control, and the two trailing
    actions. Expanding search collapses the action cluster and takes its room. */
 .sectionHeader {
@@ -110,7 +115,7 @@
   display: flex;
   align-items: center;
   gap: 4px;
-  max-width: 60px;
+  max-width: 96px;
   opacity: 1;
   overflow: hidden;
   visibility: visible;
@@ -367,6 +372,72 @@
 
 .searchWarning {
   color: var(--dsw-alias-label-secondary);
+}
+
+.archivedList {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 0 4px 16px;
+}
+
+.archivedRow {
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 8px;
+  border-radius: 10px;
+}
+
+.archivedRow:hover {
+  background: var(--dsw-alias-interactive-bg-hover);
+}
+
+.archivedTitle {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 13px;
+  color: var(--dsw-alias-label-primary);
+}
+
+.restoreButton {
+  flex: none;
+  border: none;
+  border-radius: 8px;
+  padding: 4px 8px;
+  background: transparent;
+  color: var(--dsw-static-blue-450);
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.restoreButton:hover {
+  background: var(--dsw-alias-interactive-bg-hover);
+}
+
+.restoreButton:disabled {
+  opacity: .55;
+  cursor: default;
+}
+
+.deleteSessionButton {
+  flex: none;
+  border: none;
+  border-radius: 8px;
+  padding: 4px 8px;
+  background: transparent;
+  color: var(--dsw-alias-label-secondary);
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.deleteSessionButton:hover {
+  background: var(--dsw-alias-interactive-bg-hover);
+  color: var(--dsw-alias-label-primary);
 }
 
 /* One workspace section: header row + a compact expanded session run. */

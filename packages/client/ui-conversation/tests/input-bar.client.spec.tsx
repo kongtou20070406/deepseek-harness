@@ -229,12 +229,44 @@ describe('image draft rail', () => {
     const dataTransfer = { types: ['Files'], files: [image], dropEffect: 'none' }
     // The drag never touches the composer card: the listeners are page-wide.
     expect(fireEvent.dragEnter(document.body, { dataTransfer })).toBe(false)
-    expect(view.getByRole('status').textContent).toContain('图片拖动到此处即可添加')
+    expect(view.getByRole('status').textContent).toContain('将图片或 Markdown 文件拖到此处即可添加')
     expect(fireEvent.dragOver(document.body, { dataTransfer })).toBe(false)
     expect(dataTransfer.dropEffect).toBe('copy')
     expect(fireEvent.drop(document.body, { dataTransfer })).toBe(false)
     expect(addImages).toHaveBeenCalledWith([image])
     expect(view.queryByRole('status')).toBeNull()
+  })
+
+  it('imports Markdown files as editable draft text while keeping images on the image path', async () => {
+    const addImages = vi.fn(() => null)
+    const { shell } = bench({ addImages, draft: 'Intro' })
+    const image = new File([Uint8Array.of(1)], 'dropped.png', { type: 'image/png' })
+    // Windows commonly supplies no MIME type for .md; MIME-only Markdown
+    // covers browsers that identify the format without a useful extension.
+    const byExtension = new File(['# Handoff'], 'handoff.md')
+    const byMime = new File(['body'], 'notes', { type: 'text/markdown' })
+    fireEvent.drop(document.body, {
+      dataTransfer: { types: ['Files'], files: [image, byExtension, byMime], dropEffect: 'none' },
+    })
+
+    expect(addImages).toHaveBeenCalledWith([image])
+    await vi.waitFor(() => {
+      expect(shell.snapshot.draft).toBe('Intro\n\n# Handoff\n\nbody')
+    })
+  })
+
+  it('keeps the draft and reports a Markdown file read failure', async () => {
+    const { view, shell } = bench({ draft: 'Keep me' })
+    const unreadable = new File(['hidden'], 'broken.markdown', { type: 'text/x-markdown' })
+    Object.defineProperty(unreadable, 'text', { value: () => Promise.reject(new Error('read failed')) })
+    fireEvent.drop(document.body, {
+      dataTransfer: { types: ['Files'], files: [unreadable], dropEffect: 'none' },
+    })
+
+    await vi.waitFor(() => {
+      expect(view.getByRole('alert').textContent).toContain('Markdown 文件读取失败，请重试')
+    })
+    expect(shell.snapshot.draft).toBe('Keep me')
   })
 
   it('keeps text drags native and hides the overlay when the drag leaves or ends', () => {
@@ -357,7 +389,7 @@ describe('image draft rail', () => {
     const image = new File([Uint8Array.of(1)], 'dropped.png', { type: 'image/png' })
     const dataTransfer = { types: ['Files'], files: [image], dropEffect: 'copy' }
     fireEvent.dragEnter(document.body, { dataTransfer })
-    expect(view.getByRole('status').textContent).toContain('当前无法添加图片')
+    expect(view.getByRole('status').textContent).toContain('当前无法添加文件')
     fireEvent.dragOver(document.body, { dataTransfer })
     expect(dataTransfer.dropEffect).toBe('none')
     fireEvent.drop(document.body, { dataTransfer })
@@ -1055,6 +1087,25 @@ describe('decorations', () => {
     expect(view.container.querySelector('[data-decoration="token"]')).not.toBeNull()
   })
 
+  it('does not duplicate a failed command Usage beside its error result', async () => {
+    const usage = 'Usage: /research [show|on|off|idea <id>]'
+    const { view, shell } = bench({ t: makeTranslate({}) })
+    act(() => {
+      shell.setDraft('/research ')
+      shell.beginCommand(
+        { token: '/research ', hint: usage, submit: () => Promise.resolve({ kind: 'error' as const, text: usage }) },
+        { start: 0, end: '/research '.length, draftRev: shell.snapshot.draftRev },
+      )
+      shell.submit()
+    })
+
+    await vi.waitFor(() => {
+      expect(view.container.querySelector('[role="status"]')?.textContent).toContain(usage)
+    })
+    expect(view.container.textContent?.match(/Usage:/g)).toHaveLength(1)
+    expect(view.container.querySelector('[data-decoration="hint"]')).toBeNull()
+  })
+
   it('a locale entry for the claimed command overrides the raw claim hint (trailing-space token)', () => {
     const { view, shell } = bench()
     act(() => {
@@ -1161,6 +1212,7 @@ describe('command launcher chrome and control seats', () => {
     expect(view.queryByLabelText(/^访问模式/)).toBeNull()
     // Every seat dispatched, nothing rendered.
     expect(slotCalls.map(c => c.key)).toEqual([
+      'conversation.context.details',
       'conversation.input.plan', 'conversation.input.model',
     ])
     expect(view.queryByLabelText('Plan mode')).toBeNull()
@@ -1308,10 +1360,14 @@ describe('command launcher chrome and control seats', () => {
     expect(view.getByTestId('plan-entry')).toBeTruthy()
     expect(view.getByTestId('model-entry')).toBeTruthy()
     // The bar hands its chrome disable state to the filling entry.
-    expect(slotCalls.every(c => (c.owner as { locked: boolean }).locked)).toBe(true)
+    expect(slotCalls
+      .filter(c => c.key === 'conversation.input.plan' || c.key === 'conversation.input.model')
+      .every(c => (c.owner as { locked: boolean }).locked)).toBe(true)
     cleanup()
     const live = bench({ running: true })
-    expect(live.slotCalls.every(c => !(c.owner as { locked: boolean }).locked)).toBe(true)
+    expect(live.slotCalls
+      .filter(c => c.key === 'conversation.input.plan' || c.key === 'conversation.input.model')
+      .every(c => !(c.owner as { locked: boolean }).locked)).toBe(true)
   })
 
   it('disabled locks the Access chip and command launcher (running does not)', () => {

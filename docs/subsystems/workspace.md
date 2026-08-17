@@ -213,6 +213,26 @@ insertBefore(id: WorkspaceId, beforeId?: WorkspaceId): Promise<readonly Workspac
 archiveSession(sessionId: SessionId): Promise<void>
 
 /**
+ * Remove one session from the durable archive set. The session log and its
+ * workspace accounting slot never moved, so restoring only changes this
+ * membership bit. A non-archived id is an idempotent no-op.
+ * @param sessionId - The session to restore.
+ * @returns resolution after durability.
+ */
+unarchiveSession(sessionId: SessionId): Promise<void>
+
+/**
+ * Permanently delete one archived session: the durable log, every workspace
+ * membership slot, and the archive-set bit. Rejects while the id is live or
+ * not archived — permanent deletion is a distinct, confirmed action that
+ * must never run on an unarchived or still-open session. The persistence
+ * delete commits before any durable registry bookkeeping is rewritten.
+ * @param sessionId - The archived session to permanently delete.
+ * @returns resolution after the durable log and registry state are gone.
+ */
+deleteSession(sessionId: SessionId): Promise<void>
+
+/**
  * Resolve by canonical directory path without creating or mutating a
  * workspace. A missing path rejects during `realpath`; an existing unowned
  * directory returns `undefined`.
@@ -224,5 +244,33 @@ async resolveByPath(path: string): Promise<Workspace | undefined>
 
 Types: [SessionId](core.md)
 
-Source: [`packages/workspace/workspace/src/index.ts:92`](../../packages/workspace/workspace/src/index.ts)
+Source: [`packages/workspace/workspace/src/index.ts:128`](../../packages/workspace/workspace/src/index.ts)
+
+<a id="workspace-events"></a>
+
+### `workspace/*` events
+
+<a id="workspacesession-deleted--emit"></a>
+
+#### `workspace/session-deleted` — emit
+
+A session was permanently deleted: the durable log, every workspace membership slot, and the archive-set bit are already gone when this fires. Emitted AFTER the persistence delete and the registry bookkeeping both committed, so listeners observe a consistent post-delete state. The removed session is cold (not live) by the time this event reaches any listener.
+
+```ts cordis-catalog
+/**
+ * A session was permanently deleted: the durable log, every workspace
+ * membership slot, and the archive-set bit are already gone when this
+ * fires. Emitted AFTER the persistence delete and the registry bookkeeping
+ * both committed, so listeners observe a consistent post-delete state. The
+ * removed session is cold (not live) by the time this event reaches any
+ * listener.
+ * @param sessionId - the permanently deleted session id.
+ * @mode emit
+ */
+'workspace/session-deleted'(sessionId: SessionId): void
+```
+
+Types: [SessionId](core.md)
+
+Source: [`packages/workspace/workspace/src/index.ts:105`](../../packages/workspace/workspace/src/index.ts)
 <!-- END GENERATED cordis-surface -->

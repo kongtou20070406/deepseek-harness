@@ -559,6 +559,74 @@ Source: [`packages/core/session/src/types.ts:309`](../packages/core/session/src/
 
 Source: [`packages/core/session/src/types.ts:304`](../packages/core/session/src/types.ts)
 
+### `research/*`
+
+<a id="researchcontext-assembly--log-only"></a>
+
+#### `research/context-assembly` — log-only
+
+```ts persistence-catalog
+/** Source-addressed manifest for a compiled model-visible view. */
+'research/context-assembly': ResearchContextAssembly
+```
+
+Source: [`packages/context/research-context/src/domain.ts:69`](../packages/context/research-context/src/domain.ts)
+
+<a id="researchcontext-control--log-only"></a>
+
+#### `research/context-control` — log-only
+
+```ts persistence-catalog
+/** Per-session switch for including Idea context in requests. */
+'research/context-control': ResearchContextControl
+```
+
+Source: [`packages/context/research-context/src/domain.ts:71`](../packages/context/research-context/src/domain.ts)
+
+<a id="researchcontext-inheritance--log-only"></a>
+
+#### `research/context-inheritance` — log-only
+
+```ts persistence-catalog
+/** Cross-session provenance for a compiled child-worker view. */
+'research/context-inheritance': ResearchContextInheritance
+```
+
+Source: [`packages/context/research-context/src/domain.ts:75`](../packages/context/research-context/src/domain.ts)
+
+<a id="researchhandoff-imported--log-only"></a>
+
+#### `research/handoff-imported` — log-only
+
+```ts persistence-catalog
+/** Cross-harness continuation evidence imported without changing authority. */
+'research/handoff-imported': ResearchHandoffImport
+```
+
+Source: [`packages/context/research-context/src/domain.ts:77`](../packages/context/research-context/src/domain.ts)
+
+<a id="researchidea-selection--log-only"></a>
+
+#### `research/idea-selection` — log-only
+
+```ts persistence-catalog
+/** Per-session Workspace Idea catalog and selection. */
+'research/idea-selection': ResearchIdeaSelection
+```
+
+Source: [`packages/context/research-context/src/domain.ts:73`](../packages/context/research-context/src/domain.ts)
+
+<a id="researchstate-change--log-only"></a>
+
+#### `research/state-change` — log-only
+
+```ts persistence-catalog
+/** Complete post-mutation research state. */
+'research/state-change': ResearchStateChange
+```
+
+Source: [`packages/context/research-context/src/domain.ts:67`](../packages/context/research-context/src/domain.ts)
+
 ### `sandbox/*`
 
 <a id="sandboxmode--log-only"></a>

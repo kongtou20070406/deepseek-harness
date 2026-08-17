@@ -2,7 +2,7 @@
 // Mounted on 'conversation.composer.dock' so it sticks with the composer in the
 // active conversation scrollport (see ConversationRoot data-conversation-scroll).
 
-import { Fragment, memo, useLayoutEffect, useMemo, useRef, useState } from 'react'
+import { memo, useMemo } from 'react'
 import { Tooltip } from '@deepseek-ai/dsh-client-ui-primitives'
 import type { ConversationSnapshot, UseProjection } from '@deepseek-ai/dsh-client-runtime/client'
 import type { SnapshotSelectorHook } from '@deepseek-ai/dsh-client-ui-slots'
@@ -160,6 +160,12 @@ export interface StatsLineProps {
   t: ComposerBarProps['t']
 }
 
+interface StatsGroup {
+  readonly text: string
+  readonly detail?: string
+  readonly secondary?: boolean
+}
+
 export const StatsLine = memo(function StatsLine({ useSession, useProjection, t }: StatsLineProps) {
   const settledNodes = useSession(s => s.chat.legacy.nodes)
   const usage = useProjection('tokenUsage')
@@ -169,14 +175,15 @@ export const StatsLine = memo(function StatsLine({ useSession, useProjection, t 
   // while no projection value is served.
   const projected = useProjection('sessionStats')
   const stats = useMemo(() => projected ?? deriveStats(settledNodes), [projected, settledNodes])
-  // Pipe-separated groups (figma stats strip); a group with no data drops out whole.
-  const groups: string[] = []
+  // Compact groups; a group with no data drops out whole. Counts and total
+  // usage stay first so narrow composers never hide the two durable facts.
+  const groups: StatsGroup[] = []
   if (stats.steps > 0) {
-    groups.push(t('stats.counts', { turns: stats.turns, steps: stats.steps }))
+    groups.push({ text: t('stats.counts', { turns: stats.turns, steps: stats.steps }) })
     const durations: string[] = []
     if (stats.llmMs > 0) durations.push(t('stats.llm', { duration: formatDuration(stats.llmMs) }))
     if (stats.toolMs > 0) durations.push(t('stats.toolCall', { duration: formatDuration(stats.toolMs) }))
-    if (durations.length > 0) groups.push(durations.join(' · '))
+    if (durations.length > 0) groups.push({ text: durations.join(' · '), secondary: true })
     const speeds: string[] = []
     if (stats.ttftSteps > 0) {
       speeds.push(t('stats.ttftAverage', { duration: formatDuration(stats.ttftMs / stats.ttftSteps) }))
@@ -186,7 +193,7 @@ export const StatsLine = memo(function StatsLine({ useSession, useProjection, t 
         throughput: formatTokensPerSecond(stats.decodeTokens / (stats.decodeMs / 1_000)),
       }))
     }
-    if (speeds.length > 0) groups.push(speeds.join(' · '))
+    if (speeds.length > 0) groups.push({ text: speeds.join(' · '), secondary: true })
   }
   // Context occupancy deliberately lives on the composer's ContextMeter ring,
   // not here — one home per fact.
@@ -196,39 +203,34 @@ export const StatsLine = memo(function StatsLine({ useSession, useProjection, t 
   // without a zero-token group.
   if (usage !== undefined
     && (billedInputTokens(usage) > 0 || usage.outputTokens > 0)) {
+    const input = billedInputTokens(usage)
+    groups.splice(Math.min(1, groups.length), 0, {
+      text: t('stats.totalTokens', { total: formatTokens(input + usage.outputTokens) }),
+      detail: t('stats.tokens', {
+        input: formatTokens(input),
+        output: formatTokens(usage.outputTokens),
+      }),
+    })
     const cacheHit = cacheHitPercent(usage)
-    if (cacheHit !== null) groups.push(t('stats.cacheHit', { percent: cacheHit }))
-    groups.push(t('stats.tokens', {
-      input: formatTokens(billedInputTokens(usage)),
-      output: formatTokens(usage.outputTokens),
-    }))
+    if (cacheHit !== null) groups.push({ text: t('stats.cacheHit', { percent: cacheHit }), secondary: true })
   }
-  const line = groups.join(' | ')
-  // The row elides with ellipsis when overlong; a delayed hover tooltip carries
-  // the full line, enabled only while content is actually clipped.
-  const rootRef = useRef<HTMLDivElement | null>(null)
-  const [truncated, setTruncated] = useState(false)
-  useLayoutEffect(() => {
-    const el = rootRef.current
-    if (el === null) return
-    const measure = () => { setTruncated(el.scrollWidth > el.clientWidth) }
-    measure()
-    if (typeof ResizeObserver === 'undefined') return
-    const observer = new ResizeObserver(measure)
-    observer.observe(el)
-    return () => { observer.disconnect() }
-  }, [line])
   if (groups.length === 0) return null
   return (
-    <Tooltip label={line} side="top" delayMs={500} disabled={!truncated}>
-      <div ref={rootRef} className={css.root}>
-        {groups.map((group, i) => (
-          <Fragment key={group}>
-            {i > 0 && <><span className={css.sep} aria-hidden>|</span>{' '}</>}
-            <span>{group}</span>
-          </Fragment>
-        ))}
-      </div>
-    </Tooltip>
+    <div className={css.root}>
+      {groups.map((group, index) => {
+        const value = <span className={css.group}>{group.text}</span>
+        return (
+          <span
+            key={group.text}
+            className={`${css.segment} ${group.secondary === true ? css.segmentSecondary : ''}`}
+          >
+            {index > 0 && <span className={css.sep} aria-hidden />}
+            {group.detail === undefined
+              ? value
+              : <Tooltip label={group.detail} side="top" delayMs={300}>{value}</Tooltip>}
+          </span>
+        )
+      })}
+    </div>
   )
 })

@@ -1,0 +1,39 @@
+# Agent Note: Event-sourced selective research context
+
+Status: implemented
+
+English | [中文](2026-08-14-selective-research-context-surface.zh.md)
+
+## Problem
+
+A multi-week research session needs two properties that ordinary rolling summaries do not guarantee: the researcher-confirmed scientific object must survive every resume and compaction unchanged, while each request should contain mostly evidence needed for the current task. The solution must remain inside DSH's plugin, Session, projection, and UI seams; a hidden retrieval result or mutable cache cannot become model-visible truth.
+
+## Decision
+
+**Research authority is a whole-value event stream.** `@deepseek-ai/dsh-research-context` appends `research/state-change` events for the initial Idea Kernel / Research Frame, Working State replacements, pending authority proposals, and exact confirmations or rejections. Kernel and Frame are user-confirmed authority. A model may replace Working State or propose one complete authority value, but only `/research confirm <proposal-id>` can make that candidate authoritative. Pending proposals are excluded from model context. Package invariants replay state revisions; authority text no longer carries a redundant hash, and proposal concurrency uses the base version. Only `viewHash` remains to identify an exact child-visible assembled view.
+
+**Authority presence is not an attention claim.** The Kernel contains only the scientific object, success evidence, and prohibited substitutions; the Pi-Idea bundle caps it independently at 256 tokens and fails rather than truncating. A short objective ladder follows the exact Kernel and orders Mission, confirmed bottleneck, current request, provisional route, and execution Goal. The confirmed Frame precedes any visible `task-idea-bridge`; Working State and Goal are marked as a replaceable route and execution lease rather than additional authority. This makes alignment a small decision interface instead of assuming that a long Idea preamble will control attention.
+
+**The selector operates on complete loops and disposable indexes.** Complete loops remain preferred. An individually oversized loop alone receives message-level dialogue/tool-evidence locators, and every hit restores the first user cause plus nearest preceding dialogue as a parent bridge. A deterministic focus gate classifies the latest direct request as `continue`, `task`, or `reframe`. Only a terse continuation expands the query with Working State and Goal, activates evidence roots, and carries unconditional recent loops. Explicit tasks query only the current request. Strong reframes and a new Session's first explicit request additionally suppress old route and Goal text; replacement-target phrasing such as “核心是” excludes the explicitly rejected route from retrieval. Query scoring then combines lexical overlap, fuzzy forms, explicit aliases, and replaceable synchronous providers. Nested tool-result content is indexed recursively, and no summary model is called. Session creation and append events prewarm the locator index in yielded 32-event batches; a cold request finishes only the remaining tail synchronously.
+
+**Assembly is bounded and source-addressed.** Every view begins byte-for-byte with the confirmed Kernel, followed by the focus ladder, optional confirmed Frame, focus-eligible Working State and Goal, whole selected loops, and omitted-turn locators. Kernel + Frame + visible Working State must fit within one twentieth of the last logged route window, with a conservative pre-route fallback. The complete view has independent character and token caps. No authority value or selected loop is truncated. The assembly manifest and bounded history projection record `focusMode`, so the decision to retain or unload route state is replayable. Selection makes no model or remote call.
+
+**The compaction seam owns model visibility.** `@deepseek-ai/dsh-compaction-research-context` records manifests and exposes selective views through standard compaction events while subclassing native `compaction-basic`. Ordinary turns are model-free; pressure, actual overflow, or manual `/compact` enters native rolling fallback. Child lineage checks the live store and then read-only `sessionPersistence.inspect()` without implicitly resuming cold parents.
+
+**Visualization extends native DSH surfaces.** `ui-conversation` declares a generic `conversation.context.details` slot inside its existing ContextMeter panel and an input-dock slot above the composer. `@deepseek-ai/dsh-client-ui-research-context` adds a compact Idea strip in the Goal/Todo card family; its two read-only actions inspect confirmed Kernel/Frame and Working State, while the Idea selector switches per-session targets or closes Idea assembly. The bounded recent manifest remains in ContextMeter. Per-Session Idea catalog and selection are owned by [Workspace Ideas and per-session selection](2026-08-16-workspace-ideas-and-per-session-selection.md). The same plugin shows assembly-token details in ContextMeter, while the append-only event inspector owns complete history. Child report/settlement messages project into source-attributed evidence candidates and never promote themselves to Kernel or Frame.
+
+**One bundle composes the feature.** `@deepseek-ai/dsh-pi-idea-context` selects a research provider that extends native basic compaction, alongside research state, controls, and browser rendering plugins. AgentLoop, Session, model adapters, and ContextMeter remain unmodified domains.
+
+## Alternatives considered
+
+**Patch AgentLoop or fork Session.** Rejected because the feature can be expressed through existing waterfall, compaction, projection, and slot seams; a privileged Pi-Idea core would undermine DSH's spatial and temporal composability.
+
+**Summarize every turn with a model.** Rejected because it adds latency, API cost, factual drift, and a second authority on the request critical path. Exact loops remain the retrieval unit.
+
+**Make every model suggestion authoritative.** Rejected because the model is allowed to fill execution state and propose routes, not decide the scientific object or success criterion.
+
+**Call Obelisk synchronously.** Rejected because local history availability must not gate the main loop. Obelisk can later implement a compatible optional retrieval provider.
+
+## Consequences
+
+The raw Session log can grow while the request surface remains bounded and reconstructable. Restarts replay authority and manifests; they rebuild only the disposable locator index outside the request path when scheduling permits. In the reproducible 76-event multi-megabyte fixture on the delivery machine, cold assembly measured 287,314 microseconds, immediate warm assembly 21,913 microseconds, and the same request after yielded prewarming 1,271 microseconds; the gates retain 500,000-microsecond cold and 100,000-microsecond warm ceilings rather than treating one machine's timing as universal. After the final production restart, one real request assembled an estimated 8.9k-token view with one selected loop in 1.48 milliseconds. Ambiguous continuation relies on durable Working State / Goal rather than guessing from the two words alone; a clear task or reframe does not inherit that route inertia. The three cases are now mechanically distinct: user-confirmed Mission or Frame change, provisional route change under unchanged authority, and unauthorized drift where a recent route, candidate, monitor, or Goal displaces the scientific objective. Cross-turn history-prefix KV reuse may decrease because the selected surface changes, but within-turn tool steps retain their prefix. The current selector is deliberately lexical and does not claim semantic completeness; Kernel placement and the task bridge likewise do not prove attention or research success without paired task-performance evidence.

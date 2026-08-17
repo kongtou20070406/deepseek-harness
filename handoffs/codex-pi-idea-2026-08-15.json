@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "source": {
+    "harness": "codex",
+    "session_id": "codex:019ff9e4-fe0d-7e70-a37a-e7074d33fd78",
+    "project_path": "D:\\Myfile\\work space\\pi-idea"
+  },
+  "target": "Continue Pi-Idea development on the DSH/Cordis plugin architecture without losing the confirmed research-context design or the current implementation tail.",
+  "boundary": "Explicit handoff exported after Codex compaction boundary codex:019ff9e4-fe0d-7e70-a37a-e7074d33fd78:018507:compaction on 2026-08-15.",
+  "last_confirmed_user_request": "Move this assistant's effective context into DSH and verify that Pi-Idea context assembly works across the handoff; also share Obelisk, common research Skills, Better Sidebar, persistent OpenAI login, and GPT image paste.",
+  "decisions_and_authority": [
+    "DSH remains the Cordis plugin runtime; Pi-Idea context assembly is implemented as plugins rather than a DSH core fork.",
+    "Imported handoffs are non-authoritative candidate evidence and must never modify Idea Kernel or Research Frame automatically.",
+    "Raw Codex/Pi history remains in Obelisk; the request path receives a narrow source-addressed handoff bridge and retrieves raw history only when needed.",
+    "A new Session carries the newest handoff bridge once before it has local loops; later requests retrieve handoffs only by relevance.",
+    "Obelisk remains an external Skill/history locator, not an authority provider or a synchronous request-path dependency."
+  ],
+  "completed": [
+    "Installed and mounted dsh-better-sidebar 0.11.0 in the web Profile, including the Windows node-pty build.",
+    "Connected Obelisk and Workflow Design through DSH's native ~/.agents/skills scan.",
+    "Connected Academic Paper, Academic Research Suite, Deep Research, Paper Search, Idea Spark, Scoop Check, PowerShell, and Ponytail main/review/audit through zero-copy DSH skill junctions.",
+    "Changed the Idea dock so a new Session shows Idea not enabled plus the /research initialization hint instead of disappearing.",
+    "Added durable research/handoff-imported events, bounded handoff/evidence projections, deterministic first-turn bridge selection, and /research import-handoff <path>.",
+    "Targeted research-context and Idea dock tests pass: 16 tests. Targeted TypeScript project build passes."
+  ],
+  "pending_or_blocked": [
+    "Rebuild and restart the web profile, then verify Better Sidebar and the inactive Idea dock in the real browser.",
+    "Create a real workspace Session and verify clipboard image intake with an OpenAI Codex GPT model without spending a benchmark run.",
+    "Verify the imported handoff appears in the first DSH model-visible research view and drops from unrelated later loops.",
+    "Finish user-facing docs for Skill inventory, persistent login, cold start, hot open, and host restart."
+  ],
+  "live_state_to_verify": [
+    "The Pi-Idea DSH scheduled task was intentionally stopped for plugin installation and must be restarted after the build.",
+    "The DSH source worktree is dirty with pre-existing Pi-Idea implementation changes; preserve unrelated edits.",
+    "OpenAI membership already displayed connected with plan and Codex usage before this handoff; confirm it persists after restart.",
+    "No GPU work is authorized or needed for this delivery."
+  ],
+  "anchors": [
+    "session:codex:019ff9e4-fe0d-7e70-a37a-e7074d33fd78",
+    "message:codex:019ff9e4-fe0d-7e70-a37a-e7074d33fd78:018583",
+    "summary:codex:019ff9e4-fe0d-7e70-a37a-e7074d33fd78:018507:compaction"
+  ]
+}

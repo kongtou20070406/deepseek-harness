@@ -8,6 +8,7 @@
 |---|---|---|
 | [`compaction/`](compaction/README.md) | 压缩 seam 与事件词汇 | `ctx.compaction` |
 | [`compaction-basic/`](compaction-basic/README.md) | token 压力与摘要后端 | 注册 `ctx.compaction` |
+| [`compaction-research-context/`](compaction-research-context/README.md) | 无模型的每 turn 选择性科研视图后端 | 注册 `ctx.compaction` |
 | [`compaction-tool-result-pruner/`](compaction-tool-result-pruner/README.md) | 可选的无模型工具结果修剪 | `ctx.toolResultPruner` |
 | [`command-compact/`](command-compact/README.md) | 用户压缩命令 | 注册到 `ctx.commands` |
 

@@ -1,0 +1,10 @@
+# Headless-only Pi-Idea compaction owner. The shared context bundle provides
+# researchContext; this layer replaces base's root compactor where no isolated
+# agent preset exists.
+
+- id: compaction-basic
+  disabled: true
+
+- insert:
+    - id: compaction-research-context
+      name: '@deepseek-ai/dsh-compaction-research-context'

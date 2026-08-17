@@ -91,4 +91,13 @@ export interface IWorkspaces {
    * @param sessionId - session to archive.
    */
   archiveSession(sessionId: SessionId): Promise<void>
+  /** Restore an archived Session to its retained accounting position. */
+  unarchiveSession(sessionId: SessionId): Promise<void>
+  /**
+   * Permanently delete an ARCHIVED session (durable log + membership + archive
+   * bit). Rejects while the id is live or not archived. Clearing an archived
+   * current selection resets into the New Session view state.
+   * @param sessionId - archived session to permanently delete.
+   */
+  deleteSession(sessionId: SessionId): Promise<void>
 }

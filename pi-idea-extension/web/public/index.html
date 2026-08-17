@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark light">
+  <title>Pi-Idea</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="rail" aria-label="研究导航">
+      <div class="brand"><span class="brand-mark">π</span><span>Pi-Idea</span></div>
+      <button class="new-session" id="new-idea" type="button"><span>＋</span> 新 Idea</button>
+      <div class="rail-section-head"><span>IDEAS</span><span id="idea-count">0</span></div>
+      <div class="idea-list" id="idea-list"></div>
+      <button class="new-session secondary" id="new-session" type="button"><span>↗</span> 新 BTW</button>
+      <nav class="rail-nav">
+        <button class="rail-item active" data-command="/idea" type="button"><span>◇</span> 当前 Idea</button>
+        <button class="rail-item" data-command="/idea-context" type="button"><span>◫</span> 上下文</button>
+        <button class="rail-item" data-command="/idea-workflows" type="button"><span>⌁</span> Workflow</button>
+        <button class="rail-item" data-command="/idea-manifest" type="button"><span>≡</span> Manifest</button>
+      </nav>
+      <div class="rail-bottom">
+        <div class="connection"><span class="connection-dot" id="connection-dot"></span><span id="connection-label">正在连接 Pi</span></div>
+        <button class="icon-button" id="theme-toggle" type="button" title="切换主题">◐</button>
+      </div>
+    </aside>
+
+    <main class="conversation">
+      <header class="topbar">
+        <div>
+          <div class="session-title" id="session-title">Pi-Idea Research</div>
+          <div class="model-line"><span id="model-name">gpt-5.6-sol</span><span class="separator">·</span><button id="thinking-level" type="button">max</button></div>
+        </div>
+        <div class="view-switch" role="tablist">
+          <button class="view-tab active" id="chat-tab" type="button">对话</button>
+          <button class="view-tab" id="board-tab" type="button">推进白板</button>
+        </div>
+        <div class="top-actions">
+          <button class="text-button mobile-only" id="toggle-rail" type="button">Ideas</button>
+          <button class="text-button" id="toggle-inspector" type="button">研究状态</button>
+        </div>
+      </header>
+
+      <section class="message-list" id="message-list" aria-live="polite">
+        <div class="empty-state" id="empty-state">
+          <div class="empty-glyph">π</div>
+          <h1>从问题开始，不从流程开始。</h1>
+          <p>Idea 会固定方向，Pi 会负责推进。历史证据只在当前任务需要时进入上下文。</p>
+        </div>
+      </section>
+
+      <section class="board-view" id="board-view" hidden>
+        <div class="board-heading">
+          <div><span class="eyebrow">DETECTIVE BOARD</span><h1 id="board-title">推进白板</h1><p id="board-subtitle">只帮助你理解研究进展；整张图不会进入模型上下文。</p></div>
+          <div class="board-actions"><button class="text-button" id="edit-idea" type="button">提出 Idea 修改</button><button class="text-button" id="show-diffs" type="button">版本 diff</button></div>
+        </div>
+        <div class="board-grid">
+          <article class="board-column goal-column"><div class="board-column-title"><span>科学方向</span><small>P0 · 权威</small></div><div id="board-goal" class="board-paper">尚未选择 Idea</div></article>
+          <article class="board-column"><div class="board-column-title"><span>当前推进</span><small>Todo · 可编辑</small></div><div id="board-todos" class="board-stack"></div></article>
+          <article class="board-column"><div class="board-column-title"><span>对话与线索</span><small>派生视图</small></div><div id="board-conversations" class="board-stack"></div></article>
+          <article class="board-column"><div class="board-column-title"><span>工作线程</span><small>持久状态 + 实时事件</small></div><div id="board-workers" class="board-stack"><div class="quiet">没有 Workflow 或 worker 记录</div></div></article>
+        </div>
+      </section>
+
+      <div class="composer-wrap">
+        <div class="running-tools" id="running-tools" hidden></div>
+        <form class="composer" id="composer">
+          <textarea id="prompt" rows="1" placeholder="给 Pi 发消息…  Enter 发送，Shift+Enter 换行" aria-label="消息"></textarea>
+          <div class="composer-footer">
+            <div class="composer-hint"><span id="mode-hint">普通对话</span><span class="separator">·</span><span id="context-hint">上下文等待首轮使用</span></div>
+            <button class="send-button" id="send" type="submit" title="发送">↑</button>
+            <button class="stop-button" id="stop" type="button" title="停止" hidden>■</button>
+          </div>
+        </form>
+      </div>
+    </main>
+
+    <aside class="inspector" id="inspector">
+      <div class="inspector-head"><span>研究状态</span><button class="icon-button" id="close-inspector" type="button">×</button></div>
+
+      <section class="card idea-card">
+        <div class="card-kicker">CURRENT IDEA</div>
+        <div class="idea-title" id="idea-title">等待读取 IDEA.md</div>
+        <div class="idea-meta"><span id="idea-modified">—</span><span><button class="link-button" id="show-idea" type="button">查看全文</button><button class="link-button spaced" id="open-main" type="button">进入主对话</button><button class="link-button spaced" id="toggle-archive" type="button">归档</button></span></div>
+      </section>
+
+      <section class="card todo-card">
+        <div class="card-title"><span>Todo</span><button class="link-button" id="add-todo" type="button">＋ 添加建议</button></div>
+        <div class="todo-list" id="todo-list"><div class="quiet">当前没有 Todo</div></div>
+        <div class="todo-note">你的编辑会在下一次主 loop 中进入上下文，模型需结合实践接受、修正、阻塞或完成。</div>
+      </section>
+
+      <section class="card workspace-card">
+        <div class="card-title"><span>工作区</span><button class="link-button" id="add-workspace" type="button">＋ 关联</button></div>
+        <div class="workspace-list" id="workspace-list"><div class="quiet">尚未关联工作区</div></div>
+      </section>
+
+      <section class="card">
+        <div class="metric-head"><span>上下文</span><span id="context-percent">0%</span></div>
+        <div class="meter"><div class="meter-fill" id="context-fill"></div><i class="soft-line"></i><i class="hard-line"></i></div>
+        <div class="meter-labels"><span id="context-tokens">0 / 272k</span><span>软线 60% · 死线 85%</span></div>
+      </section>
+
+      <section class="card stats-grid">
+        <div><span>输入</span><strong id="input-tokens">0</strong></div>
+        <div><span>输出</span><strong id="output-tokens">0</strong></div>
+        <div><span>缓存召回</span><strong id="cache-tokens">0</strong></div>
+        <div><span>工具调用</span><strong id="tool-count">0</strong></div>
+      </section>
+
+      <section class="card activity-card">
+        <div class="card-title"><span>运行活动</span><span class="activity-count" id="activity-count">0</span></div>
+        <div class="activity-list" id="activity-list"><div class="quiet">当前没有工具或 Workflow 在运行</div></div>
+      </section>
+
+      <section class="card detail-card">
+        <div class="card-title"><span id="detail-title">Idea 摘要</span><button class="link-button" id="clear-detail" type="button">清除</button></div>
+        <pre id="detail-content">选择左侧项目查看可追溯详情。</pre>
+      </section>
+    </aside>
+  </div>
+
+  <div class="toast-stack" id="toast-stack" aria-live="assertive"></div>
+  <div class="modal-backdrop" id="modal" hidden>
+    <form class="modal" id="modal-form">
+      <div class="modal-title" id="modal-title">需要确认</div>
+      <div class="modal-message" id="modal-message"></div>
+      <div id="modal-control"></div>
+      <div class="modal-actions"><button class="text-button" id="modal-cancel" type="button">取消</button><button class="primary-button" type="submit">确认</button></div>
+    </form>
+  </div>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

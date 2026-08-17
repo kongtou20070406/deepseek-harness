@@ -15,7 +15,7 @@ import { defineTool } from '@deepseek-ai/dsh-tools'
 import type { GenericCallView, SearchResultView, ToolResult } from '@deepseek-ai/dsh-tools'
 import type { SpillRef } from '@deepseek-ai/dsh-spill'
 import type {} from '@deepseek-ai/dsh-system-prompt'
-import { runRipgrep, toWorkdirRelative, trySaveFormattedResult } from './search-core.ts'
+import { formatSearchDiagnostics, runRipgrep, toWorkdirRelative, trySaveFormattedResult } from './search-core.ts'
 import { globSearchMeta, searchViewFromMeta } from './presentation.ts'
 import { acceptedDirectCallValue } from './direct-call.ts'
 
@@ -331,19 +331,28 @@ export function applyGlobTool(ctx: Context, caps: GlobToolCaps): void {
         properties: {
           root: { type: 'string', required: true },
           paths: { type: 'array', required: true, items: { type: 'string' } },
+          diagnostics: { type: 'array', items: { type: 'string' } },
         },
       },
-      render: (_args, value) => [{ type: 'text', text: renderGlobPaths(value.paths, caps, value.root) }],
+      render: (_args, value) => [{
+        type: 'text',
+        text: renderGlobPaths(value.paths, caps, value.root) + formatSearchDiagnostics(value.diagnostics),
+      }],
       presentationMeta: (_args, value) => {
         const page = globCardPage(value.paths, caps, value.root)
-        return globSearchMeta({ items: page.items, truncated: page.truncated, seen: value.paths.length }, caps.maxMetaBytes)
+        return globSearchMeta({
+          items: page.items,
+          truncated: page.truncated || (value.diagnostics?.length ?? 0) > 0,
+          seen: value.paths.length,
+        }, caps.maxMetaBytes)
       },
     },
     async execute(args, exec) {
       const input = parseGlobArgs(args)
       const run = await runRipgrep(ctx, exec, 'glob', buildGlobCommand(input), caps.rawOutputMaxBytes, caps.graceMs, caps.stderrMaxBytes)
       const root = input.path === undefined ? '.' : toWorkdirRelative(input.path, run.workdir)
-      if (run.noMatches) return { root, paths: [] }
+      const diagnosticValue = run.diagnostics === undefined ? {} : { diagnostics: run.diagnostics }
+      if (run.noMatches) return { root, paths: [], ...diagnosticValue }
 
       const all: string[] = []
       for (const line of run.stdout.split('\n')) {
@@ -351,7 +360,7 @@ export function applyGlobTool(ctx: Context, caps: GlobToolCaps): void {
         const displayPath = toWorkdirRelative(line, run.workdir)
         all.push(displayPath)
       }
-      return { root, paths: all }
+      return { root, paths: all, ...diagnosticValue }
     },
     presentCall: presentGlobCall,
     presentResult: presentGlobResult,
@@ -360,14 +369,23 @@ export function applyGlobTool(ctx: Context, caps: GlobToolCaps): void {
 
   ctx.on('tools/post-execute', async (exec, result, next) => {
     const decision = await next()
-    const value = acceptedDirectCallValue(ctx, tool, exec, result, decision) as { root: string; paths: string[] } | undefined
+    const value = acceptedDirectCallValue(ctx, tool, exec, result, decision) as {
+      root: string
+      paths: string[]
+      diagnostics?: string[]
+    } | undefined
     if (value === undefined) return decision
     const paths = value.paths
     if (paths.length <= caps.maxResults) return decision
-    const spillRef = await trySaveFormattedResult(ctx, exec, 'glob-results.txt', paths.join('\n'))
+    const spillRef = await trySaveFormattedResult(
+      ctx, exec, 'glob-results.txt', paths.join('\n') + formatSearchDiagnostics(value.diagnostics),
+    )
     return {
       kind: 'accept',
-      content: [{ type: 'text', text: renderGlobPaths(paths, caps, value.root, spillRef) }],
+      content: [{
+        type: 'text',
+        text: renderGlobPaths(paths, caps, value.root, spillRef) + formatSearchDiagnostics(value.diagnostics),
+      }],
       ...decision.additionalContexts !== undefined ? { additionalContexts: decision.additionalContexts } : {},
     }
   })
