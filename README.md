@@ -24,15 +24,17 @@ The command starts the Web UI, served at `http://127.0.0.1:3080` by default. See
 
 ### Run from source
 
-To run from a repository checkout:
+To run this fork from a repository checkout, install Node.js 22.19+ or 24+, Git, and pnpm 11.7.0 first. If pnpm is not available, install it with `npm install --global pnpm@11.7.0`:
 
 ```sh
-git clone https://github.com/deepseek-ai/deepseek-harness.git
+git clone https://github.com/kongtou20070406/deepseek-harness.git
 cd deepseek-harness
-pnpm install
+pnpm install --frozen-lockfile
 pnpm run build
 pnpm dsh web
 ```
+
+The root workspace installs all repository workspaces, and `pnpm run build` creates the Host, Client, and Web artifacts required by `pnpm dsh web`.
 
 ## Community and support
 

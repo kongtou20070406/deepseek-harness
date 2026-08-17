@@ -24,15 +24,17 @@ npx @deepseek-ai/dsh web
 
 ### 从源码运行
 
-如需从仓库源码运行：
+如需从仓库源码运行，请先安装 Node.js 22.19+ 或 24+、Git 与 pnpm 11.7.0。如果系统没有 pnpm，可先运行 `npm install --global pnpm@11.7.0`：
 
 ```sh
-git clone https://github.com/deepseek-ai/deepseek-harness.git
+git clone https://github.com/kongtou20070406/deepseek-harness.git
 cd deepseek-harness
-pnpm install
+pnpm install --frozen-lockfile
 pnpm run build
 pnpm dsh web
 ```
+
+根 workspace 会安装仓库中的全部 workspace；`pnpm run build` 会构建 `pnpm dsh web` 所需的 Host、Client 和 Web 产物。
 
 ## 社区与支持
 
